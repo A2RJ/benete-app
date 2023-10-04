@@ -155,20 +155,38 @@ return [
             'url' => '/users'
         ],
         [
-            'text' => 'Surat Masuk',
-            'icon' => 'ti ti-mail',
-            'url' => '#'
-        ],
-        [
-            'text' => 'Support',
+            'text' => 'Kelola Surat',
             'url' => '#',
-            'icon' => 'ti ti-help',
+            'icon' => 'ti ti-mail',
             'submenu' => [
                 [
-                    'text' => 'Ticket',
-                    'url' => '#',
-                    'icon' => 'ti ti-article'
-                ]
+                    'text' => 'Surat Masuk',
+                    'url' => '/keu-surat-masuk',
+                ],
+                [
+                    'text' => 'Surat Keluar',
+                    'url' => '/keu-surat-keluar',
+                ],
+                [
+                    'text' => 'Bendahara Pengeluaran',
+                    'url' => '/keu-bendahara-pengeluaran',
+                ],
+                [
+                    'text' => 'Bendahara Penerimaan',
+                    'url' => '/keu-bendahara-penerimaan',
+                ],
+                [
+                    'text' => 'Pejabat Pengadaan',
+                    'url' => '/keu-pejabat-pengadaan',
+                ],
+                [
+                    'text' => 'Pejabat Pembuat Komitmen',
+                    'url' => '/keu-ppk',
+                ],
+                [
+                    'text' => 'Kuasa Pengguna Anggaran',
+                    'url' => '/keu-kuasa-pengguna-anggaran',
+                ],
             ],
         ],
 

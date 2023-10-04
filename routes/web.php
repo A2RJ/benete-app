@@ -17,8 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/users', App\Http\Controllers\UserController::class);
+Route::resource('/keu-surat-masuk', App\Http\Controllers\KeuSuratMasukController::class);
+Route::resource('/keu-surat-keluar', App\Http\Controllers\KeuSuratKeluarController::class);
+Route::resource('/keu-bendahara-pengeluaran', App\Http\Controllers\KeuBendaharaPengeluaranController::class);
+Route::resource('/keu-bendahara-penerimaan', App\Http\Controllers\KeuBendaharaPenerimaanController::class);
+Route::resource('/keu-pejabat-pengadaan', App\Http\Controllers\KeuPejabatPengadaanController::class);
+Route::resource('/keu-ppk', App\Http\Controllers\KeuPpkController::class);
+Route::resource('/keu-kuasa-pengguna-anggaran', App\Http\Controllers\KeuKuasaPenggunaAnggaranController::class);
