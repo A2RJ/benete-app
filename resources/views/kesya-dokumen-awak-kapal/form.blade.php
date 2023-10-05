@@ -1,7 +1,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('nama surat') }}</label>
     <div>
-        {{ Form::text('nama', $keuSuratMasuk->nama, [
+        {{ Form::text('nama', $kesyaDokumenAwakKapal->nama, [
             'class' => 'form-control' . ($errors->has('nama') ? ' is-invalid' : ''),
             'placeholder' => 'Nama Surat',
         ]) }}
@@ -11,7 +11,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('tanggal_masuk') }}</label>
     <div>
-        {{ Form::date('tanggal_masuk', $keuSuratMasuk->tanggal_masuk, [
+        {{ Form::date('tanggal_masuk', $kesyaDokumenAwakKapal->tanggal_masuk, [
             'class' => 'form-control' . ($errors->has('tanggal_masuk') ? ' is-invalid' : ''),
             'placeholder' => 'Tanggal Masuk',
         ]) }}
@@ -21,7 +21,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('asal') }}</label>
     <div>
-        {{ Form::text('asal', $keuSuratMasuk->asal, [
+        {{ Form::text('asal', $kesyaDokumenAwakKapal->asal, [
             'class' => 'form-control' . ($errors->has('asal') ? ' is-invalid' : ''),
             'placeholder' => 'Asal',
         ]) }}
@@ -31,7 +31,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('perihal') }}</label>
     <div>
-        {{ Form::textarea('perihal', $keuSuratMasuk->perihal, [
+        {{ Form::textarea('perihal', $kesyaDokumenAwakKapal->perihal, [
             'class' => 'form-control' . ($errors->has('perihal') ? ' is-invalid' : ''),
             'placeholder' => 'Perihal',
         ]) }}
@@ -41,21 +41,11 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('lampiran') }}</label>
     <div>
-        {{ Form::file('lampiran', $keuSuratMasuk->lampiran, [
+        {{ Form::file('lampiran', $kesyaDokumenAwakKapal->lampiran, [
             'class' => 'form-control' . ($errors->has('lampiran') ? ' is-invalid' : ''),
             'placeholder' => 'Lampiran',
         ]) }}
         {!! $errors->first('lampiran', '<div class="invalid-feedback">:message</div>') !!}
-    </div>
-</div>
-<div class="form-group mb-3">
-    <label class="form-label"> {{ Form::label('disposisi') }}</label>
-    <div>
-        {{ Form::text('disposisi', $keuSuratMasuk->disposisi, [
-            'class' => 'form-control' . ($errors->has('disposisi') ? ' is-invalid' : ''),
-            'placeholder' => 'Disposisi',
-        ]) }}
-        {!! $errors->first('disposisi', '<div class="invalid-feedback">:message</div>') !!}
     </div>
 </div>
 

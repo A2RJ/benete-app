@@ -29,3 +29,10 @@ Route::resource('/keu-bendahara-penerimaan', App\Http\Controllers\KeuBendaharaPe
 Route::resource('/keu-pejabat-pengadaan', App\Http\Controllers\KeuPejabatPengadaanController::class);
 Route::resource('/keu-ppk', App\Http\Controllers\KeuPpkController::class);
 Route::resource('/keu-kuasa-pengguna-anggaran', App\Http\Controllers\KeuKuasaPenggunaAnggaranController::class);
+Route::resource('/kesya-surat-masuk', App\Http\Controllers\KesyaSuratMasukController::class);
+Route::resource('/kesya-surat-keluar', App\Http\Controllers\KesyaSuratKeluarController::class);
+Route::resource('/kesyabandaran', App\Http\Controllers\KesyabandaranController::class);
+Route::resource('/kesya-tertib-banar', App\Http\Controllers\KesyaTertibBanarController::class);
+Route::resource('/kesya-patroli', App\Http\Controllers\KesyaPatroliController::class);
+Route::resource('/kesya-dokumen-kapal', App\Http\Controllers\KesyaDokumenKapalController::class);
+Route::resource('/kesya-dokumen-awak-kapal', App\Http\Controllers\KesyaDokumenAwakKapalController::class);

@@ -5,7 +5,6 @@
         {{ Form::text('name', $user->name, ['class' => 'form-control' .
         ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
         {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-hint">user <b>name</b> instruction.</small>
     </div>
 </div>
 <div class="form-group mb-3">
@@ -14,7 +13,6 @@
         {{ Form::text('email', $user->email, ['class' => 'form-control' .
         ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
         {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-hint">user <b>email</b> instruction.</small>
     </div>
 </div>
 

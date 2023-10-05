@@ -155,7 +155,7 @@ return [
             'url' => '/users'
         ],
         [
-            'text' => 'Kelola Surat',
+            'text' => 'Bidang Keuangan',
             'url' => '#',
             'icon' => 'ti ti-mail',
             'submenu' => [
@@ -189,7 +189,41 @@ return [
                 ],
             ],
         ],
-
+        [
+            'text' => 'Bidang Kesyabadaran',
+            'url' => '#',
+            'icon' => 'ti ti-mail',
+            'submenu' => [
+                [
+                    'text' => 'Kesyabandaran',
+                    'url' => '/kesyabandaran',
+                ],
+                [
+                    'text' => 'Surat Masuk',
+                    'url' => '/kesya-surat-masuk',
+                ],
+                [
+                    'text' => 'Surat Keluar',
+                    'url' => '/kesya-surat-keluar',
+                ],
+                [
+                    'text' => 'Tertib Banar',
+                    'url' => '/kesya-tertib-banar',
+                ],
+                [
+                    'text' => 'Patroli',
+                    'url' => '/kesya-patroli',
+                ],
+                [
+                    'text' => 'Dokumen Kapal',
+                    'url' => '/kesya-dokumen-kapal',
+                ],
+                [
+                    'text' => 'Dokumen Awak Kapal',
+                    'url' => '/kesya-dokumen-awak-kapal',
+                ]
+            ]
+        ]
     ],
 
     /*
