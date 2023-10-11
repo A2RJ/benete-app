@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Keuangan;
 
-use App\Models\KeuBendaharaPenerimaan;
+use App\Http\Controllers\Controller;
+use App\Models\Keuangan\KeuBendaharaPenerimaan;
 use Illuminate\Http\Request;
 
 /**

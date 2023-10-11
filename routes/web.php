@@ -1,7 +1,27 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Kesyabandaraan\{
+    KesyabandaranController,
+    KesyaDokumenAwakKapalController,
+    KesyaDokumenKapalController,
+    KesyaPatroliController,
+    KesyaSuratKeluarController,
+    KesyaSuratMasukController,
+    KesyaTertibBanarController
+};
+use App\Http\Controllers\Keuangan\{
+    KeuBendaharaPenerimaanController,
+    KeuBendaharaPengeluaranController,
+    KeuKuasaPenggunaAnggaranController,
+    KeuPejabatPengadaanController,
+    KeuPpkController,
+    KeuSuratKeluarController,
+    KeuSuratMasukController,
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +39,20 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('/users', App\Http\Controllers\UserController::class);
-Route::resource('/keu-surat-masuk', App\Http\Controllers\KeuSuratMasukController::class);
-Route::resource('/keu-surat-keluar', App\Http\Controllers\KeuSuratKeluarController::class);
-Route::resource('/keu-bendahara-pengeluaran', App\Http\Controllers\KeuBendaharaPengeluaranController::class);
-Route::resource('/keu-bendahara-penerimaan', App\Http\Controllers\KeuBendaharaPenerimaanController::class);
-Route::resource('/keu-pejabat-pengadaan', App\Http\Controllers\KeuPejabatPengadaanController::class);
-Route::resource('/keu-ppk', App\Http\Controllers\KeuPpkController::class);
-Route::resource('/keu-kuasa-pengguna-anggaran', App\Http\Controllers\KeuKuasaPenggunaAnggaranController::class);
-Route::resource('/kesya-surat-masuk', App\Http\Controllers\KesyaSuratMasukController::class);
-Route::resource('/kesya-surat-keluar', App\Http\Controllers\KesyaSuratKeluarController::class);
-Route::resource('/kesyabandaran', App\Http\Controllers\KesyabandaranController::class);
-Route::resource('/kesya-tertib-banar', App\Http\Controllers\KesyaTertibBanarController::class);
-Route::resource('/kesya-patroli', App\Http\Controllers\KesyaPatroliController::class);
-Route::resource('/kesya-dokumen-kapal', App\Http\Controllers\KesyaDokumenKapalController::class);
-Route::resource('/kesya-dokumen-awak-kapal', App\Http\Controllers\KesyaDokumenAwakKapalController::class);
+Route::resource('/users', UserController::class);
+Route::resource('/keu-surat-masuk', KeuSuratMasukController::class);
+Route::resource('/keu-surat-keluar', KeuSuratKeluarController::class);
+Route::resource('/keu-bendahara-pengeluaran', KeuBendaharaPengeluaranController::class);
+Route::resource('/keu-bendahara-penerimaan', KeuBendaharaPenerimaanController::class);
+Route::resource('/keu-pejabat-pengadaan', KeuPejabatPengadaanController::class);
+Route::resource('/keu-ppk', KeuPpkController::class);
+Route::resource('/keu-kuasa-pengguna-anggaran', KeuKuasaPenggunaAnggaranController::class);
+Route::resource('/kesya-surat-masuk', KesyaSuratMasukController::class);
+Route::resource('/kesya-surat-keluar', KesyaSuratKeluarController::class);
+Route::resource('/kesyabandaran', KesyabandaranController::class);
+Route::resource('/kesya-tertib-banar', KesyaTertibBanarController::class);
+Route::resource('/kesya-patroli', KesyaPatroliController::class);
+Route::resource('/kesya-dokumen-kapal', KesyaDokumenKapalController::class);
+Route::resource('/kesya-dokumen-awak-kapal', KesyaDokumenAwakKapalController::class);

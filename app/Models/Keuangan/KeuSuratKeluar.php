@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Keuangan;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class KeuSuratMasuk
+ * Class KeuSuratKeluar
  *
  * @property $id
  * @property $nama
@@ -13,16 +13,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property $asal
  * @property $perihal
  * @property $lampiran
- * @property $disposisi
  * @property $created_at
  * @property $updated_at
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class KeuSuratMasuk extends Model
+class KeuSuratKeluar extends Model
 {
-  public $table = 'keu_surat_masuk';
+  public $table = 'keu_surat_keluar';
 
   static $rules = [
     'nama' => 'required',
@@ -30,7 +29,6 @@ class KeuSuratMasuk extends Model
     'asal' => 'required',
     'perihal' => 'required',
     'lampiran' => 'required',
-    'disposisi' => 'required',
   ];
 
   protected $perPage = 20;
@@ -40,5 +38,5 @@ class KeuSuratMasuk extends Model
    *
    * @var array
    */
-  protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran', 'disposisi'];
+  protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
 }

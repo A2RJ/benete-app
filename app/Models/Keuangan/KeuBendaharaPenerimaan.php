@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Keuangan;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class KesyaSuratKeluar
+ * Class KeuBendaharaPenerimaan
  *
  * @property $id
  * @property $nama
@@ -19,9 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class KesyaSuratKeluar extends Model
+class KeuBendaharaPenerimaan extends Model
 {
-  public $table = 'kesya_surat_keluar';
+  public $table = 'keu_bendahara_penerimaan';
 
   static $rules = [
     'nama' => 'required',

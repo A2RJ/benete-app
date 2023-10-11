@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Kesyabandaraan;
 
-use App\Models\KesyaPatroli;
+use App\Http\Controllers\Controller;
+use App\Models\Kesyabandaraan\KesyaPatroli;
 use Illuminate\Http\Request;
 
 /**

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Keuangan;
 
-use App\Models\KeuPpk;
+use App\Http\Controllers\Controller;
+use App\Models\Keuangan\KeuPpk;
 use Illuminate\Http\Request;
 
 /**
