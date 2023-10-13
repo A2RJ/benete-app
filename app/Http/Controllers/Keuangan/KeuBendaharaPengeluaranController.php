@@ -21,7 +21,7 @@ class KeuBendaharaPengeluaranController extends Controller
     {
         $keuBendaharaPengeluarans = KeuBendaharaPengeluaran::paginate(10);
 
-        return view('keu-bendahara-pengeluaran.index', compact('keuBendaharaPengeluarans'))
+        return view('Keuangan.bendahara-pengeluaran.index', compact('keuBendaharaPengeluarans'))
             ->with('i', (request()->input('page', 1) - 1) * $keuBendaharaPengeluarans->perPage());
     }
 
@@ -33,7 +33,7 @@ class KeuBendaharaPengeluaranController extends Controller
     public function create()
     {
         $keuBendaharaPengeluaran = new KeuBendaharaPengeluaran();
-        return view('keu-bendahara-pengeluaran.create', compact('keuBendaharaPengeluaran'));
+        return view('Keuangan.bendahara-pengeluaran.create', compact('keuBendaharaPengeluaran'));
     }
 
     /**
@@ -48,7 +48,7 @@ class KeuBendaharaPengeluaranController extends Controller
 
         $keuBendaharaPengeluaran = KeuBendaharaPengeluaran::create($request->all());
 
-        return redirect()->route('keu-bendahara-pengeluaran.index')
+        return redirect()->route('Keuangan.bendahara-pengeluaran.index')
             ->with('success', 'KeuBendaharaPengeluaran created successfully.');
     }
 
@@ -62,7 +62,7 @@ class KeuBendaharaPengeluaranController extends Controller
     {
         $keuBendaharaPengeluaran = KeuBendaharaPengeluaran::find($id);
 
-        return view('keu-bendahara-pengeluaran.show', compact('keuBendaharaPengeluaran'));
+        return view('Keuangan.bendahara-pengeluaran.show', compact('keuBendaharaPengeluaran'));
     }
 
     /**
@@ -75,7 +75,7 @@ class KeuBendaharaPengeluaranController extends Controller
     {
         $keuBendaharaPengeluaran = KeuBendaharaPengeluaran::find($id);
 
-        return view('keu-bendahara-pengeluaran.edit', compact('keuBendaharaPengeluaran'));
+        return view('Keuangan.bendahara-pengeluaran.edit', compact('keuBendaharaPengeluaran'));
     }
 
     /**
@@ -91,7 +91,7 @@ class KeuBendaharaPengeluaranController extends Controller
 
         $keuBendaharaPengeluaran->update($request->all());
 
-        return redirect()->route('keu-bendahara-pengeluaran.index')
+        return redirect()->route('Keuangan.bendahara-pengeluaran.index')
             ->with('success', 'KeuBendaharaPengeluaran updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KeuBendaharaPengeluaranController extends Controller
     {
         $keuBendaharaPengeluaran = KeuBendaharaPengeluaran::find($id)->delete();
 
-        return redirect()->route('keu-bendahara-pengeluaran.index')
+        return redirect()->route('Keuangan.bendahara-pengeluaran.index')
             ->with('success', 'KeuBendaharaPengeluaran deleted successfully');
     }
 }

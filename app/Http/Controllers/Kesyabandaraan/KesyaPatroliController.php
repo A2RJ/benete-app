@@ -21,7 +21,7 @@ class KesyaPatroliController extends Controller
     {
         $kesyaPatrolis = KesyaPatroli::paginate(10);
 
-        return view('kesya-patroli.index', compact('kesyaPatrolis'))
+        return view('Kesya.patroli.index', compact('kesyaPatrolis'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyaPatrolis->perPage());
     }
 
@@ -33,7 +33,7 @@ class KesyaPatroliController extends Controller
     public function create()
     {
         $kesyaPatroli = new KesyaPatroli();
-        return view('kesya-patroli.create', compact('kesyaPatroli'));
+        return view('Kesya.patroli.create', compact('kesyaPatroli'));
     }
 
     /**
@@ -48,7 +48,7 @@ class KesyaPatroliController extends Controller
 
         $kesyaPatroli = KesyaPatroli::create($request->all());
 
-        return redirect()->route('kesya-patroli.index')
+        return redirect()->route('Kesya.patroli.index')
             ->with('success', 'KesyaPatroli created successfully.');
     }
 
@@ -62,7 +62,7 @@ class KesyaPatroliController extends Controller
     {
         $kesyaPatroli = KesyaPatroli::find($id);
 
-        return view('kesya-patroli.show', compact('kesyaPatroli'));
+        return view('Kesya.patroli.show', compact('kesyaPatroli'));
     }
 
     /**
@@ -75,7 +75,7 @@ class KesyaPatroliController extends Controller
     {
         $kesyaPatroli = KesyaPatroli::find($id);
 
-        return view('kesya-patroli.edit', compact('kesyaPatroli'));
+        return view('Kesya.patroli.edit', compact('kesyaPatroli'));
     }
 
     /**
@@ -91,7 +91,7 @@ class KesyaPatroliController extends Controller
 
         $kesyaPatroli->update($request->all());
 
-        return redirect()->route('kesya-patroli.index')
+        return redirect()->route('Kesya.patroli.index')
             ->with('success', 'KesyaPatroli updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KesyaPatroliController extends Controller
     {
         $kesyaPatroli = KesyaPatroli::find($id)->delete();
 
-        return redirect()->route('kesya-patroli.index')
+        return redirect()->route('Kesya.patroli.index')
             ->with('success', 'KesyaPatroli deleted successfully');
     }
 }

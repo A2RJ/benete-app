@@ -21,7 +21,7 @@ class KeuSuratKeluarController extends Controller
     {
         $keuSuratKeluars = KeuSuratKeluar::paginate(10);
 
-        return view('keu-surat-keluar.index', compact('keuSuratKeluars'))
+        return view('Keuangan.surat-keluar.index', compact('keuSuratKeluars'))
             ->with('i', (request()->input('page', 1) - 1) * $keuSuratKeluars->perPage());
     }
 
@@ -33,7 +33,7 @@ class KeuSuratKeluarController extends Controller
     public function create()
     {
         $keuSuratKeluar = new KeuSuratKeluar();
-        return view('keu-surat-keluar.create', compact('keuSuratKeluar'));
+        return view('Keuangan.surat-keluar.create', compact('keuSuratKeluar'));
     }
 
     /**
@@ -48,7 +48,7 @@ class KeuSuratKeluarController extends Controller
 
         $keuSuratKeluar = KeuSuratKeluar::create($request->all());
 
-        return redirect()->route('keu-surat-keluar.index')
+        return redirect()->route('Keuangan.surat-keluar.index')
             ->with('success', 'KeuSuratKeluar created successfully.');
     }
 
@@ -62,7 +62,7 @@ class KeuSuratKeluarController extends Controller
     {
         $keuSuratKeluar = KeuSuratKeluar::find($id);
 
-        return view('keu-surat-keluar.show', compact('keuSuratKeluar'));
+        return view('Keuangan.surat-keluar.show', compact('keuSuratKeluar'));
     }
 
     /**
@@ -75,7 +75,7 @@ class KeuSuratKeluarController extends Controller
     {
         $keuSuratKeluar = KeuSuratKeluar::find($id);
 
-        return view('keu-surat-keluar.edit', compact('keuSuratKeluar'));
+        return view('Keuangan.surat-keluar.edit', compact('keuSuratKeluar'));
     }
 
     /**
@@ -91,7 +91,7 @@ class KeuSuratKeluarController extends Controller
 
         $keuSuratKeluar->update($request->all());
 
-        return redirect()->route('keu-surat-keluar.index')
+        return redirect()->route('Keuangan.surat-keluar.index')
             ->with('success', 'KeuSuratKeluar updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KeuSuratKeluarController extends Controller
     {
         $keuSuratKeluar = KeuSuratKeluar::find($id)->delete();
 
-        return redirect()->route('keu-surat-keluar.index')
+        return redirect()->route('Keuangan.surat-keluar.index')
             ->with('success', 'KeuSuratKeluar deleted successfully');
     }
 }

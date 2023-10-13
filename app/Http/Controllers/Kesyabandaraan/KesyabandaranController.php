@@ -21,7 +21,7 @@ class KesyabandaranController extends Controller
     {
         $kesyabandaran = Kesyabandaran::paginate(10);
 
-        return view('kesyabandaran.index', compact('kesyabandaran'))
+        return view('Kesya.kesyabandaran.index', compact('kesyabandaran'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyabandaran->perPage());
     }
 
@@ -33,7 +33,7 @@ class KesyabandaranController extends Controller
     public function create()
     {
         $kesyabandaran = new Kesyabandaran();
-        return view('kesyabandaran.create', compact('kesyabandaran'));
+        return view('Kesya.kesyabandaran.create', compact('kesyabandaran'));
     }
 
     /**
@@ -48,7 +48,7 @@ class KesyabandaranController extends Controller
 
         $kesyabandaran = Kesyabandaran::create($request->all());
 
-        return redirect()->route('kesyabandaran.index')
+        return redirect()->route('Kesya.kesyabandaran.index')
             ->with('success', 'Kesyabandaran created successfully.');
     }
 
@@ -62,7 +62,7 @@ class KesyabandaranController extends Controller
     {
         $kesyabandaran = Kesyabandaran::find($id);
 
-        return view('kesyabandaran.show', compact('kesyabandaran'));
+        return view('Kesya.kesyabandaran.show', compact('kesyabandaran'));
     }
 
     /**
@@ -75,7 +75,7 @@ class KesyabandaranController extends Controller
     {
         $kesyabandaran = Kesyabandaran::find($id);
 
-        return view('kesyabandaran.edit', compact('kesyabandaran'));
+        return view('Kesya.kesyabandaran.edit', compact('kesyabandaran'));
     }
 
     /**
@@ -91,7 +91,7 @@ class KesyabandaranController extends Controller
 
         $kesyabandaran->update($request->all());
 
-        return redirect()->route('kesyabandaran.index')
+        return redirect()->route('Kesya.kesyabandaran.index')
             ->with('success', 'Kesyabandaran updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KesyabandaranController extends Controller
     {
         $kesyabandaran = Kesyabandaran::find($id)->delete();
 
-        return redirect()->route('kesyabandaran.index')
+        return redirect()->route('Kesya.kesyabandaran.index')
             ->with('success', 'Kesyabandaran deleted successfully');
     }
 }

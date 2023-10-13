@@ -21,7 +21,7 @@ class KeuPejabatPengadaanController extends Controller
     {
         $keuPejabatPengadaans = KeuPejabatPengadaan::paginate(10);
 
-        return view('keu-pejabat-pengadaan.index', compact('keuPejabatPengadaans'))
+        return view('Keuangan.pejabat-pengadaan.index', compact('keuPejabatPengadaans'))
             ->with('i', (request()->input('page', 1) - 1) * $keuPejabatPengadaans->perPage());
     }
 
@@ -33,7 +33,7 @@ class KeuPejabatPengadaanController extends Controller
     public function create()
     {
         $keuPejabatPengadaan = new KeuPejabatPengadaan();
-        return view('keu-pejabat-pengadaan.create', compact('keuPejabatPengadaan'));
+        return view('Keuangan.pejabat-pengadaan.create', compact('keuPejabatPengadaan'));
     }
 
     /**
@@ -48,7 +48,7 @@ class KeuPejabatPengadaanController extends Controller
 
         $keuPejabatPengadaan = KeuPejabatPengadaan::create($request->all());
 
-        return redirect()->route('keu-pejabat-pengadaan.index')
+        return redirect()->route('Keuangan.pejabat-pengadaan.index')
             ->with('success', 'KeuPejabatPengadaan created successfully.');
     }
 
@@ -62,7 +62,7 @@ class KeuPejabatPengadaanController extends Controller
     {
         $keuPejabatPengadaan = KeuPejabatPengadaan::find($id);
 
-        return view('keu-pejabat-pengadaan.show', compact('keuPejabatPengadaan'));
+        return view('Keuangan.pejabat-pengadaan.show', compact('keuPejabatPengadaan'));
     }
 
     /**
@@ -75,7 +75,7 @@ class KeuPejabatPengadaanController extends Controller
     {
         $keuPejabatPengadaan = KeuPejabatPengadaan::find($id);
 
-        return view('keu-pejabat-pengadaan.edit', compact('keuPejabatPengadaan'));
+        return view('Keuangan.pejabat-pengadaan.edit', compact('keuPejabatPengadaan'));
     }
 
     /**
@@ -91,7 +91,7 @@ class KeuPejabatPengadaanController extends Controller
 
         $keuPejabatPengadaan->update($request->all());
 
-        return redirect()->route('keu-pejabat-pengadaan.index')
+        return redirect()->route('Keuangan.pejabat-pengadaan.index')
             ->with('success', 'KeuPejabatPengadaan updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KeuPejabatPengadaanController extends Controller
     {
         $keuPejabatPengadaan = KeuPejabatPengadaan::find($id)->delete();
 
-        return redirect()->route('keu-pejabat-pengadaan.index')
+        return redirect()->route('Keuangan.pejabat-pengadaan.index')
             ->with('success', 'KeuPejabatPengadaan deleted successfully');
     }
 }

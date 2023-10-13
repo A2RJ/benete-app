@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
-use App\Model\Keuangan\KeuSuratMasuk;
+use App\Models\Keuangan\KeuSuratMasuk;
 use Illuminate\Http\Request;
 
 /**
@@ -21,7 +21,7 @@ class KeuSuratMasukController extends Controller
     {
         $keuSuratMasuks = KeuSuratMasuk::paginate(10);
 
-        return view('keu-surat-masuk.index', compact('keuSuratMasuks'))
+        return view('Keuangan.surat-masuk.index', compact('keuSuratMasuks'))
             ->with('i', (request()->input('page', 1) - 1) * $keuSuratMasuks->perPage());
     }
 
@@ -33,7 +33,7 @@ class KeuSuratMasukController extends Controller
     public function create()
     {
         $keuSuratMasuk = new KeuSuratMasuk();
-        return view('keu-surat-masuk.create', compact('keuSuratMasuk'));
+        return view('Keuangan.surat-masuk.create', compact('keuSuratMasuk'));
     }
 
     /**
@@ -48,7 +48,7 @@ class KeuSuratMasukController extends Controller
 
         $keuSuratMasuk = KeuSuratMasuk::create($request->all());
 
-        return redirect()->route('keu-surat-masuk.index')
+        return redirect()->route('Keuangan.surat-masuk.index')
             ->with('success', 'KeuSuratMasuk created successfully.');
     }
 
@@ -62,7 +62,7 @@ class KeuSuratMasukController extends Controller
     {
         $keuSuratMasuk = KeuSuratMasuk::find($id);
 
-        return view('keu-surat-masuk.show', compact('keuSuratMasuk'));
+        return view('Keuangan.surat-masuk.show', compact('keuSuratMasuk'));
     }
 
     /**
@@ -75,7 +75,7 @@ class KeuSuratMasukController extends Controller
     {
         $keuSuratMasuk = KeuSuratMasuk::find($id);
 
-        return view('keu-surat-masuk.edit', compact('keuSuratMasuk'));
+        return view('Keuangan.surat-masuk.edit', compact('keuSuratMasuk'));
     }
 
     /**
@@ -91,7 +91,7 @@ class KeuSuratMasukController extends Controller
 
         $keuSuratMasuk->update($request->all());
 
-        return redirect()->route('keu-surat-masuk.index')
+        return redirect()->route('Keuangan.surat-masuk.index')
             ->with('success', 'KeuSuratMasuk updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KeuSuratMasukController extends Controller
     {
         $keuSuratMasuk = KeuSuratMasuk::find($id)->delete();
 
-        return redirect()->route('keu-surat-masuk.index')
+        return redirect()->route('Keuangan.surat-masuk.index')
             ->with('success', 'KeuSuratMasuk deleted successfully');
     }
 }

@@ -29,6 +29,7 @@ class KesyaSuratMasuk extends Model
     'asal' => 'required',
     'perihal' => 'required',
     'lampiran' => 'required',
+    'disposisi' => 'required',
   ];
 
   protected $perPage = 20;
@@ -38,5 +39,5 @@ class KesyaSuratMasuk extends Model
    *
    * @var array
    */
-  protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
+  protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran', 'disposisi'];
 }

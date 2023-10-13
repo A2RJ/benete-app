@@ -21,7 +21,7 @@ class KesyaSuratKeluarController extends Controller
     {
         $kesyaSuratKeluars = KesyaSuratKeluar::paginate(10);
 
-        return view('kesya-surat-keluar.index', compact('kesyaSuratKeluars'))
+        return view('Kesya.surat-keluar.index', compact('kesyaSuratKeluars'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyaSuratKeluars->perPage());
     }
 
@@ -33,7 +33,7 @@ class KesyaSuratKeluarController extends Controller
     public function create()
     {
         $kesyaSuratKeluar = new KesyaSuratKeluar();
-        return view('kesya-surat-keluar.create', compact('kesyaSuratKeluar'));
+        return view('Kesya.surat-keluar.create', compact('kesyaSuratKeluar'));
     }
 
     /**
@@ -48,7 +48,7 @@ class KesyaSuratKeluarController extends Controller
 
         $kesyaSuratKeluar = KesyaSuratKeluar::create($request->all());
 
-        return redirect()->route('kesya-surat-keluar.index')
+        return redirect()->route('Kesya.surat-keluar.index')
             ->with('success', 'KesyaSuratKeluar created successfully.');
     }
 
@@ -62,7 +62,7 @@ class KesyaSuratKeluarController extends Controller
     {
         $kesyaSuratKeluar = KesyaSuratKeluar::find($id);
 
-        return view('kesya-surat-keluar.show', compact('kesyaSuratKeluar'));
+        return view('Kesya.surat-keluar.show', compact('kesyaSuratKeluar'));
     }
 
     /**
@@ -75,7 +75,7 @@ class KesyaSuratKeluarController extends Controller
     {
         $kesyaSuratKeluar = KesyaSuratKeluar::find($id);
 
-        return view('kesya-surat-keluar.edit', compact('kesyaSuratKeluar'));
+        return view('Kesya.surat-keluar.edit', compact('kesyaSuratKeluar'));
     }
 
     /**
@@ -91,7 +91,7 @@ class KesyaSuratKeluarController extends Controller
 
         $kesyaSuratKeluar->update($request->all());
 
-        return redirect()->route('kesya-surat-keluar.index')
+        return redirect()->route('Kesya.surat-keluar.index')
             ->with('success', 'KesyaSuratKeluar updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KesyaSuratKeluarController extends Controller
     {
         $kesyaSuratKeluar = KesyaSuratKeluar::find($id)->delete();
 
-        return redirect()->route('kesya-surat-keluar.index')
+        return redirect()->route('Kesya.surat-keluar.index')
             ->with('success', 'KesyaSuratKeluar deleted successfully');
     }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('asal');
             $table->string('perihal');
             $table->string('lampiran');
+            $table->string('disposisi');
             $table->timestamps();
         });
     }

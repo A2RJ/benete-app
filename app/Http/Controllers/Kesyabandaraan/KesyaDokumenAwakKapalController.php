@@ -21,7 +21,7 @@ class KesyaDokumenAwakKapalController extends Controller
     {
         $kesyaDokumenAwakKapals = KesyaDokumenAwakKapal::paginate(10);
 
-        return view('kesya-dokumen-awak-kapal.index', compact('kesyaDokumenAwakKapals'))
+        return view('Kesya.dokumen-awak-kapal.index', compact('kesyaDokumenAwakKapals'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyaDokumenAwakKapals->perPage());
     }
 
@@ -33,7 +33,7 @@ class KesyaDokumenAwakKapalController extends Controller
     public function create()
     {
         $kesyaDokumenAwakKapal = new KesyaDokumenAwakKapal();
-        return view('kesya-dokumen-awak-kapal.create', compact('kesyaDokumenAwakKapal'));
+        return view('Kesya.dokumen-awak-kapal.create', compact('kesyaDokumenAwakKapal'));
     }
 
     /**
@@ -48,7 +48,7 @@ class KesyaDokumenAwakKapalController extends Controller
 
         $kesyaDokumenAwakKapal = KesyaDokumenAwakKapal::create($request->all());
 
-        return redirect()->route('kesya-dokumen-awak-kapal.index')
+        return redirect()->route('Kesya.dokumen-awak-kapal.index')
             ->with('success', 'KesyaDokumenAwakKapal created successfully.');
     }
 
@@ -62,7 +62,7 @@ class KesyaDokumenAwakKapalController extends Controller
     {
         $kesyaDokumenAwakKapal = KesyaDokumenAwakKapal::find($id);
 
-        return view('kesya-dokumen-awak-kapal.show', compact('kesyaDokumenAwakKapal'));
+        return view('Kesya.dokumen-awak-kapal.show', compact('kesyaDokumenAwakKapal'));
     }
 
     /**
@@ -75,7 +75,7 @@ class KesyaDokumenAwakKapalController extends Controller
     {
         $kesyaDokumenAwakKapal = KesyaDokumenAwakKapal::find($id);
 
-        return view('kesya-dokumen-awak-kapal.edit', compact('kesyaDokumenAwakKapal'));
+        return view('Kesya.dokumen-awak-kapal.edit', compact('kesyaDokumenAwakKapal'));
     }
 
     /**
@@ -91,7 +91,7 @@ class KesyaDokumenAwakKapalController extends Controller
 
         $kesyaDokumenAwakKapal->update($request->all());
 
-        return redirect()->route('kesya-dokumen-awak-kapal.index')
+        return redirect()->route('Kesya.dokumen-awak-kapal.index')
             ->with('success', 'KesyaDokumenAwakKapal updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KesyaDokumenAwakKapalController extends Controller
     {
         $kesyaDokumenAwakKapal = KesyaDokumenAwakKapal::find($id)->delete();
 
-        return redirect()->route('kesya-dokumen-awak-kapal.index')
+        return redirect()->route('Kesya.dokumen-awak-kapal.index')
             ->with('success', 'KesyaDokumenAwakKapal deleted successfully');
     }
 }

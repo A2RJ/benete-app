@@ -4,6 +4,13 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BMN\{
+    BmnBendaharaMaterilController,
+    BmnPengelolaBmnController,
+    BmnSmartUupBeneteController,
+    BmnSuratKeluarController,
+    BmnSuratMasukController
+};
 use App\Http\Controllers\Kesyabandaraan\{
     KesyabandaranController,
     KesyaDokumenAwakKapalController,
@@ -56,3 +63,8 @@ Route::resource('/kesya-tertib-banar', KesyaTertibBanarController::class);
 Route::resource('/kesya-patroli', KesyaPatroliController::class);
 Route::resource('/kesya-dokumen-kapal', KesyaDokumenKapalController::class);
 Route::resource('/kesya-dokumen-awak-kapal', KesyaDokumenAwakKapalController::class);
+Route::resource('/bmn-surat-masuk', BmnSuratMasukController::class);
+Route::resource('/bmn-surat-keluar', BmnSuratKeluarController::class);
+Route::resource('/bmn-bendahara-materil', BmnBendaharaMaterilController::class);
+Route::resource('/bmn-pengelola-bmn', BmnPengelolaBmnController::class);
+Route::resource('/bmn-smart-uup-benete', BmnSmartUupBeneteController::class);

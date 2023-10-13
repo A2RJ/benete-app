@@ -223,6 +223,33 @@ return [
                     'url' => '/kesya-dokumen-awak-kapal',
                 ]
             ]
+        ],
+        [
+            'text' => 'Pengelola BMN dan Persediaan',
+            'url' => '#',
+            'icon' => 'ti ti-mail',
+            'submenu' => [
+                [
+                    'text' => 'Surat Masuk',
+                    'url' => '/bmn-surat-masuk',
+                ],
+                [
+                    'text' => 'Surat Keluar',
+                    'url' => '/bmn-surat-keluar',
+                ],
+                [
+                    'text' => 'Bendahara Materil',
+                    'url' => '/bmn-bendahara-materil',
+                ],
+                [
+                    'text' => 'Pengelola BMN',
+                    'url' => '/bmn-pengelola-bmn',
+                ],
+                [
+                    'text' => 'Smart UPP',
+                    'url' => '/bmn-smart-uup-benete',
+                ]
+            ]
         ]
     ],
 
