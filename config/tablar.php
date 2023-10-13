@@ -273,6 +273,41 @@ return [
                     'url' => '/tu-kontrak-kerja-sama',
                 ]
             ]
+        ],
+        [
+            'text' => 'Bidang Kepelabuhan',
+            'url' => '#',
+            'icon' => 'ti ti-mail',
+            'submenu' => [
+                [
+                    'text' => 'Surat Masuk',
+                    'url' => '/pelabuhan-surat-masuk',
+                ],
+                [
+                    'text' => 'Surat Keluar',
+                    'url' => '/pelabuhan-surat-keluar',
+                ],
+                [
+                    'text' => 'LALA',
+                    'url' => '/pelabuhan-lala',
+                ],
+                [
+                    'text' => 'Fasilitas Pelabuhan',
+                    'url' => '/pelabuhan-fasilitas-pelabuhan',
+                ],
+                [
+                    'text' => 'Keagenan',
+                    'url' => '/pelabuhan-keagenan',
+                ],
+                [
+                    'text' => 'PBM',
+                    'url' => '/pelabuhan-pbm',
+                ],
+                [
+                    'text' => 'TKBM/JTS',
+                    'url' => '/pelabuhan-tkbm',
+                ]
+            ]
         ]
     ],
 
