@@ -250,6 +250,29 @@ return [
                     'url' => '/bmn-smart-uup-benete',
                 ]
             ]
+        ],
+        [
+            'text' => 'Bidang Kepegawaian dan Tata Usaha',
+            'url' => '#',
+            'icon' => 'ti ti-mail',
+            'submenu' => [
+                [
+                    'text' => 'Surat Masuk',
+                    'url' => '/tu-surat-masuk',
+                ],
+                [
+                    'text' => 'Surat Keluar',
+                    'url' => '/tu-surat-keluar',
+                ],
+                [
+                    'text' => 'Surat Tugas',
+                    'url' => '/tu-surat-tugas',
+                ],
+                [
+                    'text' => 'Kontrak Kerja Sama',
+                    'url' => '/tu-kontrak-kerja-sama',
+                ]
+            ]
         ]
     ],
 

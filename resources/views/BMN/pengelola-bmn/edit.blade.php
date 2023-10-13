@@ -1,6 +1,6 @@
 @extends('tablar::page')
 
-@section('title', 'Update Bmn Pengelola Bmn')
+@section('title', 'Update Pengelola Bmn')
 
 @section('content')
 <!-- Page header -->
@@ -13,7 +13,7 @@
                     Update
                 </div>
                 <h2 class="page-title">
-                    {{ __('Bmn Pengelola Bmn ') }}
+                    {{ __('Pengelola ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -26,7 +26,7 @@
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Bmn Pengelola Bmn List
+                        Pengelola List
                     </a>
                 </div>
             </div>
@@ -43,7 +43,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Bmn Pengelola Bmn Details</h3>
+                        <h3 class="card-title">Pengelola Details</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('bmn-pengelola-bmn.update', $bmnPengelolaBmn->id) }}" id="ajaxForm" role="form" enctype="multipart/form-data">

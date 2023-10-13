@@ -1,7 +1,7 @@
 @extends('tablar::page')
 
 @section('title')
-Bmn Bendahara Materil
+Bendahara Materil
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@ Bmn Bendahara Materil
                     List
                 </div>
                 <h2 class="page-title">
-                    {{ __('Bmn Bendahara Materil ') }}
+                    {{ __('Bendahara Materil ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -28,7 +28,7 @@ Bmn Bendahara Materil
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Create Bmn Bendahara Materil
+                        Create Bendahara Materil
                     </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@ Bmn Bendahara Materil
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Bmn Bendahara Materil</h3>
+                        <h3 class="card-title">Bendahara Materil</h3>
                     </div>
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">

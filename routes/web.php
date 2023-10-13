@@ -29,6 +29,12 @@ use App\Http\Controllers\Keuangan\{
     KeuSuratKeluarController,
     KeuSuratMasukController,
 };
+use App\Http\Controllers\TU\{
+    TuKontrakKerjaSamaController,
+    TuSuratKeluarController,
+    TuSuratMasukController,
+    TuSuratTugasController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +74,7 @@ Route::resource('/bmn-surat-keluar', BmnSuratKeluarController::class);
 Route::resource('/bmn-bendahara-materil', BmnBendaharaMaterilController::class);
 Route::resource('/bmn-pengelola-bmn', BmnPengelolaBmnController::class);
 Route::resource('/bmn-smart-uup-benete', BmnSmartUupBeneteController::class);
+Route::resource('/tu-surat-masuk', TuSuratMasukController::class);
+Route::resource('/tu-surat-keluar', TuSuratKeluarController::class);
+Route::resource('/tu-surat-tugas', TuSuratTugasController::class);
+Route::resource('/tu-kontrak-kerja-sama', TuKontrakKerjaSamaController::class);

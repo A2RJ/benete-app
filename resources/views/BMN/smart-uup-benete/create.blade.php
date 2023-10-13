@@ -1,6 +1,6 @@
 @extends('tablar::page')
 
-@section('title', 'Create Bmn Smart Uup Benete')
+@section('title', 'Create Smart Uup Benete')
 
 @section('content')
 <!-- Page header -->
@@ -13,7 +13,7 @@
                     Create
                 </div>
                 <h2 class="page-title">
-                    {{ __('Bmn Smart Uup Benete ') }}
+                    {{ __('Smart Uup Benete ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -26,7 +26,7 @@
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Bmn Smart Uup Benete List
+                        Smart Uup Benete List
                     </a>
                 </div>
             </div>
@@ -43,7 +43,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Bmn Smart Uup Benete Details</h3>
+                        <h3 class="card-title">Smart Uup Benete Details</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('bmn-smart-uup-benete.store') }}" id="ajaxForm" role="form" enctype="multipart/form-data">

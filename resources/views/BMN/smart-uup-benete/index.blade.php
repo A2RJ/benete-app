@@ -1,7 +1,7 @@
 @extends('tablar::page')
 
 @section('title')
-Bmn Smart Uup Benete
+Smart Uup Benete
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@ Bmn Smart Uup Benete
                     List
                 </div>
                 <h2 class="page-title">
-                    {{ __('Bmn Smart Uup Benete ') }}
+                    {{ __('Smart Uup Benete ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -28,7 +28,7 @@ Bmn Smart Uup Benete
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Create Bmn Smart Uup Benete
+                        Create Smart Uup Benete
                     </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@ Bmn Smart Uup Benete
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Bmn Smart Uup Benete</h3>
+                        <h3 class="card-title">Smart Uup Benete</h3>
                     </div>
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">
