@@ -48,7 +48,7 @@ class BmnSuratMasukController extends Controller
 
         $bmnSuratMasuk = BmnSuratMasuk::create($request->all());
 
-        return redirect()->route('BMN.surat-masuks.index')
+        return redirect()->route('bmn-surat-masuks.index')
             ->with('success', 'BmnSuratMasuk created successfully.');
     }
 
@@ -91,7 +91,7 @@ class BmnSuratMasukController extends Controller
 
         $bmnSuratMasuk->update($request->all());
 
-        return redirect()->route('BMN.surat-masuks.index')
+        return redirect()->route('bmn-surat-masuks.index')
             ->with('success', 'BmnSuratMasuk updated successfully');
     }
 
@@ -104,7 +104,7 @@ class BmnSuratMasukController extends Controller
     {
         $bmnSuratMasuk = BmnSuratMasuk::find($id)->delete();
 
-        return redirect()->route('BMN.surat-masuks.index')
+        return redirect()->route('bmn-surat-masuks.index')
             ->with('success', 'BmnSuratMasuk deleted successfully');
     }
 }

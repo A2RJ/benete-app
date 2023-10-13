@@ -48,7 +48,7 @@ class KeuPpkController extends Controller
 
         $keuPpk = KeuPpk::create($request->all());
 
-        return redirect()->route('Keuangan.ppk.index')
+        return redirect()->route('keu-ppk.index')
             ->with('success', 'KeuPpk created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KeuPpkController extends Controller
 
         $keuPpk->update($request->all());
 
-        return redirect()->route('Keuangan.ppk.index')
+        return redirect()->route('keu-ppk.index')
             ->with('success', 'KeuPpk updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KeuPpkController extends Controller
     {
         $keuPpk = KeuPpk::find($id)->delete();
 
-        return redirect()->route('Keuangan.ppk.index')
+        return redirect()->route('keu-ppk.index')
             ->with('success', 'KeuPpk deleted successfully');
     }
 }

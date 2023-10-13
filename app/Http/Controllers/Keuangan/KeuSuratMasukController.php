@@ -48,7 +48,7 @@ class KeuSuratMasukController extends Controller
 
         $keuSuratMasuk = KeuSuratMasuk::create($request->all());
 
-        return redirect()->route('Keuangan.surat-masuk.index')
+        return redirect()->route('keu.surat-masuk.index')
             ->with('success', 'KeuSuratMasuk created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KeuSuratMasukController extends Controller
 
         $keuSuratMasuk->update($request->all());
 
-        return redirect()->route('Keuangan.surat-masuk.index')
+        return redirect()->route('keu.surat-masuk.index')
             ->with('success', 'KeuSuratMasuk updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KeuSuratMasukController extends Controller
     {
         $keuSuratMasuk = KeuSuratMasuk::find($id)->delete();
 
-        return redirect()->route('Keuangan.surat-masuk.index')
+        return redirect()->route('keu.surat-masuk.index')
             ->with('success', 'KeuSuratMasuk deleted successfully');
     }
 }

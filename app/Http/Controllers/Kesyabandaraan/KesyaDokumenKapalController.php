@@ -48,7 +48,7 @@ class KesyaDokumenKapalController extends Controller
 
         $kesyaDokumenKapal = KesyaDokumenKapal::create($request->all());
 
-        return redirect()->route('Kesya.dokumen-kapal.index')
+        return redirect()->route('kesya-dokumen-kapal.index')
             ->with('success', 'KesyaDokumenKapal created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KesyaDokumenKapalController extends Controller
 
         $kesyaDokumenKapal->update($request->all());
 
-        return redirect()->route('Kesya.dokumen-kapal.index')
+        return redirect()->route('kesya-dokumen-kapal.index')
             ->with('success', 'KesyaDokumenKapal updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KesyaDokumenKapalController extends Controller
     {
         $kesyaDokumenKapal = KesyaDokumenKapal::find($id)->delete();
 
-        return redirect()->route('Kesya.dokumen-kapal.index')
+        return redirect()->route('kesya-dokumen-kapal.index')
             ->with('success', 'KesyaDokumenKapal deleted successfully');
     }
 }

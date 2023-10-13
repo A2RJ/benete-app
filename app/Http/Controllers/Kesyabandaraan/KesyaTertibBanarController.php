@@ -48,7 +48,7 @@ class KesyaTertibBanarController extends Controller
 
         $kesyaTertibBanar = KesyaTertibBanar::create($request->all());
 
-        return redirect()->route('Kesya.tertib-banar.index')
+        return redirect()->route('kesya-tertib-banar.index')
             ->with('success', 'KesyaTertibBanar created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KesyaTertibBanarController extends Controller
 
         $kesyaTertibBanar->update($request->all());
 
-        return redirect()->route('Kesya.tertib-banar.index')
+        return redirect()->route('kesya-tertib-banar.index')
             ->with('success', 'KesyaTertibBanar updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KesyaTertibBanarController extends Controller
     {
         $kesyaTertibBanar = KesyaTertibBanar::find($id)->delete();
 
-        return redirect()->route('Kesya.tertib-banar.index')
+        return redirect()->route('kesya-tertib-banar.index')
             ->with('success', 'KesyaTertibBanar deleted successfully');
     }
 }

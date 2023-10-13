@@ -48,7 +48,7 @@ class BmnSmartUupBeneteController extends Controller
 
         $bmnSmartUupBenete = BmnSmartUupBenete::create($request->all());
 
-        return redirect()->route('BMN.smart-uup-benetes.index')
+        return redirect()->route('bmn-smart-uup-benetes.index')
             ->with('success', 'BmnSmartUupBenete created successfully.');
     }
 
@@ -91,7 +91,7 @@ class BmnSmartUupBeneteController extends Controller
 
         $bmnSmartUupBenete->update($request->all());
 
-        return redirect()->route('BMN.smart-uup-benetes.index')
+        return redirect()->route('bmn-smart-uup-benetes.index')
             ->with('success', 'BmnSmartUupBenete updated successfully');
     }
 
@@ -104,7 +104,7 @@ class BmnSmartUupBeneteController extends Controller
     {
         $bmnSmartUupBenete = BmnSmartUupBenete::find($id)->delete();
 
-        return redirect()->route('BMN.smart-uup-benetes.index')
+        return redirect()->route('bmn-smart-uup-benetes.index')
             ->with('success', 'BmnSmartUupBenete deleted successfully');
     }
 }

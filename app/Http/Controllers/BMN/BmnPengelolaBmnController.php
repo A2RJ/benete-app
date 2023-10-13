@@ -48,7 +48,7 @@ class BmnPengelolaBmnController extends Controller
 
         $bmnPengelolaBmn = BmnPengelolaBmn::create($request->all());
 
-        return redirect()->route('BMN.pengelola-bmns.index')
+        return redirect()->route('bmn-pengelola-bmns.index')
             ->with('success', 'BmnPengelolaBmn created successfully.');
     }
 
@@ -91,7 +91,7 @@ class BmnPengelolaBmnController extends Controller
 
         $bmnPengelolaBmn->update($request->all());
 
-        return redirect()->route('BMN.pengelola-bmns.index')
+        return redirect()->route('bmn-pengelola-bmns.index')
             ->with('success', 'BmnPengelolaBmn updated successfully');
     }
 
@@ -104,7 +104,7 @@ class BmnPengelolaBmnController extends Controller
     {
         $bmnPengelolaBmn = BmnPengelolaBmn::find($id)->delete();
 
-        return redirect()->route('BMN.pengelola-bmns.index')
+        return redirect()->route('bmn-pengelola-bmns.index')
             ->with('success', 'BmnPengelolaBmn deleted successfully');
     }
 }

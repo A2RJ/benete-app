@@ -48,7 +48,7 @@ class KeuKuasaPenggunaAnggaranController extends Controller
 
         $keuKuasaPenggunaAnggaran = KeuKuasaPenggunaAnggaran::create($request->all());
 
-        return redirect()->route('Keuangan.kuasa-pengguna-anggaran.index')
+        return redirect()->route('keu-kuasa-pengguna-anggaran.index')
             ->with('success', 'KeuKuasaPenggunaAnggaran created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KeuKuasaPenggunaAnggaranController extends Controller
 
         $keuKuasaPenggunaAnggaran->update($request->all());
 
-        return redirect()->route('Keuangan.kuasa-pengguna-anggaran.index')
+        return redirect()->route('keu-kuasa-pengguna-anggaran.index')
             ->with('success', 'KeuKuasaPenggunaAnggaran updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KeuKuasaPenggunaAnggaranController extends Controller
     {
         $keuKuasaPenggunaAnggaran = KeuKuasaPenggunaAnggaran::find($id)->delete();
 
-        return redirect()->route('Keuangan.kuasa-pengguna-anggaran.index')
+        return redirect()->route('keu-kuasa-pengguna-anggaran.index')
             ->with('success', 'KeuKuasaPenggunaAnggaran deleted successfully');
     }
 }

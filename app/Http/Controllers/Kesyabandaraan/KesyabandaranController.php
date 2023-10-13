@@ -48,7 +48,7 @@ class KesyabandaranController extends Controller
 
         $kesyabandaran = Kesyabandaran::create($request->all());
 
-        return redirect()->route('Kesya.kesyabandaran.index')
+        return redirect()->route('kesya-kesyabandaran.index')
             ->with('success', 'Kesyabandaran created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KesyabandaranController extends Controller
 
         $kesyabandaran->update($request->all());
 
-        return redirect()->route('Kesya.kesyabandaran.index')
+        return redirect()->route('kesya-kesyabandaran.index')
             ->with('success', 'Kesyabandaran updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KesyabandaranController extends Controller
     {
         $kesyabandaran = Kesyabandaran::find($id)->delete();
 
-        return redirect()->route('Kesya.kesyabandaran.index')
+        return redirect()->route('kesya-kesyabandaran.index')
             ->with('success', 'Kesyabandaran deleted successfully');
     }
 }

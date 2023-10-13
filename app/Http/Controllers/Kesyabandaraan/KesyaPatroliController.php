@@ -48,7 +48,7 @@ class KesyaPatroliController extends Controller
 
         $kesyaPatroli = KesyaPatroli::create($request->all());
 
-        return redirect()->route('Kesya.patroli.index')
+        return redirect()->route('kesya-patroli.index')
             ->with('success', 'KesyaPatroli created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KesyaPatroliController extends Controller
 
         $kesyaPatroli->update($request->all());
 
-        return redirect()->route('Kesya.patroli.index')
+        return redirect()->route('kesya-patroli.index')
             ->with('success', 'KesyaPatroli updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KesyaPatroliController extends Controller
     {
         $kesyaPatroli = KesyaPatroli::find($id)->delete();
 
-        return redirect()->route('Kesya.patroli.index')
+        return redirect()->route('kesya-patroli.index')
             ->with('success', 'KesyaPatroli deleted successfully');
     }
 }

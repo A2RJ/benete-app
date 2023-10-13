@@ -48,7 +48,7 @@ class KeuBendaharaPenerimaanController extends Controller
 
         $keuBendaharaPenerimaan = KeuBendaharaPenerimaan::create($request->all());
 
-        return redirect()->route('Keuangan.bendahara-penerimaan.index')
+        return redirect()->route('keu-bendahara-penerimaan.index')
             ->with('success', 'KeuBendaharaPenerimaan created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KeuBendaharaPenerimaanController extends Controller
 
         $keuBendaharaPenerimaan->update($request->all());
 
-        return redirect()->route('Keuangan.bendahara-penerimaan.index')
+        return redirect()->route('keu-bendahara-penerimaan.index')
             ->with('success', 'KeuBendaharaPenerimaan updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KeuBendaharaPenerimaanController extends Controller
     {
         $keuBendaharaPenerimaan = KeuBendaharaPenerimaan::find($id)->delete();
 
-        return redirect()->route('Keuangan.bendahara-penerimaan.index')
+        return redirect()->route('keu-bendahara-penerimaan.index')
             ->with('success', 'KeuBendaharaPenerimaan deleted successfully');
     }
 }

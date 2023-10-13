@@ -48,7 +48,7 @@ class KeuBendaharaPengeluaranController extends Controller
 
         $keuBendaharaPengeluaran = KeuBendaharaPengeluaran::create($request->all());
 
-        return redirect()->route('Keuangan.bendahara-pengeluaran.index')
+        return redirect()->route('keu-bendahara-pengeluaran.index')
             ->with('success', 'KeuBendaharaPengeluaran created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KeuBendaharaPengeluaranController extends Controller
 
         $keuBendaharaPengeluaran->update($request->all());
 
-        return redirect()->route('Keuangan.bendahara-pengeluaran.index')
+        return redirect()->route('keu-bendahara-pengeluaran.index')
             ->with('success', 'KeuBendaharaPengeluaran updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KeuBendaharaPengeluaranController extends Controller
     {
         $keuBendaharaPengeluaran = KeuBendaharaPengeluaran::find($id)->delete();
 
-        return redirect()->route('Keuangan.bendahara-pengeluaran.index')
+        return redirect()->route('keu-bendahara-pengeluaran.index')
             ->with('success', 'KeuBendaharaPengeluaran deleted successfully');
     }
 }

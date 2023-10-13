@@ -48,7 +48,7 @@ class KesyaSuratMasukController extends Controller
 
         $kesyaSuratMasuk = KesyaSuratMasuk::create($request->all());
 
-        return redirect()->route('Kesya.surat-masuk.index')
+        return redirect()->route('kesya-surat-masuk.index')
             ->with('success', 'KesyaSuratMasuk created successfully.');
     }
 
@@ -91,7 +91,7 @@ class KesyaSuratMasukController extends Controller
 
         $kesyaSuratMasuk->update($request->all());
 
-        return redirect()->route('Kesya.surat-masuk.index')
+        return redirect()->route('kesya-surat-masuk.index')
             ->with('success', 'KesyaSuratMasuk updated successfully');
     }
 
@@ -104,7 +104,7 @@ class KesyaSuratMasukController extends Controller
     {
         $kesyaSuratMasuk = KesyaSuratMasuk::find($id)->delete();
 
-        return redirect()->route('Kesya.surat-masuk.index')
+        return redirect()->route('kesya-surat-masuk.index')
             ->with('success', 'KesyaSuratMasuk deleted successfully');
     }
 }
