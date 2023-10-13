@@ -2,6 +2,7 @@
 
 namespace App\Models\Keuangan;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class KeuPejabatPengadaan extends Model
 {
+  use HasUuids;
+  
   public $table = 'keu_pejabat_pengadaan';
 
   static $rules = [

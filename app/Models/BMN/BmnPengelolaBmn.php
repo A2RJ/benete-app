@@ -2,6 +2,7 @@
 
 namespace App\Models\BMN;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BmnPengelolaBmn extends Model
 {
+  use HasUuids;
+  
   public $table = 'bmn_pengelola_bmn';
 
   static $rules = [
