@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BMN;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BMN\StoreValidationRequest;
 use App\Models\BMN\BmnDisposisi;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -41,9 +42,9 @@ class BmnDisposisiController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreValidationRequest $request)
     {
         request()->validate(BmnDisposisi::$rules);
 
@@ -57,7 +58,7 @@ class BmnDisposisiController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function show($id)
     {
@@ -70,7 +71,7 @@ class BmnDisposisiController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function edit($id)
     {
@@ -84,7 +85,7 @@ class BmnDisposisiController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  BmnDisposisi $bmnDisposisi
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, BmnDisposisi $bmnDisposisi)
     {

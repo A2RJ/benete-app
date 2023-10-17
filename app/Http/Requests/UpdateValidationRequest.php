@@ -5,7 +5,7 @@ namespace App\Http\Requests\BMN;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class SuratMasukUpdateRequest extends FormRequest
+class UpdateValidationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

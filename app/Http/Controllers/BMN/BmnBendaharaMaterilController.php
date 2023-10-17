@@ -3,15 +3,10 @@
 namespace App\Http\Controllers\BMN;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BMN\BendaharaStoreRequest;
-use App\Http\Requests\BMN\BendaraUpdateRequest;
-use App\Models\BMN\BmnBendaharaMateril;
-use Illuminate\Http\Request;
+use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
+use App\Models\BMN\BmnBendaharaMateril; 
 
-/**
- * Class BmnBendaharaMaterilController
- * @package App\Http\Controllers
- */
 class BmnBendaharaMaterilController extends Controller
 {
     /**
@@ -30,7 +25,7 @@ class BmnBendaharaMaterilController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -42,9 +37,9 @@ class BmnBendaharaMaterilController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(BendaharaStoreRequest $request)
+    public function store(StoreValidationRequest $request)
     {
         BmnBendaharaMateril::create($request->validated());
 
@@ -56,12 +51,10 @@ class BmnBendaharaMaterilController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(BmnBendaharaMateril $bmnBendaharaMateril)
     {
-        $bmnBendaharaMateril = BmnBendaharaMateril::find($id);
-
         return view('BMN.bendahara-materil.show', compact('bmnBendaharaMateril'));
     }
 
@@ -69,12 +62,10 @@ class BmnBendaharaMaterilController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(BmnBendaharaMateril $bmnBendaharaMateril)
     {
-        $bmnBendaharaMateril = BmnBendaharaMateril::find($id);
-
         return view('BMN.bendahara-materil.edit', compact('bmnBendaharaMateril'));
     }
 
@@ -83,13 +74,11 @@ class BmnBendaharaMaterilController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  BmnBendaharaMateril $bmnBendaharaMateril
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(BendaraUpdateRequest $request, BmnBendaharaMateril $bmnBendaharaMateril)
+    public function update(UpdateValidationRequest $request, BmnBendaharaMateril $bmnBendaharaMateril)
     {
-        request()->validate(BmnBendaharaMateril::$rules);
-
-        $bmnBendaharaMateril->update($request->all());
+        $bmnBendaharaMateril->update($request->validated());
 
         return redirect()->route('bmn-bendahara-materils.index')
             ->with('success', 'BmnBendaharaMateril updated successfully');
@@ -100,9 +89,9 @@ class BmnBendaharaMaterilController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(BmnBendaharaMateril $bmnBendaharaMateril)
     {
-        $bmnBendaharaMateril = BmnBendaharaMateril::find($id)->delete();
+        $bmnBendaharaMateril->delete();
 
         return redirect()->route('bmn-bendahara-materils.index')
             ->with('success', 'BmnBendaharaMateril deleted successfully');

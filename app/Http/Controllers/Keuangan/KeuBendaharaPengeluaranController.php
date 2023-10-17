@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BMN\StoreValidationRequest;
 use App\Models\Keuangan\KeuBendaharaPengeluaran;
 use Illuminate\Http\Request;
 
@@ -42,7 +43,7 @@ class KeuBendaharaPengeluaranController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreValidationRequest $request)
     {
         request()->validate(KeuBendaharaPengeluaran::$rules);
 

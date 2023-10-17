@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TU;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BMN\StoreValidationRequest;
 use App\Models\TU\TuSuratKeluar;
 use Illuminate\Http\Request;
 
@@ -42,7 +43,7 @@ class TuSuratKeluarController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreValidationRequest $request)
     {
         request()->validate(TuSuratKeluar::$rules);
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TU;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BMN\StoreValidationRequest;
 use App\Models\TU\TuSuratTugas;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -44,7 +45,7 @@ class TuSuratTugasController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreValidationRequest $request): RedirectResponse
     {
         request()->validate(TuSuratTugas::$rules);
 
