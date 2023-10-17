@@ -31,10 +31,10 @@ class TuSuratMasuk extends Model
 
   static $rules = [
     'nama' => 'required',
-    'tanggal_masuk' => 'required',
+    'tanggal_masuk' => 'required|date',
     'asal' => 'required',
     'perihal' => 'required',
-    'lampiran' => 'required',
+    'lampiran' => 'required|file',
   ];
 
   protected $perPage = 20;
@@ -45,4 +45,9 @@ class TuSuratMasuk extends Model
    * @var array
    */
   protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
+
+  public function disposisi()
+  {
+    return $this->hasOne(TuDisposisi::class);
+  }
 }

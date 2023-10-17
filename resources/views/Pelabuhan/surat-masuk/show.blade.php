@@ -67,10 +67,6 @@
                             <strong>Lampiran:</strong>
                             {{ $pelabuhanSuratMasuk->lampiran }}
                         </div>
-                        <div class="form-group">
-                            <strong>Disposisi:</strong>
-                            {{ $pelabuhanSuratMasuk->disposisi }}
-                        </div>
 
                     </div>
                 </div>

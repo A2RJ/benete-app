@@ -67,11 +67,6 @@
                             <strong>Lampiran:</strong>
                             {{ $bmnSuratMasuk->lampiran }}
                         </div>
-                        <div class="form-group">
-                            <strong>Disposisi:</strong>
-                            {{ $bmnSuratMasuk->disposisi }}
-                        </div>
-
                     </div>
                 </div>
             </div>

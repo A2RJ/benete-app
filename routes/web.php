@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BMN\{
     BmnBendaharaMaterilController,
+    BmnDisposisiController,
     BmnPengelolaBmnController,
     BmnSmartUupBeneteController,
     BmnSuratKeluarController,
@@ -13,6 +14,7 @@ use App\Http\Controllers\BMN\{
 };
 use App\Http\Controllers\Kesyabandaraan\{
     KesyabandaranController,
+    KesyaDisposisiController,
     KesyaDokumenAwakKapalController,
     KesyaDokumenKapalController,
     KesyaPatroliController,
@@ -23,6 +25,7 @@ use App\Http\Controllers\Kesyabandaraan\{
 use App\Http\Controllers\Keuangan\{
     KeuBendaharaPenerimaanController,
     KeuBendaharaPengeluaranController,
+    KeuDisposisiController,
     KeuKuasaPenggunaAnggaranController,
     KeuPejabatPengadaanController,
     KeuPpkController,
@@ -30,6 +33,7 @@ use App\Http\Controllers\Keuangan\{
     KeuSuratMasukController,
 };
 use App\Http\Controllers\Pelabuhan\{
+    PelabuhanDisposisiController,
     PelabuhanFasilitasPelabuhanController,
     PelabuhanKeagenanController,
     PelabuhanLalaController,
@@ -39,6 +43,7 @@ use App\Http\Controllers\Pelabuhan\{
     PelabuhanTkbmController,
 };
 use App\Http\Controllers\TU\{
+    TuDisposisiController,
     TuKontrakKerjaSamaController,
     TuSuratKeluarController,
     TuSuratMasukController,
@@ -66,6 +71,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('/users', UserController::class);
 
 Route::resource('/keu-surat-masuk', KeuSuratMasukController::class);
+Route::resource('/keu-disposisi', KeuDisposisiController::class);
 Route::resource('/keu-surat-keluar', KeuSuratKeluarController::class);
 Route::resource('/keu-bendahara-pengeluaran', KeuBendaharaPengeluaranController::class);
 Route::resource('/keu-bendahara-penerimaan', KeuBendaharaPenerimaanController::class);
@@ -74,6 +80,7 @@ Route::resource('/keu-ppk', KeuPpkController::class);
 Route::resource('/keu-kuasa-pengguna-anggaran', KeuKuasaPenggunaAnggaranController::class);
 
 Route::resource('/kesya-surat-masuk', KesyaSuratMasukController::class);
+Route::resource('/kesya-disposisi', KesyaDisposisiController::class);
 Route::resource('/kesya-surat-keluar', KesyaSuratKeluarController::class);
 Route::resource('/kesyabandaran', KesyabandaranController::class);
 Route::resource('/kesya-tertib-banar', KesyaTertibBanarController::class);
@@ -82,17 +89,20 @@ Route::resource('/kesya-dokumen-kapal', KesyaDokumenKapalController::class);
 Route::resource('/kesya-dokumen-awak-kapal', KesyaDokumenAwakKapalController::class);
 
 Route::resource('/bmn-surat-masuk', BmnSuratMasukController::class);
+Route::resource('/bmn-disposisi', BmnDisposisiController::class);
 Route::resource('/bmn-surat-keluar', BmnSuratKeluarController::class);
 Route::resource('/bmn-bendahara-materil', BmnBendaharaMaterilController::class);
 Route::resource('/bmn-pengelola-bmn', BmnPengelolaBmnController::class);
 Route::resource('/bmn-smart-uup-benete', BmnSmartUupBeneteController::class);
 
 Route::resource('/tu-surat-masuk', TuSuratMasukController::class);
+Route::resource('/tu-disposisi', TuDisposisiController::class);
 Route::resource('/tu-surat-keluar', TuSuratKeluarController::class);
 Route::resource('/tu-surat-tugas', TuSuratTugasController::class);
 Route::resource('/tu-kontrak-kerja-sama', TuKontrakKerjaSamaController::class);
 
 Route::resource('/pelabuhan-surat-masuk', PelabuhanSuratMasukController::class);
+Route::resource('/pelabuhan-disposisi', PelabuhanDisposisiController::class);
 Route::resource('/pelabuhan-surat-keluar', PelabuhanSuratKeluarController::class);
 Route::resource('/pelabuhan-lala', PelabuhanLalaController::class);
 Route::resource('/pelabuhan-fasilitas-pelabuhan', PelabuhanFasilitasPelabuhanController::class);

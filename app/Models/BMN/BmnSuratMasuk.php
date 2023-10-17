@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property $asal
  * @property $perihal
  * @property $lampiran
- * @property $disposisi
  * @property $created_at
  * @property $updated_at
  * @package App
@@ -32,11 +31,10 @@ class BmnSuratMasuk extends Model
 
   static $rules = [
     'nama' => 'required',
-    'tanggal_masuk' => 'required',
+    'tanggal_masuk' => 'required|date',
     'asal' => 'required',
     'perihal' => 'required',
-    'lampiran' => 'required',
-    'disposisi' => 'required',
+    'lampiran' => 'required|file',
   ];
 
   protected $perPage = 20;
@@ -46,5 +44,10 @@ class BmnSuratMasuk extends Model
    *
    * @var array
    */
-  protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran', 'disposisi'];
+  protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
+
+  public function disposisi()
+  {
+    return $this->hasOne(BmnDisposisi::class);
+  }
 }

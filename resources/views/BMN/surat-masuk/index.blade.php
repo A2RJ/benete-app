@@ -82,7 +82,6 @@ Surat Masuk
                                     <th>Asal</th>
                                     <th>Perihal</th>
                                     <th>Lampiran</th>
-                                    <th>Disposisi</th>
 
                                     <th class="w-1"></th>
                                 </tr>
@@ -99,7 +98,6 @@ Surat Masuk
                                     <td>{{ $bmnSuratMasuk->asal }}</td>
                                     <td>{{ $bmnSuratMasuk->perihal }}</td>
                                     <td>{{ $bmnSuratMasuk->lampiran }}</td>
-                                    <td>{{ $bmnSuratMasuk->disposisi }}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

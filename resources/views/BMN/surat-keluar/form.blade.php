@@ -9,7 +9,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('tanggal_masuk') }}</label>
     <div>
-        {{ Form::text('tanggal_masuk', $bmnSuratKeluar->tanggal_masuk, ['class' => 'form-control' .
+        {{ Form::date('tanggal_masuk', $bmnSuratKeluar->tanggal_masuk, ['class' => 'form-control' .
         ($errors->has('tanggal_masuk') ? ' is-invalid' : ''), 'placeholder' => 'Tanggal Masuk']) }}
         {!! $errors->first('tanggal_masuk', '<div class="invalid-feedback">:message</div>') !!}
     </div>
@@ -25,7 +25,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('perihal') }}</label>
     <div>
-        {{ Form::text('perihal', $bmnSuratKeluar->perihal, ['class' => 'form-control' .
+        {{ Form::textarea('perihal', $bmnSuratKeluar->perihal, ['class' => 'form-control' .
         ($errors->has('perihal') ? ' is-invalid' : ''), 'placeholder' => 'Perihal']) }}
         {!! $errors->first('perihal', '<div class="invalid-feedback">:message</div>') !!}
     </div>
@@ -33,7 +33,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('lampiran') }}</label>
     <div>
-        {{ Form::text('lampiran', $bmnSuratKeluar->lampiran, ['class' => 'form-control' .
+        {{ Form::file('lampiran', $bmnSuratKeluar->lampiran, ['class' => 'form-control' .
         ($errors->has('lampiran') ? ' is-invalid' : ''), 'placeholder' => 'Lampiran']) }}
         {!! $errors->first('lampiran', '<div class="invalid-feedback">:message</div>') !!}
     </div>

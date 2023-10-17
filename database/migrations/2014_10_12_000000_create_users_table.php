@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('bidang', ['bidang keuangan', 'bidang kesyabandaran', 'pengelola bmd dan persediaan', 'bidang pegawai atau tata usaha', 'bidang keperlabuhan']);
-            $table->enum('role', ['admin', 'staff']);
+            $table->enum('bidang', ['admin', 'bidang keuangan', 'bidang kesyabandaran', 'pengelola bmd dan persediaan', 'bidang pegawai atau tata usaha', 'bidang keperlabuhan']);
             $table->rememberToken();
             $table->timestamps();
         });

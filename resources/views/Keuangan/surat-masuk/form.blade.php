@@ -48,16 +48,6 @@
         {!! $errors->first('lampiran', '<div class="invalid-feedback">:message</div>') !!}
     </div>
 </div>
-<div class="form-group mb-3">
-    <label class="form-label"> {{ Form::label('disposisi') }}</label>
-    <div>
-        {{ Form::text('disposisi', $keuSuratMasuk->disposisi, [
-            'class' => 'form-control' . ($errors->has('disposisi') ? ' is-invalid' : ''),
-            'placeholder' => 'Disposisi',
-        ]) }}
-        {!! $errors->first('disposisi', '<div class="invalid-feedback">:message</div>') !!}
-    </div>
-</div>
 
 <div class="form-footer">
     <div class="text-end">

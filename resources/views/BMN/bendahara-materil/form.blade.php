@@ -9,7 +9,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('tanggal_masuk') }}</label>
     <div>
-        {{ Form::text('tanggal_masuk', $bmnBendaharaMateril->tanggal_masuk, ['class' => 'form-control' .
+        {{ Form::date('tanggal_masuk', $bmnBendaharaMateril->tanggal_masuk, ['class' => 'form-control' .
         ($errors->has('tanggal_masuk') ? ' is-invalid' : ''), 'placeholder' => 'Tanggal Masuk']) }}
         {!! $errors->first('tanggal_masuk', '<div class="invalid-feedback">:message</div>') !!}>bmnBendaharaMateril <b>tanggal_masuk</b> instruction.</small>
     </div>
@@ -25,7 +25,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('perihal') }}</label>
     <div>
-        {{ Form::text('perihal', $bmnBendaharaMateril->perihal, ['class' => 'form-control' .
+        {{ Form::textarea('perihal', $bmnBendaharaMateril->perihal, ['class' => 'form-control' .
         ($errors->has('perihal') ? ' is-invalid' : ''), 'placeholder' => 'Perihal']) }}
         {!! $errors->first('perihal', '<div class="invalid-feedback">:message</div>') !!}>bmnBendaharaMateril <b>perihal</b> instruction.</small>
     </div>
@@ -33,7 +33,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('lampiran') }}</label>
     <div>
-        {{ Form::text('lampiran', $bmnBendaharaMateril->lampiran, ['class' => 'form-control' .
+        {{ Form::file('lampiran', $bmnBendaharaMateril->lampiran, ['class' => 'form-control' .
         ($errors->has('lampiran') ? ' is-invalid' : ''), 'placeholder' => 'Lampiran']) }}
         {!! $errors->first('lampiran', '<div class="invalid-feedback">:message</div>') !!}>bmnBendaharaMateril <b>lampiran</b> instruction.</small>
     </div>

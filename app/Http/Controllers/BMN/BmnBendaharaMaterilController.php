@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\BMN;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BMN\BendaharaStoreRequest;
+use App\Http\Requests\BMN\BendaraUpdateRequest;
 use App\Models\BMN\BmnBendaharaMateril;
 use Illuminate\Http\Request;
 
@@ -42,11 +44,9 @@ class BmnBendaharaMaterilController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BendaharaStoreRequest $request)
     {
-        request()->validate(BmnBendaharaMateril::$rules);
-
-        $bmnBendaharaMateril = BmnBendaharaMateril::create($request->all());
+        BmnBendaharaMateril::create($request->validated());
 
         return redirect()->route('bmn-bendahara-materils.index')
             ->with('success', 'BmnBendaharaMateril created successfully.');
@@ -85,7 +85,7 @@ class BmnBendaharaMaterilController extends Controller
      * @param  BmnBendaharaMateril $bmnBendaharaMateril
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BmnBendaharaMateril $bmnBendaharaMateril)
+    public function update(BendaraUpdateRequest $request, BmnBendaharaMateril $bmnBendaharaMateril)
     {
         request()->validate(BmnBendaharaMateril::$rules);
 
