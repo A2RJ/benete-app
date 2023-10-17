@@ -16,9 +16,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property $lampiran
  * @property $created_at
  * @property $updated_at
- *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama query()
+ * @mixin \Eloquent
  */
 class TuKontrakKerjaSama extends Model
 {

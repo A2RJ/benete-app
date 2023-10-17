@@ -4,6 +4,8 @@ namespace App\Http\Controllers\TU;
 
 use App\Http\Controllers\Controller;
 use App\Models\TU\TuSuratTugas;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -19,7 +21,7 @@ class TuSuratTugasController extends Controller
      */
     public function index()
     {
-        $tuSuratTugas = TuSuratTugas::paginate(10);
+        $tuSuratTugas = TuSuratTugas::sdsdsd(10);
 
         return view('TU.surat-tugas.index', compact('tuSuratTugas'))
             ->with('i', (request()->input('page', 1) - 1) * $tuSuratTugas->perPage());
@@ -30,7 +32,7 @@ class TuSuratTugasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         $tuSuratTuga = new TuSuratTugas();
         return view('TU.surat-tugas.create', compact('tuSuratTuga'));
@@ -42,7 +44,7 @@ class TuSuratTugasController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         request()->validate(TuSuratTugas::$rules);
 
@@ -58,7 +60,7 @@ class TuSuratTugasController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): View
     {
         $tuSuratTuga = TuSuratTugas::find($id);
 
@@ -71,7 +73,7 @@ class TuSuratTugasController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id): View
     {
         $tuSuratTuga = TuSuratTugas::find($id);
 
@@ -85,7 +87,7 @@ class TuSuratTugasController extends Controller
      * @param  TuSuratTugas $tuSuratTuga
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TuSuratTugas $tuSuratTuga)
+    public function update(Request $request, TuSuratTugas $tuSuratTuga): RedirectResponse
     {
         request()->validate(TuSuratTugas::$rules);
 

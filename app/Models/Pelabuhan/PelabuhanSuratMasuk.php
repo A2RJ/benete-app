@@ -17,9 +17,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property $disposisi
  * @property $created_at
  * @property $updated_at
- *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanSuratMasuk newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanSuratMasuk newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanSuratMasuk query()
+ * @mixin \Eloquent
  */
 class PelabuhanSuratMasuk extends Model
 {

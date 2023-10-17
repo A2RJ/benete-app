@@ -16,9 +16,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property $lampiran
  * @property $created_at
  * @property $updated_at
- *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas query()
+ * @mixin \Eloquent
  */
 class TuSuratTugas extends Model
 {

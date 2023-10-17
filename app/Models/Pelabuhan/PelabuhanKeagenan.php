@@ -16,9 +16,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property $lampiran
  * @property $created_at
  * @property $updated_at
- *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanKeagenan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanKeagenan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanKeagenan query()
+ * @mixin \Eloquent
  */
 class PelabuhanKeagenan extends Model
 {
