@@ -21,7 +21,7 @@ class KeuDisposisiController extends Controller
     {
         $keuDisposisis = KeuDisposisi::paginate(10);
 
-        return view('Keu.disposisi.index', compact('keuDisposisis'))
+        return view('Keuangan.disposisi.index', compact('keuDisposisis'))
             ->with('i', (request()->input('page', 1) - 1) * $keuDisposisis->perPage());
     }
 
@@ -33,7 +33,7 @@ class KeuDisposisiController extends Controller
     public function create()
     {
         $keuDisposisi = new KeuDisposisi();
-        return view('Keu.disposisi.create', compact('keuDisposisi'));
+        return view('Keuangan.disposisi.create', compact('keuDisposisi'));
     }
 
     /**
@@ -59,7 +59,7 @@ class KeuDisposisiController extends Controller
      */
     public function show(KeuDisposisi $keuDisposisi)
     {
-        return view('Keu.disposisi.show', compact('keuDisposisi'));
+        return view('Keuangan.disposisi.show', compact('keuDisposisi'));
     }
 
     /**
@@ -70,7 +70,7 @@ class KeuDisposisiController extends Controller
      */
     public function edit(KeuDisposisi $keuDisposisi)
     {
-        return view('Keu.disposisi.edit', compact('keuDisposisi'));
+        return view('Keuangan.disposisi.edit', compact('keuDisposisi'));
     }
 
     /**

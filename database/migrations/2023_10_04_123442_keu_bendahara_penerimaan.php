@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('keu_bendahara_penerimaan', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nama');
-            $table->dateTime('tanggal_masuk');
+            $table->date('tanggal_masuk');
             $table->string('asal');
             $table->string('perihal');
             $table->string('lampiran');

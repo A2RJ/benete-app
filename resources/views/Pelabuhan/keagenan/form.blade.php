@@ -33,9 +33,12 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('lampiran') }}</label>
     <div>
-        {{ Form::file('lampiran', $pelabuhanKeagenan->lampiran, ['class' => 'form-control' .
+        {{ Form::file('lampiran', null, ['class' => 'form-control' .
         ($errors->has('lampiran') ? ' is-invalid' : ''), 'placeholder' => 'Lampiran']) }}
         {!! $errors->first('lampiran', '<div class="invalid-feedback">:message</div>') !!}
+        @if (is_string($pelabuhanKeagenan->lampiran))
+        <a href="{{ $pelabuhanKeagenan->lampiran }}">Download file</a>
+        @endif
     </div>
 </div>
 

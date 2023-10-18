@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Kesyabandaraan;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BMN\StoreValidationRequest;
-use App\Http\Requests\BMN\UpdateValidationRequest;
+use App\Http\Requests\StoreValidationRequest;
+use App\Http\Requests\UpdateValidationRequest;
 use App\Models\Kesyabandaraan\KesyaSuratMasuk;
 use Illuminate\Http\Request;
 
