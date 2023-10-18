@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Kesyabandaraan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Kesyabandaraan\KesyaPatroli;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class KesyaPatroliController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class KesyaPatroliController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +42,11 @@ class KesyaPatroliController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(KesyaPatroli::$rules);
-
-        $kesyaPatroli = KesyaPatroli::create($request->all());
+        KesyaPatroli::create($request->validated());
 
         return redirect()->route('kesya-patroli.index')
             ->with('success', 'KesyaPatroli created successfully.');
@@ -57,12 +56,10 @@ class KesyaPatroliController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(KesyaPatroli $kesyaPatroli)
     {
-        $kesyaPatroli = KesyaPatroli::find($id);
-
         return view('Kesya.patroli.show', compact('kesyaPatroli'));
     }
 
@@ -70,12 +67,10 @@ class KesyaPatroliController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(KesyaPatroli $kesyaPatroli)
     {
-        $kesyaPatroli = KesyaPatroli::find($id);
-
         return view('Kesya.patroli.edit', compact('kesyaPatroli'));
     }
 
@@ -84,13 +79,11 @@ class KesyaPatroliController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  KesyaPatroli $kesyaPatroli
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KesyaPatroli $kesyaPatroli)
+    public function update(UpdateValidationRequest $request, KesyaPatroli $kesyaPatroli)
     {
-        request()->validate(KesyaPatroli::$rules);
-
-        $kesyaPatroli->update($request->all());
+        $kesyaPatroli->update($request->validated());
 
         return redirect()->route('kesya-patroli.index')
             ->with('success', 'KesyaPatroli updated successfully');
@@ -101,9 +94,9 @@ class KesyaPatroliController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(KesyaPatroli $kesyaPatroli)
     {
-        $kesyaPatroli = KesyaPatroli::find($id)->delete();
+        $kesyaPatroli->delete();
 
         return redirect()->route('kesya-patroli.index')
             ->with('success', 'KesyaPatroli deleted successfully');

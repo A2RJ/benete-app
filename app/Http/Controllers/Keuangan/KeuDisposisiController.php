@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Keuangan\KeuDisposisi;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class KeuDisposisiController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class KeuDisposisiController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +42,11 @@ class KeuDisposisiController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(KeuDisposisi::$rules);
-
-        $keuDisposisi = KeuDisposisi::create($request->all());
+        KeuDisposisi::create($request->validated());
 
         return redirect()->route('keu-disposisi.index')
             ->with('success', 'KeuDisposisi created successfully.');
@@ -57,12 +56,10 @@ class KeuDisposisiController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(KeuDisposisi $keuDisposisi)
     {
-        $keuDisposisi = KeuDisposisi::find($id);
-
         return view('Keu.disposisi.show', compact('keuDisposisi'));
     }
 
@@ -70,12 +67,10 @@ class KeuDisposisiController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(KeuDisposisi $keuDisposisi)
     {
-        $keuDisposisi = KeuDisposisi::find($id);
-
         return view('Keu.disposisi.edit', compact('keuDisposisi'));
     }
 
@@ -84,13 +79,11 @@ class KeuDisposisiController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  KeuDisposisi $keuDisposisi
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KeuDisposisi $keuDisposisi)
+    public function update(UpdateValidationRequest $request, KeuDisposisi $keuDisposisi)
     {
-        request()->validate(KeuDisposisi::$rules);
-
-        $keuDisposisi->update($request->all());
+        $keuDisposisi->update($request->validated());
 
         return redirect()->route('keu-disposisi.index')
             ->with('success', 'KeuDisposisi updated successfully');
@@ -101,9 +94,9 @@ class KeuDisposisiController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(KeuDisposisi $keuDisposisi)
     {
-        $keuDisposisi = KeuDisposisi::find($id)->delete();
+        $keuDisposisi->delete();
 
         return redirect()->route('keu-disposisi.index')
             ->with('success', 'KeuDisposisi deleted successfully');

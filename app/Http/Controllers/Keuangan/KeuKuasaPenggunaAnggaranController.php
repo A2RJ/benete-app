@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Keuangan\KeuKuasaPenggunaAnggaran;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class KeuKuasaPenggunaAnggaranController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class KeuKuasaPenggunaAnggaranController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +42,11 @@ class KeuKuasaPenggunaAnggaranController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(KeuKuasaPenggunaAnggaran::$rules);
-
-        $keuKuasaPenggunaAnggaran = KeuKuasaPenggunaAnggaran::create($request->all());
+        KeuKuasaPenggunaAnggaran::create($request->validated());
 
         return redirect()->route('keu-kuasa-pengguna-anggaran.index')
             ->with('success', 'KeuKuasaPenggunaAnggaran created successfully.');
@@ -57,12 +56,10 @@ class KeuKuasaPenggunaAnggaranController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(KeuKuasaPenggunaAnggaran $keuKuasaPenggunaAnggaran)
     {
-        $keuKuasaPenggunaAnggaran = KeuKuasaPenggunaAnggaran::find($id);
-
         return view('Keuangan.kuasa-pengguna-anggaran.show', compact('keuKuasaPenggunaAnggaran'));
     }
 
@@ -70,12 +67,10 @@ class KeuKuasaPenggunaAnggaranController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(KeuKuasaPenggunaAnggaran $keuKuasaPenggunaAnggaran)
     {
-        $keuKuasaPenggunaAnggaran = KeuKuasaPenggunaAnggaran::find($id);
-
         return view('Keuangan.kuasa-pengguna-anggaran.edit', compact('keuKuasaPenggunaAnggaran'));
     }
 
@@ -84,13 +79,11 @@ class KeuKuasaPenggunaAnggaranController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  KeuKuasaPenggunaAnggaran $keuKuasaPenggunaAnggaran
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KeuKuasaPenggunaAnggaran $keuKuasaPenggunaAnggaran)
+    public function update(UpdateValidationRequest $request, KeuKuasaPenggunaAnggaran $keuKuasaPenggunaAnggaran)
     {
-        request()->validate(KeuKuasaPenggunaAnggaran::$rules);
-
-        $keuKuasaPenggunaAnggaran->update($request->all());
+        $keuKuasaPenggunaAnggaran->update($request->validated());
 
         return redirect()->route('keu-kuasa-pengguna-anggaran.index')
             ->with('success', 'KeuKuasaPenggunaAnggaran updated successfully');
@@ -101,9 +94,9 @@ class KeuKuasaPenggunaAnggaranController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(KeuKuasaPenggunaAnggaran $keuKuasaPenggunaAnggaran)
     {
-        $keuKuasaPenggunaAnggaran = KeuKuasaPenggunaAnggaran::find($id)->delete();
+        $keuKuasaPenggunaAnggaran->delete();
 
         return redirect()->route('keu-kuasa-pengguna-anggaran.index')
             ->with('success', 'KeuKuasaPenggunaAnggaran deleted successfully');

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\BMN;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\BMN\BmnSuratMasuk;
-use Illuminate\Http\Request;
 
 /**
  * Class BmnSuratMasukController
@@ -16,7 +16,7 @@ class BmnSuratMasukController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +29,7 @@ class BmnSuratMasukController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +41,11 @@ class BmnSuratMasukController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(BmnSuratMasuk::$rules);
-
-        $bmnSuratMasuk = BmnSuratMasuk::create($request->all());
+        BmnSuratMasuk::create($request->validated());
 
         return redirect()->route('bmn-surat-masuks.index')
             ->with('success', 'BmnSuratMasuk created successfully.');
@@ -57,12 +55,10 @@ class BmnSuratMasukController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(BmnSuratMasuk $bmnSuratMasuk)
     {
-        $bmnSuratMasuk = BmnSuratMasuk::find($id);
-
         return view('BMN.surat-masuk.show', compact('bmnSuratMasuk'));
     }
 
@@ -70,12 +66,10 @@ class BmnSuratMasukController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(BmnSuratMasuk $bmnSuratMasuk)
     {
-        $bmnSuratMasuk = BmnSuratMasuk::find($id);
-
         return view('BMN.surat-masuk.edit', compact('bmnSuratMasuk'));
     }
 
@@ -84,9 +78,9 @@ class BmnSuratMasukController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  BmnSuratMasuk $bmnSuratMasuk
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, BmnSuratMasuk $bmnSuratMasuk)
+    public function update(UpdateValidationRequest $request, BmnSuratMasuk $bmnSuratMasuk)
     {
         request()->validate(BmnSuratMasuk::$rules);
 
@@ -101,9 +95,9 @@ class BmnSuratMasukController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(BmnSuratMasuk $bmnSuratMasuk)
     {
-        $bmnSuratMasuk = BmnSuratMasuk::find($id)->delete();
+        $bmnSuratMasuk->delete();
 
         return redirect()->route('bmn-surat-masuks.index')
             ->with('success', 'BmnSuratMasuk deleted successfully');

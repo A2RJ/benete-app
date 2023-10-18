@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Keuangan\KeuPpk;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class KeuPpkController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class KeuPpkController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +42,11 @@ class KeuPpkController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(KeuPpk::$rules);
-
-        $keuPpk = KeuPpk::create($request->all());
+        KeuPpk::create($request->validated());
 
         return redirect()->route('keu-ppk.index')
             ->with('success', 'KeuPpk created successfully.');
@@ -57,12 +56,10 @@ class KeuPpkController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(KeuPpk $keuPpk)
     {
-        $keuPpk = KeuPpk::find($id);
-
         return view('Keuangan.ppk.show', compact('keuPpk'));
     }
 
@@ -70,12 +67,10 @@ class KeuPpkController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(KeuPpk $keuPpk)
     {
-        $keuPpk = KeuPpk::find($id);
-
         return view('Keuangan.ppk.edit', compact('keuPpk'));
     }
 
@@ -84,13 +79,11 @@ class KeuPpkController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  KeuPpk $keuPpk
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KeuPpk $keuPpk)
+    public function update(UpdateValidationRequest $request, KeuPpk $keuPpk)
     {
-        request()->validate(KeuPpk::$rules);
-
-        $keuPpk->update($request->all());
+        $keuPpk->update($request->validated());
 
         return redirect()->route('keu-ppk.index')
             ->with('success', 'KeuPpk updated successfully');
@@ -101,9 +94,9 @@ class KeuPpkController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(KeuPpk $keuPpk)
     {
-        $keuPpk = KeuPpk::find($id)->delete();
+        $keuPpk->delete();
 
         return redirect()->route('keu-ppk.index')
             ->with('success', 'KeuPpk deleted successfully');

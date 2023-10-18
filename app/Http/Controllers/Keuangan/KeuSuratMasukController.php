@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Keuangan\KeuSuratMasuk;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class KeuSuratMasukController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class KeuSuratMasukController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +42,11 @@ class KeuSuratMasukController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(KeuSuratMasuk::$rules);
-
-        $keuSuratMasuk = KeuSuratMasuk::create($request->all());
+        KeuSuratMasuk::create($request->validated());
 
         return redirect()->route('keu-surat-masuk.index')
             ->with('success', 'KeuSuratMasuk created successfully.');
@@ -57,12 +56,10 @@ class KeuSuratMasukController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(KeuSuratMasuk $keuSuratMasuk)
     {
-        $keuSuratMasuk = KeuSuratMasuk::find($id);
-
         return view('Keuangan.surat-masuk.show', compact('keuSuratMasuk'));
     }
 
@@ -70,12 +67,10 @@ class KeuSuratMasukController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(KeuSuratMasuk $keuSuratMasuk)
     {
-        $keuSuratMasuk = KeuSuratMasuk::find($id);
-
         return view('Keuangan.surat-masuk.edit', compact('keuSuratMasuk'));
     }
 
@@ -84,13 +79,11 @@ class KeuSuratMasukController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  KeuSuratMasuk $keuSuratMasuk
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KeuSuratMasuk $keuSuratMasuk)
+    public function update(UpdateValidationRequest $request, KeuSuratMasuk $keuSuratMasuk)
     {
-        request()->validate(KeuSuratMasuk::$rules);
-
-        $keuSuratMasuk->update($request->all());
+        $keuSuratMasuk->update($request->validated());
 
         return redirect()->route('keu-surat-masuk.index')
             ->with('success', 'KeuSuratMasuk updated successfully');
@@ -101,9 +94,9 @@ class KeuSuratMasukController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(KeuSuratMasuk $keuSuratMasuk)
     {
-        $keuSuratMasuk = KeuSuratMasuk::find($id)->delete();
+        $keuSuratMasuk->delete();
 
         return redirect()->route('keu-surat-masuk.index')
             ->with('success', 'KeuSuratMasuk deleted successfully');

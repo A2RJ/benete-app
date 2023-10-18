@@ -4,9 +4,8 @@ namespace App\Http\Controllers\BMN;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\BMN\BmnDisposisi;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 /**
  * Class BmnDisposisiController
@@ -46,9 +45,7 @@ class BmnDisposisiController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(BmnDisposisi::$rules);
-
-        $bmnDisposisi = BmnDisposisi::create($request->all());
+        BmnDisposisi::create($request->validated());
 
         return redirect()->route('bmn-disposisi.index')
             ->with('success', 'BmnDisposisi created successfully.');
@@ -60,10 +57,8 @@ class BmnDisposisiController extends Controller
      * @param  int $id
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(BmnDisposisi $bmnDisposisi)
     {
-        $bmnDisposisi = BmnDisposisi::find($id);
-
         return view('BMN.disposisi.show', compact('bmnDisposisi'));
     }
 
@@ -73,10 +68,8 @@ class BmnDisposisiController extends Controller
      * @param  int $id
      * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(BmnDisposisi $bmnDisposisi)
     {
-        $bmnDisposisi = BmnDisposisi::find($id);
-
         return view('BMN.disposisi.edit', compact('bmnDisposisi'));
     }
 
@@ -87,11 +80,9 @@ class BmnDisposisiController extends Controller
      * @param  BmnDisposisi $bmnDisposisi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, BmnDisposisi $bmnDisposisi)
+    public function update(UpdateValidationRequest $request, BmnDisposisi $bmnDisposisi)
     {
-        request()->validate(BmnDisposisi::$rules);
-
-        $bmnDisposisi->update($request->all());
+        $bmnDisposisi->update($request->validated());
 
         return redirect()->route('bmn-disposisi.index')
             ->with('success', 'BmnDisposisi updated successfully');
@@ -102,9 +93,9 @@ class BmnDisposisiController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(BmnDisposisi $bmnDisposisi)
     {
-        $bmnDisposisi = BmnDisposisi::find($id)->delete();
+        $bmnDisposisi->delete();
 
         return redirect()->route('bmn-disposisi.index')
             ->with('success', 'BmnDisposisi deleted successfully');

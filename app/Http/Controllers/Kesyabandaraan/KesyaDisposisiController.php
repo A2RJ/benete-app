@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Kesyabandaraan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Kesyabandaraan\KesyaDisposisi;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class KesyaDisposisiController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class KesyaDisposisiController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +42,11 @@ class KesyaDisposisiController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(KesyaDisposisi::$rules);
-
-        $kesyaDisposisi = KesyaDisposisi::create($request->all());
+        KesyaDisposisi::create($request->validated());
 
         return redirect()->route('kesya-disposisi.index')
             ->with('success', 'KesyaDisposisi created successfully.');
@@ -57,12 +56,10 @@ class KesyaDisposisiController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(KesyaDisposisi $kesyaDisposisi)
     {
-        $kesyaDisposisi = KesyaDisposisi::find($id);
-
         return view('Kesya.disposisi.show', compact('kesyaDisposisi'));
     }
 
@@ -70,12 +67,10 @@ class KesyaDisposisiController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(KesyaDisposisi $kesyaDisposisi)
     {
-        $kesyaDisposisi = KesyaDisposisi::find($id);
-
         return view('Kesya.disposisi.edit', compact('kesyaDisposisi'));
     }
 
@@ -84,13 +79,11 @@ class KesyaDisposisiController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  KesyaDisposisi $kesyaDisposisi
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KesyaDisposisi $kesyaDisposisi)
+    public function update(UpdateValidationRequest $request, KesyaDisposisi $kesyaDisposisi)
     {
-        request()->validate(KesyaDisposisi::$rules);
-
-        $kesyaDisposisi->update($request->all());
+        $kesyaDisposisi->update($request->validated());
 
         return redirect()->route('kesya-disposisi.index')
             ->with('success', 'KesyaDisposisi updated successfully');
@@ -101,9 +94,9 @@ class KesyaDisposisiController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(KesyaDisposisi $kesyaDisposisi)
     {
-        $kesyaDisposisi = KesyaDisposisi::find($id)->delete();
+        $kesyaDisposisi->delete();
 
         return redirect()->route('kesya-disposisi.index')
             ->with('success', 'KesyaDisposisi deleted successfully');

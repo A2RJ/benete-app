@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Kesyabandaraan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Kesyabandaraan\KesyaSuratKeluar;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class KesyaSuratKeluarController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class KesyaSuratKeluarController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +42,11 @@ class KesyaSuratKeluarController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(KesyaSuratKeluar::$rules);
-
-        $kesyaSuratKeluar = KesyaSuratKeluar::create($request->all());
+        KesyaSuratKeluar::create($request->validated());
 
         return redirect()->route('kesya-surat-keluar.index')
             ->with('success', 'KesyaSuratKeluar created successfully.');
@@ -57,12 +56,10 @@ class KesyaSuratKeluarController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(KesyaSuratKeluar $kesyaSuratKeluar)
     {
-        $kesyaSuratKeluar = KesyaSuratKeluar::find($id);
-
         return view('Kesya.surat-keluar.show', compact('kesyaSuratKeluar'));
     }
 
@@ -70,12 +67,10 @@ class KesyaSuratKeluarController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(KesyaSuratKeluar $kesyaSuratKeluar)
     {
-        $kesyaSuratKeluar = KesyaSuratKeluar::find($id);
-
         return view('Kesya.surat-keluar.edit', compact('kesyaSuratKeluar'));
     }
 
@@ -84,13 +79,11 @@ class KesyaSuratKeluarController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  KesyaSuratKeluar $kesyaSuratKeluar
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KesyaSuratKeluar $kesyaSuratKeluar)
+    public function update(UpdateValidationRequest $request, KesyaSuratKeluar $kesyaSuratKeluar)
     {
-        request()->validate(KesyaSuratKeluar::$rules);
-
-        $kesyaSuratKeluar->update($request->all());
+        $kesyaSuratKeluar->update($request->validated());
 
         return redirect()->route('kesya-surat-keluar.index')
             ->with('success', 'KesyaSuratKeluar updated successfully');
@@ -101,9 +94,9 @@ class KesyaSuratKeluarController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(KesyaSuratKeluar $kesyaSuratKeluar)
     {
-        $kesyaSuratKeluar = KesyaSuratKeluar::find($id)->delete();
+        $kesyaSuratKeluar->delete();
 
         return redirect()->route('kesya-surat-keluar.index')
             ->with('success', 'KesyaSuratKeluar deleted successfully');

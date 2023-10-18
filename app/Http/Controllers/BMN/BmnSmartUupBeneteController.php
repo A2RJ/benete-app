@@ -4,8 +4,8 @@ namespace App\Http\Controllers\BMN;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\BMN\BmnSmartUupBenete;
-use Illuminate\Http\Request;
 
 /**
  * Class BmnSmartUupBeneteController
@@ -16,7 +16,7 @@ class BmnSmartUupBeneteController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +29,7 @@ class BmnSmartUupBeneteController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +41,11 @@ class BmnSmartUupBeneteController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(BmnSmartUupBenete::$rules);
-
-        $bmnSmartUupBenete = BmnSmartUupBenete::create($request->all());
+        BmnSmartUupBenete::create($request->validated());
 
         return redirect()->route('bmn-smart-uup-benetes.index')
             ->with('success', 'BmnSmartUupBenete created successfully.');
@@ -57,12 +55,10 @@ class BmnSmartUupBeneteController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(BmnSmartUupBenete $bmnSmartUupBenete)
     {
-        $bmnSmartUupBenete = BmnSmartUupBenete::find($id);
-
         return view('BMN.smart-uup-benete.show', compact('bmnSmartUupBenete'));
     }
 
@@ -70,12 +66,10 @@ class BmnSmartUupBeneteController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(BmnSmartUupBenete $bmnSmartUupBenete)
     {
-        $bmnSmartUupBenete = BmnSmartUupBenete::find($id);
-
         return view('BMN.smart-uup-benete.edit', compact('bmnSmartUupBenete'));
     }
 
@@ -84,13 +78,11 @@ class BmnSmartUupBeneteController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  BmnSmartUupBenete $bmnSmartUupBenete
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, BmnSmartUupBenete $bmnSmartUupBenete)
+    public function update(UpdateValidationRequest $request, BmnSmartUupBenete $bmnSmartUupBenete)
     {
-        request()->validate(BmnSmartUupBenete::$rules);
-
-        $bmnSmartUupBenete->update($request->all());
+        $bmnSmartUupBenete->update($request->validated());
 
         return redirect()->route('bmn-smart-uup-benetes.index')
             ->with('success', 'BmnSmartUupBenete updated successfully');
@@ -101,9 +93,9 @@ class BmnSmartUupBeneteController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(BmnSmartUupBenete $bmnSmartUupBenete)
     {
-        $bmnSmartUupBenete = BmnSmartUupBenete::find($id)->delete();
+        $bmnSmartUupBenete->delete();
 
         return redirect()->route('bmn-smart-uup-benetes.index')
             ->with('success', 'BmnSmartUupBenete deleted successfully');

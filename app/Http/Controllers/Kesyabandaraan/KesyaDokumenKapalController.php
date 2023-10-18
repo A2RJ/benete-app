@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Kesyabandaraan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Kesyabandaraan\KesyaDokumenKapal;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class KesyaDokumenKapalController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class KesyaDokumenKapalController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +42,11 @@ class KesyaDokumenKapalController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(KesyaDokumenKapal::$rules);
-
-        $kesyaDokumenKapal = KesyaDokumenKapal::create($request->all());
+        KesyaDokumenKapal::create($request->validated());
 
         return redirect()->route('kesya-dokumen-kapal.index')
             ->with('success', 'KesyaDokumenKapal created successfully.');
@@ -57,12 +56,10 @@ class KesyaDokumenKapalController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(KesyaDokumenKapal $kesyaDokumenKapal)
     {
-        $kesyaDokumenKapal = KesyaDokumenKapal::find($id);
-
         return view('Kesya.dokumen-kapal.show', compact('kesyaDokumenKapal'));
     }
 
@@ -70,12 +67,10 @@ class KesyaDokumenKapalController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(KesyaDokumenKapal $kesyaDokumenKapal)
     {
-        $kesyaDokumenKapal = KesyaDokumenKapal::find($id);
-
         return view('Kesya.dokumen-kapal.edit', compact('kesyaDokumenKapal'));
     }
 
@@ -84,13 +79,11 @@ class KesyaDokumenKapalController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  KesyaDokumenKapal $kesyaDokumenKapal
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KesyaDokumenKapal $kesyaDokumenKapal)
+    public function update(UpdateValidationRequest $request, KesyaDokumenKapal $kesyaDokumenKapal)
     {
-        request()->validate(KesyaDokumenKapal::$rules);
-
-        $kesyaDokumenKapal->update($request->all());
+        $kesyaDokumenKapal->update($request->validated());
 
         return redirect()->route('kesya-dokumen-kapal.index')
             ->with('success', 'KesyaDokumenKapal updated successfully');
@@ -101,9 +94,9 @@ class KesyaDokumenKapalController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(KesyaDokumenKapal $kesyaDokumenKapal)
     {
-        $kesyaDokumenKapal = KesyaDokumenKapal::find($id)->delete();
+        $kesyaDokumenKapal->delete();
 
         return redirect()->route('kesya-dokumen-kapal.index')
             ->with('success', 'KesyaDokumenKapal deleted successfully');

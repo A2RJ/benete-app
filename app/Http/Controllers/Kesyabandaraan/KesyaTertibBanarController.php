@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Kesyabandaraan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Kesyabandaraan\KesyaTertibBanar;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class KesyaTertibBanarController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class KesyaTertibBanarController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +42,11 @@ class KesyaTertibBanarController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(KesyaTertibBanar::$rules);
-
-        $kesyaTertibBanar = KesyaTertibBanar::create($request->all());
+        KesyaTertibBanar::create($request->validated());
 
         return redirect()->route('kesya-tertib-banar.index')
             ->with('success', 'KesyaTertibBanar created successfully.');
@@ -57,12 +56,10 @@ class KesyaTertibBanarController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(KesyaTertibBanar $kesyaTertibBanar)
     {
-        $kesyaTertibBanar = KesyaTertibBanar::find($id);
-
         return view('Kesya.tertib-banar.show', compact('kesyaTertibBanar'));
     }
 
@@ -70,12 +67,10 @@ class KesyaTertibBanarController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(KesyaTertibBanar $kesyaTertibBanar)
     {
-        $kesyaTertibBanar = KesyaTertibBanar::find($id);
-
         return view('Kesya.tertib-banar.edit', compact('kesyaTertibBanar'));
     }
 
@@ -84,13 +79,11 @@ class KesyaTertibBanarController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  KesyaTertibBanar $kesyaTertibBanar
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KesyaTertibBanar $kesyaTertibBanar)
+    public function update(UpdateValidationRequest $request, KesyaTertibBanar $kesyaTertibBanar)
     {
-        request()->validate(KesyaTertibBanar::$rules);
-
-        $kesyaTertibBanar->update($request->all());
+        $kesyaTertibBanar->update($request->validated());
 
         return redirect()->route('kesya-tertib-banar.index')
             ->with('success', 'KesyaTertibBanar updated successfully');
@@ -101,9 +94,9 @@ class KesyaTertibBanarController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(KesyaTertibBanar $kesyaTertibBanar)
     {
-        $kesyaTertibBanar = KesyaTertibBanar::find($id)->delete();
+        $kesyaTertibBanar->delete();
 
         return redirect()->route('kesya-tertib-banar.index')
             ->with('success', 'KesyaTertibBanar deleted successfully');

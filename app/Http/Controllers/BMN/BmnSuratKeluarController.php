@@ -4,8 +4,8 @@ namespace App\Http\Controllers\BMN;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\BMN\BmnSuratKeluar;
-use Illuminate\Http\Request;
 
 /**
  * Class BmnSuratKeluarController
@@ -16,7 +16,7 @@ class BmnSuratKeluarController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +29,7 @@ class BmnSuratKeluarController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,13 +41,11 @@ class BmnSuratKeluarController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(BmnSuratKeluar::$rules);
-
-        $bmnSuratKeluar = BmnSuratKeluar::create($request->all());
+        BmnSuratKeluar::create($request->validated());
 
         return redirect()->route('bmn-surat-keluars.index')
             ->with('success', 'BmnSuratKeluar created successfully.');
@@ -57,12 +55,10 @@ class BmnSuratKeluarController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(BmnSuratKeluar $bmnSuratKeluar)
     {
-        $bmnSuratKeluar = BmnSuratKeluar::find($id);
-
         return view('BMN.surat-keluar.show', compact('bmnSuratKeluar'));
     }
 
@@ -70,12 +66,10 @@ class BmnSuratKeluarController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(BmnSuratKeluar $bmnSuratKeluar)
     {
-        $bmnSuratKeluar = BmnSuratKeluar::find($id);
-
         return view('BMN.surat-keluar.edit', compact('bmnSuratKeluar'));
     }
 
@@ -84,13 +78,11 @@ class BmnSuratKeluarController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  BmnSuratKeluar $bmnSuratKeluar
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, BmnSuratKeluar $bmnSuratKeluar)
+    public function update(UpdateValidationRequest $request, BmnSuratKeluar $bmnSuratKeluar)
     {
-        request()->validate(BmnSuratKeluar::$rules);
-
-        $bmnSuratKeluar->update($request->all());
+        $bmnSuratKeluar->update($request->validated());
 
         return redirect()->route('bmn-surat-keluars.index')
             ->with('success', 'BmnSuratKeluar updated successfully');
@@ -101,9 +93,9 @@ class BmnSuratKeluarController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(BmnSuratKeluar $bmnSuratKeluar)
     {
-        $bmnSuratKeluar = BmnSuratKeluar::find($id)->delete();
+        $bmnSuratKeluar->delete();
 
         return redirect()->route('bmn-surat-keluars.index')
             ->with('success', 'BmnSuratKeluar deleted successfully');

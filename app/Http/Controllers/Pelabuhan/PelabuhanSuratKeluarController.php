@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pelabuhan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
+use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Pelabuhan\PelabuhanSuratKeluar;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class PelabuhanSuratKeluarController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,7 +30,7 @@ class PelabuhanSuratKeluarController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -41,7 +42,7 @@ class PelabuhanSuratKeluarController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidationRequest $request)
     {
@@ -57,7 +58,7 @@ class PelabuhanSuratKeluarController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function show($id)
     {
@@ -70,7 +71,7 @@ class PelabuhanSuratKeluarController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function edit($id)
     {
@@ -84,9 +85,9 @@ class PelabuhanSuratKeluarController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  PelabuhanSuratKeluar $pelabuhanSuratKeluar
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, PelabuhanSuratKeluar $pelabuhanSuratKeluar)
+    public function update(UpdateValidationRequest $request, PelabuhanSuratKeluar $pelabuhanSuratKeluar)
     {
         request()->validate(PelabuhanSuratKeluar::$rules);
 
