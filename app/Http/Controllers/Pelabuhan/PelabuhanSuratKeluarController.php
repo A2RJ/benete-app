@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
 use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Pelabuhan\PelabuhanSuratKeluar;
-use Illuminate\Http\Request;
 
 /**
  * Class PelabuhanSuratKeluarController
@@ -46,9 +45,7 @@ class PelabuhanSuratKeluarController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(PelabuhanSuratKeluar::$rules);
-
-        $pelabuhanSuratKeluar = PelabuhanSuratKeluar::create($request->all());
+        PelabuhanSuratKeluar::create($request->validated());
 
         return redirect()->route('pelabuhan-surat-keluar.index')
             ->with('success', 'PelabuhanSuratKeluar created successfully.');
@@ -60,10 +57,8 @@ class PelabuhanSuratKeluarController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(PelabuhanSuratKeluar $pelabuhanSuratKeluar)
     {
-        $pelabuhanSuratKeluar = PelabuhanSuratKeluar::find($id);
-
         return view('Pelabuhan.surat-keluar.show', compact('pelabuhanSuratKeluar'));
     }
 
@@ -73,10 +68,8 @@ class PelabuhanSuratKeluarController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(PelabuhanSuratKeluar $pelabuhanSuratKeluar)
     {
-        $pelabuhanSuratKeluar = PelabuhanSuratKeluar::find($id);
-
         return view('Pelabuhan.surat-keluar.edit', compact('pelabuhanSuratKeluar'));
     }
 
@@ -89,9 +82,7 @@ class PelabuhanSuratKeluarController extends Controller
      */
     public function update(UpdateValidationRequest $request, PelabuhanSuratKeluar $pelabuhanSuratKeluar)
     {
-        request()->validate(PelabuhanSuratKeluar::$rules);
-
-        $pelabuhanSuratKeluar->update($request->all());
+        $pelabuhanSuratKeluar->update($request->validated());
 
         return redirect()->route('pelabuhan-surat-keluar.index')
             ->with('success', 'PelabuhanSuratKeluar updated successfully');
@@ -102,9 +93,9 @@ class PelabuhanSuratKeluarController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(PelabuhanSuratKeluar $pelabuhanSuratKeluar)
     {
-        $pelabuhanSuratKeluar = PelabuhanSuratKeluar::find($id)->delete();
+        $pelabuhanSuratKeluar->delete();
 
         return redirect()->route('pelabuhan-surat-keluar.index')
             ->with('success', 'PelabuhanSuratKeluar deleted successfully');

@@ -33,7 +33,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -49,9 +49,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(User::$rules);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
 
-        $user = User::create($request->all());
+        User::create($request->all());
 
         return redirect()->route('users.index')
             ->with('success', 'User created successfully.');
@@ -88,11 +92,15 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  User $user
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, User $user)
     {
-        request()->validate(User::$rules);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
 
         $user->update($request->all());
 

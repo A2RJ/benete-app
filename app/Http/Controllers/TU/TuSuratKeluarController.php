@@ -46,9 +46,7 @@ class TuSuratKeluarController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(TuSuratKeluar::$rules);
-
-        $tuSuratKeluar = TuSuratKeluar::create($request->all());
+        TuSuratKeluar::create($request->validated());
 
         return redirect()->route('tu-surat-keluar.index')
             ->with('success', 'TuSuratKeluar created successfully.');
@@ -60,10 +58,8 @@ class TuSuratKeluarController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
-    {
-        $tuSuratKeluar = TuSuratKeluar::find($id);
-
+    public function show(TuSuratKeluar $tuSuratKeluar)
+    { 
         return view('TU.surat-keluar.show', compact('tuSuratKeluar'));
     }
 
@@ -73,10 +69,8 @@ class TuSuratKeluarController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
-    {
-        $tuSuratKeluar = TuSuratKeluar::find($id);
-
+    public function edit(TuSuratKeluar $tuSuratKeluar)
+    { 
         return view('TU.surat-keluar.edit', compact('tuSuratKeluar'));
     }
 
@@ -89,9 +83,7 @@ class TuSuratKeluarController extends Controller
      */
     public function update(UpdateValidationRequest $request, TuSuratKeluar $tuSuratKeluar)
     {
-        request()->validate(TuSuratKeluar::$rules);
-
-        $tuSuratKeluar->update($request->all());
+        $tuSuratKeluar->update($request->validated());
 
         return redirect()->route('tu-surat-keluar.index')
             ->with('success', 'TuSuratKeluar updated successfully');
@@ -102,9 +94,9 @@ class TuSuratKeluarController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(TuSuratKeluar $tuSuratKeluar)
     {
-        $tuSuratKeluar = TuSuratKeluar::find($id)->delete();
+        $tuSuratKeluar->delete();
 
         return redirect()->route('tu-surat-keluar.index')
             ->with('success', 'TuSuratKeluar deleted successfully');

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BMN\StoreValidationRequest;
-use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Keuangan\KeuDisposisi;
 use Illuminate\Http\Request;
 
@@ -44,9 +42,10 @@ class KeuDisposisiController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreValidationRequest $request)
+    public function store(Request $request)
     {
-        KeuDisposisi::create($request->validated());
+        $payload = $request->validate(KeuDisposisi::$rules);
+        KeuDisposisi::create($payload);
 
         return redirect()->route('keu-disposisi.index')
             ->with('success', 'KeuDisposisi created successfully.');
@@ -81,9 +80,10 @@ class KeuDisposisiController extends Controller
      * @param  KeuDisposisi $keuDisposisi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateValidationRequest $request, KeuDisposisi $keuDisposisi)
+    public function update(Request $request, KeuDisposisi $keuDisposisi)
     {
-        $keuDisposisi->update($request->validated());
+        $payload = $request->validate($keuDisposisi::$rules);
+        $keuDisposisi->update($payload);
 
         return redirect()->route('keu-disposisi.index')
             ->with('success', 'KeuDisposisi updated successfully');

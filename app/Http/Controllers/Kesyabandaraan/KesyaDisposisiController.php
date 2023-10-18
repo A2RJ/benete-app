@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Kesyabandaraan;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\BMN\StoreValidationRequest;
-use App\Http\Requests\BMN\UpdateValidationRequest;
+use App\Http\Controllers\Controller; 
 use App\Models\Kesyabandaraan\KesyaDisposisi;
 use Illuminate\Http\Request;
 
@@ -44,9 +42,10 @@ class KesyaDisposisiController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreValidationRequest $request)
+    public function store(Request $request)
     {
-        KesyaDisposisi::create($request->validated());
+        $payload = $request->validate(KesyaDisposisi::$rules);
+        KesyaDisposisi::create($payload);
 
         return redirect()->route('kesya-disposisi.index')
             ->with('success', 'KesyaDisposisi created successfully.');
@@ -81,9 +80,10 @@ class KesyaDisposisiController extends Controller
      * @param  KesyaDisposisi $kesyaDisposisi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateValidationRequest $request, KesyaDisposisi $kesyaDisposisi)
+    public function update(Request $request, KesyaDisposisi $kesyaDisposisi)
     {
-        $kesyaDisposisi->update($request->validated());
+        $payload = $request->validate(KesyaDisposisi::$rules);
+        $kesyaDisposisi->update($payload);
 
         return redirect()->route('kesya-disposisi.index')
             ->with('success', 'KesyaDisposisi updated successfully');

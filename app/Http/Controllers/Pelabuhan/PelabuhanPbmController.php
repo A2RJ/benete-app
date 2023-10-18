@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
 use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Pelabuhan\PelabuhanPbm;
-use Illuminate\Http\Request;
 
 /**
  * Class PelabuhanPbmController
@@ -46,9 +45,7 @@ class PelabuhanPbmController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(PelabuhanPbm::$rules);
-
-        $pelabuhanPbm = PelabuhanPbm::create($request->all());
+        PelabuhanPbm::create($request->validated());
 
         return redirect()->route('pelabuhan-pbm.index')
             ->with('success', 'PelabuhanPbm created successfully.');
@@ -60,10 +57,8 @@ class PelabuhanPbmController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(PelabuhanPbm $pelabuhanPbm)
     {
-        $pelabuhanPbm = PelabuhanPbm::find($id);
-
         return view('Pelabuhan.pbm.show', compact('pelabuhanPbm'));
     }
 
@@ -73,10 +68,8 @@ class PelabuhanPbmController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(PelabuhanPbm $pelabuhanPbm)
     {
-        $pelabuhanPbm = PelabuhanPbm::find($id);
-
         return view('Pelabuhan.pbm.edit', compact('pelabuhanPbm'));
     }
 
@@ -89,9 +82,7 @@ class PelabuhanPbmController extends Controller
      */
     public function update(UpdateValidationRequest $request, PelabuhanPbm $pelabuhanPbm)
     {
-        request()->validate(PelabuhanPbm::$rules);
-
-        $pelabuhanPbm->update($request->all());
+        $pelabuhanPbm->update($request->validated());
 
         return redirect()->route('pelabuhan-pbm.index')
             ->with('success', 'PelabuhanPbm updated successfully');
@@ -102,9 +93,9 @@ class PelabuhanPbmController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(PelabuhanPbm $pelabuhanPbm)
     {
-        $pelabuhanPbm = PelabuhanPbm::find($id)->delete();
+        $pelabuhanPbm->delete();
 
         return redirect()->route('pelabuhan-pbm.index')
             ->with('success', 'PelabuhanPbm deleted successfully');

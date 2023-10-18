@@ -46,9 +46,7 @@ class TuKontrakKerjaSamaController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(TuKontrakKerjaSama::$rules);
-
-        $tuKontrakKerjaSama = TuKontrakKerjaSama::create($request->all());
+        TuKontrakKerjaSama::create($request->validated());
 
         return redirect()->route('tu-kontrak-kerja-sama.index')
             ->with('success', 'TuKontrakKerjaSama created successfully.');
@@ -60,10 +58,8 @@ class TuKontrakKerjaSamaController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
-    {
-        $tuKontrakKerjaSama = TuKontrakKerjaSama::find($id);
-
+    public function show(TuKontrakKerjaSama $tuKontrakKerjaSama)
+    { 
         return view('TU.kontrak-kerja-sama.show', compact('tuKontrakKerjaSama'));
     }
 
@@ -73,10 +69,8 @@ class TuKontrakKerjaSamaController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
-    {
-        $tuKontrakKerjaSama = TuKontrakKerjaSama::find($id);
-
+    public function edit(TuKontrakKerjaSama $tuKontrakKerjaSama)
+    { 
         return view('TU.kontrak-kerja-sama.edit', compact('tuKontrakKerjaSama'));
     }
 
@@ -89,9 +83,7 @@ class TuKontrakKerjaSamaController extends Controller
      */
     public function update(UpdateValidationRequest $request, TuKontrakKerjaSama $tuKontrakKerjaSama)
     {
-        request()->validate(TuKontrakKerjaSama::$rules);
-
-        $tuKontrakKerjaSama->update($request->all());
+        $tuKontrakKerjaSama->update($request->validated());
 
         return redirect()->route('tu-kontrak-kerja-sama.index')
             ->with('success', 'TuKontrakKerjaSama updated successfully');
@@ -102,9 +94,9 @@ class TuKontrakKerjaSamaController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(TuKontrakKerjaSama $tuKontrakKerjaSama)
     {
-        $tuKontrakKerjaSama = TuKontrakKerjaSama::find($id)->delete();
+        $tuKontrakKerjaSama->delete();
 
         return redirect()->route('tu-kontrak-kerja-sama.index')
             ->with('success', 'TuKontrakKerjaSama deleted successfully');

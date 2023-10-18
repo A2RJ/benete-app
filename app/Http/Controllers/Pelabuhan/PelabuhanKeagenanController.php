@@ -46,9 +46,7 @@ class PelabuhanKeagenanController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(PelabuhanKeagenan::$rules);
-
-        $pelabuhanKeagenan = PelabuhanKeagenan::create($request->all());
+        PelabuhanKeagenan::create($request->validated());
 
         return redirect()->route('pelabuhan-keagenan.index')
             ->with('success', 'PelabuhanKeagenan created successfully.');
@@ -60,10 +58,8 @@ class PelabuhanKeagenanController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
-    {
-        $pelabuhanKeagenan = PelabuhanKeagenan::find($id);
-
+    public function show(PelabuhanKeagenan $pelabuhanKeagenan)
+    {  
         return view('Pelabuhan.keagenan.show', compact('pelabuhanKeagenan'));
     }
 
@@ -73,10 +69,8 @@ class PelabuhanKeagenanController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
-    {
-        $pelabuhanKeagenan = PelabuhanKeagenan::find($id);
-
+    public function edit(PelabuhanKeagenan $pelabuhanKeagenan)
+    { 
         return view('Pelabuhan.keagenan.edit', compact('pelabuhanKeagenan'));
     }
 
@@ -89,9 +83,7 @@ class PelabuhanKeagenanController extends Controller
      */
     public function update(UpdateValidationRequest $request, PelabuhanKeagenan $pelabuhanKeagenan)
     {
-        request()->validate(PelabuhanKeagenan::$rules);
-
-        $pelabuhanKeagenan->update($request->all());
+        $pelabuhanKeagenan->update($request->validated());
 
         return redirect()->route('pelabuhan-keagenan.index')
             ->with('success', 'PelabuhanKeagenan updated successfully');
@@ -102,9 +94,9 @@ class PelabuhanKeagenanController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(PelabuhanKeagenan $pelabuhanKeagenan)
     {
-        $pelabuhanKeagenan = PelabuhanKeagenan::find($id)->delete();
+        $pelabuhanKeagenan->delete();
 
         return redirect()->route('pelabuhan-keagenan.index')
             ->with('success', 'PelabuhanKeagenan deleted successfully');

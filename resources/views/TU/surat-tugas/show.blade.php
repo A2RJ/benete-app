@@ -49,23 +49,23 @@
 
                         <div class="form-group">
                             <strong>Nama:</strong>
-                            {{ $tuSuratTuga->nama }}
+                            {{ $tuSuratTugas->nama }}
                         </div>
                         <div class="form-group">
                             <strong>Tanggal Masuk:</strong>
-                            {{ $tuSuratTuga->tanggal_masuk }}
+                            {{ $tuSuratTugas->tanggal_masuk }}
                         </div>
                         <div class="form-group">
                             <strong>Asal:</strong>
-                            {{ $tuSuratTuga->asal }}
+                            {{ $tuSuratTugas->asal }}
                         </div>
                         <div class="form-group">
                             <strong>Perihal:</strong>
-                            {{ $tuSuratTuga->perihal }}
+                            {{ $tuSuratTugas->perihal }}
                         </div>
                         <div class="form-group">
                             <strong>Lampiran:</strong>
-                            {{ $tuSuratTuga->lampiran }}
+                            {{ $tuSuratTugas->lampiran }}
                         </div>
 
                     </div>

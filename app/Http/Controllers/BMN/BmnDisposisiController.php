@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\BMN;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BMN\StoreValidationRequest;
-use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\BMN\BmnDisposisi;
+use Illuminate\Http\Request;
 
 /**
  * Class BmnDisposisiController
@@ -43,9 +42,10 @@ class BmnDisposisiController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreValidationRequest $request)
+    public function store(Request $request)
     {
-        BmnDisposisi::create($request->validated());
+        $payload = $request->validate(BmnDisposisi::$rules);
+        BmnDisposisi::create($payload);
 
         return redirect()->route('bmn-disposisi.index')
             ->with('success', 'BmnDisposisi created successfully.');
@@ -80,9 +80,10 @@ class BmnDisposisiController extends Controller
      * @param  BmnDisposisi $bmnDisposisi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateValidationRequest $request, BmnDisposisi $bmnDisposisi)
+    public function update(Request $request, BmnDisposisi $bmnDisposisi)
     {
-        $bmnDisposisi->update($request->validated());
+        $payload = $request->validate(BmnDisposisi::$rules);
+        $bmnDisposisi->update($payload);
 
         return redirect()->route('bmn-disposisi.index')
             ->with('success', 'BmnDisposisi updated successfully');

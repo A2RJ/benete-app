@@ -44,11 +44,10 @@ class TuDisposisiController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreValidationRequest $request)
+    public function store(Request $request)
     {
-        request()->validate(TuDisposisi::$rules);
-
-        $tuDisposisi = TuDisposisi::create($request->all());
+        $payload = $request->validate(TuDisposisi::$rules);
+        TuDisposisi::create($payload);
 
         return redirect()->route('tu-disposisi.index')
             ->with('success', 'TuDisposisi created successfully.');
@@ -60,10 +59,8 @@ class TuDisposisiController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(TuDisposisi $tuDisposisi)
     {
-        $tuDisposisi = TuDisposisi::find($id);
-
         return view('TU.disposisi.show', compact('tuDisposisi'));
     }
 
@@ -73,10 +70,8 @@ class TuDisposisiController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(TuDisposisi $tuDisposisi)
     {
-        $tuDisposisi = TuDisposisi::find($id);
-
         return view('TU.disposisi.edit', compact('tuDisposisi'));
     }
 
@@ -87,11 +82,10 @@ class TuDisposisiController extends Controller
      * @param  TuDisposisi $tuDisposisi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateValidationRequest $request, TuDisposisi $tuDisposisi)
+    public function update(Request $request, TuDisposisi $tuDisposisi)
     {
-        request()->validate(TuDisposisi::$rules);
-
-        $tuDisposisi->update($request->all());
+        $payload = $request->validate(TuDisposisi::$rules);
+        $tuDisposisi->update($payload);
 
         return redirect()->route('tu-disposisi.index')
             ->with('success', 'TuDisposisi updated successfully');
@@ -102,9 +96,9 @@ class TuDisposisiController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(TuDisposisi $tuDisposisi)
     {
-        $tuDisposisi = TuDisposisi::find($id)->delete();
+        $tuDisposisi->delete();
 
         return redirect()->route('tu-disposisi.index')
             ->with('success', 'TuDisposisi deleted successfully');

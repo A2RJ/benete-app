@@ -46,9 +46,7 @@ class TuSuratMasukController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(TuSuratMasuk::$rules);
-
-        $tuSuratMasuk = TuSuratMasuk::create($request->all());
+        TuSuratMasuk::create($request->validated());
 
         return redirect()->route('tu-surat-masuk.index')
             ->with('success', 'TuSuratMasuk created successfully.');
@@ -60,10 +58,8 @@ class TuSuratMasukController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
-    {
-        $tuSuratMasuk = TuSuratMasuk::find($id);
-
+    public function show(TuSuratMasuk $tuSuratMasuk)
+    { 
         return view('TU.surat-masuk.show', compact('tuSuratMasuk'));
     }
 
@@ -73,10 +69,8 @@ class TuSuratMasukController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
-    {
-        $tuSuratMasuk = TuSuratMasuk::find($id);
-
+    public function edit(TuSuratMasuk $tuSuratMasuk)
+    { 
         return view('TU.surat-masuk.edit', compact('tuSuratMasuk'));
     }
 
@@ -89,9 +83,7 @@ class TuSuratMasukController extends Controller
      */
     public function update(UpdateValidationRequest $request, TuSuratMasuk $tuSuratMasuk)
     {
-        request()->validate(TuSuratMasuk::$rules);
-
-        $tuSuratMasuk->update($request->all());
+        $tuSuratMasuk->update($request->validated());
 
         return redirect()->route('tu-surat-masuk.index')
             ->with('success', 'TuSuratMasuk updated successfully');
@@ -102,9 +94,9 @@ class TuSuratMasukController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(TuSuratMasuk $tuSuratMasuk)
     {
-        $tuSuratMasuk = TuSuratMasuk::find($id)->delete();
+        $tuSuratMasuk->delete();
 
         return redirect()->route('tu-surat-masuk.index')
             ->with('success', 'TuSuratMasuk deleted successfully');

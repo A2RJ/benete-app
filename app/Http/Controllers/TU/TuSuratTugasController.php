@@ -36,8 +36,8 @@ class TuSuratTugasController extends Controller
      */
     public function create(): View
     {
-        $tuSuratTuga = new TuSuratTugas();
-        return view('TU.surat-tugas.create', compact('tuSuratTuga'));
+        $tuSuratTugas = new TuSuratTugas();
+        return view('TU.surat-tugas.create', compact('tuSuratTugas'));
     }
 
     /**
@@ -48,9 +48,7 @@ class TuSuratTugasController extends Controller
      */
     public function store(StoreValidationRequest $request): RedirectResponse
     {
-        request()->validate(TuSuratTugas::$rules);
-
-        $tuSuratTuga = TuSuratTugas::create($request->all());
+        TuSuratTugas::create($request->validated());
 
         return redirect()->route('tu-surat-tugas.index')
             ->with('success', 'TuSuratTugas created successfully.');
@@ -62,11 +60,9 @@ class TuSuratTugasController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id): View
+    public function show(TuSuratTugas $tuSuratTugas): View
     {
-        $tuSuratTuga = TuSuratTugas::find($id);
-
-        return view('TU.surat-tugas.show', compact('tuSuratTuga'));
+        return view('TU.surat-tugas.show', compact('tuSuratTugas'));
     }
 
     /**
@@ -75,25 +71,21 @@ class TuSuratTugasController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id): View
+    public function edit(TuSuratTugas $tuSuratTugas): View
     {
-        $tuSuratTuga = TuSuratTugas::find($id);
-
-        return view('TU.surat-tugas.edit', compact('tuSuratTuga'));
+        return view('TU.surat-tugas.edit', compact('tuSuratTugas'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  TuSuratTugas $tuSuratTuga
+     * @param  TuSuratTugas $tuSuratTugas
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateValidationRequest $request, TuSuratTugas $tuSuratTuga): RedirectResponse
+    public function update(UpdateValidationRequest $request, TuSuratTugas $tuSuratTugas): RedirectResponse
     {
-        request()->validate(TuSuratTugas::$rules);
-
-        $tuSuratTuga->update($request->all());
+        $tuSuratTugas->update($request->validated());
 
         return redirect()->route('tu-surat-tugas.index')
             ->with('success', 'TuSuratTugas updated successfully');
@@ -104,9 +96,9 @@ class TuSuratTugasController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(TuSuratTugas $tuSuratTugas)
     {
-        $tuSuratTuga = TuSuratTugas::find($id)->delete();
+        $tuSuratTugas->delete();
 
         return redirect()->route('tu-surat-tugas.index')
             ->with('success', 'TuSuratTugas deleted successfully');

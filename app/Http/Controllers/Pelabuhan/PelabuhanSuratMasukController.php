@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Pelabuhan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
 use App\Http\Requests\BMN\UpdateValidationRequest;
-use App\Models\Pelabuhan\PelabuhanSuratMasuk;
-use Illuminate\Http\Request;
+use App\Models\Pelabuhan\PelabuhanSuratMasuk; 
 
 /**
  * Class PelabuhanSuratMasukController
@@ -46,9 +45,7 @@ class PelabuhanSuratMasukController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(PelabuhanSuratMasuk::$rules);
-
-        $pelabuhanSuratMasuk = PelabuhanSuratMasuk::create($request->all());
+        PelabuhanSuratMasuk::create($request->validated());
 
         return redirect()->route('pelabuhan-surat-masuk.index')
             ->with('success', 'PelabuhanSuratMasuk created successfully.');
@@ -60,10 +57,8 @@ class PelabuhanSuratMasukController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(PelabuhanSuratMasuk $pelabuhanSuratMasuk)
     {
-        $pelabuhanSuratMasuk = PelabuhanSuratMasuk::find($id);
-
         return view('Pelabuhan.surat-masuk.show', compact('pelabuhanSuratMasuk'));
     }
 
@@ -73,10 +68,8 @@ class PelabuhanSuratMasukController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(PelabuhanSuratMasuk $pelabuhanSuratMasuk)
     {
-        $pelabuhanSuratMasuk = PelabuhanSuratMasuk::find($id);
-
         return view('Pelabuhan.surat-masuk.edit', compact('pelabuhanSuratMasuk'));
     }
 
@@ -89,9 +82,7 @@ class PelabuhanSuratMasukController extends Controller
      */
     public function update(UpdateValidationRequest $request, PelabuhanSuratMasuk $pelabuhanSuratMasuk)
     {
-        request()->validate(PelabuhanSuratMasuk::$rules);
-
-        $pelabuhanSuratMasuk->update($request->all());
+        $pelabuhanSuratMasuk->update($request->validated());
 
         return redirect()->route('pelabuhan-surat-masuk.index')
             ->with('success', 'PelabuhanSuratMasuk updated successfully');
@@ -102,9 +93,9 @@ class PelabuhanSuratMasukController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(PelabuhanSuratMasuk $pelabuhanSuratMasuk)
     {
-        $pelabuhanSuratMasuk = PelabuhanSuratMasuk::find($id)->delete();
+        $pelabuhanSuratMasuk->delete();
 
         return redirect()->route('pelabuhan-surat-masuk.index')
             ->with('success', 'PelabuhanSuratMasuk deleted successfully');

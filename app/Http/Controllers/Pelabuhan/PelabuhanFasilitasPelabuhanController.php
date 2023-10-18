@@ -46,9 +46,7 @@ class PelabuhanFasilitasPelabuhanController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(PelabuhanFasilitasPelabuhan::$rules);
-
-        $pelabuhanFasilitasPelabuhan = PelabuhanFasilitasPelabuhan::create($request->all());
+        PelabuhanFasilitasPelabuhan::create($request->validated());
 
         return redirect()->route('pelabuhan-fasilitas-pelabuhan.index')
             ->with('success', 'PelabuhanFasilitasPelabuhan created successfully.');
@@ -60,10 +58,8 @@ class PelabuhanFasilitasPelabuhanController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(PelabuhanFasilitasPelabuhan $pelabuhanFasilitasPelabuhan)
     {
-        $pelabuhanFasilitasPelabuhan = PelabuhanFasilitasPelabuhan::find($id);
-
         return view('Pelabuhan.fasilitas-pelabuhan.show', compact('pelabuhanFasilitasPelabuhan'));
     }
 
@@ -73,10 +69,8 @@ class PelabuhanFasilitasPelabuhanController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(PelabuhanFasilitasPelabuhan $pelabuhanFasilitasPelabuhan)
     {
-        $pelabuhanFasilitasPelabuhan = PelabuhanFasilitasPelabuhan::find($id);
-
         return view('Pelabuhan.fasilitas-pelabuhan.edit', compact('pelabuhanFasilitasPelabuhan'));
     }
 
@@ -89,9 +83,7 @@ class PelabuhanFasilitasPelabuhanController extends Controller
      */
     public function update(UpdateValidationRequest $request, PelabuhanFasilitasPelabuhan $pelabuhanFasilitasPelabuhan)
     {
-        request()->validate(PelabuhanFasilitasPelabuhan::$rules);
-
-        $pelabuhanFasilitasPelabuhan->update($request->all());
+        $pelabuhanFasilitasPelabuhan->update($request->validated());
 
         return redirect()->route('pelabuhan-fasilitas-pelabuhan.index')
             ->with('success', 'PelabuhanFasilitasPelabuhan updated successfully');
@@ -102,9 +94,9 @@ class PelabuhanFasilitasPelabuhanController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(PelabuhanFasilitasPelabuhan $pelabuhanFasilitasPelabuhan)
     {
-        $pelabuhanFasilitasPelabuhan = PelabuhanFasilitasPelabuhan::find($id)->delete();
+        $pelabuhanFasilitasPelabuhan->delete();
 
         return redirect()->route('pelabuhan-fasilitas-pelabuhan.index')
             ->with('success', 'PelabuhanFasilitasPelabuhan deleted successfully');

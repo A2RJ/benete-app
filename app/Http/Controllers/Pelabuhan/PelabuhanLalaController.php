@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BMN\StoreValidationRequest;
 use App\Http\Requests\BMN\UpdateValidationRequest;
 use App\Models\Pelabuhan\PelabuhanLala;
-use Illuminate\Http\Request;
 
 /**
  * Class PelabuhanLalaController
@@ -46,9 +45,7 @@ class PelabuhanLalaController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(PelabuhanLala::$rules);
-
-        $pelabuhanLala = PelabuhanLala::create($request->all());
+        PelabuhanLala::create($request->validated());
 
         return redirect()->route('pelabuhan-lala.index')
             ->with('success', 'PelabuhanLala created successfully.');
@@ -60,10 +57,8 @@ class PelabuhanLalaController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(PelabuhanLala $pelabuhanLala)
     {
-        $pelabuhanLala = PelabuhanLala::find($id);
-
         return view('Pelabuhan.lala.show', compact('pelabuhanLala'));
     }
 
@@ -73,10 +68,8 @@ class PelabuhanLalaController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(PelabuhanLala $pelabuhanLala)
     {
-        $pelabuhanLala = PelabuhanLala::find($id);
-
         return view('Pelabuhan.lala.edit', compact('pelabuhanLala'));
     }
 
@@ -89,9 +82,7 @@ class PelabuhanLalaController extends Controller
      */
     public function update(UpdateValidationRequest $request, PelabuhanLala $pelabuhanLala)
     {
-        request()->validate(PelabuhanLala::$rules);
-
-        $pelabuhanLala->update($request->all());
+        $pelabuhanLala->update($request->validated());
 
         return redirect()->route('pelabuhan-lala.index')
             ->with('success', 'PelabuhanLala updated successfully');
@@ -102,9 +93,9 @@ class PelabuhanLalaController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(PelabuhanLala $pelabuhanLala)
     {
-        $pelabuhanLala = PelabuhanLala::find($id)->delete();
+        $pelabuhanLala->delete();
 
         return redirect()->route('pelabuhan-lala.index')
             ->with('success', 'PelabuhanLala deleted successfully');

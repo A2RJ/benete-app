@@ -46,7 +46,7 @@
                         <h3 class="card-title">Surat Tuga Details</h3>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('tu-surat-tugas.update', $tuSuratTuga->id) }}" id="ajaxForm" role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('tu-surat-tugas.update', $tuSuratTugas->id) }}" id="ajaxForm" role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
                             @include('TU.surat-tuga.form')

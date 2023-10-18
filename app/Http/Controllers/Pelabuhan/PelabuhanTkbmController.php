@@ -46,9 +46,7 @@ class PelabuhanTkbmController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        request()->validate(PelabuhanTkbm::$rules);
-
-        $pelabuhanTkbm = PelabuhanTkbm::create($request->all());
+        PelabuhanTkbm::create($request->validated());
 
         return redirect()->route('pelabuhan-tkbm.index')
             ->with('success', 'PelabuhanTkbm created successfully.');
@@ -60,10 +58,8 @@ class PelabuhanTkbmController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(PelabuhanTkbm $pelabuhanTkbm)
     {
-        $pelabuhanTkbm = PelabuhanTkbm::find($id);
-
         return view('Pelabuhan.tkbm.show', compact('pelabuhanTkbm'));
     }
 
@@ -73,10 +69,8 @@ class PelabuhanTkbmController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(PelabuhanTkbm $pelabuhanTkbm)
     {
-        $pelabuhanTkbm = PelabuhanTkbm::find($id);
-
         return view('Pelabuhan.tkbm.edit', compact('pelabuhanTkbm'));
     }
 
@@ -89,9 +83,7 @@ class PelabuhanTkbmController extends Controller
      */
     public function update(UpdateValidationRequest $request, PelabuhanTkbm $pelabuhanTkbm)
     {
-        request()->validate(PelabuhanTkbm::$rules);
-
-        $pelabuhanTkbm->update($request->all());
+        $pelabuhanTkbm->update($request->validated());
 
         return redirect()->route('pelabuhan-tkbm.index')
             ->with('success', 'PelabuhanTkbm updated successfully');
@@ -102,9 +94,9 @@ class PelabuhanTkbmController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(PelabuhanTkbm $pelabuhanTkbm)
     {
-        $pelabuhanTkbm = PelabuhanTkbm::find($id)->delete();
+        $pelabuhanTkbm->delete();
 
         return redirect()->route('pelabuhan-tkbm.index')
             ->with('success', 'PelabuhanTkbm deleted successfully');

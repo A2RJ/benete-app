@@ -88,16 +88,16 @@ Surat Tuga
                             </thead>
 
                             <tbody>
-                                @forelse ($tuSuratTugas as $tuSuratTuga)
+                                @forelse ($tuSuratTugas as $tuSuratTugas)
                                 <tr>
-                                    <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select tuSuratTuga"></td>
+                                    <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select tuSuratTugas"></td>
                                     <td>{{ ++$i }}</td>
 
-                                    <td>{{ $tuSuratTuga->nama }}</td>
-                                    <td>{{ $tuSuratTuga->tanggal_masuk }}</td>
-                                    <td>{{ $tuSuratTuga->asal }}</td>
-                                    <td>{{ $tuSuratTuga->perihal }}</td>
-                                    <td>{{ $tuSuratTuga->lampiran }}</td>
+                                    <td>{{ $tuSuratTugas->nama }}</td>
+                                    <td>{{ $tuSuratTugas->tanggal_masuk }}</td>
+                                    <td>{{ $tuSuratTugas->asal }}</td>
+                                    <td>{{ $tuSuratTugas->perihal }}</td>
+                                    <td>{{ $tuSuratTugas->lampiran }}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">
@@ -106,13 +106,13 @@ Surat Tuga
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="{{ route('tu-surat-tugas.show',$tuSuratTuga->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('tu-surat-tugas.show',$tuSuratTugas->id) }}">
                                                         View
                                                     </a>
-                                                    <a class="dropdown-item" href="{{ route('tu-surat-tugas.edit',$tuSuratTuga->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('tu-surat-tugas.edit',$tuSuratTugas->id) }}">
                                                         Edit
                                                     </a>
-                                                    <form action="{{ route('tu-surat-tugas.destroy',$tuSuratTuga->id) }}" method="POST">
+                                                    <form action="{{ route('tu-surat-tugas.destroy',$tuSuratTugas->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>

@@ -44,11 +44,11 @@ class PelabuhanDisposisiController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreValidationRequest $request)
+    public function store(Request $request)
     {
         request()->validate(PelabuhanDisposisi::$rules);
 
-        $pelabuhanDisposisi = PelabuhanDisposisi::create($request->all());
+        PelabuhanDisposisi::create($request->only(PelabuhanDisposisi::$rules));
 
         return redirect()->route('pelabuhan-disposisi.index')
             ->with('success', 'PelabuhanDisposisi created successfully.');
@@ -60,10 +60,8 @@ class PelabuhanDisposisiController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(PelabuhanDisposisi $pelabuhanDisposisi)
     {
-        $pelabuhanDisposisi = PelabuhanDisposisi::find($id);
-
         return view('Pelabuhan.disposisi.show', compact('pelabuhanDisposisi'));
     }
 
@@ -73,10 +71,8 @@ class PelabuhanDisposisiController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(PelabuhanDisposisi $pelabuhanDisposisi)
     {
-        $pelabuhanDisposisi = PelabuhanDisposisi::find($id);
-
         return view('Pelabuhan.disposisi.edit', compact('pelabuhanDisposisi'));
     }
 
@@ -87,11 +83,11 @@ class PelabuhanDisposisiController extends Controller
      * @param  PelabuhanDisposisi $pelabuhanDisposisi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateValidationRequest $request, PelabuhanDisposisi $pelabuhanDisposisi)
+    public function update(Request $request, PelabuhanDisposisi $pelabuhanDisposisi)
     {
-        request()->validate(PelabuhanDisposisi::$rules);
+        $payload = $request->validate(PelabuhanDisposisi::$rules);
 
-        $pelabuhanDisposisi->update($request->all());
+        $pelabuhanDisposisi->update($payload);
 
         return redirect()->route('pelabuhan-disposisi.index')
             ->with('success', 'PelabuhanDisposisi updated successfully');
@@ -102,9 +98,9 @@ class PelabuhanDisposisiController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(PelabuhanDisposisi $pelabuhanDisposisi)
     {
-        $pelabuhanDisposisi = PelabuhanDisposisi::find($id)->delete();
+        $pelabuhanDisposisi->delete();
 
         return redirect()->route('pelabuhan-disposisi.index')
             ->with('success', 'PelabuhanDisposisi deleted successfully');
