@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Keuangan;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -46,7 +47,9 @@ class KeuKuasaPenggunaAnggaranController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        KeuKuasaPenggunaAnggaran::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'keuangan/kuasa_pengguna_anggaran');
+        KeuKuasaPenggunaAnggaran::create($payload);
 
         return redirect()->route('keu-kuasa-pengguna-anggaran.index')
             ->with('success', 'KeuKuasaPenggunaAnggaran created successfully.');

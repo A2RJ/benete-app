@@ -2,8 +2,10 @@
 
 namespace App\Models\Keuangan;
 
+use App\Helpers\FileHelper;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class KeuSuratMasuk
@@ -45,6 +47,21 @@ class KeuSuratMasuk extends Model
    * @var array
    */
   protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
+
+  public static function boot()
+  {
+    parent::boot();
+
+    self::creating(function ($model) {
+      $model->lampiran = FileHelper::upload(request(), 'lampiran', 'keuangan/surat_masuk');
+    });
+
+    self::updating(function ($model) {
+      if (request()->hasFile('lampiran')) {
+        $model->lampiran = FileHelper::upload(request(), 'lampiran', 'keuangan/surat_masuk');
+      }
+    });
+  }
 
   public function disposisi()
   {

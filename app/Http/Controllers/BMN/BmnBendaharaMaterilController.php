@@ -81,6 +81,12 @@ class BmnBendaharaMaterilController extends Controller
      */
     public function update(UpdateValidationRequest $request, BmnBendaharaMateril $bmnBendaharaMateril)
     {
+        $payload = $request->validated();
+        if ($request->hasFile('lampiran')) {
+            $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'bmn/bendahara_materil');
+        } else {
+            unset($payload['lampiran']);
+        }
         $bmnBendaharaMateril->update($request->validated());
 
         return redirect()->route('bmn-bendahara-materils.index')

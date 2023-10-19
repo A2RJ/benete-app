@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\TU;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -46,7 +47,9 @@ class TuKontrakKerjaSamaController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        TuKontrakKerjaSama::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'tu/kontrak_kerjasama');
+        TuKontrakKerjaSama::create($payload);
 
         return redirect()->route('tu-kontrak-kerja-sama.index')
             ->with('success', 'TuKontrakKerjaSama created successfully.');

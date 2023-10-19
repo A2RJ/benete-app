@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pelabuhan;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -46,7 +47,9 @@ class PelabuhanTkbmController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        PelabuhanTkbm::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'pelabuhan/tkbm');
+        PelabuhanTkbm::create($payload);
 
         return redirect()->route('pelabuhan-tkbm.index')
             ->with('success', 'PelabuhanTkbm created successfully.');

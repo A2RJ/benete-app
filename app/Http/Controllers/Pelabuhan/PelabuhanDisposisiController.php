@@ -46,9 +46,8 @@ class PelabuhanDisposisiController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(PelabuhanDisposisi::$rules);
-
-        PelabuhanDisposisi::create($request->only(PelabuhanDisposisi::$rules));
+        $payload = $request->validate(PelabuhanDisposisi::$rules);
+        PelabuhanDisposisi::create($payload);
 
         return redirect()->route('pelabuhan-disposisi.index')
             ->with('success', 'PelabuhanDisposisi created successfully.');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Keuangan;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -46,7 +47,9 @@ class KeuPpkController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        KeuPpk::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'keuangan/ppk');
+        KeuPpk::create($payload);
 
         return redirect()->route('keu-ppk.index')
             ->with('success', 'KeuPpk created successfully.');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pelabuhan;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -46,7 +47,9 @@ class PelabuhanKeagenanController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        PelabuhanKeagenan::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'pelabuhan/keagenan');
+        PelabuhanKeagenan::create($payload);
 
         return redirect()->route('pelabuhan-keagenan.index')
             ->with('success', 'PelabuhanKeagenan created successfully.');

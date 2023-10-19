@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\TU;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -46,7 +47,9 @@ class TuSuratMasukController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        TuSuratMasuk::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'tu/surat_masuk');
+        TuSuratMasuk::create($payload);
 
         return redirect()->route('tu-surat-masuk.index')
             ->with('success', 'TuSuratMasuk created successfully.');
