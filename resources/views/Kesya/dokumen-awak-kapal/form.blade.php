@@ -41,7 +41,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('lampiran') }}</label>
     <div>
-        {{ Form::file('lampiran', null, [
+        {{ Form::file('lampiran', [
             'class' => 'form-control' . ($errors->has('lampiran') ? ' is-invalid' : ''),
             'placeholder' => 'Lampiran',
         ]) }}
