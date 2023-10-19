@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Kesyabandaraan;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -46,7 +47,9 @@ class KesyaSuratKeluarController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        KesyaSuratKeluar::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'kesya/surat_keluar');
+        KesyaSuratKeluar::create($payload);
 
         return redirect()->route('kesya-surat-keluar.index')
             ->with('success', 'KesyaSuratKeluar created successfully.');

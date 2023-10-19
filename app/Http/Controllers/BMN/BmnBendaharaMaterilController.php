@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BMN;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -41,7 +42,9 @@ class BmnBendaharaMaterilController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        BmnBendaharaMateril::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'bmn/bendahara_materil');
+        BmnBendaharaMateril::create($payload);
 
         return redirect()->route('bmn-bendahara-materils.index')
             ->with('success', 'BmnBendaharaMateril created successfully.');

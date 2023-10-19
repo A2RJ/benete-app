@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BMN;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -45,7 +46,9 @@ class BmnSuratMasukController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        BmnSuratMasuk::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'bmn/surat_masuk');
+        BmnSuratMasuk::create($payload);
 
         return redirect()->route('bmn-surat-masuks.index')
             ->with('success', 'BmnSuratMasuk created successfully.');

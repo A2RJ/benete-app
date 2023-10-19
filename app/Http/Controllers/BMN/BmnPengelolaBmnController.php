@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BMN;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -45,7 +46,9 @@ class BmnPengelolaBmnController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        BmnPengelolaBmn::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'bmn/pengelola_bmn');
+        BmnPengelolaBmn::create($payload);
 
         return redirect()->route('bmn-pengelola-bmns.index')
             ->with('success', 'BmnPengelolaBmn created successfully.');

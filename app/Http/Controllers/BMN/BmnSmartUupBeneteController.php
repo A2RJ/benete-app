@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BMN;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
@@ -45,7 +46,9 @@ class BmnSmartUupBeneteController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        BmnSmartUupBenete::create($request->validated());
+        $payload = $request->validated();
+        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'bmn/smartuup');
+        BmnSmartUupBenete::create($payload);
 
         return redirect()->route('bmn-smart-uup-benetes.index')
             ->with('success', 'BmnSmartUupBenete created successfully.');
