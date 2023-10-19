@@ -11,20 +11,6 @@ use Ramsey\Uuid\Uuid;
 
 class FileHelper
 {
-    public static function uploadBatch(Request $request, array $files, string $folder = ''): array
-    {
-        try {
-            $data = [];
-            foreach ($files as $file) {
-                $filename = self::upload($request, $file, $folder);
-                $data[$file] = $filename;
-            }
-            return $data;
-        } catch (Exception $e) {
-            throw $e;
-        }
-    }
-
     public static function upload(Request $request, string $file, string $folder = ''): string
     {
         try {
@@ -35,19 +21,19 @@ class FileHelper
 
             $extension = $uploadedFile->getClientOriginalExtension();
             $storagePath = $folder . '/' . date('Y') . '/' . date('m');
-            $filename = time() . '_' . Uuid::uuid4() . '.' . $extension;
+            $filename = $storagePath . '/' . time() . '_' . Uuid::uuid4() . '.' . $extension;
 
             if (!Storage::disk('local')->exists($storagePath)) {
                 Storage::disk('local')->makeDirectory($storagePath);
             }
 
-            $uploadedFile->storeAs($storagePath, $filename);
+            $uploadedFile->storeAs($filename);
 
-            if (!Storage::disk('local')->exists($storagePath . '/' . $filename)) {
+            if (!Storage::disk('local')->exists($filename)) {
                 throw new Exception("Failed to upload file {$filename}", 500);
             }
 
-            if ($uploadedFile->getSize() != Storage::disk('local')->size($storagePath . '/' . $filename)) {
+            if ($uploadedFile->getSize() != Storage::disk('local')->size($filename)) {
                 throw new Exception("Failed to upload file {$filename}", 500);
             }
 
@@ -55,17 +41,7 @@ class FileHelper
         } catch (Exception $e) {
             throw $e;
         }
-    }
-
-    public static function get($pathToImage)
-    {
-        try {
-            if (!Storage::exists($pathToImage)) throw new Error("File $pathToImage is not exist");
-            return Storage::get($pathToImage);
-        } catch (\Throwable $th) {
-            throw $th;
-        }
-    }
+    } 
 
     public static function readStream($pathToImage)
     {
@@ -75,25 +51,6 @@ class FileHelper
             }
             if (!Storage::exists($pathToImage)) throw new Error("File $pathToImage is not exist");
             return Storage::disk('local')->readStream($pathToImage);
-        } catch (\Throwable $th) {
-            throw $th;
-        }
-    }
-
-    public static function toBase64($pathToImage): string
-    {
-        $imageData = File::get($pathToImage);
-        $base64Image = 'data:image/' . File::extension($pathToImage) . ';base64,' . base64_encode($imageData);
-        return $base64Image;
-    }
-
-    public static function storageBase64($pathToImage)
-    {
-        try {
-            if (!Storage::exists($pathToImage)) throw new Error("File $pathToImage is not exist");
-            $imageData = Storage::get($pathToImage);
-            $file = 'data:image/' . File::extension($pathToImage) . ';base64,' . base64_encode($imageData);
-            return $file;
         } catch (\Throwable $th) {
             throw $th;
         }
