@@ -49,7 +49,7 @@ class BmnPengelolaBmnController extends Controller
         $payload = $request->validated();
         BmnPengelolaBmn::create($payload);
 
-        return redirect()->route('bmn-pengelola-bmns.index')
+        return redirect()->route('bmn-pengelola-bmn.index')
             ->with('success', 'BmnPengelolaBmn created successfully.');
     }
 
@@ -87,7 +87,7 @@ class BmnPengelolaBmnController extends Controller
         $payload = $request->validated();
         $bmnPengelolaBmn->update($payload);
 
-        return redirect()->route('bmn-pengelola-bmns.index')
+        return redirect()->route('bmn-pengelola-bmn.index')
             ->with('success', 'BmnPengelolaBmn updated successfully');
     }
 
@@ -100,7 +100,7 @@ class BmnPengelolaBmnController extends Controller
     {
         $bmnPengelolaBmn->delete();
 
-        return redirect()->route('bmn-pengelola-bmns.index')
+        return redirect()->route('bmn-pengelola-bmn.index')
             ->with('success', 'BmnPengelolaBmn deleted successfully');
     }
 }

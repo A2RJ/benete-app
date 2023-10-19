@@ -97,7 +97,7 @@ Smart Uup Benete
                                     <td>{{ $bmnSmartUupBenete->tanggal_masuk }}</td>
                                     <td>{{ $bmnSmartUupBenete->asal }}</td>
                                     <td>{{ $bmnSmartUupBenete->perihal }}</td>
-                                    <td>{{ $bmnSmartUupBenete->lampiran }}</td>
+                                    <td>{!! $bmnSmartUupBenete->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

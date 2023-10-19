@@ -1,7 +1,7 @@
 @extends('tablar::page')
 
 @section('title')
-    Ppk
+    Pejabat Pembuat Komitmen
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
                         List
                     </div>
                     <h2 class="page-title">
-                        {{ __('Ppk ') }}
+                        {{ __('Pejabat Pembuat Komitmen ') }}
                     </h2>
                 </div>
                 <!-- Page title actions -->
@@ -30,7 +30,7 @@
                                 <line x1="12" y1="5" x2="12" y2="19"/>
                                 <line x1="5" y1="12" x2="19" y2="12"/>
                             </svg>
-                            Create Ppk
+                            Create Pejabat Pembuat Komitmen
                         </a>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Ppk</h3>
+                            <h3 class="card-title">Pejabat Pembuat Komitmen</h3>
                         </div>
                         <div class="card-body border-bottom py-3">
                             <div class="d-flex">
@@ -106,7 +106,7 @@
 											<td>{{ $keuPpk->tanggal_masuk }}</td>
 											<td>{{ $keuPpk->asal }}</td>
 											<td>{{ $keuPpk->perihal }}</td>
-											<td>{{ $keuPpk->lampiran }}</td>
+											<td>{!! $keuPpk->lampiran !!}</td>
 
                                         <td>
                                             <div class="btn-list flex-nowrap">

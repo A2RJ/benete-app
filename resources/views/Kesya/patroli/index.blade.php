@@ -106,7 +106,7 @@
 											<td>{{ $kesyaPatroli->tanggal_masuk }}</td>
 											<td>{{ $kesyaPatroli->asal }}</td>
 											<td>{{ $kesyaPatroli->perihal }}</td>
-											<td>{{ $kesyaPatroli->lampiran }}</td>
+											<td>{!! $kesyaPatroli->lampiran !!}</td>
 
                                         <td>
                                             <div class="btn-list flex-nowrap">

@@ -45,7 +45,7 @@ class BmnBendaharaMaterilController extends Controller
         $payload = $request->validated();
         BmnBendaharaMateril::create($payload);
 
-        return redirect()->route('bmn-bendahara-materils.index')
+        return redirect()->route('bmn-bendahara-materil.index')
             ->with('success', 'BmnBendaharaMateril created successfully.');
     }
 
@@ -83,7 +83,7 @@ class BmnBendaharaMaterilController extends Controller
         $payload = $request->validated();
         $bmnBendaharaMateril->update($payload);
 
-        return redirect()->route('bmn-bendahara-materils.index')
+        return redirect()->route('bmn-bendahara-materil.index')
             ->with('success', 'BmnBendaharaMateril updated successfully');
     }
 
@@ -96,7 +96,7 @@ class BmnBendaharaMaterilController extends Controller
     {
         $bmnBendaharaMateril->delete();
 
-        return redirect()->route('bmn-bendahara-materils.index')
+        return redirect()->route('bmn-bendahara-materil.index')
             ->with('success', 'BmnBendaharaMateril deleted successfully');
     }
 }

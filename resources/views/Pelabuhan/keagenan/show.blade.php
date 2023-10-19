@@ -69,7 +69,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Lampiran:</strong>
-                            {{ $pelabuhanKeagenan->lampiran }}
+                            {!! $pelabuhanKeagenan->lampiran !!}
                         </div>
 
                     </div>

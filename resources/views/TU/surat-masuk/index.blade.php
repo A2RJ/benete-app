@@ -97,7 +97,7 @@ Surat Masuk
                                     <td>{{ $tuSuratMasuk->tanggal_masuk }}</td>
                                     <td>{{ $tuSuratMasuk->asal }}</td>
                                     <td>{{ $tuSuratMasuk->perihal }}</td>
-                                    <td>{{ $tuSuratMasuk->lampiran }}</td>
+                                    <td>{!! $tuSuratMasuk->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

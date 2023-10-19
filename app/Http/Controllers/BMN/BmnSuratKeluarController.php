@@ -49,7 +49,7 @@ class BmnSuratKeluarController extends Controller
         $payload = $request->validated();
         BmnSuratKeluar::create($payload);
 
-        return redirect()->route('bmn-surat-keluars.index')
+        return redirect()->route('bmn-surat-keluar.index')
             ->with('success', 'BmnSuratKeluar created successfully.');
     }
 
@@ -87,7 +87,7 @@ class BmnSuratKeluarController extends Controller
         $payload = $request->validated();
         $bmnSuratKeluar->update($payload);
 
-        return redirect()->route('bmn-surat-keluars.index')
+        return redirect()->route('bmn-surat-keluar.index')
             ->with('success', 'BmnSuratKeluar updated successfully');
     }
 
@@ -100,7 +100,7 @@ class BmnSuratKeluarController extends Controller
     {
         $bmnSuratKeluar->delete();
 
-        return redirect()->route('bmn-surat-keluars.index')
+        return redirect()->route('bmn-surat-keluar.index')
             ->with('success', 'BmnSuratKeluar deleted successfully');
     }
 }

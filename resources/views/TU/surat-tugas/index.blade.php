@@ -97,7 +97,7 @@ Surat Tuga
                                     <td>{{ $tuSuratTugas->tanggal_masuk }}</td>
                                     <td>{{ $tuSuratTugas->asal }}</td>
                                     <td>{{ $tuSuratTugas->perihal }}</td>
-                                    <td>{{ $tuSuratTugas->lampiran }}</td>
+                                    <td>{!! $tuSuratTugas->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

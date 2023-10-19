@@ -152,7 +152,7 @@ return [
         [
             'text' => 'Users',
             'icon' => 'ti ti-user',
-            'url' => '/users'
+            'url' => '/user'
         ],
         [
             'text' => 'Bidang Keuangan',

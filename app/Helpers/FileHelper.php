@@ -41,16 +41,16 @@ class FileHelper
         } catch (Exception $e) {
             throw $e;
         }
-    } 
+    }
 
-    public static function readStream($pathToImage)
+    public static function download($pathToImage)
     {
         try {
             if (!\request()->hasValidSignature()) {
                 abort(401);
             }
             if (!Storage::exists($pathToImage)) throw new Error("File $pathToImage is not exist");
-            return Storage::disk('local')->readStream($pathToImage);
+            return Storage::download($pathToImage);
         } catch (\Throwable $th) {
             throw $th;
         }

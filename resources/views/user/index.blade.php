@@ -21,7 +21,7 @@ User
             <!-- Page title actions -->
             <div class="col-12 col-md-auto ms-auto d-print-none">
                 <div class="btn-list">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+                    <a href="{{ route('user.create') }}" class="btn btn-primary d-none d-sm-inline-block">
                         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -48,7 +48,7 @@ User
                         <h3 class="card-title">User</h3>
                     </div>
 
-                    @include('tablar::common.table-header', ['route' => route('users.index')])
+                    @include('tablar::common.table-header', ['route' => route('user.index')])
 
                     <div class="table-responsive min-vh-100">
                         <table class="table card-table table-vcenter text-nowrap datatable">
@@ -86,13 +86,13 @@ User
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="{{ route('users.show',$user->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('user.show',$user->id) }}">
                                                         View
                                                     </a>
-                                                    <a class="dropdown-item" href="{{ route('users.edit',$user->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('user.edit',$user->id) }}">
                                                         Edit
                                                     </a>
-                                                    <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                                                    <form action="{{ route('user.destroy',$user->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>

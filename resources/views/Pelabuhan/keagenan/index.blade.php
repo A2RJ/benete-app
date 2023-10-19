@@ -97,7 +97,7 @@ Keagenan
                                     <td>{{ $pelabuhanKeagenan->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanKeagenan->asal }}</td>
                                     <td>{{ $pelabuhanKeagenan->perihal }}</td>
-                                    <td>{{ $pelabuhanKeagenan->lampiran }}</td>
+                                    <td>{!! $pelabuhanKeagenan->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

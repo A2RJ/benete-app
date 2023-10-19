@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -68,7 +69,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('/users', UserController::class);
+Route::get('download/{pathToImage}', function (string $pathToImage) {
+    return FileHelper::download($pathToImage);
+})->where('pathToImage', '.*')->name('download');
+
+Route::resource('/user', UserController::class);
 
 Route::resource('/keu-surat-masuk', KeuSuratMasukController::class);
 Route::resource('/keu-disposisi', KeuDisposisiController::class);

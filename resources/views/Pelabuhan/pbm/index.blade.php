@@ -97,7 +97,7 @@ Pbm
                                     <td>{{ $pelabuhanPbm->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanPbm->asal }}</td>
                                     <td>{{ $pelabuhanPbm->perihal }}</td>
-                                    <td>{{ $pelabuhanPbm->lampiran }}</td>
+                                    <td>{!! $pelabuhanPbm->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

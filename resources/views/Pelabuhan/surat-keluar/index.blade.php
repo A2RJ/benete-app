@@ -97,7 +97,7 @@ Surat Keluar
                                     <td>{{ $pelabuhanSuratKeluar->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanSuratKeluar->asal }}</td>
                                     <td>{{ $pelabuhanSuratKeluar->perihal }}</td>
-                                    <td>{{ $pelabuhanSuratKeluar->lampiran }}</td>
+                                    <td>{!! $pelabuhanSuratKeluar->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

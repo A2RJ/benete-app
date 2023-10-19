@@ -3,9 +3,11 @@
 namespace App\Models\Keuangan;
 
 use App\Helpers\FileHelper;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\URL;
 
 /**
  * Class KeuSuratMasuk
@@ -47,6 +49,18 @@ class KeuSuratMasuk extends Model
    * @var array
    */
   protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
+
+  protected function lampiran(): Attribute
+  {
+    return Attribute::make(
+      get: function (string|null $value) {
+        if ($value) {
+          $url = URL::signedRoute('download', ['pathToImage' => $value]);
+          return "<a href='{$url}'>File</a>";
+        }
+      },
+    );
+  }
 
   public static function boot()
   {

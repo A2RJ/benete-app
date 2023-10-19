@@ -49,7 +49,7 @@ class BmnSmartUupBeneteController extends Controller
         $payload = $request->validated();
         BmnSmartUupBenete::create($payload);
 
-        return redirect()->route('bmn-smart-uup-benetes.index')
+        return redirect()->route('bmn-smart-uup-benete.index')
             ->with('success', 'BmnSmartUupBenete created successfully.');
     }
 
@@ -87,7 +87,7 @@ class BmnSmartUupBeneteController extends Controller
         $payload = $request->validated();
         $bmnSmartUupBenete->update($payload);
 
-        return redirect()->route('bmn-smart-uup-benetes.index')
+        return redirect()->route('bmn-smart-uup-benete.index')
             ->with('success', 'BmnSmartUupBenete updated successfully');
     }
 
@@ -100,7 +100,7 @@ class BmnSmartUupBeneteController extends Controller
     {
         $bmnSmartUupBenete->delete();
 
-        return redirect()->route('bmn-smart-uup-benetes.index')
+        return redirect()->route('bmn-smart-uup-benete.index')
             ->with('success', 'BmnSmartUupBenete deleted successfully');
     }
 }

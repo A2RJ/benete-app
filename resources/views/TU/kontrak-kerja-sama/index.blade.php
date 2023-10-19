@@ -97,7 +97,7 @@ Kontrak Kerja Sama
                                     <td>{{ $tuKontrakKerjaSama->tanggal_masuk }}</td>
                                     <td>{{ $tuKontrakKerjaSama->asal }}</td>
                                     <td>{{ $tuKontrakKerjaSama->perihal }}</td>
-                                    <td>{{ $tuKontrakKerjaSama->lampiran }}</td>
+                                    <td>{!! $tuKontrakKerjaSama->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

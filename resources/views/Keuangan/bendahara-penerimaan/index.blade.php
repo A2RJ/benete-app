@@ -106,7 +106,7 @@
 											<td>{{ $keuBendaharaPenerimaan->tanggal_masuk }}</td>
 											<td>{{ $keuBendaharaPenerimaan->asal }}</td>
 											<td>{{ $keuBendaharaPenerimaan->perihal }}</td>
-											<td>{{ $keuBendaharaPenerimaan->lampiran }}</td>
+											<td>{!! $keuBendaharaPenerimaan->lampiran !!}</td>
 
                                         <td>
                                             <div class="btn-list flex-nowrap">

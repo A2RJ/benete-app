@@ -106,7 +106,7 @@
 											<td>{{ $kesyaSuratMasuk->tanggal_masuk }}</td>
 											<td>{{ $kesyaSuratMasuk->asal }}</td>
 											<td>{{ $kesyaSuratMasuk->perihal }}</td>
-											<td>{{ $kesyaSuratMasuk->lampiran }}</td>
+											<td>{!! $kesyaSuratMasuk->lampiran !!}</td>
 
                                         <td>
                                             <div class="btn-list flex-nowrap">

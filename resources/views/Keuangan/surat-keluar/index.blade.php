@@ -106,7 +106,7 @@
 											<td>{{ $keuSuratKeluar->tanggal_masuk }}</td>
 											<td>{{ $keuSuratKeluar->asal }}</td>
 											<td>{{ $keuSuratKeluar->perihal }}</td>
-											<td>{{ $keuSuratKeluar->lampiran }}</td>
+											<td>{!! $keuSuratKeluar->lampiran !!}</td>
 
                                         <td>
                                             <div class="btn-list flex-nowrap">

@@ -49,7 +49,7 @@ class BmnSuratMasukController extends Controller
         $payload = $request->validated();
         BmnSuratMasuk::create($payload);
 
-        return redirect()->route('bmn-surat-masuks.index')
+        return redirect()->route('bmn-surat-masuk.index')
             ->with('success', 'BmnSuratMasuk created successfully.');
     }
 
@@ -87,7 +87,7 @@ class BmnSuratMasukController extends Controller
         $payload = $request->validated();
         $bmnSuratMasuk->update($payload);
 
-        return redirect()->route('bmn-surat-masuks.index')
+        return redirect()->route('bmn-surat-masuk.index')
             ->with('success', 'BmnSuratMasuk updated successfully');
     }
 
@@ -100,7 +100,7 @@ class BmnSuratMasukController extends Controller
     {
         $bmnSuratMasuk->delete();
 
-        return redirect()->route('bmn-surat-masuks.index')
+        return redirect()->route('bmn-surat-masuk.index')
             ->with('success', 'BmnSuratMasuk deleted successfully');
     }
 }

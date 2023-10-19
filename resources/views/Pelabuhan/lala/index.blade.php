@@ -97,7 +97,7 @@ Lala
                                     <td>{{ $pelabuhanLala->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanLala->asal }}</td>
                                     <td>{{ $pelabuhanLala->perihal }}</td>
-                                    <td>{{ $pelabuhanLala->lampiran }}</td>
+                                    <td>{!! $pelabuhanLala->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

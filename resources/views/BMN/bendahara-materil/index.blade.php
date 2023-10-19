@@ -97,7 +97,7 @@ Bendahara Materil
                                     <td>{{ $bmnBendaharaMateril->tanggal_masuk }}</td>
                                     <td>{{ $bmnBendaharaMateril->asal }}</td>
                                     <td>{{ $bmnBendaharaMateril->perihal }}</td>
-                                    <td>{{ $bmnBendaharaMateril->lampiran }}</td>
+                                    <td>{!! $bmnBendaharaMateril->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

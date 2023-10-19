@@ -97,7 +97,7 @@ Fasilitas Pelabuhan
                                     <td>{{ $pelabuhanFasilitasPelabuhan->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanFasilitasPelabuhan->asal }}</td>
                                     <td>{{ $pelabuhanFasilitasPelabuhan->perihal }}</td>
-                                    <td>{{ $pelabuhanFasilitasPelabuhan->lampiran }}</td>
+                                    <td>{!! $pelabuhanFasilitasPelabuhan->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

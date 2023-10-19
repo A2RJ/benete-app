@@ -106,7 +106,7 @@
 											<td>{{ $kesyaDokumenAwakKapal->tanggal_masuk }}</td>
 											<td>{{ $kesyaDokumenAwakKapal->asal }}</td>
 											<td>{{ $kesyaDokumenAwakKapal->perihal }}</td>
-											<td>{{ $kesyaDokumenAwakKapal->lampiran }}</td>
+											<td>{!! $kesyaDokumenAwakKapal->lampiran !!}</td>
 
                                         <td>
                                             <div class="btn-list flex-nowrap">

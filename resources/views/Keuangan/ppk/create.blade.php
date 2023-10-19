@@ -1,6 +1,6 @@
 @extends('tablar::page')
 
-@section('title', 'Create Ppk')
+@section('title', 'Create Pejabat Pembuat Komitmen')
 
 @section('content')
 <!-- Page header -->
@@ -13,7 +13,7 @@
                     Create
                 </div>
                 <h2 class="page-title">
-                    {{ __('Ppk ') }}
+                    {{ __('Pejabat Pembuat Komitmen ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -30,7 +30,7 @@
                             <path d="M5 12l0 .01"></path>
                             <path d="M5 18l0 .01"></path>
                         </svg>
-                        Ppk List
+                        Pejabat Pembuat Komitmen List
                     </a>
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Ppk Details</h3>
+                        <h3 class="card-title">Pejabat Pembuat Komitmen Details</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('keu-ppk.store') }}" id="ajaxForm" role="form" enctype="multipart/form-data">
