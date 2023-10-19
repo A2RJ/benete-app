@@ -48,7 +48,6 @@ class KeuPejabatPengadaanController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'keuangan/pejabat_pengadaan');
         KeuPejabatPengadaan::create($payload);
 
         return redirect()->route('keu-pejabat-pengadaan.index')

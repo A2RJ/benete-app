@@ -47,7 +47,6 @@ class BmnSuratMasukController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'bmn/surat_masuk');
         BmnSuratMasuk::create($payload);
 
         return redirect()->route('bmn-surat-masuks.index')
@@ -85,9 +84,8 @@ class BmnSuratMasukController extends Controller
      */
     public function update(UpdateValidationRequest $request, BmnSuratMasuk $bmnSuratMasuk)
     {
-        request()->validate(BmnSuratMasuk::$rules);
-
-        $bmnSuratMasuk->update($request->all());
+        $payload = $request->validated();
+        $bmnSuratMasuk->update($payload);
 
         return redirect()->route('bmn-surat-masuks.index')
             ->with('success', 'BmnSuratMasuk updated successfully');

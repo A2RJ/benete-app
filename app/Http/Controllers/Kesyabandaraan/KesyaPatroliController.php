@@ -48,7 +48,6 @@ class KesyaPatroliController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'kesya/patroli');
         KesyaPatroli::create($payload);
 
         return redirect()->route('kesya-patroli.index')

@@ -48,7 +48,6 @@ class KesyaDokumenKapalController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'kesya/dokumen_kapal');
         KesyaDokumenKapal::create($payload);
 
         return redirect()->route('kesya-dokumen-kapal.index')

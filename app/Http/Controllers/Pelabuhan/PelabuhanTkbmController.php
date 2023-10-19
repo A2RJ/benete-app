@@ -48,7 +48,6 @@ class PelabuhanTkbmController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'pelabuhan/tkbm');
         PelabuhanTkbm::create($payload);
 
         return redirect()->route('pelabuhan-tkbm.index')

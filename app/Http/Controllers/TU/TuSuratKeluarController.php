@@ -48,7 +48,6 @@ class TuSuratKeluarController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'tu/surat_keluar');
         TuSuratKeluar::create($payload);
 
         return redirect()->route('tu-surat-keluar.index')

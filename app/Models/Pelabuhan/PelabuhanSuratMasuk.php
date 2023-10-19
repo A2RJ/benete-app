@@ -2,6 +2,7 @@
 
 namespace App\Models\Pelabuhan;
 
+use App\Helpers\FileHelper;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
@@ -45,6 +46,21 @@ class PelabuhanSuratMasuk extends Model
    * @var array
    */
   protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
+
+  public static function boot()
+  {
+    parent::boot();
+
+    self::creating(function ($model) {
+      $model->lampiran = FileHelper::upload(request(), 'lampiran', 'pelabuhan/surat_masuk');
+    });
+
+    self::updating(function ($model) {
+      if (request()->hasFile('lampiran')) {
+        $model->lampiran = FileHelper::upload(request(), 'lampiran', 'pelabuhan/surat_masuk');
+      }
+    });
+  }
 
   public function disposisi()
   {

@@ -48,7 +48,6 @@ class TuSuratMasukController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'tu/surat_masuk');
         TuSuratMasuk::create($payload);
 
         return redirect()->route('tu-surat-masuk.index')

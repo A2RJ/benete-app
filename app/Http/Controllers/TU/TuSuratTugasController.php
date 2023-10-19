@@ -50,7 +50,6 @@ class TuSuratTugasController extends Controller
     public function store(StoreValidationRequest $request): RedirectResponse
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'tu/surat_tugas');
         TuSuratTugas::create($payload);
 
         return redirect()->route('tu-surat-tugas.index')

@@ -48,7 +48,6 @@ class KeuKuasaPenggunaAnggaranController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'keuangan/kuasa_pengguna_anggaran');
         KeuKuasaPenggunaAnggaran::create($payload);
 
         return redirect()->route('keu-kuasa-pengguna-anggaran.index')

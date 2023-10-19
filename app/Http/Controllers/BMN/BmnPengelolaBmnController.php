@@ -47,7 +47,6 @@ class BmnPengelolaBmnController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'bmn/pengelola_bmn');
         BmnPengelolaBmn::create($payload);
 
         return redirect()->route('bmn-pengelola-bmns.index')
@@ -85,9 +84,8 @@ class BmnPengelolaBmnController extends Controller
      */
     public function update(UpdateValidationRequest $request, BmnPengelolaBmn $bmnPengelolaBmn)
     {
-        request()->validate(BmnPengelolaBmn::$rules);
-
-        $bmnPengelolaBmn->update($request->all());
+        $payload = $request->validated();
+        $bmnPengelolaBmn->update($payload);
 
         return redirect()->route('bmn-pengelola-bmns.index')
             ->with('success', 'BmnPengelolaBmn updated successfully');

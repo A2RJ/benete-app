@@ -48,7 +48,6 @@ class KeuBendaharaPenerimaanController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'keuangan/bendahara_penerimaan');
         KeuBendaharaPenerimaan::create($payload);
 
         return redirect()->route('keu-bendahara-penerimaan.index')

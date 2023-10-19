@@ -48,7 +48,6 @@ class PelabuhanKeagenanController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'pelabuhan/keagenan');
         PelabuhanKeagenan::create($payload);
 
         return redirect()->route('pelabuhan-keagenan.index')

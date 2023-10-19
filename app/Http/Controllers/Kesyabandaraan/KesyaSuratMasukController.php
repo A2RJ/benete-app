@@ -48,7 +48,6 @@ class KesyaSuratMasukController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'kesya/surat_masuk');
         KesyaSuratMasuk::create($payload);
 
         return redirect()->route('kesya-surat-masuk.index')

@@ -48,7 +48,6 @@ class TuKontrakKerjaSamaController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'tu/kontrak_kerjasama');
         TuKontrakKerjaSama::create($payload);
 
         return redirect()->route('tu-kontrak-kerja-sama.index')

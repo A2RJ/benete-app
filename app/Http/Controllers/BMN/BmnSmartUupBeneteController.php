@@ -47,7 +47,6 @@ class BmnSmartUupBeneteController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'bmn/smartuup');
         BmnSmartUupBenete::create($payload);
 
         return redirect()->route('bmn-smart-uup-benetes.index')
@@ -85,7 +84,8 @@ class BmnSmartUupBeneteController extends Controller
      */
     public function update(UpdateValidationRequest $request, BmnSmartUupBenete $bmnSmartUupBenete)
     {
-        $bmnSmartUupBenete->update($request->validated());
+        $payload = $request->validated();
+        $bmnSmartUupBenete->update($payload);
 
         return redirect()->route('bmn-smart-uup-benetes.index')
             ->with('success', 'BmnSmartUupBenete updated successfully');

@@ -48,7 +48,6 @@ class KesyabandaranController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'kesya/kesyabandaraan');
         Kesyabandaran::create($payload);
 
         return redirect()->route('kesya-kesyabandaran.index')

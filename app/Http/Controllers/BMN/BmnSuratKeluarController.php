@@ -47,7 +47,6 @@ class BmnSuratKeluarController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'bmn/surat_keluar');
         BmnSuratKeluar::create($payload);
 
         return redirect()->route('bmn-surat-keluars.index')
@@ -85,7 +84,8 @@ class BmnSuratKeluarController extends Controller
      */
     public function update(UpdateValidationRequest $request, BmnSuratKeluar $bmnSuratKeluar)
     {
-        $bmnSuratKeluar->update($request->validated());
+        $payload = $request->validated();
+        $bmnSuratKeluar->update($payload);
 
         return redirect()->route('bmn-surat-keluars.index')
             ->with('success', 'BmnSuratKeluar updated successfully');

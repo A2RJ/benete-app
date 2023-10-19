@@ -48,7 +48,6 @@ class KeuPpkController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        $payload['lampiran'] = FileHelper::upload($request, 'lampiran', 'keuangan/ppk');
         KeuPpk::create($payload);
 
         return redirect()->route('keu-ppk.index')
