@@ -27,7 +27,7 @@ class StoreValidationRequest extends FormRequest
             'tanggal_masuk' => 'required|date',
             'asal' => 'required',
             'perihal' => 'required',
-            'lampiran' => 'required|file',
+            'lampiran' => 'required|mimes:pdf,doc,docx',
         ];
     }
 }

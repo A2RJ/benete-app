@@ -27,7 +27,7 @@ class UpdateValidationRequest extends FormRequest
             'tanggal_masuk' => 'required|date',
             'asal' => 'required',
             'perihal' => 'required',
-            'lampiran' => 'nullable|file',
+            'lampiran' => 'nullable|mimes:pdf,doc,docx',
         ];
     }
 }
