@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\TU;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreValidationRequest;
-use App\Http\Requests\UpdateValidationRequest;
+use App\Http\Requests\DisposisiRequest;
 use App\Models\TU\TuDisposisi;
-use Illuminate\Http\Request;
+use App\Models\TU\TuSuratMasuk;
 
 /**
  * Class TuDisposisiController
@@ -15,26 +14,14 @@ use Illuminate\Http\Request;
 class TuDisposisiController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function index()
-    {
-        $tuDisposisis = TuDisposisi::paginate(10);
-
-        return view('TU.disposisi.index', compact('tuDisposisis'))
-            ->with('i', (request()->input('page', 1) - 1) * $tuDisposisis->perPage());
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create($tuSuratMasuk)
     {
         $tuDisposisi = new TuDisposisi();
+        $tuDisposisi->tu_surat_masuk_id = $tuSuratMasuk;
         return view('TU.disposisi.create', compact('tuDisposisi'));
     }
 
@@ -44,24 +31,14 @@ class TuDisposisiController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(DisposisiRequest $request, $tuSuratMasuk)
     {
-        $payload = $request->validate(TuDisposisi::$rules);
-        TuDisposisi::create($payload);
+        return $tuSuratMasuk;
+        $payload = $request->validated();
+        $tuSuratMasuk->disposisi()->create($payload);
 
-        return redirect()->route('tu-disposisi.index')
+        return redirect()->route('tu-surat-masuk.index')
             ->with('success', 'TuDisposisi created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function show(TuDisposisi $tuDisposisi)
-    {
-        return view('TU.disposisi.show', compact('tuDisposisi'));
     }
 
     /**
@@ -70,8 +47,9 @@ class TuDisposisiController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit(TuDisposisi $tuDisposisi)
+    public function edit($tuSuratMasuk, TuDisposisi $tuDisposisi)
     {
+        $tuDisposisi = $tuDisposisi->where('tu_surat_masuk_id', $tuSuratMasuk)->firstOrFail();
         return view('TU.disposisi.edit', compact('tuDisposisi'));
     }
 
@@ -82,12 +60,12 @@ class TuDisposisiController extends Controller
      * @param  TuDisposisi $tuDisposisi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, TuDisposisi $tuDisposisi)
+    public function update(DisposisiRequest $request, $tuSuratMasuk, TuDisposisi $tuDisposisi)
     {
-        $payload = $request->validate(TuDisposisi::$rules);
-        $tuDisposisi->update($payload);
+        $payload = $request->validated();
+        $tuDisposisi->where('tu_surat_masuk_id', $tuSuratMasuk)->update($payload);
 
-        return redirect()->route('tu-disposisi.index')
+        return redirect()->route('tu-surat-masuk.index')
             ->with('success', 'TuDisposisi updated successfully');
     }
 
@@ -96,11 +74,11 @@ class TuDisposisiController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(TuDisposisi $tuDisposisi)
+    public function destroy(TuSuratMasuk $tuSuratMasuk)
     {
-        $tuDisposisi->delete();
+        $tuSuratMasuk->disposisi()->forceDelete();
 
-        return redirect()->route('tu-disposisi.index')
+        return redirect()->route('tu-surat-masuk.index')
             ->with('success', 'TuDisposisi deleted successfully');
     }
 }

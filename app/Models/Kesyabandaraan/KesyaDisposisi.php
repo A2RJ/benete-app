@@ -28,14 +28,6 @@ class KesyaDisposisi extends Model
 
   public $table = 'kesya_disposisi';
 
-  static $rules = [
-    'kesya_surat_masuk_id' => 'required',
-    'tujuan' => 'required',
-    'batas_waktu_tindaklanjuti' => 'required',
-    'jenis_disposisi' => 'required',
-    'status_disposisi' => 'required',
-  ];
-
   protected $perPage = 20;
 
   /**

@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class BmnSuratKeluar extends Model
 {
   use HasUuids;
-  
-  public $table = 'bmn_surat_keluar';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'bmn_surat_keluar';
 
   protected $perPage = 20;
 

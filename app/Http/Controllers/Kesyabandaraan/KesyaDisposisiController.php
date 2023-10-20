@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Kesyabandaraan;
 
-use App\Http\Controllers\Controller; 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\DisposisiRequest;
 use App\Models\Kesyabandaraan\KesyaDisposisi;
-use Illuminate\Http\Request;
+use App\Models\Kesyabandaraan\KesyaSuratMasuk;
 
 /**
  * Class KesyaDisposisiController
@@ -13,26 +14,14 @@ use Illuminate\Http\Request;
 class KesyaDisposisiController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function index()
-    {
-        $kesyaDisposisis = KesyaDisposisi::paginate(10);
-
-        return view('Kesya.disposisi.index', compact('kesyaDisposisis'))
-            ->with('i', (request()->input('page', 1) - 1) * $kesyaDisposisis->perPage());
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create($kesyaSuratMasuk)
     {
         $kesyaDisposisi = new KesyaDisposisi();
+        $kesyaDisposisi->kesya_surat_masuk_id = $kesyaSuratMasuk;
         return view('Kesya.disposisi.create', compact('kesyaDisposisi'));
     }
 
@@ -42,24 +31,13 @@ class KesyaDisposisiController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(DisposisiRequest $request, KesyaSuratMasuk $kesyaSuratMasuk)
     {
-        $payload = $request->validate(KesyaDisposisi::$rules);
-        KesyaDisposisi::create($payload);
+        $payload = $request->validated();
+        $kesyaSuratMasuk->disposisi()->create($payload);
 
-        return redirect()->route('kesya-disposisi.index')
+        return redirect()->route('kesya-surat-masuk.index')
             ->with('success', 'KesyaDisposisi created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function show(KesyaDisposisi $kesyaDisposisi)
-    {
-        return view('Kesya.disposisi.show', compact('kesyaDisposisi'));
     }
 
     /**
@@ -68,8 +46,9 @@ class KesyaDisposisiController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit(KesyaDisposisi $kesyaDisposisi)
+    public function edit($kesyaSuratMasuk, KesyaDisposisi $kesyaDisposisi)
     {
+        $kesyaDisposisi = $kesyaDisposisi->where('kesya_surat_masuk_id', $kesyaSuratMasuk)->firstOrFail();
         return view('Kesya.disposisi.edit', compact('kesyaDisposisi'));
     }
 
@@ -80,12 +59,12 @@ class KesyaDisposisiController extends Controller
      * @param  KesyaDisposisi $kesyaDisposisi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, KesyaDisposisi $kesyaDisposisi)
+    public function update(DisposisiRequest $request, $kesyaSuratMasuk, KesyaDisposisi $kesyaDisposisi)
     {
-        $payload = $request->validate(KesyaDisposisi::$rules);
-        $kesyaDisposisi->update($payload);
+        $payload = $request->validated();
+        $kesyaDisposisi->where('kesya_surat_masuk_id', $kesyaSuratMasuk)->update($payload);
 
-        return redirect()->route('kesya-disposisi.index')
+        return redirect()->route('kesya-surat-masuk.index')
             ->with('success', 'KesyaDisposisi updated successfully');
     }
 
@@ -94,11 +73,11 @@ class KesyaDisposisiController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(KesyaDisposisi $kesyaDisposisi)
+    public function destroy(KesyaSuratMasuk $kesyaSuratMasuk)
     {
-        $kesyaDisposisi->delete();
+        $kesyaSuratMasuk->disposisi()->forceDelete();
 
-        return redirect()->route('kesya-disposisi.index')
+        return redirect()->route('kesya-surat-masuk.index')
             ->with('success', 'KesyaDisposisi deleted successfully');
     }
 }

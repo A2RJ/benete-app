@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tujuan');
             $table->date('batas_waktu_tindaklanjuti');
             $table->enum('jenis_disposisi', ['Segera', 'Biasa']);
-            $table->enum('status_disposisi', ['Belum Ditindaklanjuti', 'Selesai', 'Ditolak', 'Terlewati']);
+            $table->enum('status_disposisi', ['Belum Ditindaklanjuti', 'Selesai', 'Terlewati']);
             $table->text('catatan')->nullable();
             $table->timestamps();
         });

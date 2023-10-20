@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class KesyaTertibBanar extends Model
 {
   use HasUuids;
-  
-  public $table = 'kesya_tertib_banar';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'kesya_tertib_banar';
 
   protected $perPage = 20;
 

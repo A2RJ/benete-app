@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class KeuPpk extends Model
 {
   use HasUuids;
-  
-  public $table = 'keu_ppk';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'keu_ppk';
 
   protected $perPage = 20;
 

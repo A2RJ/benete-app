@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class KesyaDokumenKapal extends Model
 {
   use HasUuids;
-  
-  public $table = 'kesya_dokumen_kapal';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'kesya_dokumen_kapal';
 
   protected $perPage = 20;
 

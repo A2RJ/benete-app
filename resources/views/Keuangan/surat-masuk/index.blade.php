@@ -82,7 +82,7 @@ Surat Masuk
                                     <th>Asal</th>
                                     <th>Perihal</th>
                                     <th>Lampiran</th>
-                                    <th>Disposisi</th>
+                                    <th>Status Disposisi</th>
                                     <th class="w-1"></th>
                                 </tr>
                             </thead>
@@ -106,14 +106,6 @@ Surat Masuk
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <!--
-                                                        Tidak ada halaman index disposisi
-                                                        Langsung masuk ke halaman create disposisi
-                                                        Jika disposisi sudah ada maka masuk ke halaman update disposisi setting pada controller
-                                                        Tombol list disposisi menjadi back()
-                                                        Tombol batal halaman create hapus
-                                                        Tombol batal halaman edit ubah jadi hapus 
-                                                    -->
                                                     @if ($keuSuratMasuk->disposisi)
                                                     <a class="dropdown-item" href="{{ route('keu-surat-masuk.disposisi.edit', ['keu_surat_masuk' => $keuSuratMasuk->id, 'disposisi' => $keuSuratMasuk->disposisi->id]) }}">
                                                         Update Disposisi

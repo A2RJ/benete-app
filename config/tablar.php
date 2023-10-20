@@ -60,14 +60,14 @@ return [
     |
     */
 
-    'layout_topnav' => true,
+    'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_light_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
-    'layout_class' => 'default', //layout-fluid, layout-boxed, default is also available
+    'layout_class' => 'layout-fluid', //layout-fluid, layout-boxed, default is also available
 
     /*
     |--------------------------------------------------------------------------
@@ -225,7 +225,7 @@ return [
             ]
         ],
         [
-            'text' => 'Pengelola BMN dan Persediaan',
+            'text' => 'BMN dan Persediaan',
             'url' => '#',
             'icon' => 'ti ti-mail',
             'submenu' => [
@@ -252,7 +252,7 @@ return [
             ]
         ],
         [
-            'text' => 'Bidang Kepegawaian dan Tata Usaha',
+            'text' => 'Bidang Kepegawaian TU',
             'url' => '#',
             'icon' => 'ti ti-mail',
             'submenu' => [

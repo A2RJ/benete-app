@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class BmnPengelolaBmn extends Model
 {
   use HasUuids;
-  
-  public $table = 'bmn_pengelola_bmn';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'bmn_pengelola_bmn';
 
   protected $perPage = 20;
 

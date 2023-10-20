@@ -32,14 +32,6 @@ class PelabuhanSuratKeluar extends Model
 
   public $table = 'pelabuhan_surat_keluar';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
-
   protected $perPage = 20;
 
   /**

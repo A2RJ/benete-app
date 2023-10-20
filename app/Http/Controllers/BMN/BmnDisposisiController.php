@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\BMN;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DisposisiRequest;
 use App\Models\BMN\BmnDisposisi;
+use App\Models\BMN\BmnSuratMasuk;
 use Illuminate\Http\Request;
 
 /**
@@ -12,27 +14,10 @@ use Illuminate\Http\Request;
  */
 class BmnDisposisiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function index()
-    {
-        $bmnDisposisis = BmnDisposisi::paginate(10);
-
-        return view('BMN.disposisi.index', compact('bmnDisposisis'))
-            ->with('i', (request()->input('page', 1) - 1) * $bmnDisposisis->perPage());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function create()
+    public function create($bmnSuratMasuk)
     {
         $bmnDisposisi = new BmnDisposisi();
+        $bmnDisposisi->bmn_surat_masuk_id = $bmnSuratMasuk;
         return view('BMN.disposisi.create', compact('bmnDisposisi'));
     }
 
@@ -42,24 +27,13 @@ class BmnDisposisiController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(DisposisiRequest $request, BmnSuratMasuk $bmnSuratMasuk)
     {
-        $payload = $request->validate(BmnDisposisi::$rules);
-        BmnDisposisi::create($payload);
+        $payload = $request->validated();
+        $bmnSuratMasuk->disposisi()->create($payload);
 
-        return redirect()->route('bmn-disposisi.index')
+        return redirect()->route('bmn-surat-masuk.index')
             ->with('success', 'BmnDisposisi created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\View\View
-     */
-    public function show(BmnDisposisi $bmnDisposisi)
-    {
-        return view('BMN.disposisi.show', compact('bmnDisposisi'));
     }
 
     /**
@@ -68,8 +42,9 @@ class BmnDisposisiController extends Controller
      * @param  int $id
      * @return \Illuminate\View\View
      */
-    public function edit(BmnDisposisi $bmnDisposisi)
+    public function edit($bmnSuratMasuk, BmnDisposisi $bmnDisposisi)
     {
+        $bmnDisposisi = $bmnDisposisi->where('bmn_surat_masuk_id', $bmnSuratMasuk)->firstOrFail();
         return view('BMN.disposisi.edit', compact('bmnDisposisi'));
     }
 
@@ -80,12 +55,12 @@ class BmnDisposisiController extends Controller
      * @param  BmnDisposisi $bmnDisposisi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, BmnDisposisi $bmnDisposisi)
+    public function update(DisposisiRequest $request, $bmnSuratMasuk, BmnDisposisi $bmnDisposisi)
     {
-        $payload = $request->validate(BmnDisposisi::$rules);
-        $bmnDisposisi->update($payload);
+        $payload = $request->validated();
+        $bmnDisposisi->where('bmn_surat_masuk_id', $bmnSuratMasuk)->update($payload);
 
-        return redirect()->route('bmn-disposisi.index')
+        return redirect()->route('bmn-surat-masuk.index')
             ->with('success', 'BmnDisposisi updated successfully');
     }
 
@@ -94,11 +69,11 @@ class BmnDisposisiController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(BmnDisposisi $bmnDisposisi)
+    public function destroy(BmnSuratMasuk $bmnSuratMasuk)
     {
-        $bmnDisposisi->delete();
+        $bmnSuratMasuk->disposisi()->forceDelete();
 
-        return redirect()->route('bmn-disposisi.index')
+        return redirect()->route('bmn-surat-masuk.index')
             ->with('success', 'BmnDisposisi deleted successfully');
     }
 }

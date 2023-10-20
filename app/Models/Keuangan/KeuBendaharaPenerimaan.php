@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class KeuBendaharaPenerimaan extends Model
 {
   use HasUuids;
-  
-  public $table = 'keu_bendahara_penerimaan';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'keu_bendahara_penerimaan';
 
   protected $perPage = 20;
 

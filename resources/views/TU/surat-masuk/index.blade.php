@@ -82,6 +82,7 @@ Surat Masuk
                                     <th>Asal</th>
                                     <th>Perihal</th>
                                     <th>Lampiran</th>
+                                    <th>Status Disposisi</th>
 
                                     <th class="w-1"></th>
                                 </tr>
@@ -98,6 +99,7 @@ Surat Masuk
                                     <td>{{ $tuSuratMasuk->asal }}</td>
                                     <td>{{ $tuSuratMasuk->perihal }}</td>
                                     <td>{!! $tuSuratMasuk->lampiran !!}</td>
+                                    <td>{{ $tuSuratMasuk->disposisi?->status_disposisi }}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">
@@ -106,6 +108,22 @@ Surat Masuk
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
+                                                    @if ($tuSuratMasuk->disposisi)
+                                                    <a class="dropdown-item" href="{{ route('tu-surat-masuk.disposisi.edit', ['tu_surat_masuk' => $tuSuratMasuk->id, 'disposisi' => $tuSuratMasuk->disposisi->id]) }}">
+                                                        Update Disposisi
+                                                    </a>
+                                                    <form action="{{ route('tu-surat-masuk.disposisi.destroy', ['tu_surat_masuk' => $tuSuratMasuk->id, 'disposisi' => $tuSuratMasuk->disposisi->id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
+                                                            Delete Disposisi
+                                                        </button>
+                                                    </form>
+                                                    @else
+                                                    <a class="dropdown-item" href="{{ route('tu-surat-masuk.disposisi.create', ['tu_surat_masuk' => $tuSuratMasuk->id]) }}">
+                                                        Add Disposisi
+                                                    </a>
+                                                    @endif
                                                     <a class="dropdown-item" href="{{ route('tu-surat-masuk.show',$tuSuratMasuk->id) }}">
                                                         View
                                                     </a>

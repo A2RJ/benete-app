@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class KeuKuasaPenggunaAnggaran extends Model
 {
   use HasUuids;
-  
-  public $table = 'keu_kuasa_pengguna_anggaran';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'keu_kuasa_pengguna_anggaran';
 
   protected $perPage = 20;
 

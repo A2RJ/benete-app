@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class KesyaSuratMasuk extends Model
 {
   use HasUuids;
-  
-  public $table = 'kesya_surat_masuk';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'kesya_surat_masuk';
 
   protected $perPage = 20;
 

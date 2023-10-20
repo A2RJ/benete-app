@@ -32,14 +32,6 @@ class KeuBendaharaPengeluaran extends Model
 
   public $table = 'keu_bendahara_pengeluaran';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
-
   protected $perPage = 20;
 
   /**

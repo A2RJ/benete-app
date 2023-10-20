@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class KeuPejabatPengadaan extends Model
 {
   use HasUuids;
-  
-  public $table = 'keu_pejabat_pengadaan';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'keu_pejabat_pengadaan';
 
   protected $perPage = 20;
 

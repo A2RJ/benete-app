@@ -32,14 +32,6 @@ class PelabuhanTkbm extends Model
 
   public $table = 'pelabuhan_tkbm';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
-
   protected $perPage = 20;
 
   /**

@@ -28,21 +28,13 @@ class PelabuhanDisposisi extends Model
 
   public $table = 'pelabuhan_disposisi';
 
-    static $rules = [
-    'pelabuhan_surat_masuk_id' => 'required',
-    'tujuan' => 'required',
-    'batas_waktu_tindaklanjuti' => 'required',
-    'jenis_disposisi' => 'required',
-    'status_disposisi' => 'required',
-    ];
+  protected $perPage = 20;
 
-    protected $perPage = 20;
-
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
+  /**
+   * Attributes that should be mass-assignable.
+   *
+   * @var array
+   */
   protected $fillable = ['pelabuhan_surat_masuk_id', 'tujuan', 'batas_waktu_tindaklanjuti', 'jenis_disposisi', 'status_disposisi', 'catatan'];
 
 
@@ -53,6 +45,4 @@ class PelabuhanDisposisi extends Model
   {
     return $this->hasOne(PelabuhanSuratMasuk::class, 'id', 'pelabuhan_surat_masuk_id');
   }
-    
-
 }

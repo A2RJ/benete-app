@@ -29,16 +29,8 @@ use Illuminate\Support\Facades\URL;
 class BmnSmartUupBenete extends Model
 {
   use HasUuids;
-  
-  public $table = 'bmn_smart_uup_benete';
 
-  static $rules = [
-    'nama' => 'required',
-    'tanggal_masuk' => 'required|date',
-    'asal' => 'required',
-    'perihal' => 'required',
-    'lampiran' => 'required|file',
-  ];
+  public $table = 'bmn_smart_uup_benete';
 
   protected $perPage = 20;
 

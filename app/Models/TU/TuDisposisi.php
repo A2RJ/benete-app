@@ -28,21 +28,13 @@ class TuDisposisi extends Model
 
   public $table = 'tu_disposisi';
 
-    static $rules = [
-    'tu_surat_masuk_id' => 'required',
-    'tujuan' => 'required',
-    'batas_waktu_tindaklanjuti' => 'required',
-    'jenis_disposisi' => 'required',
-    'status_disposisi' => 'required',
-    ];
+  protected $perPage = 20;
 
-    protected $perPage = 20;
-
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
+  /**
+   * Attributes that should be mass-assignable.
+   *
+   * @var array
+   */
   protected $fillable = ['tu_surat_masuk_id', 'tujuan', 'batas_waktu_tindaklanjuti', 'jenis_disposisi', 'status_disposisi', 'catatan'];
 
 
