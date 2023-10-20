@@ -65,6 +65,8 @@ User
 
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Unit</th>
+                                    <th>Dibuat</th>
 
                                     <th class="w-1"></th>
                                 </tr>
@@ -78,6 +80,8 @@ User
 
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->bidang }}</td>
+                                    <td>{{ $user->created_at }}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

@@ -49,13 +49,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $payload = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,pengelola bmd dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
+            'password' => 'required|confirmed|min:8',
+            'password_confirmation' => 'required'
         ]);
 
-        User::create($request->all());
+        User::create($payload);
 
         return redirect()->route('user.index')
             ->with('success', 'User created successfully.');
@@ -96,13 +98,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
+        $payload = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,pengelola bmd dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
+            'password' => 'nullable|confirmed|min:8',
+            'password_confirmation' => 'sometimes|required_with:password'
         ]);
-
-        $user->update($request->all());
+        if (!$request->password) unset($payload['password']);
+        $user->update($payload);
 
         return redirect()->route('user.index')
             ->with('success', 'User updated successfully');
@@ -115,7 +119,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
+        User::find($id)->delete();
 
         return redirect()->route('user.index')
             ->with('success', 'User deleted successfully');
