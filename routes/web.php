@@ -67,6 +67,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('register', function () {
+    abort(404);
+})->name('register');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('download/{pathToImage}', function (string $pathToImage) {

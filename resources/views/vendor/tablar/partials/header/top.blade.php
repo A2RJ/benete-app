@@ -4,7 +4,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-            @include('tablar::partials.common.logo')
+            <div class="text-center mb-1">
+                <img src="{{ asset('Indonesian_Sea_and_Coast_Guard_Emblem.svg') }}" height="36" alt="">
+                <img src="{{ asset('logo-syahbandar.png') }}" height="36" alt="">
+            </div>
         </h1>
         <div class="navbar-nav flex-row order-md-last">
 

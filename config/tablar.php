@@ -42,7 +42,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'assets/logo.svg',
+            'path' => 'Indonesian_Sea_and_Coast_Guard_Emblem.svg',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -147,17 +147,20 @@ return [
         [
             'text' => 'Home',
             'icon' => 'ti ti-home',
-            'url' => '/home'
+            'url' => '/home',
+            'icon_color' => 'white'
         ],
         [
             'text' => 'Users',
             'icon' => 'ti ti-user',
-            'url' => '/user'
+            'url' => '/user',
+            'icon_color' => 'white'
         ],
         [
             'text' => 'Bidang Keuangan',
             'url' => '#',
             'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
             'submenu' => [
                 [
                     'text' => 'Surat Masuk',
@@ -193,6 +196,7 @@ return [
             'text' => 'Bidang Kesyabadaran',
             'url' => '#',
             'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
             'submenu' => [
                 [
                     'text' => 'Kesyabandaran',
@@ -228,6 +232,7 @@ return [
             'text' => 'BMN dan Persediaan',
             'url' => '#',
             'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
             'submenu' => [
                 [
                     'text' => 'Surat Masuk',
@@ -255,6 +260,7 @@ return [
             'text' => 'Bidang Kepegawaian TU',
             'url' => '#',
             'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
             'submenu' => [
                 [
                     'text' => 'Surat Masuk',
@@ -278,6 +284,7 @@ return [
             'text' => 'Bidang Kepelabuhan',
             'url' => '#',
             'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
             'submenu' => [
                 [
                     'text' => 'Surat Masuk',

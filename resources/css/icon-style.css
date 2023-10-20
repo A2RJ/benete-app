@@ -2,3 +2,14 @@
 i.ti {
     font-size: 20px;
 }
+/* Ukuran gambar saat tampilan desktop */
+.logo {
+    height: 70px !important;
+}
+
+/* Mengubah ukuran gambar saat tampilan mobile menggunakan media query */
+@media (max-width: 768px) {
+    .logo {
+        height: 36px !important;
+    }
+}
