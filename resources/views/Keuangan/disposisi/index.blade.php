@@ -78,11 +78,11 @@ Keu Disposisi
                                     </th>
 
                                     <th>Keu Surat Masuk Id</th>
-                                    <th>Tanggal Disposisi</th>
+                                    <th>Tujuan Disposisi</th>
                                     <th>Batas Waktu Tindaklanjuti</th>
                                     <th>Jenis Disposisi</th>
                                     <th>Status Disposisi</th>
-                                    <th>Komentar</th>
+                                    <th>Catatan</th>
 
                                     <th class="w-1"></th>
                                 </tr>
@@ -95,11 +95,11 @@ Keu Disposisi
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $keuDisposisi->keu_surat_masuk_id }}</td>
-                                    <td>{{ $keuDisposisi->tanggal_disposisi }}</td>
+                                    <td>{{ $keuDisposisi->tujuan }}</td>
                                     <td>{{ $keuDisposisi->batas_waktu_tindaklanjuti }}</td>
                                     <td>{{ $keuDisposisi->jenis_disposisi }}</td>
                                     <td>{{ $keuDisposisi->status_disposisi }}</td>
-                                    <td>{{ $keuDisposisi->komentar }}</td>
+                                    <td>{{ $keuDisposisi->catatan }}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

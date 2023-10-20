@@ -78,11 +78,11 @@ Bmn Disposisi
                                     </th>
 
                                     <th>Bmn Surat Masuk Id</th>
-                                    <th>Tanggal Disposisi</th>
+                                    <th>Tujuan Disposisi</th>
                                     <th>Batas Waktu Tindaklanjuti</th>
                                     <th>Jenis Disposisi</th>
                                     <th>Status Disposisi</th>
-                                    <th>Komentar</th>
+                                    <th>Catatan</th>
 
                                     <th class="w-1"></th>
                                 </tr>
@@ -95,11 +95,11 @@ Bmn Disposisi
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $bmnDisposisi->bmn_surat_masuk_id }}</td>
-                                    <td>{{ $bmnDisposisi->tanggal_disposisi }}</td>
+                                    <td>{{ $bmnDisposisi->tujuan }}</td>
                                     <td>{{ $bmnDisposisi->batas_waktu_tindaklanjuti }}</td>
                                     <td>{{ $bmnDisposisi->jenis_disposisi }}</td>
                                     <td>{{ $bmnDisposisi->status_disposisi }}</td>
-                                    <td>{{ $bmnDisposisi->komentar }}</td>
+                                    <td>{{ $bmnDisposisi->catatan }}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

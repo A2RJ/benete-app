@@ -56,8 +56,8 @@
                             {{ $bmnDisposisi->bmn_surat_masuk_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Tanggal Disposisi:</strong>
-                            {{ $bmnDisposisi->tanggal_disposisi }}
+                            <strong>Tujuan Disposisi:</strong>
+                            {{ $bmnDisposisi->tujuan }}
                         </div>
                         <div class="form-group">
                             <strong>Batas Waktu Tindaklanjuti:</strong>
@@ -72,8 +72,8 @@
                             {{ $bmnDisposisi->status_disposisi }}
                         </div>
                         <div class="form-group">
-                            <strong>Komentar:</strong>
-                            {{ $bmnDisposisi->komentar }}
+                            <strong>Catatan:</strong>
+                            {{ $bmnDisposisi->catatan }}
                         </div>
 
                     </div>

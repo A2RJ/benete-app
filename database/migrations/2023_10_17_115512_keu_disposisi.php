@@ -15,11 +15,11 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('keu_surat_masuk_id');
             $table->foreign('keu_surat_masuk_id')->on('keu_surat_masuk')->references('id');
-            $table->date('tanggal_disposisi');
+            $table->string('tujuan');
             $table->date('batas_waktu_tindaklanjuti');
-            $table->enum('jenis_disposisi', ['Penting', 'Biasa']);
-            $table->enum('status_disposisi', ['Belum Ditindaklanjuti', 'Selesai', 'Ditolak', 'Terlewati']);
-            $table->text('komentar')->nullable();
+            $table->enum('jenis_disposisi', ['Segera', 'Biasa']);
+            $table->enum('status_disposisi', ['Belum Ditindaklanjuti', 'Selesai', 'Terlewati']);
+            $table->text('catatan')->nullable();
             $table->timestamps();
         });
     }

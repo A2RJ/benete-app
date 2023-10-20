@@ -78,11 +78,11 @@ Kesya Disposisi
                                     </th>
 
                                     <th>Kesya Surat Masuk Id</th>
-                                    <th>Tanggal Disposisi</th>
+                                    <th>Tujuan Disposisi</th>
                                     <th>Batas Waktu Tindaklanjuti</th>
                                     <th>Jenis Disposisi</th>
                                     <th>Status Disposisi</th>
-                                    <th>Komentar</th>
+                                    <th>Catatan</th>
 
                                     <th class="w-1"></th>
                                 </tr>
@@ -95,11 +95,11 @@ Kesya Disposisi
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $kesyaDisposisi->kesya_surat_masuk_id }}</td>
-                                    <td>{{ $kesyaDisposisi->tanggal_disposisi }}</td>
+                                    <td>{{ $kesyaDisposisi->tujuan }}</td>
                                     <td>{{ $kesyaDisposisi->batas_waktu_tindaklanjuti }}</td>
                                     <td>{{ $kesyaDisposisi->jenis_disposisi }}</td>
                                     <td>{{ $kesyaDisposisi->status_disposisi }}</td>
-                                    <td>{{ $kesyaDisposisi->komentar }}</td>
+                                    <td>{{ $kesyaDisposisi->catatan }}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

@@ -53,7 +53,7 @@
                         <form method="POST" action="{{ route('pelabuhan-disposisi.update', $pelabuhanDisposisi->id) }}" id="ajaxForm" role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-                            @include('pelabuhan-disposisi.form')
+                            @include('Pelabuhan.disposisi.form')
                         </form>
                     </div>
                 </div>

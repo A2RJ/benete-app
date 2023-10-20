@@ -78,11 +78,11 @@ Tu Disposisi
                                     </th>
 
                                     <th>Tu Surat Masuk Id</th>
-                                    <th>Tanggal Disposisi</th>
+                                    <th>Tujuan Disposisi</th>
                                     <th>Batas Waktu Tindaklanjuti</th>
                                     <th>Jenis Disposisi</th>
                                     <th>Status Disposisi</th>
-                                    <th>Komentar</th>
+                                    <th>Catatan</th>
 
                                     <th class="w-1"></th>
                                 </tr>
@@ -95,11 +95,11 @@ Tu Disposisi
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $tuDisposisi->tu_surat_masuk_id }}</td>
-                                    <td>{{ $tuDisposisi->tanggal_disposisi }}</td>
+                                    <td>{{ $tuDisposisi->tujuan }}</td>
                                     <td>{{ $tuDisposisi->batas_waktu_tindaklanjuti }}</td>
                                     <td>{{ $tuDisposisi->jenis_disposisi }}</td>
                                     <td>{{ $tuDisposisi->status_disposisi }}</td>
-                                    <td>{{ $tuDisposisi->komentar }}</td>
+                                    <td>{{ $tuDisposisi->catatan }}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

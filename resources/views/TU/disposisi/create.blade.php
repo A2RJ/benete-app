@@ -52,7 +52,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('tu-disposisi.store') }}" id="ajaxForm" role="form" enctype="multipart/form-data">
                             @csrf
-                            @include('tu-disposisi.form')
+                            @include('TU.disposisi.form')
                         </form>
                     </div>
                 </div>

@@ -105,6 +105,9 @@ Surat Masuk
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="{{ route('keu-surat-masuk.disposisi.index', ['keu_surat_masuk' => $keuSuratMasuk->id]) }}">
+                                                        Disposisi
+                                                    </a>
                                                     <a class="dropdown-item" href="{{ route('keu-surat-masuk.show',$keuSuratMasuk->id) }}">
                                                         View
                                                     </a>

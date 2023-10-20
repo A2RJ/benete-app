@@ -52,7 +52,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('keu-disposisi.store') }}" id="ajaxForm" role="form" enctype="multipart/form-data">
                             @csrf
-                            @include('keu-disposisi.form')
+                            @include('Keuangan.disposisi.form')
                         </form>
                     </div>
                 </div>

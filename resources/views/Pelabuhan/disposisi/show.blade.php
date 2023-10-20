@@ -56,8 +56,8 @@
                             {{ $pelabuhanDisposisi->pelabuhan_surat_masuk_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Tanggal Disposisi:</strong>
-                            {{ $pelabuhanDisposisi->tanggal_disposisi }}
+                            <strong>Tujuan Disposisi:</strong>
+                            {{ $pelabuhanDisposisi->tujuan }}
                         </div>
                         <div class="form-group">
                             <strong>Batas Waktu Tindaklanjuti:</strong>
@@ -72,8 +72,8 @@
                             {{ $pelabuhanDisposisi->status_disposisi }}
                         </div>
                         <div class="form-group">
-                            <strong>Komentar:</strong>
-                            {{ $pelabuhanDisposisi->komentar }}
+                            <strong>Catatan:</strong>
+                            {{ $pelabuhanDisposisi->catatan }}
                         </div>
 
                     </div>

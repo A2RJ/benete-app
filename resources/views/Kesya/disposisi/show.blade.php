@@ -56,8 +56,8 @@
                             {{ $kesyaDisposisi->kesya_surat_masuk_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Tanggal Disposisi:</strong>
-                            {{ $kesyaDisposisi->tanggal_disposisi }}
+                            <strong>Tujuan Disposisi:</strong>
+                            {{ $kesyaDisposisi->tujuan }}
                         </div>
                         <div class="form-group">
                             <strong>Batas Waktu Tindaklanjuti:</strong>
@@ -72,8 +72,8 @@
                             {{ $kesyaDisposisi->status_disposisi }}
                         </div>
                         <div class="form-group">
-                            <strong>Komentar:</strong>
-                            {{ $kesyaDisposisi->komentar }}
+                            <strong>Catatan:</strong>
+                            {{ $kesyaDisposisi->catatan }}
                         </div>
 
                     </div>

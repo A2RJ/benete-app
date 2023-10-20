@@ -53,7 +53,7 @@
                         <form method="POST" action="{{ route('bmn-disposisi.update', $bmnDisposisi->id) }}" id="ajaxForm" role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-                            @include('bmn-disposisi.form')
+                            @include('BMN.disposisi.form')
                         </form>
                     </div>
                 </div>

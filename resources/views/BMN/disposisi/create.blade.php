@@ -52,7 +52,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('bmn-disposisi.store') }}" id="ajaxForm" role="form" enctype="multipart/form-data">
                             @csrf
-                            @include('bmn-disposisi.form')
+                            @include('BMN.disposisi.form')
                         </form>
                     </div>
                 </div>

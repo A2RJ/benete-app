@@ -56,8 +56,8 @@
                             {{ $keuDisposisi->keu_surat_masuk_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Tanggal Disposisi:</strong>
-                            {{ $keuDisposisi->tanggal_disposisi }}
+                            <strong>Tujuan Disposisi:</strong>
+                            {{ $keuDisposisi->tujuan }}
                         </div>
                         <div class="form-group">
                             <strong>Batas Waktu Tindaklanjuti:</strong>
@@ -72,8 +72,8 @@
                             {{ $keuDisposisi->status_disposisi }}
                         </div>
                         <div class="form-group">
-                            <strong>Komentar:</strong>
-                            {{ $keuDisposisi->komentar }}
+                            <strong>Catatan:</strong>
+                            {{ $keuDisposisi->catatan }}
                         </div>
 
                     </div>

@@ -10,11 +10,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $pelabuhan_surat_masuk_id
- * @property $tanggal_disposisi
+ * @property $tujuan
  * @property $batas_waktu_tindaklanjuti
  * @property $jenis_disposisi
  * @property $status_disposisi
- * @property $komentar
+ * @property $catatan
  * @property $created_at
  * @property $updated_at
  *
@@ -30,7 +30,7 @@ class PelabuhanDisposisi extends Model
 
     static $rules = [
     'pelabuhan_surat_masuk_id' => 'required',
-    'tanggal_disposisi' => 'required',
+    'tujuan' => 'required',
     'batas_waktu_tindaklanjuti' => 'required',
     'jenis_disposisi' => 'required',
     'status_disposisi' => 'required',
@@ -43,7 +43,7 @@ class PelabuhanDisposisi extends Model
      *
      * @var array
      */
-  protected $fillable = ['pelabuhan_surat_masuk_id', 'tanggal_disposisi', 'batas_waktu_tindaklanjuti', 'jenis_disposisi', 'status_disposisi', 'komentar'];
+  protected $fillable = ['pelabuhan_surat_masuk_id', 'tujuan', 'batas_waktu_tindaklanjuti', 'jenis_disposisi', 'status_disposisi', 'catatan'];
 
 
   /**

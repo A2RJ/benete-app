@@ -56,8 +56,8 @@
                             {{ $tuDisposisi->tu_surat_masuk_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Tanggal Disposisi:</strong>
-                            {{ $tuDisposisi->tanggal_disposisi }}
+                            <strong>Tujuan Disposisi:</strong>
+                            {{ $tuDisposisi->tujuan }}
                         </div>
                         <div class="form-group">
                             <strong>Batas Waktu Tindaklanjuti:</strong>
@@ -72,8 +72,8 @@
                             {{ $tuDisposisi->status_disposisi }}
                         </div>
                         <div class="form-group">
-                            <strong>Komentar:</strong>
-                            {{ $tuDisposisi->komentar }}
+                            <strong>Catatan:</strong>
+                            {{ $tuDisposisi->catatan }}
                         </div>
 
                     </div>

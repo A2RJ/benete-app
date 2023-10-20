@@ -53,7 +53,7 @@
                         <form method="POST" action="{{ route('kesya-disposisi.update', $kesyaDisposisi->id) }}" id="ajaxForm" role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-                            @include('kesya-disposisi.form')
+                            @include('Kesya.disposisi.form')
                         </form>
                     </div>
                 </div>
