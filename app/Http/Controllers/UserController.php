@@ -49,9 +49,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $payload = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
+        $payload = $request->validate(['name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
             'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,pengelola bmd dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
             'password' => 'required|confirmed|min:8',
             'password_confirmation' => 'required'
@@ -100,7 +99,7 @@ class UserController extends Controller
     {
         $payload = $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id,
             'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,pengelola bmd dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
             'password' => 'nullable|confirmed|min:8',
             'password_confirmation' => 'sometimes|required_with:password'
