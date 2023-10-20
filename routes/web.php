@@ -76,7 +76,7 @@ Route::get('download/{pathToImage}', function (string $pathToImage) {
 Route::resource('/user', UserController::class);
 
 Route::resource('/keu-surat-masuk', KeuSuratMasukController::class);
-Route::resource('/keu-surat-masuk.disposisi', KeuDisposisiController::class);
+Route::resource('/keu-surat-masuk.disposisi', KeuDisposisiController::class)->except(['index', 'show']);
 Route::resource('/keu-surat-keluar', KeuSuratKeluarController::class);
 Route::resource('/keu-bendahara-pengeluaran', KeuBendaharaPengeluaranController::class);
 Route::resource('/keu-bendahara-penerimaan', KeuBendaharaPenerimaanController::class);

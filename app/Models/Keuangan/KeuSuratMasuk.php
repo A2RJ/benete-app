@@ -6,7 +6,6 @@ use App\Helpers\FileHelper;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
 
 /**
@@ -79,6 +78,6 @@ class KeuSuratMasuk extends Model
 
   public function disposisi()
   {
-    return $this->hasOne(KeuSuratMasuk::class);
+    return $this->hasOne(KeuDisposisi::class);
   }
 }

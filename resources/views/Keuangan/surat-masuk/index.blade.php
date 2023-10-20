@@ -82,7 +82,7 @@ Surat Masuk
                                     <th>Asal</th>
                                     <th>Perihal</th>
                                     <th>Lampiran</th>
-
+                                    <th>Disposisi</th>
                                     <th class="w-1"></th>
                                 </tr>
                             </thead>
@@ -98,6 +98,7 @@ Surat Masuk
                                     <td>{{ $keuSuratMasuk->asal }}</td>
                                     <td>{{ $keuSuratMasuk->perihal }}</td>
                                     <td>{!! $keuSuratMasuk->lampiran !!}</td>
+                                    <td>{{ $keuSuratMasuk->disposisi?->status_disposisi }}</td>
                                     <td>
                                         <div class="btn-list flex-nowrap">
                                             <div class="dropdown">
@@ -105,9 +106,30 @@ Surat Masuk
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="{{ route('keu-surat-masuk.disposisi.index', ['keu_surat_masuk' => $keuSuratMasuk->id]) }}">
-                                                        Disposisi
+                                                    <!--
+                                                        Tidak ada halaman index disposisi
+                                                        Langsung masuk ke halaman create disposisi
+                                                        Jika disposisi sudah ada maka masuk ke halaman update disposisi setting pada controller
+                                                        Tombol list disposisi menjadi back()
+                                                        Tombol batal halaman create hapus
+                                                        Tombol batal halaman edit ubah jadi hapus 
+                                                    -->
+                                                    @if ($keuSuratMasuk->disposisi)
+                                                    <a class="dropdown-item" href="{{ route('keu-surat-masuk.disposisi.edit', ['keu_surat_masuk' => $keuSuratMasuk->id, 'disposisi' => $keuSuratMasuk->disposisi->id]) }}">
+                                                        Update Disposisi
                                                     </a>
+                                                    <form action="{{ route('keu-surat-masuk.disposisi.destroy', ['keu_surat_masuk' => $keuSuratMasuk->id, 'disposisi' => $keuSuratMasuk->disposisi->id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
+                                                            Delete Disposisi
+                                                        </button>
+                                                    </form>
+                                                    @else
+                                                    <a class="dropdown-item" href="{{ route('keu-surat-masuk.disposisi.create', ['keu_surat_masuk' => $keuSuratMasuk->id]) }}">
+                                                        Add Disposisi
+                                                    </a>
+                                                    @endif
                                                     <a class="dropdown-item" href="{{ route('keu-surat-masuk.show',$keuSuratMasuk->id) }}">
                                                         View
                                                     </a>
