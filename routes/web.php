@@ -65,6 +65,9 @@ use App\Http\Controllers\TU\{
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/update-profile', function () {
+    return view('auth.login');
+})->name('update.profile');
 
 Auth::routes();
 Route::get('register', function () {
