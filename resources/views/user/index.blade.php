@@ -65,7 +65,7 @@ User
 
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Unit</th>
+                                    <th>Role</th>
                                     <th>Dibuat</th>
 
                                     <th class="w-1"></th>
@@ -80,7 +80,7 @@ User
 
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->bidang }}</td>
+                                    <td>{{ json_encode($user->roles) }}</td>
                                     <td>{{ $user->created_at }}</td>
 
                                     <td>

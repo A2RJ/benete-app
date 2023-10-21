@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class PelabuhanFasilitasPelabuhan extends Model

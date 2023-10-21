@@ -17,10 +17,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property $catatan
  * @property $created_at
  * @property $updated_at
- *
  * @property PelabuhanSuratMasuk $pelabuhanSuratMasuk
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property-read \App\Models\Pelabuhan\PelabuhanSuratMasuk|null $suratMasuk
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereBatasWaktuTindaklanjuti($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereCatatan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereJenisDisposisi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi wherePelabuhanSuratMasukId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereStatusDisposisi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereTujuan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class PelabuhanDisposisi extends Model
 {

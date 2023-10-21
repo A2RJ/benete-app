@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class KesyaPatroli extends Model

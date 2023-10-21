@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyabandaran whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Kesyabandaran extends Model

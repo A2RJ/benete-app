@@ -24,6 +24,15 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk query()
+ * @property-read \App\Models\Kesyabandaraan\KesyaDisposisi|null $disposisi
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class KesyaSuratMasuk extends Model

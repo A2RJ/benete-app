@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class TuKontrakKerjaSama extends Model

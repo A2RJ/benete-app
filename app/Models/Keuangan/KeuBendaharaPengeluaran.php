@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class KeuBendaharaPengeluaran extends Model

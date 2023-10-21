@@ -17,10 +17,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property $catatan
  * @property $created_at
  * @property $updated_at
- *
  * @property KeuSuratMasuk $keuSuratMasuk
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property-read \App\Models\Keuangan\KeuSuratMasuk|null $suratMasuk
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereBatasWaktuTindaklanjuti($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereCatatan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereJenisDisposisi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereKeuSuratMasukId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereStatusDisposisi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereTujuan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class KeuDisposisi extends Model
 {

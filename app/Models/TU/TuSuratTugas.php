@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratTugas whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class TuSuratTugas extends Model

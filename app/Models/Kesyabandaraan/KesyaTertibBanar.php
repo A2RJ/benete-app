@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaTertibBanar whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class KesyaTertibBanar extends Model

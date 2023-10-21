@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class BmnPengelolaBmn extends Model

@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenKapal whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class KesyaDokumenKapal extends Model

@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class KeuPpk extends Model

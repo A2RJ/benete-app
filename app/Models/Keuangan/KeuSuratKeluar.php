@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratKeluar whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class KeuSuratKeluar extends Model

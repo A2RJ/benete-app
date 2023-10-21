@@ -15,10 +15,20 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@mail.com',
-            'password' => Hash::make('testtest')
-        ]);
+        // \App\Models\User::factory()->createMany([
+        //     [
+        //         'name' => 'Super Admin',
+        //         'email' => 'test@mail.com',
+        //         'bidang' => 'admin',
+        //         'password' => Hash::make('testtest')
+        //     ],
+        //     [
+        //         'name' => 'Bidang Keuangan',
+        //         'email' => 'keuangan@mail.com',
+        //         'bidang' => 'bidang keuangan',
+        //         'password' => Hash::make('keuangan')
+        //     ]
+        // ]);
+        $this->call(UsersTableSeeder::class);
     }
 }
