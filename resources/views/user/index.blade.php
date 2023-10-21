@@ -80,7 +80,10 @@ User
 
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ json_encode($user->roles) }}</td>
+                                    <td>{{ $user->roles[0]->display_name }}
+                                        <br>
+                                        {{ $user->roles[0]->description }}
+                                    </td>
                                     <td>{{ $user->created_at }}</td>
 
                                     <td>

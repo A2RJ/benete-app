@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class UserController
@@ -49,18 +51,36 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $payload = $request->validate(['name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,pengelola bmd dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
-            'password' => 'required|confirmed|min:8',
-            'password_confirmation' => 'required'
-        ]);
+        DB::beginTransaction();
+        try {
+            $payload = $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email|unique:users,email',
+                'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,bidang pengelola bmn dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
+                'password' => 'required|confirmed|min:8',
+            ]);
 
-        User::create($payload);
+            $user = User::create($payload);
+            $role = Role::whereName($payload['bidang'])->first();
 
-        return redirect()->route('user.index')
-            ->with('success', 'User created successfully.');
+            if (!$role) {
+                DB::rollBack();
+                return back()->with('error', "Role not found for the specified bidang.");
+            }
+
+            if (!$user->hasRole($payload['bidang'])) {
+                $user->addRole($role);
+            }
+            DB::commit();
+
+            return redirect()->route('user.index')
+                ->with('success', 'User created successfully.');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return back()->with('error', 'An error occurred while creating the user.');
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -97,19 +117,42 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $payload = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,pengelola bmd dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
-            'password' => 'nullable|confirmed|min:8',
-            'password_confirmation' => 'sometimes|required_with:password'
-        ]);
-        if (!$request->password) unset($payload['password']);
-        $user->update($payload);
+        DB::beginTransaction();
 
-        return redirect()->route('user.index')
-            ->with('success', 'User updated successfully');
+        try {
+            $payload = $request->validate([
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email,' . $user->id,
+                'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,bidang pengelola bmn dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
+                'password' => 'nullable|confirmed|min:8',
+                'password_confirmation' => 'sometimes|required_with:password',
+            ], [
+                'email.unique' => 'Email sudah digunakan oleh pengguna lain.',
+            ]);
+
+            if ($request->password) {
+                $payload['password'] = $request->password;
+            } else {
+                unset($payload['password']);
+            }
+            $user->update($payload);
+
+            $role = Role::whereName($request->bidang)->first();
+            if (!$role) {
+                DB::rollBack();
+                return back()->with('error', "Role not found for the specified bidang.");
+            }
+            $user->syncRoles([$role]);
+            DB::commit();
+
+            return redirect()->route('user.index')
+                ->with('success', 'User updated successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return back()->with('error', 'An error occurred while updating the user.');
+        }
     }
+
 
     /**
      * @param int $id

@@ -83,7 +83,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::resource('user', UserController::class);
 });
 
-Route::middleware(['role:keuangan'])->group(function () {
+Route::middleware(['role:bidang keuangan'])->group(function () {
     Route::resource('keu-surat-masuk', KeuSuratMasukController::class);
     Route::resource('keu-surat-masuk.disposisi', KeuDisposisiController::class)->except(['index', 'show']);
     Route::resource('keu-surat-keluar', KeuSuratKeluarController::class);
@@ -94,7 +94,7 @@ Route::middleware(['role:keuangan'])->group(function () {
     Route::resource('keu-kuasa-pengguna-anggaran', KeuKuasaPenggunaAnggaranController::class);
 });
 
-Route::middleware(['role:kesyabandaraan'])->group(function () {
+Route::middleware(['role:bidang kesyabandaran'])->group(function () {
     Route::resource('kesya-surat-masuk', KesyaSuratMasukController::class);
     Route::resource('kesya-surat-masuk.disposisi', KesyaDisposisiController::class)->except(['index', 'show']);
     Route::resource('kesya-surat-keluar', KesyaSuratKeluarController::class);
@@ -105,7 +105,7 @@ Route::middleware(['role:kesyabandaraan'])->group(function () {
     Route::resource('kesya-dokumen-awak-kapal', KesyaDokumenAwakKapalController::class);
 });
 
-Route::middleware(['role:bmn'])->group(function () {
+Route::middleware(['role:bidang pengelola bmn dan persediaan'])->group(function () {
     Route::resource('bmn-surat-masuk', BmnSuratMasukController::class);
     Route::resource('bmn-surat-masuk.disposisi', BmnDisposisiController::class)->except(['index', 'show']);
     Route::resource('bmn-surat-keluar', BmnSuratKeluarController::class);
@@ -114,7 +114,7 @@ Route::middleware(['role:bmn'])->group(function () {
     Route::resource('bmn-smart-uup-benete', BmnSmartUupBeneteController::class);
 });
 
-Route::middleware(['role:tu'])->group(function () {
+Route::middleware(['role:bidang kepegawaian atau tata usaha'])->group(function () {
     Route::resource('tu-surat-masuk', TuSuratMasukController::class);
     Route::resource('tu-surat-masuk.disposisi', TuDisposisiController::class)->except(['index', 'show']);
     Route::resource('tu-surat-keluar', TuSuratKeluarController::class);
@@ -122,7 +122,7 @@ Route::middleware(['role:tu'])->group(function () {
     Route::resource('tu-kontrak-kerja-sama', TuKontrakKerjaSamaController::class);
 });
 
-Route::middleware(['role:pelabuhan'])->group(function () {
+Route::middleware(['role:bidang kepelabuhan'])->group(function () {
     Route::resource('pelabuhan-surat-masuk', PelabuhanSuratMasukController::class);
     Route::resource('pelabuhan-surat-masuk.disposisi', PelabuhanDisposisiController::class)->except(['index', 'show']);
     Route::resource('pelabuhan-surat-keluar', PelabuhanSuratKeluarController::class);

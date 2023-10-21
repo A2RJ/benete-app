@@ -161,181 +161,211 @@ return [
             'text' => 'Surat Masuk',
             'url' => '/keu-surat-masuk',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang keuangan'
         ],
         [
             'text' => 'Surat Keluar',
             'url' => '/keu-surat-keluar',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang keuangan'
         ],
         [
             'text' => 'Bendahara Pengeluaran',
             'url' => '/keu-bendahara-pengeluaran',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang keuangan'
         ],
         [
             'text' => 'Bendahara Penerimaan',
             'url' => '/keu-bendahara-penerimaan',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang keuangan'
         ],
         [
             'text' => 'Pejabat Pengadaan',
             'url' => '/keu-pejabat-pengadaan',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang keuangan'
         ],
         [
             'text' => 'Pejabat Pembuat Komitmen',
             'url' => '/keu-ppk',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang keuangan'
         ],
         [
             'text' => 'Kuasa Pengguna Anggaran',
             'url' => '/keu-kuasa-pengguna-anggaran',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
-        ],
-        [
-            'text' => 'Kesyabandaran',
-            'url' => '/kesyabandaran',
-            'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang keuangan'
         ],
         [
             'text' => 'Surat Masuk',
             'url' => '/kesya-surat-masuk',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kesyabandaran'
         ],
         [
             'text' => 'Surat Keluar',
             'url' => '/kesya-surat-keluar',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kesyabandaran'
+        ],
+        [
+            'text' => 'Kesyabandaran',
+            'url' => '/kesyabandaran',
+            'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
+            'can' => 'bidang kesyabandaran'
         ],
         [
             'text' => 'Tertib Banar',
             'url' => '/kesya-tertib-banar',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kesyabandaran'
         ],
         [
             'text' => 'Patroli',
             'url' => '/kesya-patroli',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kesyabandaran'
         ],
         [
             'text' => 'Dokumen Kapal',
             'url' => '/kesya-dokumen-kapal',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kesyabandaran'
         ],
         [
             'text' => 'Dokumen Awak Kapal',
             'url' => '/kesya-dokumen-awak-kapal',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kesyabandaran'
         ],
         [
             'text' => 'Surat Masuk',
             'url' => '/bmn-surat-masuk',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang pengelola bmn dan persediaan'
         ],
         [
             'text' => 'Surat Keluar',
             'url' => '/bmn-surat-keluar',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang pengelola bmn dan persediaan'
         ],
         [
             'text' => 'Bendahara Materil',
             'url' => '/bmn-bendahara-materil',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang pengelola bmn dan persediaan'
         ],
         [
             'text' => 'Pengelola BMN',
             'url' => '/bmn-pengelola-bmn',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang pengelola bmn dan persediaan'
         ],
         [
             'text' => 'Smart UPP',
             'url' => '/bmn-smart-uup-benete',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang pengelola bmn dan persediaan'
         ],
         [
             'text' => 'Surat Masuk',
             'url' => '/tu-surat-masuk',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepegawaian atau tata usaha'
         ],
         [
             'text' => 'Surat Keluar',
             'url' => '/tu-surat-keluar',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepegawaian atau tata usaha'
         ],
         [
             'text' => 'Surat Tugas',
             'url' => '/tu-surat-tugas',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepegawaian atau tata usaha'
         ],
         [
             'text' => 'Kontrak Kerja Sama',
             'url' => '/tu-kontrak-kerja-sama',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepegawaian atau tata usaha'
         ],
         [
             'text' => 'Surat Masuk',
             'url' => '/pelabuhan-surat-masuk',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepegawaian atau tata usaha'
         ],
         [
             'text' => 'Surat Keluar',
             'url' => '/pelabuhan-surat-keluar',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepegawaian atau tata usaha'
         ],
         [
             'text' => 'LALA',
             'url' => '/pelabuhan-lala',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
         ],
         [
             'text' => 'Fasilitas Pelabuhan',
             'url' => '/pelabuhan-fasilitas-pelabuhan',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
         ],
         [
             'text' => 'Keagenan',
             'url' => '/pelabuhan-keagenan',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
         ],
         [
             'text' => 'PBM',
             'url' => '/pelabuhan-pbm',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
         ],
         [
             'text' => 'TKBM/JTS',
             'url' => '/pelabuhan-tkbm',
             'icon' => 'ti ti-mail',
-            'icon_color' => 'white'
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
         ]
     ],
 

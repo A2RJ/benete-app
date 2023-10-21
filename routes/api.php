@@ -22,17 +22,39 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/', function () {
-    $role = Role::whereName('admin')->first();
-    $admin = User::whereEmail('admin@mail.com')->firstOrFail();
-    if (!$role) {
-        $role = Role::create([
-            'name' => 'admin',
-            'display_name' => 'User Administrator', // optional
-            'description' => 'User is allowed to manage and edit other users', // optional
-        ]);
+    Role::query()->forceDelete();
+    $role = Role::create([
+        'name' => 'admin',
+        'display_name' => 'Administrator',
+        'description' => 'Administrtor hanya dapat mengelola akun user',
+    ]);
+    $user = User::whereEmail('admin@mail.com')->first();
+    if (!$user->hasRole($role->name)) {
+        $user->addRole($role);
     }
-    if (!$admin->hasRole('admin')) {
-        $admin->addRole($role);
-    }
-    return [$role, $admin->load('roles')];
+    Role::create([
+        'name' => 'bidang keuangan',
+        'display_name' => 'Bidang Keuangan',
+        'description' => 'User ini hanya dapat mengelola bidang keuangan',
+    ]);
+    Role::create([
+        'name' => 'bidang kesyabandaran',
+        'display_name' => 'Bidang Kesaybandaran',
+        'description' => 'User ini hanya dapat mengelola bidang kesyabandaran',
+    ]);
+    Role::create([
+        'name' => 'bidang pengelola bmn dan persediaan',
+        'display_name' => 'Bidang Pengelola BMN dan Persediaan',
+        'description' => 'User ini hanya dapat mengelola bidang pengelola bmn dan persediaan',
+    ]);
+    Role::create([
+        'name' => 'bidang kepegawaian atau tata usaha',
+        'display_name' => 'Bidang Kepegawaian atau Tata Usaha',
+        'description' => 'User ini hanya dapat mengelola bidang kepegawaian atau tata usaha',
+    ]);
+    Role::create([
+        'name' => 'bidang kepelabuhan',
+        'display_name' => 'Bidang Kepelabuhan',
+        'description' => 'User ini hanya dapat mengelola bidang kepelabuhan',
+    ]);
 });

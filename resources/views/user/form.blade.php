@@ -17,7 +17,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('Unit atau bidang') }}</label>
     <div>
-        {{ Form::select('bidang', ['bidang keuangan' => 'bidang keuangan', 'bidang kesyabandaran' => 'bidang kesyabandaran', 'pengelola bmd dan persediaan' => 'pengelola bmd dan persediaan', 'bidang pegawai atau tata usaha' => 'bidang pegawai atau tata usaha', 'bidang kepelabuhan' => 'bidang kepelabuhan'], $user->bidang, ['class' => 'form-control' .
+        {{ Form::select('bidang', ['bidang keuangan' => 'bidang keuangan', 'bidang kesyabandaran' => 'bidang kesyabandaran', 'bidang pengelola bmn dan persediaan' => 'bidang pengelola bmn dan persediaan', 'bidang pegawai atau tata usaha' => 'bidang pegawai atau tata usaha', 'bidang kepelabuhan' => 'bidang kepelabuhan'], $user->roles[0]?->name, ['class' => 'form-control' .
             ($errors->has('bidang') ? ' is-invalid' : ''), 'placeholder' => 'Pilih unit']) }}
         {!! $errors->first('bidang', '<div class="invalid-feedback">:message</div>') !!}
     </div>
