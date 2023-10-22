@@ -33,7 +33,6 @@ class TuDisposisiController extends Controller
      */
     public function store(DisposisiRequest $request, $tuSuratMasuk)
     {
-        return $tuSuratMasuk;
         $payload = $request->validated();
         $tuSuratMasuk->disposisi()->create($payload);
 

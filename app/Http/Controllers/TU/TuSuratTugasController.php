@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\TU;
 
-use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
 use App\Models\TU\TuSuratTugas;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 /**
  * Class TuSuratTugaController

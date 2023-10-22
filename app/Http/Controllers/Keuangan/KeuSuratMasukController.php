@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
 use App\Models\Keuangan\KeuSuratMasuk;
-use Illuminate\Http\Request;
 
 /**
  * Class KeuSuratMasukController

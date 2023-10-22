@@ -21,9 +21,6 @@
                 <div class="mb-2">
                     <label class="form-label">
                         Password
-                        <span class="form-label-description">
-                            <a href="{{route('password.request')}}">I forgot password</a>
-                        </span>
                     </label>
                     <div class="input-group input-group-flat">
                         <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Your password" autocomplete="off">

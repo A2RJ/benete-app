@@ -8,7 +8,7 @@
         </svg>
         <div class="d-none d-xl-block ps-2">
             <div>{{Auth()->user()->name}}</div>
-            <div class="mt-1 small text-muted">Benete App</div>
+            <div class="mt-1 small text-muted">{{ count(auth()->user()->roles) ? auth()->user()->roles[0]->display_name : '' }}</div>
         </div>
     </a>
     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

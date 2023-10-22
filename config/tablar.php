@@ -115,10 +115,10 @@ return [
     'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
-    'register_url' => 'register',
-    'password_reset_url' => 'password.request',
-    'password_email_url' => 'password.email',
-    'profile_url' => false,
+    'register_url' => ' ',
+    'password_reset_url' => '',
+    'password_email_url' => '',
+    'profile_url' => 'edit.profile',
     'setting_url' => false,
 
     /*
@@ -144,18 +144,26 @@ return [
 
     'menu' => [
         [
-            'text' => 'Home',
+            'text' => 'Dashboard',
             'icon' => 'ti ti-home',
             'url' => '/home',
             'icon_color' => 'white',
-            'can' => ['admin']
+            'can' => 'admin'
         ],
         [
             'text' => 'Users',
             'icon' => 'ti ti-user',
             'url' => '/user',
             'icon_color' => 'white',
-            'can' => ['admin']
+            'can' => 'admin'
+        ],
+        // bidang keuangan
+        [
+            'text' => 'Dashboard',
+            'icon' => 'ti ti-home',
+            'url' => '/home',
+            'icon_color' => 'white',
+            'can' => 'bidang keuangan'
         ],
         [
             'text' => 'Surat Masuk',
@@ -206,6 +214,14 @@ return [
             'icon_color' => 'white',
             'can' => 'bidang keuangan'
         ],
+        // bidang kesyabandaran
+        [
+            'text' => 'Dashboard',
+            'icon' => 'ti ti-home',
+            'url' => '/home',
+            'icon_color' => 'white',
+            'can' => 'bidang kesyabandaran'
+        ],
         [
             'text' => 'Surat Masuk',
             'url' => '/kesya-surat-masuk',
@@ -255,6 +271,14 @@ return [
             'icon_color' => 'white',
             'can' => 'bidang kesyabandaran'
         ],
+        // bidang pengelola bmn dan persediaan
+        [
+            'text' => 'Dashboard',
+            'icon' => 'ti ti-home',
+            'url' => '/home',
+            'icon_color' => 'white',
+            'can' => 'bidang pengelola bmn dan persediaan'
+        ],
         [
             'text' => 'Surat Masuk',
             'url' => '/bmn-surat-masuk',
@@ -289,6 +313,14 @@ return [
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
             'can' => 'bidang pengelola bmn dan persediaan'
+        ],
+        // bidang kepegawaian atau tata usaha
+        [
+            'text' => 'Dashboard',
+            'icon' => 'ti ti-home',
+            'url' => '/home',
+            'icon_color' => 'white',
+            'can' => 'bidang kepegawaian atau tata usaha'
         ],
         [
             'text' => 'Surat Masuk',
@@ -331,6 +363,14 @@ return [
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
             'can' => 'bidang kepegawaian atau tata usaha'
+        ],
+        // bidang kepelabuhan
+        [
+            'text' => 'Dashboard',
+            'icon' => 'ti ti-home',
+            'url' => '/home',
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
         ],
         [
             'text' => 'LALA',

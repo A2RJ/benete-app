@@ -23,7 +23,8 @@
         </div>
 
         <div class="collapse navbar-collapse" id="sidebar-menu">
-            <ul class="navbar-nav pt-lg-3">
+            <h3 style="margin-left: 17px;">{{ str()->upper(count(auth()->user()->roles) ? auth()->user()->roles[0]->display_name : '' )}}</h3>
+            <ul class="navbar-nav">
                 @each('tablar::partials.navbar.dropdown-item',$tablar->menu('sidebar'), 'item')
             </ul>
         </div>

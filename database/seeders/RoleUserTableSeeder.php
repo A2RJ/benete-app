@@ -25,6 +25,12 @@ class RoleUserTableSeeder extends Seeder
                 'user_id' => 1,
                 'user_type' => 'App\\Models\\User',
             ),
+            1 => 
+            array (
+                'role_id' => 13,
+                'user_id' => 2,
+                'user_type' => 'App\\Models\\User',
+            ),
         ));
         
         

@@ -1,10 +1,9 @@
 <?php
 
 use App\Helpers\FileHelper;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BMN\{
     BmnBendaharaMaterilController,
     BmnDisposisiController,
@@ -62,20 +61,19 @@ use App\Http\Controllers\TU\{
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
+    Route::get('/login', 'showLoginForm')->name('login');
+    Route::post('/login', 'login');
+    Route::middleware('auth')->group(function () {
+        Route::get('/home', 'home')->name('dashboard');
+        Route::get('edit-profile', 'edit')->name('edit.profile');
+        Route::post('update-profile', 'update')->name('update.profile');
+        Route::post('logout', 'logout')->name('logout');
+    });
 });
-Route::get('/update-profile', function () {
-    return view('auth.login');
-})->name('update.profile');
 
-Auth::routes();
-Route::get('register', function () {
-    abort(404);
-})->name('register');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('download/{pathToImage}', function (string $pathToImage) {
+Route::middleware('auth')->get('download/{pathToImage}', function (string $pathToImage) {
     return FileHelper::download($pathToImage);
 })->where('pathToImage', '.*')->name('download');
 

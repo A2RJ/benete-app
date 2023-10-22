@@ -65,6 +65,7 @@ User
 
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Whatsapp</th>
                                     <th>Role</th>
                                     <th>Dibuat</th>
 
@@ -80,9 +81,10 @@ User
 
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->roles[0]->display_name }}
+                                    <td>{{ $user->whatsapp }}</td>
+                                    <td>{{ count($user->roles) ? $user->roles[0]?->display_name : '' }}
                                         <br>
-                                        {{ $user->roles[0]->description }}
+                                        {{ count($user->roles) ? $user->roles[0]?->description : '' }}
                                     </td>
                                     <td>{{ $user->created_at }}</td>
 

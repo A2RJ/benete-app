@@ -6,10 +6,10 @@
             <div class="container-xl">
                 <ul class="navbar-nav">
                     @if($layoutHelper->isLayoutTopnavEnabled())
-                        @each('tablar::partials.navbar.dropdown-item',$tablar->menu('sidebar'), 'item')
+                    @each('tablar::partials.navbar.dropdown-item',$tablar->menu('sidebar'), 'item')
                     @endif
                 </ul>
-                {{--                    @include('tablar::partials.navbar.search')--}}
+                <!-- @include('tablar::partials.navbar.search') -->
             </div>
         </div>
     </div>

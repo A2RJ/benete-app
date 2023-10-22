@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DisposisiRequest;
 use App\Models\BMN\BmnDisposisi;
 use App\Models\BMN\BmnSuratMasuk;
-use Illuminate\Http\Request;
 
 /**
  * Class BmnDisposisiController

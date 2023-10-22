@@ -56,16 +56,16 @@ class UserController extends Controller
             $payload = $request->validate([
                 'name' => 'required|string',
                 'email' => 'required|email|unique:users,email',
-                'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,bidang pengelola bmn dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
+                'whatsapp' => 'required|unique:users,whatsapp',
+                'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,bidang pengelola bmn dan persediaan,bidang kepegawaian atau tata usaha,bidang kepelabuhan',
                 'password' => 'required|confirmed|min:8',
             ]);
 
             $user = User::create($payload);
             $role = Role::whereName($payload['bidang'])->first();
-
             if (!$role) {
                 DB::rollBack();
-                return back()->with('error', "Role not found for the specified bidang.");
+                return back()->with('error', "Role not found for the specified bidang, please add role first.");
             }
 
             if (!$user->hasRole($payload['bidang'])) {
@@ -123,11 +123,13 @@ class UserController extends Controller
             $payload = $request->validate([
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email,' . $user->id,
-                'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,bidang pengelola bmn dan persediaan,bidang pegawai atau tata usaha,bidang kepelabuhan',
+                'whatsapp' => 'required|unique:users,whatsapp,' . $user->id,
+                'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,bidang pengelola bmn dan persediaan,bidang kepegawaian atau tata usaha,bidang kepelabuhan',
                 'password' => 'nullable|confirmed|min:8',
                 'password_confirmation' => 'sometimes|required_with:password',
             ], [
                 'email.unique' => 'Email sudah digunakan oleh pengguna lain.',
+                'whatsapp.unique' => 'Whatsapp sudah digunakan oleh pengguna lain.',
             ]);
 
             if ($request->password) {

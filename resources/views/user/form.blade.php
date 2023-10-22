@@ -9,15 +9,23 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('email') }}</label>
     <div>
-        {{ Form::text('email', $user->email, ['class' => 'form-control' .
+        {{ Form::email('email', $user->email, ['class' => 'form-control' .
             ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
         {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
     </div>
 </div>
 <div class="form-group mb-3">
+    <label class="form-label"> {{ Form::label('whatsapp') }}</label>
+    <div>
+        {{ Form::text('whatsapp', $user->whatsapp, ['class' => 'form-control' .
+            ($errors->has('whatsapp') ? ' is-invalid' : ''), 'placeholder' => 'Whatapp number']) }}
+        {!! $errors->first('whatsapp', '<div class="invalid-feedback">:message</div>') !!}
+    </div>
+</div>
+<div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('Unit atau bidang') }}</label>
     <div>
-        {{ Form::select('bidang', ['bidang keuangan' => 'bidang keuangan', 'bidang kesyabandaran' => 'bidang kesyabandaran', 'bidang pengelola bmn dan persediaan' => 'bidang pengelola bmn dan persediaan', 'bidang pegawai atau tata usaha' => 'bidang pegawai atau tata usaha', 'bidang kepelabuhan' => 'bidang kepelabuhan'], $user->roles[0]?->name, ['class' => 'form-control' .
+        {{ Form::select('bidang', ['bidang keuangan' => 'bidang keuangan', 'bidang kesyabandaran' => 'bidang kesyabandaran', 'bidang pengelola bmn dan persediaan' => 'bidang pengelola bmn dan persediaan', 'bidang kepegawaian atau tata usaha' => 'bidang kepegawaian atau tata usaha', 'bidang kepelabuhan' => 'bidang kepelabuhan'], count($user->roles) ? $user->roles[0]?->name : null, ['class' => 'form-control' .
             ($errors->has('bidang') ? ' is-invalid' : ''), 'placeholder' => 'Pilih unit']) }}
         {!! $errors->first('bidang', '<div class="invalid-feedback">:message</div>') !!}
     </div>

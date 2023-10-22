@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DisposisiRequest;
 use App\Models\Keuangan\KeuDisposisi;
 use App\Models\Keuangan\KeuSuratMasuk;
-use Illuminate\Http\Request;
 
 /**
  * Class KeuDisposisiController
