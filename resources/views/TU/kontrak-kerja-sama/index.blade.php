@@ -78,6 +78,7 @@ Kontrak Kerja Sama
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Kontrak Kerja Sama
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $tuKontrakKerjaSama->nama }}</td>
+                                    <td>{{ $tuKontrakKerjaSama->user->name }}</td>
                                     <td>{{ $tuKontrakKerjaSama->tanggal_masuk }}</td>
                                     <td>{{ $tuKontrakKerjaSama->asal }}</td>
                                     <td>{{ $tuKontrakKerjaSama->perihal }}</td>

@@ -2,8 +2,10 @@
 
 namespace App\Models\Kesyabandaraan;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class KesyaDisposisi
@@ -50,6 +52,23 @@ class KesyaDisposisi extends Model
    */
   protected $fillable = ['kesya_surat_masuk_id', 'tujuan', 'batas_waktu_tindaklanjuti', 'jenis_disposisi', 'status_disposisi', 'catatan'];
 
+  public function user()
+  {
+    return $this->belongsTo(User::class)->withTrashed();
+  }
+
+  public static function boot()
+  {
+    parent::boot();
+
+    self::creating(function ($model) {
+      $model->user_id = Auth::id();
+    });
+
+    self::updating(function ($model) {
+      $model->user_id = Auth::id();
+    });
+  }
 
   /**
    * @return \Illuminate\Database\Eloquent\Relations\HasOne

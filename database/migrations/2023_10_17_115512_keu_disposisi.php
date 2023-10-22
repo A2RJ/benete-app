@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('keu_disposisi', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('NO ACTION');
             $table->foreignUuid('keu_surat_masuk_id');
             $table->foreign('keu_surat_masuk_id')->on('keu_surat_masuk')->references('id');
             $table->string('tujuan');

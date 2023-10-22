@@ -78,6 +78,7 @@ Surat Tuga
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Surat Tuga
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $tuSuratTugas->nama }}</td>
+                                    <td>{{ $tuSuratTugas->user->name }}</td>
                                     <td>{{ $tuSuratTugas->tanggal_masuk }}</td>
                                     <td>{{ $tuSuratTugas->asal }}</td>
                                     <td>{{ $tuSuratTugas->perihal }}</td>

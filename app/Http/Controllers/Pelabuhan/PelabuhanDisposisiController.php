@@ -75,7 +75,7 @@ class PelabuhanDisposisiController extends Controller
      */
     public function destroy(PelabuhanSuratMasuk $pelabuhanSuratMasuk)
     {
-        $pelabuhanSuratMasuk->disposisi()->forceDelete();
+        $pelabuhanSuratMasuk->disposisi()->delete();
 
         return redirect()->route('pelabuhan-surat-masuk.index')
             ->with('success', 'PelabuhanDisposisi deleted successfully');

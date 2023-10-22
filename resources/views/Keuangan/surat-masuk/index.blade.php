@@ -78,6 +78,7 @@ Surat Masuk
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Surat Masuk
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $keuSuratMasuk->nama }}</td>
+                                    <td>{{ $keuSuratMasuk->user->name }}</td>
                                     <td>{{ $keuSuratMasuk->tanggal_masuk }}</td>
                                     <td>{{ $keuSuratMasuk->asal }}</td>
                                     <td>{{ $keuSuratMasuk->perihal }}</td>

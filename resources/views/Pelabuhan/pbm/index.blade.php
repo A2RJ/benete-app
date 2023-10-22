@@ -78,6 +78,7 @@ Pbm
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Pbm
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $pelabuhanPbm->nama }}</td>
+                                    <td>{{ $pelabuhanPbm->user->name }}</td>
                                     <td>{{ $pelabuhanPbm->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanPbm->asal }}</td>
                                     <td>{{ $pelabuhanPbm->perihal }}</td>

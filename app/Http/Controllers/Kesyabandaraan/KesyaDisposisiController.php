@@ -75,7 +75,7 @@ class KesyaDisposisiController extends Controller
      */
     public function destroy(KesyaSuratMasuk $kesyaSuratMasuk)
     {
-        $kesyaSuratMasuk->disposisi()->forceDelete();
+        $kesyaSuratMasuk->disposisi()->delete();
 
         return redirect()->route('kesya-surat-masuk.index')
             ->with('success', 'KesyaDisposisi deleted successfully');

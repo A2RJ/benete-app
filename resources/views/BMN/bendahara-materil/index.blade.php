@@ -78,6 +78,7 @@ Bendahara Materil
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Bendahara Materil
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $bmnBendaharaMateril->nama }}</td>
+                                    <td>{{ $bmnBendaharaMateril->user->name }}</td>
                                     <td>{{ $bmnBendaharaMateril->tanggal_masuk }}</td>
                                     <td>{{ $bmnBendaharaMateril->asal }}</td>
                                     <td>{{ $bmnBendaharaMateril->perihal }}</td>

@@ -78,6 +78,7 @@ Fasilitas Pelabuhan
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Fasilitas Pelabuhan
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $pelabuhanFasilitasPelabuhan->nama }}</td>
+                                    <td>{{ $pelabuhanFasilitasPelabuhan->user->name }}</td>
                                     <td>{{ $pelabuhanFasilitasPelabuhan->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanFasilitasPelabuhan->asal }}</td>
                                     <td>{{ $pelabuhanFasilitasPelabuhan->perihal }}</td>

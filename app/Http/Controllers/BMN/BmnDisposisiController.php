@@ -70,7 +70,7 @@ class BmnDisposisiController extends Controller
      */
     public function destroy(BmnSuratMasuk $bmnSuratMasuk)
     {
-        $bmnSuratMasuk->disposisi()->forceDelete();
+        $bmnSuratMasuk->disposisi()->delete();
 
         return redirect()->route('bmn-surat-masuk.index')
             ->with('success', 'BmnDisposisi deleted successfully');

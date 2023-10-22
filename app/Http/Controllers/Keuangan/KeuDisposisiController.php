@@ -75,7 +75,7 @@ class KeuDisposisiController extends Controller
      */
     public function destroy(KeuSuratMasuk $keuSuratMasuk)
     {
-        $keuSuratMasuk->disposisi()->forceDelete();
+        $keuSuratMasuk->disposisi()->delete();
 
         return redirect()->route('keu-surat-masuk.index')
             ->with('success', 'KeuDisposisi deleted successfully');

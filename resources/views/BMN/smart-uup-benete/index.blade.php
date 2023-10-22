@@ -78,6 +78,7 @@ Smart Uup Benete
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Smart Uup Benete
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $bmnSmartUupBenete->nama }}</td>
+                                    <td>{{ $bmnSmartUupBenete->user->name }}</td>
                                     <td>{{ $bmnSmartUupBenete->tanggal_masuk }}</td>
                                     <td>{{ $bmnSmartUupBenete->asal }}</td>
                                     <td>{{ $bmnSmartUupBenete->perihal }}</td>

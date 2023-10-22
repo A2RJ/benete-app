@@ -6,6 +6,7 @@ use App\Helpers\FileHelper;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 
 /**
@@ -47,7 +48,7 @@ class TuKontrakKerjaSama extends Model
    *
    * @var array
    */
-  protected $fillable = ['nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
+  protected $fillable = ['user_id', 'nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
 
   protected function lampiran(): Attribute
   {
@@ -61,15 +62,22 @@ class TuKontrakKerjaSama extends Model
     );
   }
 
+  public function user()
+  {
+    return $this->belongsTo(User::class)->withTrashed();
+  }
+
   public static function boot()
   {
     parent::boot();
 
     self::creating(function ($model) {
+      $model->user_id = Auth::id();
       $model->lampiran = FileHelper::upload(request(), 'lampiran', 'tu/kontrak_kerjasama');
     });
 
     self::updating(function ($model) {
+      $model->user_id = Auth::id();
       if (request()->hasFile('lampiran')) {
         $model->lampiran = FileHelper::upload(request(), 'lampiran', 'tu/kontrak_kerjasama');
       }

@@ -78,6 +78,7 @@ Keagenan
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Keagenan
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $pelabuhanKeagenan->nama }}</td>
+                                    <td>{{ $pelabuhanKeagenan->user->name }}</td>
                                     <td>{{ $pelabuhanKeagenan->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanKeagenan->asal }}</td>
                                     <td>{{ $pelabuhanKeagenan->perihal }}</td>

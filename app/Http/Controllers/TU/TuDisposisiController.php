@@ -75,7 +75,7 @@ class TuDisposisiController extends Controller
      */
     public function destroy(TuSuratMasuk $tuSuratMasuk)
     {
-        $tuSuratMasuk->disposisi()->forceDelete();
+        $tuSuratMasuk->disposisi()->delete();
 
         return redirect()->route('tu-surat-masuk.index')
             ->with('success', 'TuDisposisi deleted successfully');

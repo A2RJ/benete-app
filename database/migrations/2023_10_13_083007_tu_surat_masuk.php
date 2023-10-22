@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('tu_surat_masuk', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('NO ACTION');
             $table->string('nama');
             $table->date('tanggal_masuk');
             $table->string('asal');

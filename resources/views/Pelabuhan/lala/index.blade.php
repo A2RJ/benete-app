@@ -78,6 +78,7 @@ Lala
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Lala
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $pelabuhanLala->nama }}</td>
+                                    <td>{{ $pelabuhanLala->user->name }}</td>
                                     <td>{{ $pelabuhanLala->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanLala->asal }}</td>
                                     <td>{{ $pelabuhanLala->perihal }}</td>

@@ -78,6 +78,7 @@ Tkbm
                                     </th>
 
                                     <th>Nama</th>
+                                    <th>Author</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Asal</th>
                                     <th>Perihal</th>
@@ -94,6 +95,7 @@ Tkbm
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $pelabuhanTkbm->nama }}</td>
+                                    <td>{{ $pelabuhanTkbm->user->name }}</td>
                                     <td>{{ $pelabuhanTkbm->tanggal_masuk }}</td>
                                     <td>{{ $pelabuhanTkbm->asal }}</td>
                                     <td>{{ $pelabuhanTkbm->perihal }}</td>
