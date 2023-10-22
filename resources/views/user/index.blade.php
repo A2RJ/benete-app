@@ -81,7 +81,11 @@ User
 
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->whatsapp }}</td>
+                                    <td>
+                                        <a href="https://api.whatsapp.com/send/?phone={{ $user->whatsapp }}&text&type=phone_number&app_absent=0">
+                                            Chat Whatsapp
+                                        </a>
+                                    </td>
                                     <td>{{ count($user->roles) ? $user->roles[0]?->display_name : '' }}
                                         <br>
                                         {{ count($user->roles) ? $user->roles[0]?->description : '' }}
