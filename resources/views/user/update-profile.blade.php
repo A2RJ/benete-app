@@ -1,6 +1,6 @@
 @extends('tablar::page')
 
-@section('title', 'Update Profile')
+@section('title', 'Ubah Profile')
 
 @section('content')
 <!-- Page header -->
@@ -10,7 +10,7 @@
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    Update
+                    Ubah
                 </div>
                 <h2 class="page-title">
                     {{ __('Profile ') }}
@@ -29,7 +29,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">User Details</h3>
+                        <h3 class="card-title">User Detail</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('update.profile') }}" id="ajaxForm" role="form" enctype="multipart/form-data">

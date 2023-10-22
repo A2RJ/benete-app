@@ -1,7 +1,7 @@
 @extends('tablar::page')
 
 @section('title')
-Pbm
+PBM
 @endsection
 
 @section('content')
@@ -12,10 +12,10 @@ Pbm
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    List
+                    Daftar
                 </div>
                 <h2 class="page-title">
-                    {{ __('Pbm ') }}
+                    {{ __('PBM ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -28,7 +28,7 @@ Pbm
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Create Pbm
+                        Tambah PBM
                     </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@ Pbm
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Pbm</h3>
+                        <h3 class="card-title">PBM</h3>
                     </div>
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">
@@ -109,16 +109,16 @@ Pbm
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <a class="dropdown-item" href="{{ route('pelabuhan-pbm.show',$pelabuhanPbm->id) }}">
-                                                        View
+                                                        Detail
                                                     </a>
                                                     <a class="dropdown-item" href="{{ route('pelabuhan-pbm.edit',$pelabuhanPbm->id) }}">
-                                                        Edit
+                                                        Ubah
                                                     </a>
                                                     <form action="{{ route('pelabuhan-pbm.destroy',$pelabuhanPbm->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
-                                                            Delete
+                                                            Hapus
                                                         </button>
                                                     </form>
                                                 </div>

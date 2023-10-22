@@ -1,6 +1,6 @@
 @extends('tablar::page')
 
-@section('title', 'Create Keu Disposisi')
+@section('title', 'Tambah Keu Disposisi')
 
 @section('content')
 <!-- Page header -->
@@ -10,7 +10,7 @@
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    Create
+                    Tambah
                 </div>
                 <h2 class="page-title">
                     {{ __('Keu Disposisi ') }}
@@ -25,7 +25,7 @@
                             <path d="M9 14l-4 -4l4 -4"></path>
                             <path d="M5 10h11a4 4 0 1 1 0 8h-1"></path>
                         </svg>
-                        Back
+                        Kembali
                     </a>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Keu Disposisi Details</h3>
+                        <h3 class="card-title">Keu Disposisi Detail</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('keu-surat-masuk.disposisi.store', ['keu_surat_masuk' => $keuDisposisi->keu_surat_masuk_id]) }}" id="ajaxForm" role="form" enctype="multipart/form-data">

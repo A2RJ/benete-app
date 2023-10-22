@@ -12,7 +12,7 @@ Kuasa Pengguna Anggaran
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    List
+                    Daftar
                 </div>
                 <h2 class="page-title">
                     {{ __('Kuasa Pengguna Anggaran ') }}
@@ -28,7 +28,7 @@ Kuasa Pengguna Anggaran
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Create Kuasa Pengguna Anggaran
+                        Tambah Kuasa Pengguna Anggaran
                     </a>
                 </div>
             </div>
@@ -109,16 +109,16 @@ Kuasa Pengguna Anggaran
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <a class="dropdown-item" href="{{ route('keu-kuasa-pengguna-anggaran.show',$keuKuasaPenggunaAnggaran->id) }}">
-                                                        View
+                                                        Detail
                                                     </a>
                                                     <a class="dropdown-item" href="{{ route('keu-kuasa-pengguna-anggaran.edit',$keuKuasaPenggunaAnggaran->id) }}">
-                                                        Edit
+                                                        Ubah
                                                     </a>
                                                     <form action="{{ route('keu-kuasa-pengguna-anggaran.destroy',$keuKuasaPenggunaAnggaran->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
-                                                            Delete
+                                                            Hapus
                                                         </button>
                                                     </form>
                                                 </div>

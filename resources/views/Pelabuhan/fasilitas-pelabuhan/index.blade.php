@@ -12,7 +12,7 @@ Fasilitas Pelabuhan
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    List
+                    Daftar
                 </div>
                 <h2 class="page-title">
                     {{ __('Fasilitas Pelabuhan ') }}
@@ -28,7 +28,7 @@ Fasilitas Pelabuhan
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Create Fasilitas Pelabuhan
+                        Tambah Fasilitas Pelabuhan
                     </a>
                 </div>
             </div>
@@ -109,16 +109,16 @@ Fasilitas Pelabuhan
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <a class="dropdown-item" href="{{ route('pelabuhan-fasilitas-pelabuhan.show',$pelabuhanFasilitasPelabuhan->id) }}">
-                                                        View
+                                                        Detail
                                                     </a>
                                                     <a class="dropdown-item" href="{{ route('pelabuhan-fasilitas-pelabuhan.edit',$pelabuhanFasilitasPelabuhan->id) }}">
-                                                        Edit
+                                                        Ubah
                                                     </a>
                                                     <form action="{{ route('pelabuhan-fasilitas-pelabuhan.destroy',$pelabuhanFasilitasPelabuhan->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
-                                                            Delete
+                                                            Hapus
                                                         </button>
                                                     </form>
                                                 </div>

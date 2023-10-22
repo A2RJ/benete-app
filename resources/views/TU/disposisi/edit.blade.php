@@ -1,6 +1,6 @@
 @extends('tablar::page')
 
-@section('title', 'Update Tu Disposisi')
+@section('title', 'Ubah Tu Disposisi')
 
 @section('content')
 <!-- Page header -->
@@ -10,7 +10,7 @@
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    Update
+                    Ubah
                 </div>
                 <h2 class="page-title">
                     {{ __('Tu Disposisi ') }}
@@ -25,7 +25,7 @@
                             <path d="M9 14l-4 -4l4 -4"></path>
                             <path d="M5 10h11a4 4 0 1 1 0 8h-1"></path>
                         </svg>
-                        Back
+                        Kembali
                     </a>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Tu Disposisi Details</h3>
+                        <h3 class="card-title">Tu Disposisi Detail</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('tu-surat-masuk.disposisi.update', ['tu_surat_masuk' => $tuDisposisi->tu_surat_masuk_id, 'disposisi' => $tuDisposisi->id]) }}" id="ajaxForm" role="form" enctype="multipart/form-data">

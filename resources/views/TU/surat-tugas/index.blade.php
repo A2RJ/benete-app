@@ -1,7 +1,7 @@
 @extends('tablar::page')
 
 @section('title')
-Surat Tuga
+Surat Tugas
 @endsection
 
 @section('content')
@@ -12,10 +12,10 @@ Surat Tuga
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    List
+                    Daftar
                 </div>
                 <h2 class="page-title">
-                    {{ __('Surat Tuga ') }}
+                    {{ __('Surat Tugas ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -28,7 +28,7 @@ Surat Tuga
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Create Surat Tuga
+                        Tambah Surat Tugas
                     </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@ Surat Tuga
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Surat Tuga</h3>
+                        <h3 class="card-title">Surat Tugas</h3>
                     </div>
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">
@@ -109,16 +109,16 @@ Surat Tuga
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <a class="dropdown-item" href="{{ route('tu-surat-tugas.show',$tuSuratTugas->id) }}">
-                                                        View
+                                                        Detail
                                                     </a>
                                                     <a class="dropdown-item" href="{{ route('tu-surat-tugas.edit',$tuSuratTugas->id) }}">
-                                                        Edit
+                                                        Ubah
                                                     </a>
                                                     <form action="{{ route('tu-surat-tugas.destroy',$tuSuratTugas->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
-                                                            Delete
+                                                            Hapus
                                                         </button>
                                                     </form>
                                                 </div>

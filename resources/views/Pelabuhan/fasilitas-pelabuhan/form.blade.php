@@ -33,7 +33,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('lampiran') }}</label>
     <div>
-        {{ Form::file('lampiran', $pelabuhanFasilitasPelabuhan, ['class' => 'form-control' .
+        {{ Form::file('lampiran', ['class' => 'form-control' .
         ($errors->has('lampiran') ? ' is-invalid' : ''), 'placeholder' => 'Lampiran']) }}
         {!! $errors->first('lampiran', '<div class="invalid-feedback">:message</div>') !!}
         @if (is_string($pelabuhanFasilitasPelabuhan->lampiran))
@@ -45,7 +45,6 @@
 <div class="form-footer">
     <div class="text-end">
         <div class="d-flex">
-            <a href="#" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary ms-auto ajax-submit">Submit</button>
         </div>
     </div>

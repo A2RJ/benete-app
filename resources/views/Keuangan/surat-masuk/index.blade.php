@@ -12,7 +12,7 @@ Surat Masuk
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    List
+                    Daftar
                 </div>
                 <h2 class="page-title">
                     {{ __('Surat Masuk ') }}
@@ -28,7 +28,7 @@ Surat Masuk
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Create Surat Masuk
+                        Tambah Surat Masuk
                     </a>
                 </div>
             </div>
@@ -110,13 +110,13 @@ Surat Masuk
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     @if ($keuSuratMasuk->disposisi)
                                                     <a class="dropdown-item" href="{{ route('keu-surat-masuk.disposisi.edit', ['keu_surat_masuk' => $keuSuratMasuk->id, 'disposisi' => $keuSuratMasuk->disposisi->id]) }}">
-                                                        Update Disposisi
+                                                        Ubah Disposisi
                                                     </a>
                                                     <form action="{{ route('keu-surat-masuk.disposisi.destroy', ['keu_surat_masuk' => $keuSuratMasuk->id, 'disposisi' => $keuSuratMasuk->disposisi->id]) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
-                                                            Delete Disposisi
+                                                            Hapus Disposisi
                                                         </button>
                                                     </form>
                                                     @else
@@ -125,16 +125,16 @@ Surat Masuk
                                                     </a>
                                                     @endif
                                                     <a class="dropdown-item" href="{{ route('keu-surat-masuk.show',$keuSuratMasuk->id) }}">
-                                                        View
+                                                        Detail
                                                     </a>
                                                     <a class="dropdown-item" href="{{ route('keu-surat-masuk.edit',$keuSuratMasuk->id) }}">
-                                                        Edit
+                                                        Ubah
                                                     </a>
                                                     <form action="{{ route('keu-surat-masuk.destroy',$keuSuratMasuk->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
-                                                            Delete
+                                                            Hapus
                                                         </button>
                                                     </form>
                                                 </div>
