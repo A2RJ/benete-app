@@ -15,8 +15,7 @@
         "santigarcor/laratrust": "^8.2",
         "spatie/laravel-html": "^3.2",
         "takielias/tablar": "^3.0",
-        "tucker-eric/eloquentfilter": "^3.2",
-        "yaza/laravel-google-drive-storage": "^2.0"
+        "tucker-eric/eloquentfilter": "^3.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",

@@ -74,13 +74,13 @@ class TuKontrakKerjaSama extends Model
   {
     self::creating(function ($model) {
       $model->user_id = Auth::id();
-      $model->lampiran = FileHelper::uploadGDrive(request(), 'lampiran', 'tu/kontrak_kerjasama', request()->name);
+      $model->lampiran = FileHelper::upload(request(), 'lampiran', 'tu/kontrak_kerjasama');
     });
 
     self::updating(function ($model) {
       $model->user_id = Auth::id();
       if (request()->hasFile('lampiran')) {
-        $model->lampiran = FileHelper::uploadGDrive(request(), 'lampiran', 'tu/kontrak_kerjasama', request()->name);
+        $model->lampiran = FileHelper::upload(request(), 'lampiran', 'tu/kontrak_kerjasama');
       }
     });
   }
