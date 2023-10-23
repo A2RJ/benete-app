@@ -6,6 +6,7 @@ use Error;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use ZanySoft\Zip\Zip;
 
 class FileHelper
 {
@@ -52,5 +53,14 @@ class FileHelper
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+    public function zip(string $fileName, array $arrayFile)
+    {
+        $fileName = date('Y:M:d') . $fileName;
+        $zip = new Zip();
+        $zip->create("$fileName.zip");
+        $zip->add($arrayFile);
+        return response()->download(public_path('test.zip'));
     }
 }

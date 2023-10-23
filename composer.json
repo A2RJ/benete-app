@@ -15,7 +15,8 @@
         "santigarcor/laratrust": "^8.2",
         "spatie/laravel-html": "^3.2",
         "takielias/tablar": "^3.0",
-        "tucker-eric/eloquentfilter": "^3.2"
+        "tucker-eric/eloquentfilter": "^3.2",
+        "zanysoft/laravel-zip": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
