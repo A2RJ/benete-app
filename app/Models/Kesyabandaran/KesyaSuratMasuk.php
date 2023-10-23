@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Kesyabandaraan;
+namespace App\Models\Kesyahbandaran;
 
 use App\Helpers\FileHelper;
 use App\Models\User;
@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk query()
- * @property-read \App\Models\Kesyabandaraan\KesyaDisposisi|null $disposisi
+ * @property-read \App\Models\Kesyahbandaran\KesyaDisposisi|null $disposisi
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereAsal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaSuratMasuk whereId($value)
@@ -72,10 +72,8 @@ class KesyaSuratMasuk extends Model
     return $this->belongsTo(User::class)->withTrashed();
   }
 
-  public static function boot()
+  protected static function booted(): void
   {
-    parent::boot();
-
     self::creating(function ($model) {
       $model->user_id = Auth::id();
       $model->lampiran = FileHelper::upload(request(), 'lampiran', 'kesya/surat_masuk');

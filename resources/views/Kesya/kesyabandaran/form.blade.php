@@ -1,7 +1,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('nama surat') }}</label>
     <div>
-        {{ Form::text('nama', $kesyabandaran->nama, ['class' => 'form-control' .
+        {{ Form::text('nama', $kesyahbandaran->nama, ['class' => 'form-control' .
         ($errors->has('nama') ? ' is-invalid' : ''), 'placeholder' => 'Nama Surat']) }}
         {!! $errors->first('nama', '<div class="invalid-feedback">:message</div>') !!}
     </div>
@@ -9,7 +9,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('tanggal_masuk') }}</label>
     <div>
-        {{ Form::date('tanggal_masuk', $kesyabandaran->tanggal_masuk, ['class' => 'form-control' .
+        {{ Form::date('tanggal_masuk', $kesyahbandaran->tanggal_masuk, ['class' => 'form-control' .
         ($errors->has('tanggal_masuk') ? ' is-invalid' : ''), 'placeholder' => 'Tanggal Masuk']) }}
         {!! $errors->first('tanggal_masuk', '<div class="invalid-feedback">:message</div>') !!}
     </div>
@@ -17,7 +17,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('asal') }}</label>
     <div>
-        {{ Form::text('asal', $kesyabandaran->asal, ['class' => 'form-control' .
+        {{ Form::text('asal', $kesyahbandaran->asal, ['class' => 'form-control' .
         ($errors->has('asal') ? ' is-invalid' : ''), 'placeholder' => 'Asal']) }}
         {!! $errors->first('asal', '<div class="invalid-feedback">:message</div>') !!}
     </div>
@@ -25,7 +25,7 @@
 <div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('perihal') }}</label>
     <div>
-        {{ Form::textarea('perihal', $kesyabandaran->perihal, ['class' => 'form-control' .
+        {{ Form::textarea('perihal', $kesyahbandaran->perihal, ['class' => 'form-control' .
         ($errors->has('perihal') ? ' is-invalid' : ''), 'placeholder' => 'Perihal']) }}
         {!! $errors->first('perihal', '<div class="invalid-feedback">:message</div>') !!}
     </div>
@@ -36,8 +36,8 @@
         {{ Form::file('lampiran', ['class' => 'form-control' .
         ($errors->has('lampiran') ? ' is-invalid' : ''), 'placeholder' => 'Lampiran']) }}
         {!! $errors->first('lampiran', '<div class="invalid-feedback">:message</div>') !!}
-        @if (is_string($kesyabandaran->lampiran))
-        <a href="{{ $kesyabandaran->lampiran }}">Download file</a>
+        @if (is_string($kesyahbandaran->lampiran))
+        <a href="{{ $kesyahbandaran->lampiran }}">Download file</a>
         @endif
     </div>
 </div>

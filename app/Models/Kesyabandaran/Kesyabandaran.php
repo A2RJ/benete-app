@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Kesyabandaraan;
+namespace App\Models\Kesyahbandaran;
 
 use App\Helpers\FileHelper;
 use App\Models\User;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class KesyaPatroli
+ * Class Kesyahbandaran
  *
  * @property $id
  * @property $nama
@@ -23,27 +23,27 @@ use Illuminate\Support\Facades\URL;
  * @property $updated_at
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli query()
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereAsal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereLampiran($value)
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereNama($value)
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli wherePerihal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereTanggalMasuk($value)
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereUpdatedAt($value)
  * @property int $user_id
  * @property-read User $user
- * @method static \Illuminate\Database\Eloquent\Builder|KesyaPatroli whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereUserId($value)
  * @mixin \Eloquent
  */
-class KesyaPatroli extends Model
+class Kesyahbandaran extends Model
 {
   use HasUuids;
 
-  public $table = 'kesya_patroli';
+  public $table = 'kesyahbandaran';
 
   protected $perPage = 20;
 
@@ -71,19 +71,17 @@ class KesyaPatroli extends Model
     return $this->belongsTo(User::class)->withTrashed();
   }
 
-  public static function boot()
+  protected static function booted(): void
   {
-    parent::boot();
-
     self::creating(function ($model) {
       $model->user_id = Auth::id();
-      $model->lampiran = FileHelper::upload(request(), 'lampiran', 'kesya/patroli');
+      $model->lampiran = FileHelper::upload(request(), 'lampiran', 'kesya/kesyahbandaran');
     });
 
     self::updating(function ($model) {
       $model->user_id = Auth::id();
       if (request()->hasFile('lampiran')) {
-        $model->lampiran = FileHelper::upload(request(), 'lampiran', 'kesya/patroli');
+        $model->lampiran = FileHelper::upload(request(), 'lampiran', 'kesya/kesyahbandaran');
       }
     });
   }

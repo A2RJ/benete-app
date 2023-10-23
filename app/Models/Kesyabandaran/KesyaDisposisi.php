@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Kesyabandaraan;
+namespace App\Models\Kesyahbandaran;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
  * @property KesyaSuratMasuk $kesyaSuratMasuk
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
- * @property-read \App\Models\Kesyabandaraan\KesyaSuratMasuk|null $suratMasuk
+ * @property-read \App\Models\Kesyahbandaran\KesyaSuratMasuk|null $suratMasuk
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi query()
@@ -60,10 +60,8 @@ class KesyaDisposisi extends Model
     return $this->belongsTo(User::class)->withTrashed();
   }
 
-  public static function boot()
+  protected static function booted(): void
   {
-    parent::boot();
-
     self::creating(function ($model) {
       $model->user_id = Auth::id();
     });

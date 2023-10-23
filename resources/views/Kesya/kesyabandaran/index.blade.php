@@ -1,7 +1,7 @@
 @extends('tablar::page')
 
 @section('title')
-Kesyabandaran
+Kesyahbandaran
 @endsection
 
 @section('content')
@@ -15,20 +15,20 @@ Kesyabandaran
                     Daftar
                 </div>
                 <h2 class="page-title">
-                    {{ __('Kesyabandaran ') }}
+                    {{ __('Kesyahbandaran ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
             <div class="col-12 col-md-auto ms-auto d-print-none">
                 <div class="btn-list">
-                    <a href="{{ route('kesyabandaran.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+                    <a href="{{ route('kesyahbandaran.create') }}" class="btn btn-primary d-none d-sm-inline-block">
                         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Tambah Kesyabandaran
+                        Tambah Kesyahbandaran
                     </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@ Kesyabandaran
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Kesyabandaran</h3>
+                        <h3 class="card-title">Kesyahbandaran</h3>
                     </div>
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">
@@ -89,17 +89,17 @@ Kesyabandaran
                             </thead>
 
                             <tbody>
-                                @forelse ($kesyabandaran as $kesyabandaran)
+                                @forelse ($kesyahbandaran as $kesyahbandaran)
                                 <tr>
-                                    <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select kesyabandaran"></td>
+                                    <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select kesyahbandaran"></td>
                                     <td>{{ ++$i }}</td>
 
-                                    <td>{{ $kesyabandaran->nama }}</td>
-                                    <td>{{ $kesyabandaran->user->name }}</td>
-                                    <td>{{ $kesyabandaran->tanggal_masuk }}</td>
-                                    <td>{{ $kesyabandaran->asal }}</td>
-                                    <td>{{ $kesyabandaran->perihal }}</td>
-                                    <td>{!! $kesyabandaran->lampiran !!}</td>
+                                    <td>{{ $kesyahbandaran->nama }}</td>
+                                    <td>{{ $kesyahbandaran->user->name }}</td>
+                                    <td>{{ $kesyahbandaran->tanggal_masuk }}</td>
+                                    <td>{{ $kesyahbandaran->asal }}</td>
+                                    <td>{{ $kesyahbandaran->perihal }}</td>
+                                    <td>{!! $kesyahbandaran->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">
@@ -108,13 +108,13 @@ Kesyabandaran
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="{{ route('kesyabandaran.show',$kesyabandaran->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('kesyahbandaran.show',$kesyahbandaran->id) }}">
                                                         Detail
                                                     </a>
-                                                    <a class="dropdown-item" href="{{ route('kesyabandaran.edit',$kesyabandaran->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('kesyahbandaran.edit',$kesyahbandaran->id) }}">
                                                         Ubah
                                                     </a>
-                                                    <form action="{{ route('kesyabandaran.destroy',$kesyabandaran->id) }}" method="POST">
+                                                    <form action="{{ route('kesyahbandaran.destroy',$kesyahbandaran->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
@@ -134,7 +134,7 @@ Kesyabandaran
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
-                        {!! $kesyabandaran->links('tablar::pagination') !!}
+                        {!! $kesyahbandaran->links('tablar::pagination') !!}
                     </div>
                 </div>
             </div>

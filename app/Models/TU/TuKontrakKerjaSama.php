@@ -70,19 +70,17 @@ class TuKontrakKerjaSama extends Model
     return $this->belongsTo(User::class)->withTrashed();
   }
 
-  public static function boot()
+  protected static function booted(): void
   {
-    parent::boot();
-
     self::creating(function ($model) {
       $model->user_id = Auth::id();
-      $model->lampiran = FileHelper::upload(request(), 'lampiran', 'tu/kontrak_kerjasama');
+      $model->lampiran = FileHelper::uploadGDrive(request(), 'lampiran', 'tu/kontrak_kerjasama', request()->name);
     });
 
     self::updating(function ($model) {
       $model->user_id = Auth::id();
       if (request()->hasFile('lampiran')) {
-        $model->lampiran = FileHelper::upload(request(), 'lampiran', 'tu/kontrak_kerjasama');
+        $model->lampiran = FileHelper::uploadGDrive(request(), 'lampiran', 'tu/kontrak_kerjasama', request()->name);
       }
     });
   }

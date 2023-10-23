@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Kesyabandaraan;
+namespace App\Http\Controllers\Kesyahbandaran;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DisposisiRequest;
-use App\Models\Kesyabandaraan\KesyaDisposisi;
-use App\Models\Kesyabandaraan\KesyaSuratMasuk;
+use App\Models\Kesyahbandaran\KesyaDisposisi;
+use App\Models\Kesyahbandaran\KesyaSuratMasuk;
 
 /**
  * Class KesyaDisposisiController

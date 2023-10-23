@@ -72,10 +72,8 @@ class BmnBendaharaMateril extends Model
     return $this->hasMany(User::class)->withTrashed();
   }
 
-  public static function boot()
+protected static function booted(): void
   {
-    parent::boot();
-
     self::creating(function ($model) {
       $model->user_id = Auth::id();
       $model->lampiran = FileHelper::upload(request(), 'lampiran', 'bmn/bendara_materil');

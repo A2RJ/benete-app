@@ -1,6 +1,6 @@
 @extends('tablar::page')
 
-@section('title', 'Detail Kesyabandaran')
+@section('title', 'Detail Kesyahbandaran')
 
 @section('content')
 <!-- Page header -->
@@ -13,13 +13,13 @@
                     Detail
                 </div>
                 <h2 class="page-title">
-                    {{ __('Kesyabandaran ') }}
+                    {{ __('Kesyahbandaran ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
             <div class="col-12 col-md-auto ms-auto d-print-none">
                 <div class="btn-list">
-                    <a href="{{ route('kesyabandaran.index') }}" class="btn btn-primary d-none d-sm-inline-block">
+                    <a href="{{ route('kesyahbandaran.index') }}" class="btn btn-primary d-none d-sm-inline-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M9 14l-4 -4l4 -4"></path>
@@ -42,29 +42,29 @@
                 @endif
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Kesyabandaran Detail</h3>
+                        <h3 class="card-title">Kesyahbandaran Detail</h3>
                     </div>
                     <div class="card-body">
 
                         <div class="form-group">
                             <strong>Nama:</strong>
-                            {{ $kesyabandaran->nama }}
+                            {{ $kesyahbandaran->nama }}
                         </div>
                         <div class="form-group">
                             <strong>Tanggal Masuk:</strong>
-                            {{ $kesyabandaran->tanggal_masuk }}
+                            {{ $kesyahbandaran->tanggal_masuk }}
                         </div>
                         <div class="form-group">
                             <strong>Asal:</strong>
-                            {{ $kesyabandaran->asal }}
+                            {{ $kesyahbandaran->asal }}
                         </div>
                         <div class="form-group">
                             <strong>Perihal:</strong>
-                            {{ $kesyabandaran->perihal }}
+                            {{ $kesyahbandaran->perihal }}
                         </div>
                         <div class="form-group">
                             <strong>Lampiran:</strong>
-                            {!! $kesyabandaran->lampiran !!}
+                            {!! $kesyahbandaran->lampiran !!}
                         </div>
 
                     </div>

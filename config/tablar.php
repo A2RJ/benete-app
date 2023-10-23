@@ -214,62 +214,62 @@ return [
             'icon_color' => 'white',
             'can' => 'bidang keuangan'
         ],
-        // bidang kesyabandaran
+        // bidang kesyahbandaran
         [
             'text' => 'Dashboard',
             'icon' => 'ti ti-home',
             'url' => '/home',
             'icon_color' => 'white',
-            'can' => 'bidang kesyabandaran'
+            'can' => 'bidang kesyahbandaran'
         ],
         [
             'text' => 'Surat Masuk',
             'url' => '/kesya-surat-masuk',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
-            'can' => 'bidang kesyabandaran'
+            'can' => 'bidang kesyahbandaran'
         ],
         [
             'text' => 'Surat Keluar',
             'url' => '/kesya-surat-keluar',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
-            'can' => 'bidang kesyabandaran'
+            'can' => 'bidang kesyahbandaran'
         ],
         [
-            'text' => 'Kesyabandaran',
-            'url' => '/kesyabandaran',
+            'text' => 'Kesyahbandaran',
+            'url' => '/kesyahbandaran',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
-            'can' => 'bidang kesyabandaran'
+            'can' => 'bidang kesyahbandaran'
         ],
         [
             'text' => 'Tertib Banar',
             'url' => '/kesya-tertib-banar',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
-            'can' => 'bidang kesyabandaran'
+            'can' => 'bidang kesyahbandaran'
         ],
         [
             'text' => 'Patroli',
             'url' => '/kesya-patroli',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
-            'can' => 'bidang kesyabandaran'
+            'can' => 'bidang kesyahbandaran'
         ],
         [
             'text' => 'Dokumen Kapal',
             'url' => '/kesya-dokumen-kapal',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
-            'can' => 'bidang kesyabandaran'
+            'can' => 'bidang kesyahbandaran'
         ],
         [
             'text' => 'Dokumen Awak Kapal',
             'url' => '/kesya-dokumen-awak-kapal',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
-            'can' => 'bidang kesyabandaran'
+            'can' => 'bidang kesyahbandaran'
         ],
         // bidang pengelola bmn dan persediaan
         [

@@ -33,10 +33,10 @@ class AuthServiceProvider extends ServiceProvider
             $user = User::whereEmail($email)->firstOrFail();
             return $user->hasRole('bidang keuangan');
         });
-        Gate::define('bidang kesyabandaran', function () {
+        Gate::define('bidang kesyahbandaran', function () {
             $email = Auth::user()->email;
             $user = User::whereEmail($email)->firstOrFail();
-            return $user->hasRole('bidang kesyabandaran');
+            return $user->hasRole('bidang kesyahbandaran');
         });
         Gate::define('bidang pengelola bmn dan persediaan', function () {
             $email = Auth::user()->email;

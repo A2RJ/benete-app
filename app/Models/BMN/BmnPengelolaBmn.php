@@ -71,10 +71,8 @@ class BmnPengelolaBmn extends Model
     return $this->belongsTo(User::class)->withTrashed();
   }
 
-  public static function boot()
+  protected static function booted(): void
   {
-    parent::boot();
-
     self::creating(function ($model) {
       $model->user_id = Auth::id();
       $model->lampiran = FileHelper::upload(request(), 'lampiran', 'bmn/pengelola_bmn');

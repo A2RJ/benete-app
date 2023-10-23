@@ -57,7 +57,7 @@ class UserController extends Controller
                 'name' => 'required|string',
                 'email' => 'required|email|unique:users,email',
                 'whatsapp' => 'required|unique:users,whatsapp',
-                'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,bidang pengelola bmn dan persediaan,bidang kepegawaian atau tata usaha,bidang kepelabuhan',
+                'bidang' => 'required|in:bidang keuangan,bidang kesyahbandaran,bidang pengelola bmn dan persediaan,bidang kepegawaian atau tata usaha,bidang kepelabuhan',
                 'password' => 'required|confirmed|min:8',
                 'password_confirmation' => 'required|required_with:password',
             ]);
@@ -125,7 +125,7 @@ class UserController extends Controller
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email,' . $user->id,
                 'whatsapp' => 'required|unique:users,whatsapp,' . $user->id,
-                'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,bidang pengelola bmn dan persediaan,bidang kepegawaian atau tata usaha,bidang kepelabuhan',
+                'bidang' => 'required|in:bidang keuangan,bidang kesyahbandaran,bidang pengelola bmn dan persediaan,bidang kepegawaian atau tata usaha,bidang kepelabuhan',
                 'password' => 'nullable|confirmed|min:8',
                 'password_confirmation' => 'sometimes|required_with:password',
             ], [

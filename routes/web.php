@@ -12,8 +12,8 @@ use App\Http\Controllers\BMN\{
     BmnSuratKeluarController,
     BmnSuratMasukController
 };
-use App\Http\Controllers\Kesyabandaraan\{
-    KesyabandaranController,
+use App\Http\Controllers\Kesyahbandaran\{
+    KesyahbandaranController,
     KesyaDisposisiController,
     KesyaDokumenAwakKapalController,
     KesyaDokumenKapalController,
@@ -92,11 +92,11 @@ Route::middleware(['role:bidang keuangan'])->group(function () {
     Route::resource('keu-kuasa-pengguna-anggaran', KeuKuasaPenggunaAnggaranController::class);
 });
 
-Route::middleware(['role:bidang kesyabandaran'])->group(function () {
+Route::middleware(['role:bidang kesyahbandaran'])->group(function () {
     Route::resource('kesya-surat-masuk', KesyaSuratMasukController::class);
     Route::resource('kesya-surat-masuk.disposisi', KesyaDisposisiController::class)->except(['index', 'show']);
     Route::resource('kesya-surat-keluar', KesyaSuratKeluarController::class);
-    Route::resource('kesyabandaran', KesyabandaranController::class);
+    Route::resource('kesyahbandaran', KesyahbandaranController::class);
     Route::resource('kesya-tertib-banar', KesyaTertibBanarController::class);
     Route::resource('kesya-patroli', KesyaPatroliController::class);
     Route::resource('kesya-dokumen-kapal', KesyaDokumenKapalController::class);

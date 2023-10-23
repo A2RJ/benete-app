@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Kesyabandaraan;
+namespace App\Models\Kesyahbandaran;
 
 use App\Helpers\FileHelper;
 use App\Models\User;
@@ -71,10 +71,8 @@ class KesyaDokumenKapal extends Model
     return $this->belongsTo(User::class)->withTrashed();
   }
 
-  public static function boot()
+  protected static function booted(): void
   {
-    parent::boot();
-
     self::creating(function ($model) {
       $model->user_id = Auth::id();
       $model->lampiran = FileHelper::upload(request(), 'lampiran', 'kesya/dokumen_kapal');

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Kesyabandaraan;
+namespace App\Http\Controllers\Kesyahbandaran;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
-use App\Models\Kesyabandaraan\KesyaDokumenKapal;
+use App\Models\Kesyahbandaran\KesyaDokumenKapal;
 
 /**
  * Class KesyaDokumenKapalController
