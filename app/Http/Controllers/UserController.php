@@ -59,6 +59,7 @@ class UserController extends Controller
                 'whatsapp' => 'required|unique:users,whatsapp',
                 'bidang' => 'required|in:bidang keuangan,bidang kesyabandaran,bidang pengelola bmn dan persediaan,bidang kepegawaian atau tata usaha,bidang kepelabuhan',
                 'password' => 'required|confirmed|min:8',
+                'password_confirmation' => 'required|required_with:password',
             ]);
 
             $user = User::create($payload);

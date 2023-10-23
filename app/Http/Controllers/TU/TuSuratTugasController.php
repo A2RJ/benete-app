@@ -22,7 +22,7 @@ class TuSuratTugasController extends Controller
      */
     public function index()
     {
-        $tuSuratTugas = TuSuratTugas::sdsdsd(10);
+        $tuSuratTugas = TuSuratTugas::query()->paginate(10);
 
         return view('TU.surat-tugas.index', compact('tuSuratTugas'))
             ->with('i', (request()->input('page', 1) - 1) * $tuSuratTugas->perPage());

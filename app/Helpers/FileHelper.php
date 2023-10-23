@@ -11,8 +11,13 @@ use Yaza\LaravelGoogleDriveStorage\Gdrive;
 
 class FileHelper
 {
-    public $GDriveFolder = env('GOOGLE_DRIVE_FOLDER_NAME');
+    public $GDriveFolder;
 
+    public function __construct()
+    {
+        $this->GDriveFolder = env('GOOGLE_DRIVE_FOLDER_NAME');
+    }
+    
     public static function upload(Request $request, string $file, string $folder = ''): string
     {
         try {

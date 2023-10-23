@@ -350,25 +350,25 @@ return [
             'icon_color' => 'white',
             'can' => 'bidang kepegawaian atau tata usaha'
         ],
-        [
-            'text' => 'Surat Masuk',
-            'url' => '/pelabuhan-surat-masuk',
-            'icon' => 'ti ti-mail',
-            'icon_color' => 'white',
-            'can' => 'bidang kepegawaian atau tata usaha'
-        ],
-        [
-            'text' => 'Surat Keluar',
-            'url' => '/pelabuhan-surat-keluar',
-            'icon' => 'ti ti-mail',
-            'icon_color' => 'white',
-            'can' => 'bidang kepegawaian atau tata usaha'
-        ],
         // bidang kepelabuhan
         [
             'text' => 'Dashboard',
             'icon' => 'ti ti-home',
             'url' => '/home',
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
+        ],
+        [
+            'text' => 'Surat Masuk',
+            'url' => '/pelabuhan-surat-masuk',
+            'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
+        ],
+        [
+            'text' => 'Surat Keluar',
+            'url' => '/pelabuhan-surat-keluar',
+            'icon' => 'ti ti-mail',
             'icon_color' => 'white',
             'can' => 'bidang kepelabuhan'
         ],
