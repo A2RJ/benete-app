@@ -35,6 +35,9 @@ use Illuminate\Support\Facades\Auth;
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereStatusDisposisi($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereTujuan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereUpdatedAt($value)
+ * @property int $user_id
+ * @property-read User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereUserId($value)
  * @mixin \Eloquent
  */
 class BmnDisposisi extends Model

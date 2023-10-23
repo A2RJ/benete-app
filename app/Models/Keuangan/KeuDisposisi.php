@@ -35,6 +35,9 @@ use Illuminate\Support\Facades\Auth;
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereStatusDisposisi($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereTujuan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereUpdatedAt($value)
+ * @property int $user_id
+ * @property-read User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereUserId($value)
  * @mixin \Eloquent
  */
 class KeuDisposisi extends Model

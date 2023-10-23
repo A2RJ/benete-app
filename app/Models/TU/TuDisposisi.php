@@ -35,6 +35,9 @@ use Illuminate\Support\Facades\Auth;
  * @method static \Illuminate\Database\Eloquent\Builder|TuDisposisi whereTuSuratMasukId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TuDisposisi whereTujuan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TuDisposisi whereUpdatedAt($value)
+ * @property int $user_id
+ * @property-read User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|TuDisposisi whereUserId($value)
  * @mixin \Eloquent
  */
 class TuDisposisi extends Model

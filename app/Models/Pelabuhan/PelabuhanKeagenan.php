@@ -34,6 +34,9 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanKeagenan wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanKeagenan whereTanggalMasuk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanKeagenan whereUpdatedAt($value)
+ * @property int $user_id
+ * @property-read User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanKeagenan whereUserId($value)
  * @mixin \Eloquent
  */
 class PelabuhanKeagenan extends Model

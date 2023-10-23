@@ -28,7 +28,8 @@
         "orangehill/iseed": "^3.0",
         "phpunit/phpunit": "^10.1",
         "spatie/laravel-ignition": "^2.0",
-        "takielias/tablar-crud-generator": "^2.2"
+        "takielias/tablar-crud-generator": "^2.2",
+        "tightenco/duster": "^2.5"
     },
     "autoload": {
         "psr-4": {

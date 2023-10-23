@@ -35,6 +35,9 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSuratMasuk wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSuratMasuk whereTanggalMasuk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSuratMasuk whereUpdatedAt($value)
+ * @property int $user_id
+ * @property-read User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnSuratMasuk whereUserId($value)
  * @mixin \Eloquent
  */
 class BmnSuratMasuk extends Model

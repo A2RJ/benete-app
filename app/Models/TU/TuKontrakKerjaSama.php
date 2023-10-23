@@ -3,6 +3,7 @@
 namespace App\Models\TU;
 
 use App\Helpers\FileHelper;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -33,6 +34,8 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereTanggalMasuk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereUpdatedAt($value)
+ * @property int $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereUserId($value)
  * @mixin \Eloquent
  */
 class TuKontrakKerjaSama extends Model

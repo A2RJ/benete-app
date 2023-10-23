@@ -34,6 +34,9 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereTanggalMasuk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereUpdatedAt($value)
+ * @property int $user_id
+ * @property-read User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereUserId($value)
  * @mixin \Eloquent
  */
 class KeuPpk extends Model
