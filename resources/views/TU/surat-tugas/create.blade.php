@@ -47,7 +47,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('tu-surat-tugas.store') }}" id="ajaxForm" role="form" enctype="multipart/form-data">
                             @csrf
-                            @include('TU.surat-tuga.form')
+                            @include('TU.surat-tugas.form')
                         </form>
                     </div>
                 </div>

@@ -48,7 +48,7 @@
                         <form method="POST" action="{{ route('tu-surat-tugas.update', $tuSuratTugas->id) }}" id="ajaxForm" role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-                            @include('TU.surat-tuga.form')
+                            @include('TU.surat-tugas.form')
                         </form>
                     </div>
                 </div>
