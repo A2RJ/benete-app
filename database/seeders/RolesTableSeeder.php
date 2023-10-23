@@ -41,7 +41,7 @@ class RolesTableSeeder extends Seeder
             array (
                 'id' => 10,
                 'name' => 'bidang kesyahbandaran',
-                'display_name' => 'Bidang Kesaybandaran',
+                'display_name' => 'Bidang Kesyahbandaran',
                 'description' => 'User ini hanya dapat mengelola bidang kesyahbandaran',
                 'created_at' => '2023-10-21 17:17:15',
                 'updated_at' => '2023-10-21 17:17:15',
