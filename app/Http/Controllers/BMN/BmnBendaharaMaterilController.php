@@ -41,7 +41,14 @@ class BmnBendaharaMaterilController extends Controller
      */
     public function store(StoreValidationRequest $request)
     {
-        $payload = $request->validated();
+        $payload = $request->validate([
+            'nama' => 'required',
+            'tanggal_masuk' => 'required|date',
+            'asal' => 'required',
+            'perihal' => 'required',
+            'lampiran' => 'nullable|mimes:pdf,doc,docx',
+            'tipe' => 'required|in:Pengelola dan pemanfaatan,Perencanaan,Penghapusan,Pemeliharaan,Pelaporan'
+        ]);
         BmnBendaharaMateril::create($payload);
 
         return redirect()->route('bmn-bendahara-materil.index')
@@ -79,7 +86,14 @@ class BmnBendaharaMaterilController extends Controller
      */
     public function update(UpdateValidationRequest $request, BmnBendaharaMateril $bmnBendaharaMateril)
     {
-        $payload = $request->validated();
+        $payload = $request->validate([
+            'nama' => 'required',
+            'tanggal_masuk' => 'required|date',
+            'asal' => 'required',
+            'perihal' => 'required',
+            'lampiran' => 'nullable|mimes:pdf,doc,docx',
+            'tipe' => 'required|in:Pengelola dan pemanfaatan,Perencanaan,Penghapusan,Pemeliharaan,Pelaporan'
+        ]);
         $bmnBendaharaMateril->update($payload);
 
         return redirect()->route('bmn-bendahara-materil.index')

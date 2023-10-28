@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bmn_pengelola_bmn', function (Blueprint $table) {
+        Schema::create('pelabuhan_jpt', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignId('user_id')
                 ->references('id')
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bmn_pengelola_bmn');
+        Schema::dropIfExists('pelabuhan_jpt');
     }
 };

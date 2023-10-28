@@ -1,6 +1,6 @@
 @extends('tablar::page')
 
-@section('title', 'Tambah TKBM/JTS')
+@section('title', 'Tambah TKBM')
 
 @section('content')
 <!-- Page header -->
@@ -13,7 +13,7 @@
                     Tambah
                 </div>
                 <h2 class="page-title">
-                    {{ __('TKBM/JTS ') }}
+                    {{ __('TKBM ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -42,7 +42,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">TKBM/JTS Detail</h3>
+                        <h3 class="card-title">TKBM Detail</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('pelabuhan-tkbm.store') }}" id="ajaxForm" role="form" enctype="multipart/form-data">

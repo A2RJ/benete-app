@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BMN\{
     BmnBendaharaMaterilController,
     BmnDisposisiController,
-    BmnPengelolaBmnController,
     BmnSmartUupBeneteController,
     BmnSuratKeluarController,
     BmnSuratMasukController
@@ -35,6 +34,7 @@ use App\Http\Controllers\Keuangan\{
 use App\Http\Controllers\Pelabuhan\{
     PelabuhanDisposisiController,
     PelabuhanFasilitasPelabuhanController,
+    PelabuhanJptController,
     PelabuhanKeagenanController,
     PelabuhanLalaController,
     PelabuhanPbmController,
@@ -108,7 +108,6 @@ Route::middleware(['role:bidang pengelola bmn dan persediaan'])->group(function 
     Route::resource('bmn-surat-masuk.disposisi', BmnDisposisiController::class)->except(['index', 'show']);
     Route::resource('bmn-surat-keluar', BmnSuratKeluarController::class);
     Route::resource('bmn-bendahara-materil', BmnBendaharaMaterilController::class);
-    Route::resource('bmn-pengelola-bmn', BmnPengelolaBmnController::class);
     Route::resource('bmn-smart-uup-benete', BmnSmartUupBeneteController::class);
 });
 
@@ -129,4 +128,5 @@ Route::middleware(['role:bidang kepelabuhan'])->group(function () {
     Route::resource('pelabuhan-keagenan', PelabuhanKeagenanController::class);
     Route::resource('pelabuhan-pbm', PelabuhanPbmController::class);
     Route::resource('pelabuhan-tkbm', PelabuhanTkbmController::class);
+    Route::resource('pelabuhan-jpt', PelabuhanJptController::class);
 });

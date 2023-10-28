@@ -301,13 +301,6 @@ return [
             'can' => 'bidang pengelola bmn dan persediaan'
         ],
         [
-            'text' => 'Pengelola BMN',
-            'url' => '/bmn-pengelola-bmn',
-            'icon' => 'ti ti-mail',
-            'icon_color' => 'white',
-            'can' => 'bidang pengelola bmn dan persediaan'
-        ],
-        [
             'text' => 'Smart UPP',
             'url' => '/bmn-smart-uup-benete',
             'icon' => 'ti ti-mail',
@@ -401,8 +394,15 @@ return [
             'can' => 'bidang kepelabuhan'
         ],
         [
-            'text' => 'TKBM/JTS',
+            'text' => 'TKBM',
             'url' => '/pelabuhan-tkbm',
+            'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
+        ],
+        [
+            'text' => 'JPT',
+            'url' => '/pelabuhan-jpt',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
             'can' => 'bidang kepelabuhan'

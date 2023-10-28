@@ -1,7 +1,7 @@
 @extends('tablar::page')
 
 @section('title')
-TKBM/JTS
+TKBM
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@ TKBM/JTS
                     Daftar
                 </div>
                 <h2 class="page-title">
-                    {{ __('TKBM/JTS ') }}
+                    {{ __('TKBM ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -28,7 +28,7 @@ TKBM/JTS
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Tambah TKBM/JTS
+                        Tambah TKBM
                     </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@ TKBM/JTS
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">TKBM/JTS</h3>
+                        <h3 class="card-title">TKBM</h3>
                     </div>
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">

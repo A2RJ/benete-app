@@ -1,7 +1,7 @@
 @extends('tablar::page')
 
 @section('title')
-Pengelola BMN dan Persediaan
+JPT
 @endsection
 
 @section('content')
@@ -15,20 +15,20 @@ Pengelola BMN dan Persediaan
                     Daftar
                 </div>
                 <h2 class="page-title">
-                    {{ __('Pengelola BMN dan Persediaan') }}
+                    {{ __('JPT') }}
                 </h2>
             </div>
             <!-- Page title actions -->
             <div class="col-12 col-md-auto ms-auto d-print-none">
                 <div class="btn-list">
-                    <a href="{{ route('bmn-pengelola-bmn.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+                    <a href="{{ route('pelabuhan-jpt.create') }}" class="btn btn-primary d-none d-sm-inline-block">
                         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Tambah Pengelola BMN dan Persediaan
+                        Tambah JPT
                     </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@ Pengelola BMN dan Persediaan
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Pengelola BMN dan Persediaan</h3>
+                        <h3 class="card-title">JPT</h3>
                     </div>
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">
@@ -89,17 +89,17 @@ Pengelola BMN dan Persediaan
                             </thead>
 
                             <tbody>
-                                @forelse ($bmnPengelolaBmns as $bmnPengelolaBmn)
+                                @forelse ($pelabuhanJpts as $pelabuhanJpt)
                                 <tr>
-                                    <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select bmnPengelolaBmn"></td>
+                                    <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select pelabuhanJpt"></td>
                                     <td>{{ ++$i }}</td>
 
-                                    <td>{{ $bmnPengelolaBmn->nama }}</td>
-                                    <td>{{ $bmnPengelolaBmn->user->name }}</td>
-                                    <td>{{ $bmnPengelolaBmn->tanggal_masuk }}</td>
-                                    <td>{{ $bmnPengelolaBmn->asal }}</td>
-                                    <td>{{ $bmnPengelolaBmn->perihal }}</td>
-                                    <td>{!! $bmnPengelolaBmn->lampiran !!}</td>
+                                    <td>{{ $pelabuhanJpt->nama }}</td>
+                                    <td>{{ $pelabuhanJpt->user->name }}</td>
+                                    <td>{{ $pelabuhanJpt->tanggal_masuk }}</td>
+                                    <td>{{ $pelabuhanJpt->asal }}</td>
+                                    <td>{{ $pelabuhanJpt->perihal }}</td>
+                                    <td>{!! $pelabuhanJpt->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">
@@ -108,13 +108,13 @@ Pengelola BMN dan Persediaan
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="{{ route('bmn-pengelola-bmn.show', $bmnPengelolaBmn->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('pelabuhan-jpt.show', $pelabuhanJpt->id) }}">
                                                         Detail
                                                     </a>
-                                                    <a class="dropdown-item" href="{{ route('bmn-pengelola-bmn.edit', $bmnPengelolaBmn->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('pelabuhan-jpt.edit', $pelabuhanJpt->id) }}">
                                                         Ubah
                                                     </a>
-                                                    <form action="{{ route('bmn-pengelola-bmn.destroy', $bmnPengelolaBmn->id) }}" method="POST">
+                                                    <form action="{{ route('pelabuhan-jpt.destroy', $pelabuhanJpt->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
@@ -134,7 +134,7 @@ Pengelola BMN dan Persediaan
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
-                        {!! $bmnPengelolaBmns->links('tablar::pagination') !!}
+                        {!! $pelabuhanJpts->links('tablar::pagination') !!}
                     </div>
                 </div>
             </div>

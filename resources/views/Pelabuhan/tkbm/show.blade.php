@@ -1,6 +1,6 @@
 @extends('tablar::page')
 
-@section('title', 'Detail TKBM/JTS')
+@section('title', 'Detail TKBM')
 
 @section('content')
 <!-- Page header -->
@@ -13,7 +13,7 @@
                     Detail
                 </div>
                 <h2 class="page-title">
-                    {{ __('TKBM/JTS ') }}
+                    {{ __('TKBM ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -42,7 +42,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">TKBM/JTS Detail</h3>
+                        <h3 class="card-title">TKBM Detail</h3>
                     </div>
                     <div class="card-body">
 

@@ -2,15 +2,17 @@
 
 namespace App\Helpers;
 
+use Carbon\Carbon;
 use Error;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Uuid;
 use ZanySoft\Zip\Zip;
 
 class FileHelper
 {
-    public static function upload(Request $request, string $file, string $folder = ''): string
+    public static function upload(Request $request, string $file, string $folder): string
     {
         try {
             $uploadedFile = $request->file($file);
@@ -20,23 +22,21 @@ class FileHelper
 
             $extension = $uploadedFile->getClientOriginalExtension();
             $storagePath = $folder . '/' . date('Y') . '/' . date('M');
-            $filename = $storagePath . '/' . date('Y-M-d H:i:s') . ' ' . $request->nama . ' ' . time() . '.' . $extension;
 
-            if (!Storage::disk('local')->exists($storagePath)) {
-                Storage::disk('local')->makeDirectory($storagePath);
-            }
+            $currentDateTime = Carbon::now();
+            $uuid = Uuid::uuid7($currentDateTime);
+            $formattedDateTime = $currentDateTime->format('Y-M-d H:i:s');
+            $filename = $formattedDateTime . ' ' . request()->nama . ' ' . $uuid . '.' . $extension;
+            $filename = str_replace(':', '-', $filename);
+            $fullFilePath = $storagePath . '/' . $filename;
 
-            $uploadedFile->storeAs($filename);
+            $uploadedFile->storeAs($storagePath, $filename, 'local');
 
-            if (!Storage::disk('local')->exists($filename)) {
+            if (!Storage::disk('local')->exists($fullFilePath)) {
                 throw new Exception("Failed to upload file {$filename}", 500);
             }
 
-            if ($uploadedFile->getSize() != Storage::disk('local')->size($filename)) {
-                throw new Exception("Failed to upload file {$filename}", 500);
-            }
-
-            return $filename;
+            return $fullFilePath;
         } catch (Exception $e) {
             throw $e;
         }
@@ -45,7 +45,7 @@ class FileHelper
     public static function download($pathToImage)
     {
         try {
-            if (!\request()->hasValidSignature()) {
+            if (!request()->hasValidSignature()) {
                 abort(401);
             }
             if (!Storage::exists($pathToImage)) throw new Error("File $pathToImage is not exist");

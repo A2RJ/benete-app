@@ -19,6 +19,7 @@ return new class extends Migration
                 ->onUpdate('CASCADE')
                 ->onDelete('NO ACTION');
             $table->string('nama');
+            $table->enum('tipe', ['Pengelola dan pemanfaatan', 'Perencanaan', 'Penghapusan', 'Pemeliharaan', 'Pelaporan']);
             $table->date('tanggal_masuk');
             $table->string('asal');
             $table->string('perihal');

@@ -7,6 +7,15 @@
     </div>
 </div>
 <div class="form-group mb-3">
+    <label class="form-label"> {{ Form::label('tipe') }}</label>
+    <div>
+        {{ Form::select('tipe', ['Pengelola dan pemanfaatan' => 'Pengelola dan pemanfaatan', 'Perencanaan' => 'Perencanaan', 'Penghapusan' => 'Penghapusan', 'Pemeliharaan' => 'Pemeliharaan', 'Pelaporan' => 'Pelaporan'],
+             $bmnBendaharaMateril->tipe, ['class' => 'form-control' .
+        ($errors->has('tipe') ? ' is-invalid' : ''), 'placeholder' => 'Tipe']) }}
+        {!! $errors->first('tipe', '<div class="invalid-feedback">:message</div>') !!}
+    </div>
+</div>
+<div class="form-group mb-3">
     <label class="form-label"> {{ Form::label('tanggal_masuk') }}</label>
     <div>
         {{ Form::date('tanggal_masuk', $bmnBendaharaMateril->tanggal_masuk, ['class' => 'form-control' .

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\BMN;
+namespace App\Models\Pelabuhan;
 
 use App\Helpers\FileHelper;
 use App\Models\User;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class BmnPengelolaBmn
+ * Class PelabuhanJpt
  *
  * @property $id
  * @property $nama
@@ -23,27 +23,27 @@ use Illuminate\Support\Facades\URL;
  * @property $updated_at
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn query()
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereAsal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereLampiran($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereNama($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn wherePerihal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereTanggalMasuk($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt whereUpdatedAt($value)
  * @property int $user_id
  * @property-read User $user
- * @method static \Illuminate\Database\Eloquent\Builder|BmnPengelolaBmn whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt whereUserId($value)
  * @mixin \Eloquent
  */
-class BmnPengelolaBmn extends Model
+class PelabuhanJpt extends Model
 {
   use HasUuids;
 
-  public $table = 'bmn_pengelola_bmn';
+  public $table = 'pelabuhan_jpt';
 
   protected $perPage = 20;
 
@@ -75,13 +75,13 @@ class BmnPengelolaBmn extends Model
   {
     self::creating(function ($model) {
       $model->user_id = Auth::id();
-      $model->lampiran = FileHelper::upload(request(), 'lampiran', 'bmn/pengelola_bmn');
+      $model->lampiran = FileHelper::upload(request(), 'lampiran', 'pelabuhan/jpt');
     });
 
     self::updating(function ($model) {
       $model->user_id = Auth::id();
       if (request()->hasFile('lampiran')) {
-        $model->lampiran = FileHelper::upload(request(), 'lampiran', 'bmn/pengelola_bmn');
+        $model->lampiran = FileHelper::upload(request(), 'lampiran', 'pelabuhan/jpt');
       }
     });
   }

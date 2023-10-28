@@ -53,7 +53,7 @@ class BmnBendaharaMateril extends Model
    *
    * @var array
    */
-  protected $fillable = ['user_id', 'nama', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
+  protected $fillable = ['user_id', 'nama', 'tipe', 'tanggal_masuk', 'asal', 'perihal', 'lampiran'];
 
   protected function lampiran(): Attribute
   {
@@ -69,7 +69,7 @@ class BmnBendaharaMateril extends Model
 
   public function user()
   {
-    return $this->hasMany(User::class)->withTrashed();
+    return $this->belongsTo(User::class)->withTrashed();
   }
 
 protected static function booted(): void
