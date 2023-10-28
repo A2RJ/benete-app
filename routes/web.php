@@ -12,10 +12,10 @@ use App\Http\Controllers\BMN\{
     BmnSuratMasukController
 };
 use App\Http\Controllers\Kesyahbandaran\{
-    KesyahbandaranController,
     KesyaDisposisiController,
     KesyaDokumenAwakKapalController,
     KesyaDokumenKapalController,
+    KesyahController,
     KesyaPatroliController,
     KesyaSuratKeluarController,
     KesyaSuratMasukController,
@@ -96,7 +96,7 @@ Route::middleware(['role:bidang kesyahbandaran'])->group(function () {
     Route::resource('kesya-surat-masuk', KesyaSuratMasukController::class);
     Route::resource('kesya-surat-masuk.disposisi', KesyaDisposisiController::class)->except(['index', 'show']);
     Route::resource('kesya-surat-keluar', KesyaSuratKeluarController::class);
-    Route::resource('kesyahbandaran', KesyahbandaranController::class);
+    Route::resource('kesyahbandaran', KesyahController::class);
     Route::resource('kesya-tertib-banar', KesyaTertibBanarController::class);
     Route::resource('kesya-patroli', KesyaPatroliController::class);
     Route::resource('kesya-dokumen-kapal', KesyaDokumenKapalController::class);
@@ -127,6 +127,6 @@ Route::middleware(['role:bidang kepelabuhan'])->group(function () {
     Route::resource('pelabuhan-fasilitas-pelabuhan', PelabuhanFasilitasPelabuhanController::class);
     Route::resource('pelabuhan-keagenan', PelabuhanKeagenanController::class);
     Route::resource('pelabuhan-pbm', PelabuhanPbmController::class);
-    Route::resource('pelabuhan-tkbm', PelabuhanTkbmController::class);
     Route::resource('pelabuhan-jpt', PelabuhanJptController::class);
+    Route::resource('pelabuhan-tkbm', PelabuhanTkbmController::class);
 });

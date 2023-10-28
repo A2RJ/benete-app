@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class Kesyahbandaran
+ * Class KesyabandaranModel
  *
  * @property $id
  * @property $nama
@@ -23,23 +23,23 @@ use Illuminate\Support\Facades\URL;
  * @property $updated_at
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran query()
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereAsal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereLampiran($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereNama($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran wherePerihal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereTanggalMasuk($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereAsal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereLampiran($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel wherePerihal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereUpdatedAt($value)
  * @property int $user_id
  * @property-read User $user
- * @method static \Illuminate\Database\Eloquent\Builder|Kesyahbandaran whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereUserId($value)
  * @mixin \Eloquent
  */
-class Kesyahbandaran extends Model
+class KesyabandaranModel extends Model
 {
   use HasUuids;
 

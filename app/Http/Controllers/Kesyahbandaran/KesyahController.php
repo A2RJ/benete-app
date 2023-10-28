@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Kesyahbandaran;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
-use App\Models\Kesyahbandaran\Kesyahbandaran;
+use App\Models\Kesyahbandaran\KesyabandaranModel;
 
 /**
  * Class KesyahbandaranController
  * @package App\Http\Controllers
  */
-class KesyahbandaranController extends Controller
+class KesyahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +20,10 @@ class KesyahbandaranController extends Controller
      */
     public function index()
     {
-        $kesyahbandaran = Kesyahbandaran::paginate(10);
+        $kesyahbandaran = KesyabandaranModel::paginate(10);
 
         return view('Kesya.kesyahbandaran.index', compact('kesyahbandaran'))
-        ->with('i', (request()->input('page', 1) - 1) * $kesyahbandaran->perPage());
+            ->with('i', (request()->input('page', 1) - 1) * $kesyahbandaran->perPage());
     }
 
     /**
@@ -33,7 +33,7 @@ class KesyahbandaranController extends Controller
      */
     public function create()
     {
-        $kesyahbandaran = new Kesyahbandaran();
+        $kesyahbandaran = new KesyabandaranModel();
         return view('Kesya.kesyahbandaran.create', compact('kesyahbandaran'));
     }
 
@@ -46,10 +46,10 @@ class KesyahbandaranController extends Controller
     public function store(StoreValidationRequest $request)
     {
         $payload = $request->validated();
-        Kesyahbandaran::create($payload);
+        KesyabandaranModel::create($payload);
 
         return redirect()->route('kesya-kesyahbandaran.index')
-        ->with('success', 'Kesyahbandaran created successfully.');
+            ->with('success', 'Kesya created successfully.');
     }
 
     /**
@@ -58,7 +58,7 @@ class KesyahbandaranController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show(Kesyahbandaran $kesyahbandaran)
+    public function show(KesyabandaranModel $kesyahbandaran)
     {
         return view('Kesya.kesyahbandaran.show', compact('kesyahbandaran'));
     }
@@ -69,7 +69,7 @@ class KesyahbandaranController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit(Kesyahbandaran $kesyahbandaran)
+    public function edit(KesyabandaranModel $kesyahbandaran)
     {
         return view('Kesya.kesyahbandaran.edit', compact('kesyahbandaran'));
     }
@@ -78,15 +78,15 @@ class KesyahbandaranController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Kesyahbandaran $kesyahbandaran
+     * @param  KesyabandaranModel $kesyahbandaran
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateValidationRequest $request, Kesyahbandaran $kesyahbandaran)
+    public function update(UpdateValidationRequest $request, KesyabandaranModel $kesyahbandaran)
     {
         $kesyahbandaran->update($request->validated());
 
         return redirect()->route('kesya-kesyahbandaran.index')
-        ->with('success', 'Kesyahbandaran updated successfully');
+            ->with('success', 'Kesya updated successfully');
     }
 
     /**
@@ -94,11 +94,11 @@ class KesyahbandaranController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(Kesyahbandaran $kesyahbandaran)
+    public function destroy(KesyabandaranModel $kesyahbandaran)
     {
         $kesyahbandaran->delete();
 
         return redirect()->route('kesya-kesyahbandaran.index')
-        ->with('success', 'Kesyahbandaran deleted successfully');
+            ->with('success', 'Kesya deleted successfully');
     }
 }
