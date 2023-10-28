@@ -394,19 +394,19 @@ return [
             'can' => 'bidang kepelabuhan'
         ],
         [
+            'text' => 'JPT',
+            'url' => '/pelabuhan-jpt',
+            'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
+            'can' => 'bidang kepelabuhan'
+        ],
+        [
             'text' => 'TKBM',
             'url' => '/pelabuhan-tkbm',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
             'can' => 'bidang kepelabuhan'
         ],
-        [
-            'text' => 'JPT',
-            'url' => '/pelabuhan-jpt',
-            'icon' => 'ti ti-mail',
-            'icon_color' => 'white',
-            'can' => 'bidang kepelabuhan'
-        ]
     ],
 
     /*

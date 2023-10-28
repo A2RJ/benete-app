@@ -11,7 +11,6 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-menu">
             <div>
-                @include('tablar::partials.common.search-form')
             </div>
         </div>
     </div>

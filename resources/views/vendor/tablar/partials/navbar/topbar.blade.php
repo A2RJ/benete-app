@@ -9,7 +9,6 @@
                     @each('tablar::partials.navbar.dropdown-item',$tablar->menu('sidebar'), 'item')
                     @endif
                 </ul>
-                <!-- @include('tablar::partials.navbar.search') -->
             </div>
         </div>
     </div>
