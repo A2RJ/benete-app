@@ -9,9 +9,11 @@ use App\Http\Controllers\BMN\{
     BmnDisposisiController,
     BmnSmartUupBeneteController,
     BmnSuratKeluarController,
-    BmnSuratMasukController
+    BmnSuratMasukController,
+    DashboardController as BMNDashboardController
 };
 use App\Http\Controllers\Kesyahbandaran\{
+    DashboardController as KesyahbandaranDashboardController,
     KesyaDisposisiController,
     KesyaDokumenAwakKapalController,
     KesyaDokumenKapalController,
@@ -22,6 +24,7 @@ use App\Http\Controllers\Kesyahbandaran\{
     KesyaTertibBanarController
 };
 use App\Http\Controllers\Keuangan\{
+    DashboardController,
     KeuBendaharaPenerimaanController,
     KeuBendaharaPengeluaranController,
     KeuDisposisiController,
@@ -32,6 +35,7 @@ use App\Http\Controllers\Keuangan\{
     KeuSuratMasukController,
 };
 use App\Http\Controllers\Pelabuhan\{
+    DashboardController as PelabuhanDashboardController,
     PelabuhanDisposisiController,
     PelabuhanFasilitasPelabuhanController,
     PelabuhanJptController,
@@ -43,6 +47,7 @@ use App\Http\Controllers\Pelabuhan\{
     PelabuhanTkbmController,
 };
 use App\Http\Controllers\TU\{
+    DashboardController as TUDashboardController,
     TuDisposisiController,
     TuKontrakKerjaSamaController,
     TuSuratKeluarController,
@@ -78,10 +83,12 @@ Route::middleware('auth')->get('download/{pathToImage}', function (string $pathT
 })->where('pathToImage', '.*')->name('download');
 
 Route::middleware(['role:admin'])->group(function () {
+    Route::get('user-dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::resource('user', UserController::class);
 });
 
-Route::middleware(['role:bidang keuangan'])->group(function () {
+Route::middleware(['role:bidang keuangan'])->prefix('keuangan')->group(function () {
+    Route::get('keu-dashboard', [DashboardController::class, 'index'])->name('keu.dashboard');
     Route::resource('keu-surat-masuk', KeuSuratMasukController::class);
     Route::resource('keu-surat-masuk.disposisi', KeuDisposisiController::class)->except(['index', 'show']);
     Route::resource('keu-surat-keluar', KeuSuratKeluarController::class);
@@ -93,6 +100,7 @@ Route::middleware(['role:bidang keuangan'])->group(function () {
 });
 
 Route::middleware(['role:bidang kesyahbandaran'])->group(function () {
+    Route::get('kesya-dashboard', [KesyahbandaranDashboardController::class, 'index'])->name('kesya.dashboard');
     Route::resource('kesya-surat-masuk', KesyaSuratMasukController::class);
     Route::resource('kesya-surat-masuk.disposisi', KesyaDisposisiController::class)->except(['index', 'show']);
     Route::resource('kesya-surat-keluar', KesyaSuratKeluarController::class);
@@ -104,6 +112,7 @@ Route::middleware(['role:bidang kesyahbandaran'])->group(function () {
 });
 
 Route::middleware(['role:bidang pengelola bmn dan persediaan'])->group(function () {
+    Route::get('bmn-dashboard', [BMNDashboardController::class, 'index'])->name('bmn.dashboard');
     Route::resource('bmn-surat-masuk', BmnSuratMasukController::class);
     Route::resource('bmn-surat-masuk.disposisi', BmnDisposisiController::class)->except(['index', 'show']);
     Route::resource('bmn-surat-keluar', BmnSuratKeluarController::class);
@@ -112,6 +121,7 @@ Route::middleware(['role:bidang pengelola bmn dan persediaan'])->group(function 
 });
 
 Route::middleware(['role:bidang kepegawaian atau tata usaha'])->group(function () {
+    Route::get('tu-dashboard', [TUDashboardController::class, 'index'])->name('tu.dashboard');
     Route::resource('tu-surat-masuk', TuSuratMasukController::class);
     Route::resource('tu-surat-masuk.disposisi', TuDisposisiController::class)->except(['index', 'show']);
     Route::resource('tu-surat-keluar', TuSuratKeluarController::class);
@@ -120,6 +130,7 @@ Route::middleware(['role:bidang kepegawaian atau tata usaha'])->group(function (
 });
 
 Route::middleware(['role:bidang kepelabuhan'])->group(function () {
+    Route::get('pelabuhan-dashboard', [PelabuhanDashboardController::class, 'index'])->name('pelabuhan.dashboard');
     Route::resource('pelabuhan-surat-masuk', PelabuhanSuratMasukController::class);
     Route::resource('pelabuhan-surat-masuk.disposisi', PelabuhanDisposisiController::class)->except(['index', 'show']);
     Route::resource('pelabuhan-surat-keluar', PelabuhanSuratKeluarController::class);

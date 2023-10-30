@@ -41,6 +41,7 @@ use Illuminate\Support\Facades\URL;
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|TuSuratMasuk whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TuSuratMasuk useSearch($withType = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratMasuk statistics()
  * @mixin \Eloquent
  */
 class TuSuratMasuk extends Model

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Trait\Models\UseSearch;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -55,11 +56,12 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereWhatsapp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User statistics()
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements LaratrustUser
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRolesAndPermissions, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, HasRolesAndPermissions, SoftDeletes, UseSearch;
 
     /**
      * The attributes that are mass assignable.

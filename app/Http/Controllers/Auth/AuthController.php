@@ -19,7 +19,38 @@ class AuthController extends Controller
 
     public function home()
     {
-        return view('home');
+        $email = Auth::user()->email;
+        $user = User::whereEmail($email)->firstOrFail();
+
+        // Untuk role admin
+        if ($user->hasRole('admin')) {
+            return redirect()->route('user.dashboard');
+        }
+
+        // Untuk role bidang keuangan
+        if ($user->hasRole('bidang keuangan')) {
+            return redirect()->route('keu.dashboard');
+        }
+
+        // Untuk role bidang kesyahbandaran
+        if ($user->hasRole('bidang kesyahbandaran')) {
+            return redirect()->route('keu.dashboard');
+        }
+
+        // Untuk role bidang pengelola bmn dan persediaan
+        if ($user->hasRole('bidang pengelola bmn dan persediaan')) {
+            return redirect()->route('bmn.dashboard');
+        }
+
+        // Untuk role bidang kepegawaian atau tata usaha
+        if ($user->hasRole('bidang kepegawaian atau tata usaha')) {
+            return redirect()->route('tu.dashboard');
+        }
+
+        // Untuk role bidang kepelabuhan
+        if ($user->hasRole('bidang kepelabuhan')) {
+            return redirect()->route('pelabuhan.dashboard');
+        }
     }
 
     public function edit()

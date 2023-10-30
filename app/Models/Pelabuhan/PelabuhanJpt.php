@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\URL;
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt useSearch($withType = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanJpt statistics()
  * @mixin \Eloquent
  */
 class PelabuhanJpt extends Model

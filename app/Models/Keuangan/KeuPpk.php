@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\URL;
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk useSearch($withType = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuPpk statistics()
  * @mixin \Eloquent
  */
 class KeuPpk extends Model

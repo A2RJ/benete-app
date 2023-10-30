@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\URL;
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSuratMasuk whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSuratMasuk useSearch($withType = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnSuratMasuk statistics()
  * @mixin \Eloquent
  */
 class BmnSuratMasuk extends Model

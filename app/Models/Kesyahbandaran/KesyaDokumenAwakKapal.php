@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\URL;
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenAwakKapal whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenAwakKapal useSearch($withType = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDokumenAwakKapal statistics()
  * @mixin \Eloquent
  */
 class KesyaDokumenAwakKapal extends Model

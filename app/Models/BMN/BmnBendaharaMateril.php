@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereTipe($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril statistics()
  * @mixin \Eloquent
  */
 class BmnBendaharaMateril extends Model

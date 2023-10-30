@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\URL;
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete useSearch($withType = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete statistics()
  * @mixin \Eloquent
  */
 class BmnSmartUupBenete extends Model

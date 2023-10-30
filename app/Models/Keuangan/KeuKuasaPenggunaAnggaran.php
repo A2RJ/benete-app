@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\URL;
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KeuKuasaPenggunaAnggaran whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuKuasaPenggunaAnggaran useSearch($withType = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuKuasaPenggunaAnggaran statistics()
  * @mixin \Eloquent
  */
 class KeuKuasaPenggunaAnggaran extends Model

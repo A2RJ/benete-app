@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereUserId($value)
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama useSearch($withType = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama statistics()
  * @mixin \Eloquent
  */
 class TuKontrakKerjaSama extends Model
