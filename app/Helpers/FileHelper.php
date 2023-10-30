@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Error;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 use ZanySoft\Zip\Zip;
@@ -55,12 +56,21 @@ class FileHelper
         }
     }
 
-    public function zip(string $fileName, array $arrayFile)
+    public static function zip(string $fileName, array $arrayFile)
     {
-        $fileName = date('Y:M:d') . $fileName;
         $zip = new Zip();
-        $zip->create("$fileName.zip");
-        $zip->add($arrayFile);
-        return response()->download(public_path('test.zip'));
+        $zip->create($fileName);
+
+        foreach ($arrayFile as $file) {
+            if (Storage::disk('local')->exists($file)) {
+                $zip->addFromString($file, Storage::get($file));
+            }
+        }
+
+        if (File::exists(public_path($fileName))) {
+            return response()->download(public_path($fileName));
+        } else {
+            return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
+        }
     }
 }

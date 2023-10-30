@@ -48,7 +48,7 @@ User
                         <h3 class="card-title">User</h3>
                     </div>
 
-                    @include('tablar::common.table-header', ['route' => route('user.index')])
+                    @include('tablar::common.table-header', ['route' => url()->current()])
 
                     <div class="table-responsive min-vh-100">
                         <table class="table card-table table-vcenter text-nowrap datatable">

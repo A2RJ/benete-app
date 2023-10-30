@@ -11,8 +11,7 @@ trait UseSearch
         $endDate = request()->input('end_date', false);
 
         $query->when($search, function ($query, $search) {
-            $query->where('name', 'like', "%$search%")
-                ->orWhere('name', 'like', "%$search%")
+            $query->where('nama', 'like', "%$search%")
                 ->orWhere('tanggal_masuk', 'like', "%$search%")
                 ->orWhere('asal', 'like', "%$search%")
                 ->orWhere('perihal', 'like', "%$search%");

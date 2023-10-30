@@ -20,10 +20,13 @@ class TuSuratMasukController extends Controller
      */
     public function index()
     {
-        $tuSuratMasuks = TuSuratMasuk::useSearch()->paginate(10);
+        $tuSuratMasuks = TuSuratMasuk::useSearch();
+        $ids = $tuSuratMasuks->pluck('id')->toArray();
+        $exportUrl = route('export-data', ['ids' => implode(',', $ids), 'model' => 'tu_surat_masuk']);
 
-        return view('TU.surat-masuk.index', compact('tuSuratMasuks'))
-            ->with('i', (request()->input('page', 1) - 1) * $tuSuratMasuks->perPage());
+        return view('TU.surat-masuk.index')
+        ->with('tuSuratMasuks', $tuSuratMasuks->paginate(10))
+            ->with('export', $exportUrl);
     }
 
     /**
@@ -59,7 +62,7 @@ class TuSuratMasukController extends Controller
      * @return \Illuminate\Contracts\View\View
      */
     public function show(TuSuratMasuk $tuSuratMasuk)
-    { 
+    {
         return view('TU.surat-masuk.show', compact('tuSuratMasuk'));
     }
 
@@ -70,7 +73,7 @@ class TuSuratMasukController extends Controller
      * @return \Illuminate\Contracts\View\View
      */
     public function edit(TuSuratMasuk $tuSuratMasuk)
-    { 
+    {
         return view('TU.surat-masuk.edit', compact('tuSuratMasuk'));
     }
 
