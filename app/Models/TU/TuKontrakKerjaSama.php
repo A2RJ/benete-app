@@ -4,6 +4,7 @@ namespace App\Models\TU;
 
 use App\Helpers\FileHelper;
 use App\Models\User;
+use App\Trait\Models\UseSearch;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -36,11 +37,13 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereUpdatedAt($value)
  * @property int $user_id
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereUserId($value)
+ * @property-read User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama useSearch($withType = false)
  * @mixin \Eloquent
  */
 class TuKontrakKerjaSama extends Model
 {
-  use HasUuids;
+  use HasUuids, UseSearch;
 
   public $table = 'tu_kontrak_kerja_sama';
 

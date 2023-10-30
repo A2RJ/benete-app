@@ -4,6 +4,7 @@ namespace App\Models\TU;
 
 use App\Helpers\FileHelper;
 use App\Models\User;
+use App\Trait\Models\UseSearch;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -39,11 +40,12 @@ use Illuminate\Support\Facades\URL;
  * @property int $user_id
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|TuSuratMasuk whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TuSuratMasuk useSearch($withType = false)
  * @mixin \Eloquent
  */
 class TuSuratMasuk extends Model
 {
-  use HasUuids;
+  use HasUuids, UseSearch;
 
   public $table = 'tu_surat_masuk';
 

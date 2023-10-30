@@ -4,6 +4,7 @@ namespace App\Models\Keuangan;
 
 use App\Helpers\FileHelper;
 use App\Models\User;
+use App\Trait\Models\UseSearch;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -38,11 +39,12 @@ use Illuminate\Support\Facades\URL;
  * @property int $user_id
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratMasuk whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuSuratMasuk useSearch($withType = false)
  * @mixin \Eloquent
  */
 class KeuSuratMasuk extends Model
 {
-  use HasUuids;
+  use HasUuids, UseSearch;
 
   public $table = 'keu_surat_masuk';
 

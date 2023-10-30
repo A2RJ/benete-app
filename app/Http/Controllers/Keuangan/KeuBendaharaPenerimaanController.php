@@ -20,7 +20,7 @@ class KeuBendaharaPenerimaanController extends Controller
      */
     public function index()
     {
-        $keuBendaharaPenerimaans = KeuBendaharaPenerimaan::paginate(10);
+        $keuBendaharaPenerimaans = KeuBendaharaPenerimaan::useSearch()->paginate(10);
 
         return view('Keuangan.bendahara-penerimaan.index', compact('keuBendaharaPenerimaans'))
             ->with('i', (request()->input('page', 1) - 1) * $keuBendaharaPenerimaans->perPage());

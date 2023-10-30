@@ -20,7 +20,7 @@ class KesyaTertibBanarController extends Controller
      */
     public function index()
     {
-        $kesyaTertibBanars = KesyaTertibBanar::paginate(10);
+        $kesyaTertibBanars = KesyaTertibBanar::useSearch()->paginate(10);
 
         return view('Kesya.tertib-banar.index', compact('kesyaTertibBanars'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyaTertibBanars->perPage());

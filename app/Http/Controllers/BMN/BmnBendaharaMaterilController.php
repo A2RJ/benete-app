@@ -16,7 +16,7 @@ class BmnBendaharaMaterilController extends Controller
      */
     public function index()
     {
-        $bmnBendaharaMaterils = BmnBendaharaMateril::paginate(10);
+        $bmnBendaharaMaterils = BmnBendaharaMateril::useSearch(true)->paginate(10);
 
         return view('BMN.bendahara-materil.index', compact('bmnBendaharaMaterils'))
             ->with('i', (request()->input('page', 1) - 1) * $bmnBendaharaMaterils->perPage());

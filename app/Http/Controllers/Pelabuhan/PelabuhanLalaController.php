@@ -20,7 +20,7 @@ class PelabuhanLalaController extends Controller
      */
     public function index()
     {
-        $pelabuhanLalas = PelabuhanLala::paginate(10);
+        $pelabuhanLalas = PelabuhanLala::useSearch()->paginate(10);
 
         return view('Pelabuhan.lala.index', compact('pelabuhanLalas'))
             ->with('i', (request()->input('page', 1) - 1) * $pelabuhanLalas->perPage());

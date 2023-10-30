@@ -20,7 +20,7 @@ class KeuSuratMasukController extends Controller
      */
     public function index()
     {
-        $keuSuratMasuks = KeuSuratMasuk::paginate(10);
+        $keuSuratMasuks = KeuSuratMasuk::useSearch()->paginate(10);
 
         return view('Keuangan.surat-masuk.index', compact('keuSuratMasuks'))
             ->with('i', (request()->input('page', 1) - 1) * $keuSuratMasuks->perPage());

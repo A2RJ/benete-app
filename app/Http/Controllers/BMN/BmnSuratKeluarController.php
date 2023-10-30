@@ -20,7 +20,7 @@ class BmnSuratKeluarController extends Controller
      */
     public function index()
     {
-        $bmnSuratKeluars = BmnSuratKeluar::paginate(10);
+        $bmnSuratKeluars = BmnSuratKeluar::useSearch()->paginate(10);
 
         return view('BMN.surat-keluar.index', compact('bmnSuratKeluars'))
             ->with('i', (request()->input('page', 1) - 1) * $bmnSuratKeluars->perPage());

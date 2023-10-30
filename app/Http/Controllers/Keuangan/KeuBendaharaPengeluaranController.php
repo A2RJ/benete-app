@@ -20,7 +20,7 @@ class KeuBendaharaPengeluaranController extends Controller
      */
     public function index()
     {
-        $keuBendaharaPengeluarans = KeuBendaharaPengeluaran::paginate(10);
+        $keuBendaharaPengeluarans = KeuBendaharaPengeluaran::useSearch()->paginate(10);
 
         return view('Keuangan.bendahara-pengeluaran.index', compact('keuBendaharaPengeluarans'))
             ->with('i', (request()->input('page', 1) - 1) * $keuBendaharaPengeluarans->perPage());

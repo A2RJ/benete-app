@@ -1,20 +1,29 @@
 <div class="card-body border-bottom py-3">
     <form action="{{ $route }}" method="GET">
         <div class="d-flex">
-            <div class="text-muted">
-                Show
-                <div class="mx-2 d-inline-block">
-                    <input type="text" class="form-control form-control-sm" name="per_page" value="10" size="3" aria-label="Invoices count">
-                </div>
-            </div>
             <div class="ms-auto text-muted">
-                Search:
                 <div class="ms-2 d-inline-block">
-                    <input type="text" class="form-control form-control-sm" name="search" aria-label="Search">
+                    <div class="form-inline">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-12 mb-2">
+                                <input type="text" class="form-control form-control-sm" name="per_page" value="{{ request('per_page', '10') }}" aria-label="Invoices count">
+                            </div>
+                            <div class="col-lg-3 col-md-12 mb-2">
+                                <input type="date" class="form-control form-control-sm" name="start_date" value="{{ request('start_date') }}" aria-label="Start">
+                            </div>
+                            <div class="col-lg-3 col-md-12 mb-2">
+                                <input type="date" class="form-control form-control-sm" name="end_date" value="{{ request('end_date') }}" aria-label="End">
+                            </div>
+                            <div class="col-lg-2 col-md-12 mb-2">
+                                <input type="text" class="form-control form-control-sm" name="search" value="{{ request('search') }}" aria-label="Search">
+                            </div>
+                            <div class="col-lg-2 col-md-12 mb-2">
+                                <button type="submit" class="btn btn-primary btn-sm w-100">Search</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-            <div class="d-flex justify-content-end mt-3">
-                <button type="submit" class="btn btn-primary btn-sm">Search</button>
             </div>
         </div>
     </form>

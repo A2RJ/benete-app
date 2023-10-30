@@ -20,7 +20,7 @@ class KeuSuratKeluarController extends Controller
      */
     public function index()
     {
-        $keuSuratKeluars = KeuSuratKeluar::paginate(10);
+        $keuSuratKeluars = KeuSuratKeluar::useSearch()->paginate(10);
 
         return view('Keuangan.surat-keluar.index', compact('keuSuratKeluars'))
             ->with('i', (request()->input('page', 1) - 1) * $keuSuratKeluars->perPage());

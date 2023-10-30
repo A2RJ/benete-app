@@ -20,7 +20,7 @@ class KeuPpkController extends Controller
      */
     public function index()
     {
-        $keuPpks = KeuPpk::paginate(10);
+        $keuPpks = KeuPpk::useSearch()->paginate(10);
 
         return view('Keuangan.ppk.index', compact('keuPpks'))
             ->with('i', (request()->input('page', 1) - 1) * $keuPpks->perPage());

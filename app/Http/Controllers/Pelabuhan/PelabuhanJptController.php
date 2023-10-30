@@ -20,7 +20,7 @@ class PelabuhanJptController extends Controller
      */
     public function index()
     {
-        $pelabuhanJpts = PelabuhanJpt::paginate(10);
+        $pelabuhanJpts = PelabuhanJpt::useSearch()->paginate(10);
 
         return view('Pelabuhan.jpt.index', compact('pelabuhanJpts'))
             ->with('i', (request()->input('page', 1) - 1) * $pelabuhanJpts->perPage());

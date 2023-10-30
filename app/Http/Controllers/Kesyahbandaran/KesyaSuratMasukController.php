@@ -20,7 +20,7 @@ class KesyaSuratMasukController extends Controller
      */
     public function index()
     {
-        $kesyaSuratMasuks = KesyaSuratMasuk::paginate(10);
+        $kesyaSuratMasuks = KesyaSuratMasuk::useSearch()->paginate(10);
 
         return view('Kesya.surat-masuk.index', compact('kesyaSuratMasuks'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyaSuratMasuks->perPage());

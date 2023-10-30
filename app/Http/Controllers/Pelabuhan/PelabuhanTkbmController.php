@@ -20,7 +20,7 @@ class PelabuhanTkbmController extends Controller
      */
     public function index()
     {
-        $pelabuhanTkbms = PelabuhanTkbm::paginate(10);
+        $pelabuhanTkbms = PelabuhanTkbm::useSearch()->paginate(10);
 
         return view('Pelabuhan.tkbm.index', compact('pelabuhanTkbms'))
             ->with('i', (request()->input('page', 1) - 1) * $pelabuhanTkbms->perPage());

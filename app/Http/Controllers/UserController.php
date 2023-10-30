@@ -20,13 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $search = request()->input('search', false);
-        $per_page = request()->input('per_page', 15);
-
-        $users = User::when($search, function ($query, $search) {
-            $query->where('name', 'like', "%$search%");
-        })
-            ->paginate($per_page);
+        $users = User::useSearch()->paginate(10);
 
         return view('user.index', compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());

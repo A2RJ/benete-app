@@ -20,7 +20,7 @@ class BmnSmartUupBeneteController extends Controller
      */
     public function index()
     {
-        $bmnSmartUupBenetes = BmnSmartUupBenete::paginate(10);
+        $bmnSmartUupBenetes = BmnSmartUupBenete::useSearch()->paginate(10);
 
         return view('BMN.smart-uup-benete.index', compact('bmnSmartUupBenetes'))
             ->with('i', (request()->input('page', 1) - 1) * $bmnSmartUupBenetes->perPage());

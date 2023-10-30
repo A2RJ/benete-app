@@ -20,7 +20,7 @@ class KesyaSuratKeluarController extends Controller
      */
     public function index()
     {
-        $kesyaSuratKeluars = KesyaSuratKeluar::paginate(10);
+        $kesyaSuratKeluars = KesyaSuratKeluar::useSearch()->paginate(10);
 
         return view('Kesya.surat-keluar.index', compact('kesyaSuratKeluars'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyaSuratKeluars->perPage());

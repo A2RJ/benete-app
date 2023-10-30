@@ -20,7 +20,7 @@ class KeuKuasaPenggunaAnggaranController extends Controller
      */
     public function index()
     {
-        $keuKuasaPenggunaAnggarans = KeuKuasaPenggunaAnggaran::paginate(10);
+        $keuKuasaPenggunaAnggarans = KeuKuasaPenggunaAnggaran::useSearch()->paginate(10);
 
         return view('Keuangan.kuasa-pengguna-anggaran.index', compact('keuKuasaPenggunaAnggarans'))
             ->with('i', (request()->input('page', 1) - 1) * $keuKuasaPenggunaAnggarans->perPage());

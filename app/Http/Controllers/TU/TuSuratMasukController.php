@@ -20,7 +20,7 @@ class TuSuratMasukController extends Controller
      */
     public function index()
     {
-        $tuSuratMasuks = TuSuratMasuk::paginate(10);
+        $tuSuratMasuks = TuSuratMasuk::useSearch()->paginate(10);
 
         return view('TU.surat-masuk.index', compact('tuSuratMasuks'))
             ->with('i', (request()->input('page', 1) - 1) * $tuSuratMasuks->perPage());

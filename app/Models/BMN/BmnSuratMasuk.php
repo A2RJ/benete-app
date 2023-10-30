@@ -4,6 +4,7 @@ namespace App\Models\BMN;
 
 use App\Helpers\FileHelper;
 use App\Models\User;
+use App\Trait\Models\UseSearch;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -38,11 +39,12 @@ use Illuminate\Support\Facades\URL;
  * @property int $user_id
  * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSuratMasuk whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnSuratMasuk useSearch($withType = false)
  * @mixin \Eloquent
  */
 class BmnSuratMasuk extends Model
 {
-  use HasUuids;
+  use HasUuids, UseSearch;
 
   public $table = 'bmn_surat_masuk';
 

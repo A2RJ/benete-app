@@ -20,7 +20,7 @@ class KesyaDokumenKapalController extends Controller
      */
     public function index()
     {
-        $kesyaDokumenKapals = KesyaDokumenKapal::paginate(10);
+        $kesyaDokumenKapals = KesyaDokumenKapal::useSearch()->paginate(10);
 
         return view('Kesya.dokumen-kapal.index', compact('kesyaDokumenKapals'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyaDokumenKapals->perPage());

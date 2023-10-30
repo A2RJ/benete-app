@@ -20,7 +20,7 @@ class PelabuhanFasilitasPelabuhanController extends Controller
      */
     public function index()
     {
-        $pelabuhanFasilitasPelabuhans = PelabuhanFasilitasPelabuhan::paginate(10);
+        $pelabuhanFasilitasPelabuhans = PelabuhanFasilitasPelabuhan::useSearch()->paginate(10);
 
         return view('Pelabuhan.fasilitas-pelabuhan.index', compact('pelabuhanFasilitasPelabuhans'))
             ->with('i', (request()->input('page', 1) - 1) * $pelabuhanFasilitasPelabuhans->perPage());

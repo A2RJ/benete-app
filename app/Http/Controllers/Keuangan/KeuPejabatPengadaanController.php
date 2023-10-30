@@ -20,7 +20,7 @@ class KeuPejabatPengadaanController extends Controller
      */
     public function index()
     {
-        $keuPejabatPengadaans = KeuPejabatPengadaan::paginate(10);
+        $keuPejabatPengadaans = KeuPejabatPengadaan::useSearch()->paginate(10);
 
         return view('Keuangan.pejabat-pengadaan.index', compact('keuPejabatPengadaans'))
             ->with('i', (request()->input('page', 1) - 1) * $keuPejabatPengadaans->perPage());

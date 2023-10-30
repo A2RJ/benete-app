@@ -20,7 +20,7 @@ class TuKontrakKerjaSamaController extends Controller
      */
     public function index()
     {
-        $tuKontrakKerjaSamas = TuKontrakKerjaSama::paginate(10);
+        $tuKontrakKerjaSamas = TuKontrakKerjaSama::useSearch()->paginate(10);
 
         return view('TU.kontrak-kerja-sama.index', compact('tuKontrakKerjaSamas'))
             ->with('i', (request()->input('page', 1) - 1) * $tuKontrakKerjaSamas->perPage());

@@ -20,7 +20,7 @@ class PelabuhanSuratKeluarController extends Controller
      */
     public function index()
     {
-        $pelabuhanSuratKeluars = PelabuhanSuratKeluar::paginate(10);
+        $pelabuhanSuratKeluars = PelabuhanSuratKeluar::useSearch()->paginate(10);
 
         return view('Pelabuhan.surat-keluar.index', compact('pelabuhanSuratKeluars'))
             ->with('i', (request()->input('page', 1) - 1) * $pelabuhanSuratKeluars->perPage());

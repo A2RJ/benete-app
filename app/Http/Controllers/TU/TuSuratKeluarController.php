@@ -20,7 +20,7 @@ class TuSuratKeluarController extends Controller
      */
     public function index()
     {
-        $tuSuratKeluars = TuSuratKeluar::paginate(10);
+        $tuSuratKeluars = TuSuratKeluar::useSearch()->paginate(10);
 
         return view('TU.surat-keluar.index', compact('tuSuratKeluars'))
             ->with('i', (request()->input('page', 1) - 1) * $tuSuratKeluars->perPage());

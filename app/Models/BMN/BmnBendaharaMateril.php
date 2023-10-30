@@ -4,6 +4,7 @@ namespace App\Models\BMN;
 
 use App\Helpers\FileHelper;
 use App\Models\User;
+use App\Trait\Models\UseSearch;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -11,21 +12,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class BmnBendaharaMateril
+ * App\Models\BMN\BmnBendaharaMateril
  *
- * @property $id
- * @property $nama
- * @property $tanggal_masuk
- * @property $asal
- * @property $perihal
- * @property $lampiran
- * @property $created_at
- * @property $updated_at
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $nama
+ * @property string $tipe
+ * @property string $tanggal_masuk
+ * @property string $asal
+ * @property string $perihal
+ * @property string $lampiran
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril useSearch($withType = false)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereAsal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereId($value)
@@ -33,16 +36,14 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereNama($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereTanggalMasuk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereTipe($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereUpdatedAt($value)
- * @property int $user_id
- * @property-read \Illuminate\Database\Eloquent\Collection<int, User> $user
- * @property-read int|null $user_count
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereUserId($value)
  * @mixin \Eloquent
  */
 class BmnBendaharaMateril extends Model
 {
-  use HasUuids;
+  use HasUuids, UseSearch;
 
   public $table = 'bmn_bendahara_materil';
 
@@ -72,7 +73,7 @@ class BmnBendaharaMateril extends Model
     return $this->belongsTo(User::class)->withTrashed();
   }
 
-protected static function booted(): void
+  protected static function booted(): void
   {
     self::creating(function ($model) {
       $model->user_id = Auth::id();

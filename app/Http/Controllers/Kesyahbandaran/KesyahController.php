@@ -20,7 +20,7 @@ class KesyahController extends Controller
      */
     public function index()
     {
-        $kesyahbandaran = KesyabandaranModel::paginate(10);
+        $kesyahbandaran = KesyabandaranModel::useSearch()->paginate(10);
 
         return view('Kesya.kesyahbandaran.index', compact('kesyahbandaran'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyahbandaran->perPage());

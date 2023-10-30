@@ -20,7 +20,7 @@ class PelabuhanKeagenanController extends Controller
      */
     public function index()
     {
-        $pelabuhanKeagenans = PelabuhanKeagenan::paginate(10);
+        $pelabuhanKeagenans = PelabuhanKeagenan::useSearch()->paginate(10);
 
         return view('Pelabuhan.keagenan.index', compact('pelabuhanKeagenans'))
             ->with('i', (request()->input('page', 1) - 1) * $pelabuhanKeagenans->perPage());

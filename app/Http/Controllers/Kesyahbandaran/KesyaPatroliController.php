@@ -20,7 +20,7 @@ class KesyaPatroliController extends Controller
      */
     public function index()
     {
-        $kesyaPatrolis = KesyaPatroli::paginate(10);
+        $kesyaPatrolis = KesyaPatroli::useSearch()->paginate(10);
 
         return view('Kesya.patroli.index', compact('kesyaPatrolis'))
             ->with('i', (request()->input('page', 1) - 1) * $kesyaPatrolis->perPage());

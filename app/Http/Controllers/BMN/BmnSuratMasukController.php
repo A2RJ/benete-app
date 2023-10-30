@@ -20,7 +20,7 @@ class BmnSuratMasukController extends Controller
      */
     public function index()
     {
-        $bmnSuratMasuks = BmnSuratMasuk::paginate(10);
+        $bmnSuratMasuks = BmnSuratMasuk::useSearch()->paginate(10);
 
         return view('BMN.surat-masuk.index', compact('bmnSuratMasuks'))
             ->with('i', (request()->input('page', 1) - 1) * $bmnSuratMasuks->perPage());
