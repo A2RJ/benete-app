@@ -5,28 +5,31 @@ namespace App\Models\TU;
 use App\Helpers\FileHelper;
 use App\Models\User;
 use App\Trait\Models\UseSearch;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
-
+ 
 /**
- * Class TuKontrakKerjaSama
+ * App\Models\TU\TuKontrakKerjaSama
  *
- * @property $id
- * @property $nama
- * @property $tanggal_masuk
- * @property $asal
- * @property $perihal
- * @property $lampiran
- * @property $created_at
- * @property $updated_at
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $nama
+ * @property string $tanggal_masuk
+ * @property string $asal
+ * @property string $perihal
+ * @property string $lampiran
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama statistics()
+ * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama useSearch($withType = false)
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereAsal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereId($value)
@@ -35,16 +38,12 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereTanggalMasuk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereUpdatedAt($value)
- * @property int $user_id
  * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama whereUserId($value)
- * @property-read User $user
- * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama useSearch($withType = false)
- * @method static \Illuminate\Database\Eloquent\Builder|TuKontrakKerjaSama statistics()
  * @mixin \Eloquent
  */
 class TuKontrakKerjaSama extends Model
 {
-  use HasUuids, UseSearch;
+  use HasUuids, UseSearch, UseStatistic;
 
   public $table = 'tu_kontrak_kerja_sama';
 

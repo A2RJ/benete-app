@@ -3,29 +3,30 @@
 namespace App\Models\BMN;
 
 use App\Models\User;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class BmnDisposisi
+ * App\Models\BMN\BmnDisposisi
  *
- * @property $id
- * @property $bmn_surat_masuk_id
- * @property $tujuan
- * @property $batas_waktu_tindaklanjuti
- * @property $jenis_disposisi
- * @property $status_disposisi
- * @property $catatan
- * @property $created_at
- * @property $updated_at
- * @property BmnSuratMasuk $bmnSuratMasuk
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $bmn_surat_masuk_id
+ * @property string $tujuan
+ * @property string $batas_waktu_tindaklanjuti
+ * @property string $jenis_disposisi
+ * @property string $status_disposisi
+ * @property string|null $catatan
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\BMN\BmnSuratMasuk|null $suratMasuk
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi statistics()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereBatasWaktuTindaklanjuti($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereBmnSuratMasukId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereCatatan($value)
@@ -35,14 +36,12 @@ use Illuminate\Support\Facades\Auth;
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereStatusDisposisi($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereTujuan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereUpdatedAt($value)
- * @property int $user_id
- * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|BmnDisposisi whereUserId($value)
  * @mixin \Eloquent
  */
 class BmnDisposisi extends Model
 {
-  use HasUuids;
+  use HasUuids, UseStatistic;
   public $table = 'bmn_disposisi';
 
   protected $perPage = 20;

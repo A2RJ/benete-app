@@ -5,28 +5,31 @@ namespace App\Models\Pelabuhan;
 use App\Helpers\FileHelper;
 use App\Models\User;
 use App\Trait\Models\UseSearch;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
-
+ 
 /**
- * Class PelabuhanFasilitasPelabuhan
+ * App\Models\Pelabuhan\PelabuhanFasilitasPelabuhan
  *
- * @property $id
- * @property $nama
- * @property $tanggal_masuk
- * @property $asal
- * @property $perihal
- * @property $lampiran
- * @property $created_at
- * @property $updated_at
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $nama
+ * @property string $tanggal_masuk
+ * @property string $asal
+ * @property string $perihal
+ * @property string $lampiran
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan statistics()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan useSearch($withType = false)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereAsal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereId($value)
@@ -35,16 +38,12 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereTanggalMasuk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereUpdatedAt($value)
- * @property int $user_id
- * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan useSearch($withType = false)
- * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanFasilitasPelabuhan statistics()
  * @mixin \Eloquent
  */
 class PelabuhanFasilitasPelabuhan extends Model
 {
-  use HasUuids, UseSearch;
+  use HasUuids, UseSearch, UseStatistic;
 
   public $table = 'pelabuhan_fasilitas_pelabuhan';
 

@@ -21,7 +21,7 @@ class MonthlyUsersChart
         return $this->chart->lineChart()
             ->setTitle("User $year.")
             ->setSubtitle("Jumlah user yang dibuat pada setiap bulan pada tahun $year.")
-            ->addData('Physical sales', array_values($statistic))
+            ->addData('Users', array_values($statistic))
             ->setXAxis(array_keys($statistic));
     }
 }

@@ -3,29 +3,30 @@
 namespace App\Models\Kesyahbandaran;
 
 use App\Models\User;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class KesyaDisposisi
+ * App\Models\Kesyahbandaran\KesyaDisposisi
  *
- * @property $id
- * @property $kesya_surat_masuk_id
- * @property $tujuan
- * @property $batas_waktu_tindaklanjuti
- * @property $jenis_disposisi
- * @property $status_disposisi
- * @property $catatan
- * @property $created_at
- * @property $updated_at
- * @property KesyaSuratMasuk $kesyaSuratMasuk
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $kesya_surat_masuk_id
+ * @property string $tujuan
+ * @property string $batas_waktu_tindaklanjuti
+ * @property string $jenis_disposisi
+ * @property string $status_disposisi
+ * @property string|null $catatan
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Kesyahbandaran\KesyaSuratMasuk|null $suratMasuk
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi statistics()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi whereBatasWaktuTindaklanjuti($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi whereCatatan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi whereCreatedAt($value)
@@ -35,14 +36,12 @@ use Illuminate\Support\Facades\Auth;
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi whereStatusDisposisi($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi whereTujuan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi whereUpdatedAt($value)
- * @property int $user_id
- * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KesyaDisposisi whereUserId($value)
  * @mixin \Eloquent
  */
 class KesyaDisposisi extends Model
 {
-  use HasUuids;
+  use HasUuids, UseStatistic;
 
   public $table = 'kesya_disposisi';
 

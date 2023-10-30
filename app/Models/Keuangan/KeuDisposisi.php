@@ -3,29 +3,30 @@
 namespace App\Models\Keuangan;
 
 use App\Models\User;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class KeuDisposisi
+ * App\Models\Keuangan\KeuDisposisi
  *
- * @property $id
- * @property $keu_surat_masuk_id
- * @property $tujuan
- * @property $batas_waktu_tindaklanjuti
- * @property $jenis_disposisi
- * @property $status_disposisi
- * @property $catatan
- * @property $created_at
- * @property $updated_at
- * @property KeuSuratMasuk $keuSuratMasuk
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $keu_surat_masuk_id
+ * @property string $tujuan
+ * @property string $batas_waktu_tindaklanjuti
+ * @property string $jenis_disposisi
+ * @property string $status_disposisi
+ * @property string|null $catatan
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Keuangan\KeuSuratMasuk|null $suratMasuk
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi statistics()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereBatasWaktuTindaklanjuti($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereCatatan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereCreatedAt($value)
@@ -35,14 +36,12 @@ use Illuminate\Support\Facades\Auth;
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereStatusDisposisi($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereTujuan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereUpdatedAt($value)
- * @property int $user_id
- * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KeuDisposisi whereUserId($value)
  * @mixin \Eloquent
  */
 class KeuDisposisi extends Model
 {
-  use HasUuids;
+  use HasUuids, UseStatistic;
 
   public $table = 'keu_disposisi';
 

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Trait\Models\UseSearch;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -61,7 +61,7 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class User extends Authenticatable implements LaratrustUser
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRolesAndPermissions, SoftDeletes, UseSearch;
+    use HasApiTokens, HasFactory, Notifiable, HasRolesAndPermissions, SoftDeletes, UseStatistic;
 
     /**
      * The attributes that are mass assignable.

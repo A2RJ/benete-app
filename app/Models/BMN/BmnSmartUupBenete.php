@@ -5,6 +5,7 @@ namespace App\Models\BMN;
 use App\Helpers\FileHelper;
 use App\Models\User;
 use App\Trait\Models\UseSearch;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -12,21 +13,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class BmnSmartUupBenete
+ * App\Models\BMN\BmnSmartUupBenete
  *
- * @property $id
- * @property $nama
- * @property $tanggal_masuk
- * @property $asal
- * @property $perihal
- * @property $lampiran
- * @property $created_at
- * @property $updated_at
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $nama
+ * @property string $tanggal_masuk
+ * @property string $asal
+ * @property string $perihal
+ * @property string $lampiran
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete statistics()
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete useSearch($withType = false)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete whereAsal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete whereId($value)
@@ -35,16 +38,12 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete whereTanggalMasuk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete whereUpdatedAt($value)
- * @property int $user_id
- * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete useSearch($withType = false)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnSmartUupBenete statistics()
  * @mixin \Eloquent
  */
 class BmnSmartUupBenete extends Model
 {
-  use HasUuids, UseSearch;
+  use HasUuids, UseSearch, UseStatistic;
 
   public $table = 'bmn_smart_uup_benete';
 

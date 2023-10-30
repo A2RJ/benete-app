@@ -5,6 +5,7 @@ namespace App\Models\BMN;
 use App\Helpers\FileHelper;
 use App\Models\User;
 use App\Trait\Models\UseSearch;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -28,6 +29,7 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril statistics()
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril useSearch($withType = false)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereAsal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereCreatedAt($value)
@@ -39,12 +41,11 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereTipe($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BmnBendaharaMateril statistics()
  * @mixin \Eloquent
  */
 class BmnBendaharaMateril extends Model
 {
-  use HasUuids, UseSearch;
+  use HasUuids, UseSearch, UseStatistic;
 
   public $table = 'bmn_bendahara_materil';
 

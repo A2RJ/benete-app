@@ -3,29 +3,30 @@
 namespace App\Models\Pelabuhan;
 
 use App\Models\User;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class PelabuhanDisposisi
+ * App\Models\Pelabuhan\PelabuhanDisposisi
  *
- * @property $id
- * @property $pelabuhan_surat_masuk_id
- * @property $tujuan
- * @property $batas_waktu_tindaklanjuti
- * @property $jenis_disposisi
- * @property $status_disposisi
- * @property $catatan
- * @property $created_at
- * @property $updated_at
- * @property PelabuhanSuratMasuk $pelabuhanSuratMasuk
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $pelabuhan_surat_masuk_id
+ * @property string $tujuan
+ * @property string $batas_waktu_tindaklanjuti
+ * @property string $jenis_disposisi
+ * @property string $status_disposisi
+ * @property string|null $catatan
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Pelabuhan\PelabuhanSuratMasuk|null $suratMasuk
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi statistics()
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereBatasWaktuTindaklanjuti($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereCatatan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereCreatedAt($value)
@@ -35,14 +36,12 @@ use Illuminate\Support\Facades\Auth;
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereStatusDisposisi($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereTujuan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereUpdatedAt($value)
- * @property int $user_id
- * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|PelabuhanDisposisi whereUserId($value)
  * @mixin \Eloquent
  */
 class PelabuhanDisposisi extends Model
 {
-  use HasUuids;
+  use HasUuids, UseStatistic;
 
   public $table = 'pelabuhan_disposisi';
 

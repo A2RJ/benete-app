@@ -5,6 +5,7 @@ namespace App\Models\Keuangan;
 use App\Helpers\FileHelper;
 use App\Models\User;
 use App\Trait\Models\UseSearch;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -12,21 +13,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class KeuBendaharaPengeluaran
+ * App\Models\Keuangan\KeuBendaharaPengeluaran
  *
- * @property $id
- * @property $nama
- * @property $tanggal_masuk
- * @property $asal
- * @property $perihal
- * @property $lampiran
- * @property $created_at
- * @property $updated_at
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $nama
+ * @property string $tanggal_masuk
+ * @property string $asal
+ * @property string $perihal
+ * @property string $lampiran
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran statistics()
+ * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran useSearch($withType = false)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereAsal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereId($value)
@@ -35,16 +38,12 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereTanggalMasuk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereUpdatedAt($value)
- * @property int $user_id
- * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran useSearch($withType = false)
- * @method static \Illuminate\Database\Eloquent\Builder|KeuBendaharaPengeluaran statistics()
  * @mixin \Eloquent
  */
 class KeuBendaharaPengeluaran extends Model
 {
-  use HasUuids, UseSearch;
+  use HasUuids, UseSearch, UseStatistic;
 
   public $table = 'keu_bendahara_pengeluaran';
 

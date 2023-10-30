@@ -5,6 +5,7 @@ namespace App\Models\Kesyahbandaran;
 use App\Helpers\FileHelper;
 use App\Models\User;
 use App\Trait\Models\UseSearch;
+use App\Trait\Models\UseStatistic;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -12,21 +13,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class KesyabandaranModel
+ * App\Models\Kesyahbandaran\KesyabandaranModel
  *
- * @property $id
- * @property $nama
- * @property $tanggal_masuk
- * @property $asal
- * @property $perihal
- * @property $lampiran
- * @property $created_at
- * @property $updated_at
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property string $id
+ * @property int $user_id
+ * @property string $nama
+ * @property string $tanggal_masuk
+ * @property string $asal
+ * @property string $perihal
+ * @property string $lampiran
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel statistics()
+ * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel useSearch($withType = false)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereAsal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereId($value)
@@ -35,16 +38,12 @@ use Illuminate\Support\Facades\URL;
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel wherePerihal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereTanggalMasuk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereUpdatedAt($value)
- * @property int $user_id
- * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel useSearch($withType = false)
- * @method static \Illuminate\Database\Eloquent\Builder|KesyabandaranModel statistics()
  * @mixin \Eloquent
  */
 class KesyabandaranModel extends Model
 {
-  use HasUuids, UseSearch;
+  use HasUuids, UseSearch, UseStatistic;
 
   public $table = 'kesyahbandaran';
 

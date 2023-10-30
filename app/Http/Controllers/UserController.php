@@ -27,7 +27,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::useSearch()->paginate(10);
+        $users = User::useSearch()->whereHas('roles', function ($query) {
+            $query->where('name', '!=', 'admin');
+        })->paginate(10);
+
 
         return view('user.index', compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());

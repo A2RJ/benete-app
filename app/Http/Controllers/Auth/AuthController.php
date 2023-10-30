@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         // Untuk role bidang kesyahbandaran
         if ($user->hasRole('bidang kesyahbandaran')) {
-            return redirect()->route('keu.dashboard');
+            return redirect()->route('kesya.dashboard');
         }
 
         // Untuk role bidang pengelola bmn dan persediaan
