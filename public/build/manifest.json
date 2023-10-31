@@ -1,0 +1,36 @@
+{
+  "node_modules/@tabler/icons-webfont/fonts/tabler-icons.eot": {
+    "file": "assets/tabler-icons-b1ba9f77.eot",
+    "src": "node_modules/@tabler/icons-webfont/fonts/tabler-icons.eot"
+  },
+  "node_modules/@tabler/icons-webfont/fonts/tabler-icons.ttf": {
+    "file": "assets/tabler-icons-b4757206.ttf",
+    "src": "node_modules/@tabler/icons-webfont/fonts/tabler-icons.ttf"
+  },
+  "node_modules/@tabler/icons-webfont/fonts/tabler-icons.woff": {
+    "file": "assets/tabler-icons-c733a218.woff",
+    "src": "node_modules/@tabler/icons-webfont/fonts/tabler-icons.woff"
+  },
+  "node_modules/@tabler/icons-webfont/fonts/tabler-icons.woff2": {
+    "file": "assets/tabler-icons-41b3430b.woff2",
+    "src": "node_modules/@tabler/icons-webfont/fonts/tabler-icons.woff2"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-4d40cf75.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "assets": [
+      "assets/tabler-icons-b1ba9f77.eot",
+      "assets/tabler-icons-41b3430b.woff2",
+      "assets/tabler-icons-c733a218.woff",
+      "assets/tabler-icons-b4757206.ttf"
+    ],
+    "css": [
+      "assets/app-4d40cf75.css"
+    ],
+    "file": "assets/app-02a8c15b.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}
