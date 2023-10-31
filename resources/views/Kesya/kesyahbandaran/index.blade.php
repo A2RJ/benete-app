@@ -75,17 +75,17 @@ Kesyahbandaran
                             </thead>
 
                             <tbody>
-                                @forelse ($kesyahbandaran as $kesyahbandaran)
+                                @forelse ($kesyahbandaran as $kesyah)
                                 <tr>
                                     <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select kesyahbandaran"></td>
                                     <td>{{ $kesyahbandaran->firstItem() + $loop->index }}</td>
 
-                                    <td>{{ $kesyahbandaran->nama }}</td>
-                                    <td>{{ $kesyahbandaran->user->name }}</td>
-                                    <td>{{ $kesyahbandaran->tanggal_masuk }}</td>
-                                    <td>{{ $kesyahbandaran->asal }}</td>
-                                    <td>{{ $kesyahbandaran->perihal }}</td>
-                                    <td>{!! $kesyahbandaran->lampiran !!}</td>
+                                    <td>{{ $kesyah->nama }}</td>
+                                    <td>{{ $kesyah->user->name }}</td>
+                                    <td>{{ $kesyah->tanggal_masuk }}</td>
+                                    <td>{{ $kesyah->asal }}</td>
+                                    <td>{{ $kesyah->perihal }}</td>
+                                    <td>{!! $kesyah->lampiran !!}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">
@@ -94,13 +94,13 @@ Kesyahbandaran
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="{{ route('kesyahbandaran.show',$kesyahbandaran->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('kesyahbandaran.show',$kesyah->id) }}">
                                                         Detail
                                                     </a>
-                                                    <a class="dropdown-item" href="{{ route('kesyahbandaran.edit',$kesyahbandaran->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('kesyahbandaran.edit',$kesyah->id) }}">
                                                         Ubah
                                                     </a>
-                                                    <form action="{{ route('kesyahbandaran.destroy',$kesyahbandaran->id) }}" method="POST">
+                                                    <form action="{{ route('kesyahbandaran.destroy',$kesyah->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>

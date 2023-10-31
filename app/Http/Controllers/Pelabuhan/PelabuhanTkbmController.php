@@ -23,7 +23,7 @@ class PelabuhanTkbmController extends Controller
         $pelabuhanTkbms = PelabuhanTkbm::useSearch();
         $ids = $pelabuhanTkbms->pluck('id')->toArray();
 
-        return view('Pelabuhan.surat-masuk.index')
+        return view('Pelabuhan.tkbm.index')
         ->with('pelabuhanTkbms', $pelabuhanTkbms->paginate(10))
             ->with('export', route('export-data', [
                 'ids' => implode(',', $ids),

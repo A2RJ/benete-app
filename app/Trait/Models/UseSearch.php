@@ -10,15 +10,14 @@ trait UseSearch
         $startDate = request()->input('start_date', false);
         $endDate = request()->input('end_date', false);
 
-        $query->when($search, function ($query, $search) {
+        $query->when($search, function ($query, $search) use ($withType) {
             $query->where('nama', 'like', "%$search%")
                 ->orWhere('tanggal_masuk', 'like', "%$search%")
                 ->orWhere('asal', 'like', "%$search%")
                 ->orWhere('perihal', 'like', "%$search%");
-        });
-
-        $query->when($withType, function ($query, $search) {
-            $query->where('tipe', 'like', "%$search%");
+            if ($withType) {
+                $query->orWhere('tipe', 'like', "%$search%");
+            }
         });
 
         $query->when($startDate, function ($query, $startDate) {

@@ -53,7 +53,7 @@ class KesyahController extends Controller
         $payload = $request->validated();
         KesyabandaranModel::create($payload);
 
-        return redirect()->route('kesya-kesyahbandaran.index')
+        return redirect()->route('kesyahbandaran.index')
             ->with('success', 'Kesya created successfully.');
     }
 
@@ -90,7 +90,7 @@ class KesyahController extends Controller
     {
         $kesyahbandaran->update($request->validated());
 
-        return redirect()->route('kesya-kesyahbandaran.index')
+        return redirect()->route('kesyahbandaran.index')
             ->with('success', 'Kesya updated successfully');
     }
 
@@ -103,7 +103,7 @@ class KesyahController extends Controller
     {
         $kesyahbandaran->delete();
 
-        return redirect()->route('kesya-kesyahbandaran.index')
+        return redirect()->route('kesyahbandaran.index')
             ->with('success', 'Kesya deleted successfully');
     }
 }
