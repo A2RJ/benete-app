@@ -17,11 +17,15 @@ class MonthlyUsersChart
     public function build()
     {
         $year = date('Y');
-        $statistic = User::query()->whereYear('created_at', $year)->statistics();
+        $user = User::query()
+            ->whereYear('created_at', $year)
+            ->statistics(); 
+
         return $this->chart->lineChart()
             ->setTitle("User $year.")
             ->setSubtitle("Jumlah user yang dibuat pada setiap bulan pada tahun $year.")
-            ->addData('Users', array_values($statistic))
-            ->setXAxis(array_keys($statistic));
+        ->addData('-', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,])
+            ->addData('Users', array_values($user))
+            ->setXAxis(array_keys($user));
     }
 }

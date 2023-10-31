@@ -42,7 +42,7 @@
         "files": [
             "app/Helpers/FileHelper.php",
             "app/Trait/Models/UseSearch.php",
-            "app/Trait/Models/useStatistic.php"
+            "app/Trait/Models/UseStatistic.php"
         ]
     },
     "autoload-dev": {

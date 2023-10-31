@@ -100,7 +100,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('user', UserController::class);
     });
 
-    Route::middleware(['role:bidang keuangan'])->prefix('keuangan')->group(function () {
+    Route::middleware(['role:bidang keuangan'])->group(function () {
         Route::get('keu-dashboard', [DashboardController::class, 'index'])->name('keu.dashboard');
         Route::resource('keu-surat-masuk', KeuSuratMasukController::class);
         Route::resource('keu-surat-masuk.disposisi', KeuDisposisiController::class)->except(['index', 'show']);
