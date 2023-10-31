@@ -47,23 +47,9 @@ Surat Keluar
                     <div class="card-header">
                         <h3 class="card-title">Surat Keluar</h3>
                     </div>
-                    <div class="card-body border-bottom py-3">
-                        <div class="d-flex">
-                            <div class="text-muted">
-                                Show
-                                <div class="mx-2 d-inline-block">
-                                    <input type="text" class="form-control form-control-sm" value="10" size="3" aria-label="Invoices count">
-                                </div>
-                                entries
-                            </div>
-                            <div class="ms-auto text-muted">
-                                Search:
-                                <div class="ms-2 d-inline-block">
-                                    <input type="text" class="form-control form-control-sm" aria-label="Search">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    @include('tablar::common.table-header', ['route' => url()->current()])
+
                     <div class="table-responsive min-vh-100">
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <thead>
@@ -92,7 +78,7 @@ Surat Keluar
                                 @forelse ($kesyaSuratKeluars as $kesyaSuratKeluar)
                                 <tr>
                                     <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select kesyaSuratKeluar"></td>
-                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $kesyaSuratKeluars->firstItem() + $loop->index }}</td>
 
                                     <td>{{ $kesyaSuratKeluar->nama }}</td>
                                     <td>{{ $kesyaSuratKeluar->user->name }}</td>

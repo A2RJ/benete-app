@@ -20,10 +20,15 @@ class BmnSuratMasukController extends Controller
      */
     public function index()
     {
-        $bmnSuratMasuks = BmnSuratMasuk::useSearch()->paginate(10);
+        $bmnSuratMasuks = BmnSuratMasuk::useSearch();
+        $ids = $bmnSuratMasuks->pluck('id')->toArray();
 
-        return view('BMN.surat-masuk.index', compact('bmnSuratMasuks'))
-            ->with('i', (request()->input('page', 1) - 1) * $bmnSuratMasuks->perPage());
+        return view('BMN.surat-masuk.index')
+        ->with('bmnSuratMasuks', $bmnSuratMasuks->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'bmn_surat_masuk'
+            ]));
     }
 
     /**

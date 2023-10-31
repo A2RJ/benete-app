@@ -20,10 +20,15 @@ class KeuSuratKeluarController extends Controller
      */
     public function index()
     {
-        $keuSuratKeluars = KeuSuratKeluar::useSearch()->paginate(10);
+        $keuSuratKeluars = KeuSuratKeluar::useSearch();
+        $ids = $keuSuratKeluars->pluck('id')->toArray();
 
-        return view('Keuangan.surat-keluar.index', compact('keuSuratKeluars'))
-            ->with('i', (request()->input('page', 1) - 1) * $keuSuratKeluars->perPage());
+        return view('Keuangan.surat-keluar.index')
+        ->with('keuSuratKeluars', $keuSuratKeluars->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'keu_surat_keluar'
+            ]));
     }
 
     /**

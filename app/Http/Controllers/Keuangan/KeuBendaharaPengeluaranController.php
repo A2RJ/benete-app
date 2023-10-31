@@ -20,10 +20,15 @@ class KeuBendaharaPengeluaranController extends Controller
      */
     public function index()
     {
-        $keuBendaharaPengeluarans = KeuBendaharaPengeluaran::useSearch()->paginate(10);
+        $keuBendaharaPengeluarans = KeuBendaharaPengeluaran::useSearch();
+        $ids = $keuBendaharaPengeluarans->pluck('id')->toArray();
 
-        return view('Keuangan.bendahara-pengeluaran.index', compact('keuBendaharaPengeluarans'))
-            ->with('i', (request()->input('page', 1) - 1) * $keuBendaharaPengeluarans->perPage());
+        return view('Keuangan.bendahara-pengeluaran.index')
+        ->with('keuBendaharaPengeluarans', $keuBendaharaPengeluarans->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'keu_bendahara_pengeluaran'
+            ]));
     }
 
     /**

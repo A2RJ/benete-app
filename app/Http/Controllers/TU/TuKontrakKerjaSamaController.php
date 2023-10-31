@@ -20,10 +20,15 @@ class TuKontrakKerjaSamaController extends Controller
      */
     public function index()
     {
-        $tuKontrakKerjaSamas = TuKontrakKerjaSama::useSearch()->paginate(10);
+        $tuKontrakKerjaSamas = TuKontrakKerjaSama::useSearch();
+        $ids = $tuKontrakKerjaSamas->pluck('id')->toArray();
 
-        return view('TU.kontrak-kerja-sama.index', compact('tuKontrakKerjaSamas'))
-            ->with('i', (request()->input('page', 1) - 1) * $tuKontrakKerjaSamas->perPage());
+        return view('TU.kontrak-kerja-sama.index')
+        ->with('tuKontrakKerjaSamas', $tuKontrakKerjaSamas->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'tu_kontrak_kerja_sama'
+            ]));
     }
 
     /**

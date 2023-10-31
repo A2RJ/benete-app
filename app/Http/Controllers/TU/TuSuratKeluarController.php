@@ -20,10 +20,15 @@ class TuSuratKeluarController extends Controller
      */
     public function index()
     {
-        $tuSuratKeluars = TuSuratKeluar::useSearch()->paginate(10);
+        $tuSuratKeluars = TuSuratKeluar::useSearch();
+        $ids = $tuSuratKeluars->pluck('id')->toArray();
 
-        return view('TU.surat-keluar.index', compact('tuSuratKeluars'))
-            ->with('i', (request()->input('page', 1) - 1) * $tuSuratKeluars->perPage());
+        return view('TU.surat-keluar.index')
+        ->with('tuSuratKeluars', $tuSuratKeluars->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'tu_surat_keluar'
+            ]));
     }
 
     /**

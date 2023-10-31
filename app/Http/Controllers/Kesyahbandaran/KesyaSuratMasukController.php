@@ -20,10 +20,15 @@ class KesyaSuratMasukController extends Controller
      */
     public function index()
     {
-        $kesyaSuratMasuks = KesyaSuratMasuk::useSearch()->paginate(10);
+        $kesyaSuratMasuks = KesyaSuratMasuk::useSearch();
+        $ids = $kesyaSuratMasuks->pluck('id')->toArray();
 
-        return view('Kesya.surat-masuk.index', compact('kesyaSuratMasuks'))
-            ->with('i', (request()->input('page', 1) - 1) * $kesyaSuratMasuks->perPage());
+        return view('Kesya.surat-masuk.index')
+        ->with('kesyaSuratMasuks', $kesyaSuratMasuks->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'kesya_surat_masuk'
+            ]));
     }
 
     /**

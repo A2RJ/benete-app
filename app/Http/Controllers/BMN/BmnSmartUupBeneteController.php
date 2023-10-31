@@ -20,10 +20,12 @@ class BmnSmartUupBeneteController extends Controller
      */
     public function index()
     {
-        $bmnSmartUupBenetes = BmnSmartUupBenete::useSearch()->paginate(10);
+        $bmnSmartUupBenetes = BmnSmartUupBenete::useSearch();
+        $ids = $bmnSmartUupBenetes->pluck('id')->toArray();
 
-        return view('BMN.smart-uup-benete.index', compact('bmnSmartUupBenetes'))
-            ->with('i', (request()->input('page', 1) - 1) * $bmnSmartUupBenetes->perPage());
+        return view('BMN.smart-uup-benete.index')
+        ->with('bmnSmartUupBenetes', $bmnSmartUupBenetes->paginate(10))
+            ->with('export', route('export-data', ['ids' => implode(',', $ids), 'model' => 'bmn_smart_uup_benete']));
     }
 
     /**

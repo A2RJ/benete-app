@@ -20,10 +20,15 @@ class PelabuhanTkbmController extends Controller
      */
     public function index()
     {
-        $pelabuhanTkbms = PelabuhanTkbm::useSearch()->paginate(10);
+        $pelabuhanTkbms = PelabuhanTkbm::useSearch();
+        $ids = $pelabuhanTkbms->pluck('id')->toArray();
 
-        return view('Pelabuhan.tkbm.index', compact('pelabuhanTkbms'))
-            ->with('i', (request()->input('page', 1) - 1) * $pelabuhanTkbms->perPage());
+        return view('Pelabuhan.surat-masuk.index')
+        ->with('pelabuhanTkbms', $pelabuhanTkbms->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'pelabuhan_tkbm'
+            ]));
     }
 
     /**

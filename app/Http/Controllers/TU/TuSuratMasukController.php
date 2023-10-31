@@ -22,11 +22,13 @@ class TuSuratMasukController extends Controller
     {
         $tuSuratMasuks = TuSuratMasuk::useSearch();
         $ids = $tuSuratMasuks->pluck('id')->toArray();
-        $exportUrl = route('export-data', ['ids' => implode(',', $ids), 'model' => 'tu_surat_masuk']);
 
         return view('TU.surat-masuk.index')
         ->with('tuSuratMasuks', $tuSuratMasuks->paginate(10))
-            ->with('export', $exportUrl);
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'tu_surat_masuk'
+            ]));
     }
 
     /**

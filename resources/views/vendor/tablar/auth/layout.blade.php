@@ -9,6 +9,8 @@
     <title>@yield('title')</title>
     <!-- CSS files -->
     @vite('resources/js/app.js')
+    <link rel="stylesheet" href="{{ asset('build/assets/app-4d40cf75.css') }}">
+    <script src="{{ asset('build/assets/app-02a8c15b.js') }}"></script>
 </head>
 
 <body class=" border-top-wide border-primary d-flex flex-column" style="background-color: #38348b;">

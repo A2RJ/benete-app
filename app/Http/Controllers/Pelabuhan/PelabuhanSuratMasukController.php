@@ -20,10 +20,15 @@ class PelabuhanSuratMasukController extends Controller
      */
     public function index()
     {
-        $pelabuhanSuratMasuks = PelabuhanSuratMasuk::useSearch()->paginate(10);
+        $pelabuhanSuratMasuks = PelabuhanSuratMasuk::useSearch();
+        $ids = $pelabuhanSuratMasuks->pluck('id')->toArray();
 
-        return view('Pelabuhan.surat-masuk.index', compact('pelabuhanSuratMasuks'))
-            ->with('i', (request()->input('page', 1) - 1) * $pelabuhanSuratMasuks->perPage());
+        return view('Pelabuhan.surat-masuk.index')
+        ->with('pelabuhanSuratMasuks', $pelabuhanSuratMasuks->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'pelabuhan_surat_masuk'
+            ]));
     }
 
     /**

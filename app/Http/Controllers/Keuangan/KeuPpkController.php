@@ -20,10 +20,15 @@ class KeuPpkController extends Controller
      */
     public function index()
     {
-        $keuPpks = KeuPpk::useSearch()->paginate(10);
+        $keuPpks = KeuPpk::useSearch();
+        $ids = $keuPpks->pluck('id')->toArray();
 
-        return view('Keuangan.ppk.index', compact('keuPpks'))
-            ->with('i', (request()->input('page', 1) - 1) * $keuPpks->perPage());
+        return view('Keuangan.ppk.index')
+        ->with('keuPpks', $keuPpks->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'keu_ppk'
+            ]));
     }
 
     /**

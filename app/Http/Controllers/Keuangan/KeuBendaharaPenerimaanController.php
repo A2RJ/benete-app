@@ -20,10 +20,15 @@ class KeuBendaharaPenerimaanController extends Controller
      */
     public function index()
     {
-        $keuBendaharaPenerimaans = KeuBendaharaPenerimaan::useSearch()->paginate(10);
+        $keuBendaharaPenerimaans = KeuBendaharaPenerimaan::useSearch();
+        $ids = $keuBendaharaPenerimaans->pluck('id')->toArray();
 
-        return view('Keuangan.bendahara-penerimaan.index', compact('keuBendaharaPenerimaans'))
-            ->with('i', (request()->input('page', 1) - 1) * $keuBendaharaPenerimaans->perPage());
+        return view('Keuangan.bendahara-penerimaan.index')
+        ->with('keuBendaharaPenerimaans', $keuBendaharaPenerimaans->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'keu_bendahara_penerimaan'
+            ]));
     }
 
     /**

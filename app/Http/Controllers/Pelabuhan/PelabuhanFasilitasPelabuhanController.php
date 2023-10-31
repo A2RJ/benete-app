@@ -20,10 +20,15 @@ class PelabuhanFasilitasPelabuhanController extends Controller
      */
     public function index()
     {
-        $pelabuhanFasilitasPelabuhans = PelabuhanFasilitasPelabuhan::useSearch()->paginate(10);
+        $pelabuhanFasilitasPelabuhans = PelabuhanFasilitasPelabuhan::useSearch();
+        $ids = $pelabuhanFasilitasPelabuhans->pluck('id')->toArray();
 
-        return view('Pelabuhan.fasilitas-pelabuhan.index', compact('pelabuhanFasilitasPelabuhans'))
-            ->with('i', (request()->input('page', 1) - 1) * $pelabuhanFasilitasPelabuhans->perPage());
+        return view('Pelabuhan.fasilitas-pelabuhan.index')
+        ->with('pelabuhanFasilitasPelabuhans', $pelabuhanFasilitasPelabuhans->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'pelabuhan_fasilitas_pelabuhan'
+            ])); 
     }
 
     /**

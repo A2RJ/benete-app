@@ -20,10 +20,15 @@ class PelabuhanPbmController extends Controller
      */
     public function index()
     {
-        $pelabuhanPbms = PelabuhanPbm::useSearch()->paginate(10);
+        $pelabuhanPbms = PelabuhanPbm::useSearch();
+        $ids = $pelabuhanPbms->pluck('id')->toArray();
 
-        return view('Pelabuhan.pbm.index', compact('pelabuhanPbms'))
-            ->with('i', (request()->input('page', 1) - 1) * $pelabuhanPbms->perPage());
+        return view('Pelabuhan.pbm.index')
+        ->with('pelabuhanPbms', $pelabuhanPbms->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'pelabuhan_pbm'
+            ]));
     }
 
     /**

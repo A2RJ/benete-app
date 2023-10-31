@@ -22,10 +22,15 @@ class TuSuratTugasController extends Controller
      */
     public function index()
     {
-        $tuSuratTugas = TuSuratTugas::query()->paginate(10);
+        $tuSuratTugas = TuSuratTugas::useSearch();
+        $ids = $tuSuratTugas->pluck('id')->toArray();
 
-        return view('TU.surat-tugas.index', compact('tuSuratTugas'))
-            ->with('i', (request()->input('page', 1) - 1) * $tuSuratTugas->perPage());
+        return view('TU.surat-tugas.index')
+        ->with('tuSuratTugas', $tuSuratTugas->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'tu_surat_tugas'
+            ]));
     }
 
     /**

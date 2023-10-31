@@ -20,10 +20,15 @@ class KesyaDokumenKapalController extends Controller
      */
     public function index()
     {
-        $kesyaDokumenKapals = KesyaDokumenKapal::useSearch()->paginate(10);
+        $kesyaDokumenKapals = KesyaDokumenKapal::useSearch();
+        $ids = $kesyaDokumenKapals->pluck('id')->toArray();
 
-        return view('Kesya.dokumen-kapal.index', compact('kesyaDokumenKapals'))
-            ->with('i', (request()->input('page', 1) - 1) * $kesyaDokumenKapals->perPage());
+        return view('Kesya.dokumen-kapal.index')
+        ->with('kesyaDokumenKapals', $kesyaDokumenKapals->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'kesya_dokumen_kapal'
+            ]));
     }
 
     /**

@@ -20,10 +20,15 @@ class KeuPejabatPengadaanController extends Controller
      */
     public function index()
     {
-        $keuPejabatPengadaans = KeuPejabatPengadaan::useSearch()->paginate(10);
+        $keuPejabatPengadaans = KeuPejabatPengadaan::useSearch();
+        $ids = $keuPejabatPengadaans->pluck('id')->toArray();
 
-        return view('Keuangan.pejabat-pengadaan.index', compact('keuPejabatPengadaans'))
-            ->with('i', (request()->input('page', 1) - 1) * $keuPejabatPengadaans->perPage());
+        return view('Keuangan.pejabat-pengadaan.index')
+        ->with('keuPejabatPengadaans', $keuPejabatPengadaans->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'keu_pejabat_pengadaan'
+            ]));
     }
 
     /**

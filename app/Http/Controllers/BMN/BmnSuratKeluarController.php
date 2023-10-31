@@ -20,10 +20,15 @@ class BmnSuratKeluarController extends Controller
      */
     public function index()
     {
-        $bmnSuratKeluars = BmnSuratKeluar::useSearch()->paginate(10);
+        $bmnSuratKeluars = BmnSuratKeluar::useSearch();
+        $ids = $bmnSuratKeluars->pluck('id')->toArray();
 
-        return view('BMN.surat-keluar.index', compact('bmnSuratKeluars'))
-            ->with('i', (request()->input('page', 1) - 1) * $bmnSuratKeluars->perPage());
+        return view('BMN.surat-keluar.index')
+        ->with('bmnSuratKeluars', $bmnSuratKeluars->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'bmn_surat_keluar'
+            ]));
     }
 
     /**

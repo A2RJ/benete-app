@@ -47,23 +47,10 @@ Bendahara Penerimaan
                     <div class="card-header">
                         <h3 class="card-title">Bendahara Penerimaan</h3>
                     </div>
-                    <div class="card-body border-bottom py-3">
-                        <div class="d-flex">
-                            <div class="text-muted">
-                                Show
-                                <div class="mx-2 d-inline-block">
-                                    <input type="text" class="form-control form-control-sm" value="10" size="3" aria-label="Invoices count">
-                                </div>
-                                entries
-                            </div>
-                            <div class="ms-auto text-muted">
-                                Search:
-                                <div class="ms-2 d-inline-block">
-                                    <input type="text" class="form-control form-control-sm" aria-label="Search">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
+                    @include('tablar::common.table-header', ['route' => url()->current()])
+
                     <div class="table-responsive min-vh-100">
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <thead>
@@ -92,7 +79,7 @@ Bendahara Penerimaan
                                 @forelse ($keuBendaharaPenerimaans as $keuBendaharaPenerimaan)
                                 <tr>
                                     <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select keuBendaharaPenerimaan"></td>
-                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $keuBendaharaPenerimaans->firstItem() + $loop->index }}</td>
 
                                     <td>{{ $keuBendaharaPenerimaan->nama }}</td>
                                     <td>{{ $keuBendaharaPenerimaan->user->name }}</td>

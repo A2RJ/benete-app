@@ -47,7 +47,9 @@ Surat Masuk
                     <div class="card-header">
                         <h3 class="card-title">Surat Masuk</h3>
                     </div>
+
                     @include('tablar::common.table-header', ['route' => url()->current()])
+
                     <div class="table-responsive min-vh-100">
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <thead>

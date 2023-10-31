@@ -54,7 +54,6 @@ use App\Http\Controllers\TU\{
     TuSuratMasukController,
     TuSuratTugasController
 };
-use Barryvdh\LaravelIdeHelper\Eloquent;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -86,10 +85,14 @@ Route::middleware('auth')->group(function () {
         return FileHelper::download($pathToImage);
     })->where('pathToImage', '.*')->name('download');
 
-    Route::get('zip/{ids}/{model}', function ($ids, $model) {
-        $data = DB::table($model)->whereIn('id', explode(',', $ids))->pluck('lampiran')->toArray();
-        $fileName = Carbon::now()->format('Y-M-d') . " $model.zip";
-        return FileHelper::zip($fileName, $data);
+    Route::get('zip/{ids?}/{model}', function ($ids, $model) {
+        if ($ids) {
+            $data = DB::table($model)->whereIn('id', explode(',', $ids))->pluck('lampiran')->toArray();
+            if (count($data) != 0) {
+                $fileName = Carbon::now()->format('Y-M-d') . " $model.zip";
+                return FileHelper::zip($fileName, $data);
+            }
+        }
     })->name('export-data');
 
     Route::middleware(['role:admin'])->group(function () {

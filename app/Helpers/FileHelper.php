@@ -58,6 +58,10 @@ class FileHelper
 
     public static function zip(string $fileName, array $arrayFile)
     {
+        if (File::exists(public_path($fileName))) {
+            File::delete($fileName);
+        }
+
         $zip = new Zip();
         $zip->create($fileName);
 
@@ -66,6 +70,7 @@ class FileHelper
                 $zip->addFromString($file, Storage::get($file));
             }
         }
+        $zip->close();
 
         if (File::exists(public_path($fileName))) {
             return response()->download(public_path($fileName));

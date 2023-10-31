@@ -20,10 +20,15 @@ class KesyahController extends Controller
      */
     public function index()
     {
-        $kesyahbandaran = KesyabandaranModel::useSearch()->paginate(10);
+        $kesyahbandaran = KesyabandaranModel::useSearch();
+        $ids = $kesyahbandaran->pluck('id')->toArray();
 
-        return view('Kesya.kesyahbandaran.index', compact('kesyahbandaran'))
-            ->with('i', (request()->input('page', 1) - 1) * $kesyahbandaran->perPage());
+        return view('Kesya.kesyahbandaran.index')
+        ->with('kesyahbandaran', $kesyahbandaran->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'kesyahbandaran'
+            ]));
     }
 
     /**

@@ -20,10 +20,15 @@ class KeuSuratMasukController extends Controller
      */
     public function index()
     {
-        $keuSuratMasuks = KeuSuratMasuk::useSearch()->paginate(10);
+        $keuSuratMasuks = KeuSuratMasuk::useSearch();
+        $ids = $keuSuratMasuks->pluck('id')->toArray();
 
-        return view('Keuangan.surat-masuk.index', compact('keuSuratMasuks'))
-            ->with('i', (request()->input('page', 1) - 1) * $keuSuratMasuks->perPage());
+        return view('Keuangan.surat-masuk.index')
+        ->with('keuSuratMasuks', $keuSuratMasuks->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'keu_surat_masuk'
+            ]));
     }
 
     /**

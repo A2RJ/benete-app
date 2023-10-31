@@ -20,6 +20,8 @@
     @endif
     {{-- Custom Stylesheets (post Benete APP) --}}
     @yield('tablar_css')
+    <link rel="stylesheet" href="{{ asset('build/assets/app-4d40cf75.css') }}">
+    <script src="{{ asset('build/assets/app-02a8c15b.js') }}"></script>
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>

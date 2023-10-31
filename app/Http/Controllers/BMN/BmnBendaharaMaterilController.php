@@ -17,10 +17,11 @@ class BmnBendaharaMaterilController extends Controller
     public function index()
     {
         $bmnBendaharaMaterils = BmnBendaharaMateril::useSearch(true);
-        $ids = $bmnBendaharaMaterils->pluck('id');
-        $bmnBendaharaMaterils->paginate(10);
-        return view('BMN.bendahara-materil.index', compact('bmnBendaharaMaterils'))
-            ->with('i', (request()->input('page', 1) - 1) * $bmnBendaharaMaterils->perPage());
+        $ids = $bmnBendaharaMaterils->pluck('id')->toArray();
+
+        return view('BMN.bendahara-materil.index')
+        ->with('bmnBendaharaMaterils', $bmnBendaharaMaterils->paginate(10))
+            ->with('export', route('export-data', ['ids' => implode(',', $ids), 'model' => 'bmn_bendahara_materil']));
     }
 
     /**

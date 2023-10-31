@@ -20,10 +20,15 @@ class PelabuhanJptController extends Controller
      */
     public function index()
     {
-        $pelabuhanJpts = PelabuhanJpt::useSearch()->paginate(10);
+        $pelabuhanJpts = PelabuhanJpt::useSearch();
+        $ids = $pelabuhanJpts->pluck('id')->toArray();
 
-        return view('Pelabuhan.jpt.index', compact('pelabuhanJpts'))
-            ->with('i', (request()->input('page', 1) - 1) * $pelabuhanJpts->perPage());
+        return view('Pelabuhan.jpt.index')
+        ->with('pelabuhanJpts', $pelabuhanJpts->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'pelabuhan_jpt'
+            ]));
     }
 
     /**

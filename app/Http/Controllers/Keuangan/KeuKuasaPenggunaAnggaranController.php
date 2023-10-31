@@ -20,10 +20,15 @@ class KeuKuasaPenggunaAnggaranController extends Controller
      */
     public function index()
     {
-        $keuKuasaPenggunaAnggarans = KeuKuasaPenggunaAnggaran::useSearch()->paginate(10);
+        $keuKuasaPenggunaAnggarans = KeuKuasaPenggunaAnggaran::useSearch();
+        $ids = $keuKuasaPenggunaAnggarans->pluck('id')->toArray();
 
-        return view('Keuangan.kuasa-pengguna-anggaran.index', compact('keuKuasaPenggunaAnggarans'))
-            ->with('i', (request()->input('page', 1) - 1) * $keuKuasaPenggunaAnggarans->perPage());
+        return view('Keuangan.kuasa-pengguna-anggaran.index')
+        ->with('keuKuasaPenggunaAnggarans', $keuKuasaPenggunaAnggarans->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'keu_kuasa_pengguna_anggaran'
+            ]));
     }
 
     /**

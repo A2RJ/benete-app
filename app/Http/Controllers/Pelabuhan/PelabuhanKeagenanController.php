@@ -20,10 +20,15 @@ class PelabuhanKeagenanController extends Controller
      */
     public function index()
     {
-        $pelabuhanKeagenans = PelabuhanKeagenan::useSearch()->paginate(10);
+        $pelabuhanKeagenans = PelabuhanKeagenan::useSearch();
+        $ids = $pelabuhanKeagenans->pluck('id')->toArray();
 
-        return view('Pelabuhan.keagenan.index', compact('pelabuhanKeagenans'))
-            ->with('i', (request()->input('page', 1) - 1) * $pelabuhanKeagenans->perPage());
+        return view('Pelabuhan.keagenan.index')
+        ->with('pelabuhanKeagenans', $pelabuhanKeagenans->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'pelabuhan_keagenan'
+            ]));
     }
 
     /**

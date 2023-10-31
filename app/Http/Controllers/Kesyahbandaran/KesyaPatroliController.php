@@ -20,10 +20,15 @@ class KesyaPatroliController extends Controller
      */
     public function index()
     {
-        $kesyaPatrolis = KesyaPatroli::useSearch()->paginate(10);
+        $kesyaPatrolis = KesyaPatroli::useSearch();
+        $ids = $kesyaPatrolis->pluck('id')->toArray();
 
-        return view('Kesya.patroli.index', compact('kesyaPatrolis'))
-            ->with('i', (request()->input('page', 1) - 1) * $kesyaPatrolis->perPage());
+        return view('Kesya.patroli.index')
+        ->with('kesyaPatrolis', $kesyaPatrolis->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'kesya_patroli'
+            ]));
     }
 
     /**

@@ -20,10 +20,15 @@ class KesyaTertibBanarController extends Controller
      */
     public function index()
     {
-        $kesyaTertibBanars = KesyaTertibBanar::useSearch()->paginate(10);
+        $kesyaTertibBanars = KesyaTertibBanar::useSearch();
+        $ids = $kesyaTertibBanars->pluck('id')->toArray();
 
-        return view('Kesya.tertib-banar.index', compact('kesyaTertibBanars'))
-            ->with('i', (request()->input('page', 1) - 1) * $kesyaTertibBanars->perPage());
+        return view('Kesya.tertib-banar.index')
+        ->with('kesyaTertibBanars', $kesyaTertibBanars->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'kesya_tertib_banar'
+            ]));
     }
 
     /**

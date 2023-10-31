@@ -20,10 +20,15 @@ class PelabuhanLalaController extends Controller
      */
     public function index()
     {
-        $pelabuhanLalas = PelabuhanLala::useSearch()->paginate(10);
+        $pelabuhanLalas = PelabuhanLala::useSearch();
+        $ids = $pelabuhanLalas->pluck('id')->toArray();
 
-        return view('Pelabuhan.lala.index', compact('pelabuhanLalas'))
-            ->with('i', (request()->input('page', 1) - 1) * $pelabuhanLalas->perPage());
+        return view('Pelabuhan.lala.index')
+        ->with('pelabuhanLalas', $pelabuhanLalas->paginate(10))
+            ->with('export', route('export-data', [
+                'ids' => implode(',', $ids),
+                'model' => 'pelabuhan_lala'
+            ]));
     }
 
     /**
