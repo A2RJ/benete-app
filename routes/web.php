@@ -12,6 +12,7 @@ use App\Http\Controllers\BMN\{
     BmnSuratMasukController,
     DashboardController as BMNDashboardController
 };
+use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\Kesyahbandaran\{
     DashboardController as KesyahbandaranDashboardController,
     KesyaDisposisiController,
@@ -95,6 +96,25 @@ Route::middleware('auth')->group(function () {
         }
     })->name('export-data');
 
+    // Route::get('download/{pathToImage}', function (string $pathToImage) {
+    //     return FileHelper::download($pathToImage);
+    // })->where('pathToImage', '.*')->name('download.dokumentasi');
+
+    // Route::get('zip/{ids?}', function ($ids) {
+    // if ($ids) {
+    // langsung pakai model dokuemntasi
+    // $model = new $model;
+    // $model->whereHas('')
+    // $data = DB::table($model)->whereIn('id', explode(',', $ids))
+    //     ->join($file, "$file.$model" . "_id", '=', "$model.id")
+    //     ->pluck('name')->toArray();
+    // if (count($data) != 0) {
+    //     $fileName = Carbon::now()->format('Y-M-d') . " $model.zip";
+    //     return FileHelper::zip($fileName, $data);
+    // }
+    // }
+    // })->name('export-data');
+
     Route::middleware(['role:admin'])->group(function () {
         Route::get('user-dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
         Route::resource('user', UserController::class);
@@ -154,4 +174,6 @@ Route::middleware('auth')->group(function () {
         Route::resource('pelabuhan-jpt', PelabuhanJptController::class);
         Route::resource('pelabuhan-tkbm', PelabuhanTkbmController::class);
     });
+
+    Route::resource('dokumentasi', DokumentasiController::class);
 });

@@ -7,6 +7,7 @@ use App\Models\BMN\BmnDisposisi;
 use App\Models\BMN\BmnSmartUupBenete;
 use App\Models\BMN\BmnSuratKeluar;
 use App\Models\BMN\BmnSuratMasuk;
+use App\Models\Dokumentasi;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class MonthlyBmnChart
@@ -26,6 +27,8 @@ class MonthlyBmnChart
         $suratKeluar = BmnSuratKeluar::query()->whereYear('created_at', $year)->statistics();
         $suratMasuk = BmnSuratMasuk::query()->whereYear('created_at', $year)->statistics();
         $disposisi = BmnDisposisi::query()->whereYear('created_at', $year)->statistics();
+        $dokumentasi = Dokumentasi::query()->role()->whereYear('created_at', $year)->statistics();
+        
         return $this->chart->lineChart()
             ->setTitle("Bidang pengelola bmn dan persediaan")
             ->setSubtitle("Statistik bidang pengelola bmn dan persediaan tahun $year.")
@@ -34,6 +37,7 @@ class MonthlyBmnChart
             ->addData("Surat Keluar", array_values($suratKeluar))
             ->addData("Surat Masuk", array_values($suratMasuk))
             ->addData("Disposisi", array_values($disposisi))
+            ->addData('Dokumentasi', array_values($dokumentasi))
             ->setXAxis(array_keys($bendahara));
     }
 }

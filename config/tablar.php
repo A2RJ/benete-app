@@ -407,6 +407,13 @@ return [
             'icon_color' => 'white',
             'can' => 'bidang kepelabuhan'
         ],
+        // All users
+        [
+            'text' => 'Dokumentasi',
+            'url' => '/dokumentasi',
+            'icon' => 'ti ti-mail',
+            'icon_color' => 'white',
+        ],
     ],
 
     /*

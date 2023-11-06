@@ -2,6 +2,7 @@
 
 namespace App\Charts;
 
+use App\Models\Dokumentasi;
 use App\Models\Keuangan\KeuBendaharaPenerimaan;
 use App\Models\Keuangan\KeuBendaharaPengeluaran;
 use App\Models\Keuangan\KeuDisposisi;
@@ -32,6 +33,8 @@ class MonthlyKeuanganChart
         $suratKeluar = KeuSuratKeluar::query()->whereYear('created_at', $year)->statistics();
         $suratMasuk = KeuSuratMasuk::query()->whereYear('created_at', $year)->statistics();
         $disposisi = KeuDisposisi::query()->whereYear('created_at', $year)->statistics();
+        $dokumentasi = Dokumentasi::query()->role()->whereYear('created_at', $year)->statistics();
+
         return $this->chart->lineChart()
             ->setTitle("Bidang Keuangan")
             ->setSubtitle("Statistik data bidang keuangan tahun $year")
@@ -43,6 +46,7 @@ class MonthlyKeuanganChart
             ->addData('Surat Keluar', array_values($suratKeluar))
             ->addData('Surat Masuk', array_values($suratMasuk))
             ->addData('Disposisi', array_values($disposisi))
+            ->addData('Dokumentasi', array_values($dokumentasi))
             ->setXAxis(array_keys($bendaharaPenerimaan));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Charts;
 
+use App\Models\Dokumentasi;
 use App\Models\Pelabuhan\PelabuhanDisposisi;
 use App\Models\Pelabuhan\PelabuhanFasilitasPelabuhan;
 use App\Models\Pelabuhan\PelabuhanJpt;
@@ -34,6 +35,8 @@ class MonthlyPelabuhanChart
         $tkbm = PelabuhanTkbm::query()->whereYear('created_at', $year)->statistics();
         $suratKeluar = PelabuhanSuratKeluar::query()->whereYear('created_at', $year)->statistics();
         $suratMasuk = PelabuhanSuratMasuk::query()->whereYear('created_at', $year)->statistics();
+        $dokumentasi = Dokumentasi::query()->role()->whereYear('created_at', $year)->statistics();
+        
         return $this->chart->lineChart()
             ->setTitle("Bidang kepelabuhan")
             ->setSubtitle("Statistik bidang kepelabuhan tahun $year")
@@ -46,6 +49,7 @@ class MonthlyPelabuhanChart
             ->addData('Surat Keluar', array_values($suratKeluar))
             ->addData('Surat Masuk', array_values($suratMasuk))
             ->addData('Disposisi', array_values($disposisi))
+            ->addData('Dokumentasi', array_values($dokumentasi))
             ->setXAxis(array_keys($disposisi));
     }
 }

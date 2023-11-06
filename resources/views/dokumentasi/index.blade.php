@@ -1,7 +1,7 @@
 @extends('tablar::page')
 
 @section('title')
-Kuasa Pengguna Anggaran
+Dokumentasi
 @endsection
 
 @section('content')
@@ -12,23 +12,23 @@ Kuasa Pengguna Anggaran
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    Daftar
+                    List
                 </div>
                 <h2 class="page-title">
-                    {{ __('Kuasa Pengguna Anggaran ') }}
+                    {{ __('Dokumentasi ') }}
                 </h2>
             </div>
             <!-- Page title actions -->
             <div class="col-12 col-md-auto ms-auto d-print-none">
                 <div class="btn-list">
-                    <a href="{{ route('keu-kuasa-pengguna-anggaran.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+                    <a href="{{ route('dokumentasi.create') }}" class="btn btn-primary d-none d-sm-inline-block">
                         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Tambah Kuasa Pengguna Anggaran
+                        Tambah Dokumentasi
                     </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@ Kuasa Pengguna Anggaran
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Kuasa Pengguna Anggaran</h3>
+                        <h3 class="card-title">Dokumentasi</h3>
                     </div>
 
                     @include('tablar::common.table-header', ['route' => url()->current()])
@@ -63,29 +63,25 @@ Kuasa Pengguna Anggaran
                                         </svg>
                                     </th>
 
-                                    <th>Nama</th>
-                                    <th>Author</th>
-                                    <th>Tanggal Masuk</th>
-                                    <th>Asal</th>
-                                    <th>Perihal</th>
-                                    <th>Lampiran</th>
+                                    <th>User</th>
+                                    <th>Title</th>
+                                    <th>Type</th>
+                                    <th>Link</th>
 
                                     <th class="w-1"></th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @forelse ($keuKuasaPenggunaAnggarans as $keuKuasaPenggunaAnggaran)
+                                @forelse ($keuDokumentasis as $dokumentasi)
                                 <tr>
-                                    <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select keuKuasaPenggunaAnggaran"></td>
-                                    <td>{{ $keuKuasaPenggunaAnggarans->firstItem() + $loop->index }}</td>
+                                    <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select dokumentasi"></td>
+                                    <td>{{ $keuDokumentasis->firstItem() + $loop->index }}</td>
 
-                                    <td>{{ $keuKuasaPenggunaAnggaran->nama }}</td>
-                                    <td>{{ $keuKuasaPenggunaAnggaran->user->name }}</td>
-                                    <td>{{ $keuKuasaPenggunaAnggaran->tanggal_masuk }}</td>
-                                    <td>{{ $keuKuasaPenggunaAnggaran->asal }}</td>
-                                    <td>{{ $keuKuasaPenggunaAnggaran->perihal }}</td>
-                                    <td>{!! $keuKuasaPenggunaAnggaran->lampiran !!}</td>
+                                    <td>{{ $dokumentasi->user->name }}</td>
+                                    <td>{{ $dokumentasi->title }}</td>
+                                    <td>{{ $dokumentasi->type }}</td>
+                                    <td>{{ $dokumentasi->link }}</td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">
@@ -94,17 +90,17 @@ Kuasa Pengguna Anggaran
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="{{ route('keu-kuasa-pengguna-anggaran.show',$keuKuasaPenggunaAnggaran->id) }}">
-                                                        Detail
+                                                    <a class="dropdown-item" href="{{ route('dokumentasi.show',$dokumentasi->id) }}">
+                                                        View
                                                     </a>
-                                                    <a class="dropdown-item" href="{{ route('keu-kuasa-pengguna-anggaran.edit',$keuKuasaPenggunaAnggaran->id) }}">
-                                                        Ubah
+                                                    <a class="dropdown-item" href="{{ route('dokumentasi.edit',$dokumentasi->id) }}">
+                                                        Edit
                                                     </a>
-                                                    <form action="{{ route('keu-kuasa-pengguna-anggaran.destroy',$keuKuasaPenggunaAnggaran->id) }}" method="POST">
+                                                    <form action="{{ route('dokumentasi.destroy',$dokumentasi->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="if(!confirm('Do you Want to Proceed?')){return false;}" class="dropdown-item text-red"><i class="fa fa-fw fa-trash"></i>
-                                                            Hapus
+                                                            Delete
                                                         </button>
                                                     </form>
                                                 </div>
@@ -120,7 +116,7 @@ Kuasa Pengguna Anggaran
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
-                        {!! $keuKuasaPenggunaAnggarans->links('tablar::pagination') !!}
+                        {!! $keuDokumentasis->links('tablar::pagination') !!}
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Charts;
 
+use App\Models\Dokumentasi;
 use App\Models\Kesyahbandaran\KesyabandaranModel;
 use App\Models\Kesyahbandaran\KesyaDisposisi;
 use App\Models\Kesyahbandaran\KesyaDokumenAwakKapal;
@@ -32,6 +33,8 @@ class MonthlyKesyahChart
         $suratMasuk = KesyaSuratMasuk::query()->whereYear('created_at', $year)->statistics();
         $disposisi = KesyaDisposisi::query()->whereYear('created_at', $year)->statistics();
         $tertib = KesyaTertibBanar::query()->whereYear('created_at', $year)->statistics();
+        $dokumentasi = Dokumentasi::query()->role()->whereYear('created_at', $year)->statistics();
+        
         return $this->chart->lineChart()
             ->setTitle("Bidang kesyahbandaran")
             ->setSubtitle("Statistik bidang kesyahbandaran tahun $year.")
@@ -43,6 +46,7 @@ class MonthlyKesyahChart
             ->addData('Surat Masuk', array_values($suratMasuk))
             ->addData('Disposisi', array_values($disposisi))
             ->addData('Tertib Banar', array_values($tertib))
+            ->addData('Dokumentasi', array_values($dokumentasi))
             ->setXAxis(array_keys($dokumenAwakKapal));
     }
 }

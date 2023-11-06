@@ -2,30 +2,21 @@
 
 namespace App\Trait\Models;
 
+use Illuminate\Support\Facades\Log;
+
 trait UseStatistic
 {
-    public function scopeStatistics()
+    public function scopeStatistics($query)
     {
-        $month = [
-            'Januari',
-            'Februari',
-            'Maret',
-            'April',
-            'Mei',
-            'Juni',
-            'Juli',
-            'Agustus',
-            'September',
-            'Oktober',
-            'November',
-            'Desember',
-        ];
-        $statistics = [];
+        $data = $query->get();
+        $statistics = array_fill_keys(['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'], 0);
 
-        for ($i = 1; $i <= 12; $i++) {
-            $statistics[$month[$i - 1]] = self::whereMonth('created_at', $i)->count();
+        foreach ($data as $dokumentasi) {
+            $month = date('F', strtotime($dokumentasi->created_at));
+            $statistics[$month] += 1;
         }
 
+        Log::info(json_encode($statistics));
         return $statistics;
     }
 }

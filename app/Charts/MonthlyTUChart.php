@@ -2,6 +2,7 @@
 
 namespace App\Charts;
 
+use App\Models\Dokumentasi;
 use App\Models\TU\TuDisposisi;
 use App\Models\TU\TuKontrakKerjaSama;
 use App\Models\TU\TuSuratKeluar;
@@ -26,6 +27,8 @@ class MonthlyTUChart
         $suratTugas = TuSuratTugas::query()->whereYear('created_at', $year)->statistics();
         $suratKeluar = TuSuratKeluar::query()->whereYear('created_at', $year)->statistics();
         $suratMasuk = TuSuratMasuk::query()->whereYear('created_at', $year)->statistics();
+        $dokumentasi = Dokumentasi::query()->role()->whereYear('created_at', $year)->statistics();
+        
         return $this->chart->lineChart()
             ->setTitle("Bidang kepegawaian dan tata usaha ")
             ->setSubtitle("Statistik bidang kepegawaian dan tata usaha tahun $year")
@@ -34,6 +37,7 @@ class MonthlyTUChart
             ->addData('Surat Keluar', array_values($suratKeluar))
             ->addData('Surat Masuk', array_values($suratMasuk))
             ->addData('Disposisi', array_values($disposisi))
+            ->addData('Dokumentasi', array_values($dokumentasi))
             ->setXAxis(array_keys($disposisi));
     }
 }
