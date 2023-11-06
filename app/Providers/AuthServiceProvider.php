@@ -28,6 +28,11 @@ class AuthServiceProvider extends ServiceProvider
             $user = User::whereEmail($email)->firstOrFail();
             return $user->hasRole('admin');
         });
+        Gate::define('not-admin', function () {
+            $email = Auth::user()->email;
+            $user = User::whereEmail($email)->firstOrFail();
+            return $user->roles[0]->name != 'admin';
+        });
         Gate::define('bidang keuangan', function () {
             $email = Auth::user()->email;
             $user = User::whereEmail($email)->firstOrFail();

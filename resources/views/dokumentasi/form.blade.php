@@ -10,12 +10,12 @@
     <label class="form-label"> {{ Form::label('type') }}</label>
     <div>
         {{ Form::select('type', ['link' => 'Link', 'file' => 'File'], $dokumentasi->type, ['class' => 'form-control' .
-        ($errors->has('type') ? ' is-invalid' : ''), 'placeholder' => 'Type']) }}
+        ($errors->has('type') ? ' is-invalid' : ''), 'placeholder' => 'Pilih type']) }}
         {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
     </div>
 </div>
 <div class="form-group mb-3">
-    <label class="form-label"> {{ Form::label('link') }}</label>
+    <label class="form-label"> {{ Form::label('link') }} (Opsional - Hanya isi jika memilih type link)</label>
     <div>
         {{ Form::text('link', $dokumentasi->link, ['class' => 'form-control' .
         ($errors->has('link') ? ' is-invalid' : ''), 'placeholder' => 'Link']) }}

@@ -14,17 +14,17 @@ class MonthlyUsersChart
         $this->chart = $chart;
     }
 
-    public function build()
+    public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
         $year = date('Y');
         $user = User::query()
             ->whereYear('created_at', $year)
-            ->statistics(); 
+        ->statistics();
 
         return $this->chart->lineChart()
             ->setTitle("User $year.")
             ->setSubtitle("Jumlah user yang dibuat pada setiap bulan pada tahun $year.")
-        ->addData('-', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,])
+            ->addData('-', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
             ->addData('Users', array_values($user))
             ->setXAxis(array_keys($user));
     }

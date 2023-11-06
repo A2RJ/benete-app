@@ -81,7 +81,13 @@ Dokumentasi
                                     <td>{{ $dokumentasi->user->name }}</td>
                                     <td>{{ $dokumentasi->title }}</td>
                                     <td>{{ $dokumentasi->type }}</td>
-                                    <td>{{ $dokumentasi->link }}</td>
+                                    <td>
+                                        @if ($dokumentasi->type == 'link')
+                                        <a href="{{ $dokumentasi->link }}" target="_blank">Link Preview</a>
+                                        @else
+                                        <a href="{{ route('dokumentasi.show', ['dokumentasi' => $dokumentasi->id]) }}">File Preview</a>
+                                        @endif
+                                    </td>
 
                                     <td>
                                         <div class="btn-list flex-nowrap">

@@ -2,8 +2,6 @@
 
 namespace App\Trait\Models;
 
-use Illuminate\Support\Facades\Log;
-
 trait UseStatistic
 {
     public function scopeStatistics($query)
@@ -13,10 +11,11 @@ trait UseStatistic
 
         foreach ($data as $dokumentasi) {
             $month = date('F', strtotime($dokumentasi->created_at));
+
+            $statistics[$month] = $statistics[$month] ?? 0;
             $statistics[$month] += 1;
         }
 
-        Log::info(json_encode($statistics));
         return $statistics;
     }
 }

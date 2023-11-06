@@ -58,24 +58,33 @@ class FileHelper
 
     public static function zip(string $fileName, array $arrayFile)
     {
-        if (File::exists(public_path($fileName))) {
-            File::delete($fileName);
+        $zipName = Carbon::now()->format('Y-M-d') . " " . $fileName . ".zip";
+        if (File::exists(public_path($zipName))) {
+            File::delete(public_path($zipName));
         }
 
         $zip = new Zip();
-        $zip->create($fileName);
+        $zip->create($zipName);
 
+        $zip->add(public_path("$fileName.xlsx"));
         foreach ($arrayFile as $file) {
             if (Storage::disk('local')->exists($file)) {
-                $zip->addFromString($file, Storage::get($file));
+                $zip->addFromString(self::getFileName($file), Storage::get($file));
             }
         }
         $zip->close();
 
-        if (File::exists(public_path($fileName))) {
-            return response()->download(public_path($fileName));
+        if (File::exists(public_path($zipName))) {
+            return response()->download(public_path($zipName));
         } else {
             return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
         }
+    }
+
+    public static function getFileName($filePath)
+    {
+        $parts = explode('/', $filePath);
+        $fileName = end($parts);
+        return $fileName;
     }
 }

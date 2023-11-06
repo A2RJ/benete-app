@@ -41,15 +41,7 @@ use Illuminate\Support\Facades\Auth;
 class Dokumentasi extends Model
 {
     use HasUuids, UseStatistic;
-
-    static $rules = [
-        'title' => 'required',
-        'type' => 'required',
-        'link' => 'required',
-    ];
-
-    protected $perPage = 20;
-
+  
     public $table = 'dokumentasi';
 
     /**

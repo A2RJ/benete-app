@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DokumentasiRequest;
 use App\Models\Dokumentasi;
+use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,11 +25,11 @@ class DokumentasiController extends Controller
         $ids = $keuDokumentasis->pluck('id')->toArray();
 
         return view('dokumentasi.index')
-            ->with('keuDokumentasis', $keuDokumentasis->paginate(10))
-            ->with('export', route('export-data', [
-                'ids' => implode(',', $ids),
-                'model' => 'keu_dokumentasi'
-            ]));
+        ->with('keuDokumentasis', $keuDokumentasis->paginate(10));
+            // ->with('export', route('export-data', [
+            //     'ids' => implode(',', $ids),
+            // 'model' => 'dokumentasi'
+            // ]));
     }
 
     /**
@@ -47,11 +49,9 @@ class DokumentasiController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(DokumentasiRequest $request)
     {
-        request()->validate(Dokumentasi::$rules);
-
-        Dokumentasi::create($request->all());
+        Dokumentasi::create($request->validated());
 
         return redirect()->route('dokumentasi.index')
             ->with('success', 'Dokumentasi created successfully.');
@@ -66,8 +66,9 @@ class DokumentasiController extends Controller
     public function show($id)
     {
         $dokumentasi = Dokumentasi::find($id);
+        $files = File::query()->whereDokumentasiId($id)->paginate(10);
 
-        return view('dokumentasi.show', compact('dokumentasi'));
+        return view('dokumentasi.show', compact('dokumentasi', 'files'));
     }
 
     /**
@@ -90,11 +91,9 @@ class DokumentasiController extends Controller
      * @param  Dokumentasi $dokumentasi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Dokumentasi $dokumentasi)
+    public function update(DokumentasiRequest $request, Dokumentasi $dokumentasi)
     {
-        request()->validate(Dokumentasi::$rules);
-
-        $dokumentasi->update($request->all());
+        $dokumentasi->update($request->validated());
 
         return redirect()->route('dokumentasi.index')
             ->with('success', 'Dokumentasi updated successfully');

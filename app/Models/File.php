@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class File
@@ -19,24 +21,20 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|File newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|File query()
  * @method static \Illuminate\Database\Eloquent\Builder|File whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|File whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|File whereDokumentasiId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|File whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|File whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|File whereUpdatedAt($value)
- * @property-read \App\Models\Dokumentasi|null $dokumentasi
  * @mixin \Eloquent
  */
 class File extends Model
 {
+  use HasUuids;
 
   static $rules = [
     'dokumentasi_id' => 'required',
     'name' => 'required',
   ];
-
-  protected $perPage = 20;
-
-  public $table = 'file';
 
   /**
    * Attributes that should be mass-assignable.
@@ -52,5 +50,11 @@ class File extends Model
   public function dokumentasi()
   {
     return $this->hasOne(Dokumentasi::class, 'id', 'dokumentasi_id');
+  }
+
+  public function file()
+  {
+    $file = Storage::disk('local')->get($this->name);
+    return base64_encode($file);
   }
 }

@@ -413,6 +413,7 @@ return [
             'url' => '/dokumentasi',
             'icon' => 'ti ti-mail',
             'icon_color' => 'white',
+            'can' => 'not-admin'
         ],
     ],
 

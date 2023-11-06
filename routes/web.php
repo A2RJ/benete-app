@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\FileHelper;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +12,8 @@ use App\Http\Controllers\BMN\{
     DashboardController as BMNDashboardController
 };
 use App\Http\Controllers\DokumentasiController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\FileUtilityController;
 use App\Http\Controllers\Kesyahbandaran\{
     DashboardController as KesyahbandaranDashboardController,
     KesyaDisposisiController,
@@ -55,8 +56,6 @@ use App\Http\Controllers\TU\{
     TuSuratMasukController,
     TuSuratTugasController
 };
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,19 +81,9 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('download/{pathToImage}', function (string $pathToImage) {
-        return FileHelper::download($pathToImage);
-    })->where('pathToImage', '.*')->name('download');
-
-    Route::get('zip/{ids?}/{model}', function ($ids, $model) {
-        if ($ids) {
-            $data = DB::table($model)->whereIn('id', explode(',', $ids))->pluck('lampiran')->toArray();
-            if (count($data) != 0) {
-                $fileName = Carbon::now()->format('Y-M-d') . " $model.zip";
-                return FileHelper::zip($fileName, $data);
-            }
-        }
-    })->name('export-data');
+    Route::get('download/{pathToImage}', [FileUtilityController::class, 'download'])->where('pathToImage', '.*')->name('download');
+    Route::get('stream/{pathToImage}', [FileUtilityController::class, 'stream'])->where('pathToImage', '.*')->name('stream');
+    Route::get('zip/{ids?}/{model}', [FileUtilityController::class, 'zip'])->name('export-data');
 
     // Route::get('download/{pathToImage}', function (string $pathToImage) {
     //     return FileHelper::download($pathToImage);
@@ -176,4 +165,5 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::resource('dokumentasi', DokumentasiController::class);
+    Route::resource('dokumentasi.file', FileController::class)->only(['store', 'destroy']);
 });

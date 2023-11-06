@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('role');
             $table->enum('type', ['file', 'link']);
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }
