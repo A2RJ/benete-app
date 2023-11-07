@@ -24,8 +24,8 @@ class BmnSmartUupBeneteController extends Controller
         $ids = $bmnSmartUupBenetes->pluck('id')->toArray();
 
         return view('BMN.smart-uup-benete.index')
-        ->with('bmnSmartUupBenetes', $bmnSmartUupBenetes->paginate(10))
-            ->with('export', route('export-data', ['ids' => implode(',', $ids), 'model' => 'bmn_smart_uup_benete']));
+            ->with('bmnSmartUupBenetes', $bmnSmartUupBenetes->paginate(10))
+            ->with('export', count($ids) ? route('export-data', ['ids' => implode(',', $ids), 'model' => 'bmn_smart_uup_benete']) : false);
     }
 
     /**

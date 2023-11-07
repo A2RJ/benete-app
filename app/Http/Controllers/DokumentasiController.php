@@ -23,11 +23,11 @@ class DokumentasiController extends Controller
         $ids = $keuDokumentasis->pluck('id')->toArray();
 
         return view('dokumentasi.index')
-        ->with('keuDokumentasis', $keuDokumentasis->paginate(10))
-            ->with('export', route('export-data.dokumentasi', [
+            ->with('keuDokumentasis', $keuDokumentasis->paginate(10))
+            ->with('export', count($ids) ? route('export-data.dokumentasi', [
                 'ids' => implode(',', $ids),
                 'model' => 'dokumentasi'
-            ]));
+            ]) : false);
     }
 
     /**

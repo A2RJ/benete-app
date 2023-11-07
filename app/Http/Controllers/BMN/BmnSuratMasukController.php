@@ -25,10 +25,10 @@ class BmnSuratMasukController extends Controller
 
         return view('BMN.surat-masuk.index')
         ->with('bmnSuratMasuks', $bmnSuratMasuks->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'bmn_surat_masuk'
-            ]));
+            ]) : false);
     }
 
     /**

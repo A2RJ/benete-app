@@ -5,7 +5,7 @@ namespace App\Http\Controllers\BMN;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreValidationRequest;
 use App\Http\Requests\UpdateValidationRequest;
-use App\Models\BMN\BmnBendaharaMateril; 
+use App\Models\BMN\BmnBendaharaMateril;
 
 class BmnBendaharaMaterilController extends Controller
 {
@@ -20,8 +20,8 @@ class BmnBendaharaMaterilController extends Controller
         $ids = $bmnBendaharaMaterils->pluck('id')->toArray();
 
         return view('BMN.bendahara-materil.index')
-        ->with('bmnBendaharaMaterils', $bmnBendaharaMaterils->paginate(10))
-            ->with('export', route('export-data', ['ids' => implode(',', $ids), 'model' => 'bmn_bendahara_materil']));
+            ->with('bmnBendaharaMaterils', $bmnBendaharaMaterils->paginate(10))
+            ->with('export', count($ids) ? route('export-data', ['ids' => implode(',', $ids), 'model' => 'bmn_bendahara_materil']) : false);
     }
 
     /**

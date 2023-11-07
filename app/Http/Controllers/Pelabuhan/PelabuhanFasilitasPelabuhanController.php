@@ -25,10 +25,10 @@ class PelabuhanFasilitasPelabuhanController extends Controller
 
         return view('Pelabuhan.fasilitas-pelabuhan.index')
         ->with('pelabuhanFasilitasPelabuhans', $pelabuhanFasilitasPelabuhans->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'pelabuhan_fasilitas_pelabuhan'
-            ])); 
+            ]) : false); 
     }
 
     /**

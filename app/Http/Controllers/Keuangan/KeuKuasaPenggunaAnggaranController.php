@@ -25,10 +25,10 @@ class KeuKuasaPenggunaAnggaranController extends Controller
 
         return view('Keuangan.kuasa-pengguna-anggaran.index')
         ->with('keuKuasaPenggunaAnggarans', $keuKuasaPenggunaAnggarans->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'keu_kuasa_pengguna_anggaran'
-            ]));
+            ]) : false);
     }
 
     /**

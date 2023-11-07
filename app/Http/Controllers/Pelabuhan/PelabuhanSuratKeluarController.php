@@ -25,10 +25,10 @@ class PelabuhanSuratKeluarController extends Controller
 
         return view('Pelabuhan.surat-keluar.index')
         ->with('pelabuhanSuratKeluars', $pelabuhanSuratKeluars->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'pelabuhan_surat_keluar'
-            ]));
+            ]) : false);
     }
 
     /**

@@ -25,10 +25,10 @@ class KesyaTertibBanarController extends Controller
 
         return view('Kesya.tertib-banar.index')
         ->with('kesyaTertibBanars', $kesyaTertibBanars->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'kesya_tertib_banar'
-            ]));
+            ]) : false);
     }
 
     /**

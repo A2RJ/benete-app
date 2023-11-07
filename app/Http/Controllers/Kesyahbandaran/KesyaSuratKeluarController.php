@@ -25,10 +25,10 @@ class KesyaSuratKeluarController extends Controller
 
         return view('Kesya.surat-keluar.index')
         ->with('kesyaSuratKeluars', $kesyaSuratKeluars->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'kesya_surat_keluar'
-            ]));
+            ]) : false);
     }
 
     /**

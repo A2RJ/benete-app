@@ -25,10 +25,10 @@ class KesyahController extends Controller
 
         return view('Kesya.kesyahbandaran.index')
         ->with('kesyahbandaran', $kesyahbandaran->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'kesyahbandaran'
-            ]));
+            ]) : false);
     }
 
     /**

@@ -25,10 +25,10 @@ class PelabuhanSuratMasukController extends Controller
 
         return view('Pelabuhan.surat-masuk.index')
         ->with('pelabuhanSuratMasuks', $pelabuhanSuratMasuks->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'pelabuhan_surat_masuk'
-            ]));
+            ]) : false);
     }
 
     /**

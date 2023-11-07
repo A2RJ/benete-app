@@ -25,10 +25,10 @@ class BmnSuratKeluarController extends Controller
 
         return view('BMN.surat-keluar.index')
         ->with('bmnSuratKeluars', $bmnSuratKeluars->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'bmn_surat_keluar'
-            ]));
+            ]) : false);
     }
 
     /**

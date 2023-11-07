@@ -27,10 +27,10 @@ class TuSuratTugasController extends Controller
 
         return view('TU.surat-tugas.index')
         ->with('tuSuratTugas', $tuSuratTugas->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'tu_surat_tugas'
-            ]));
+            ]) : false);
     }
 
     /**

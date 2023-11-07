@@ -25,10 +25,10 @@ class KeuPpkController extends Controller
 
         return view('Keuangan.ppk.index')
         ->with('keuPpks', $keuPpks->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'keu_ppk'
-            ]));
+            ]) : false);
     }
 
     /**

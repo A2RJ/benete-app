@@ -25,10 +25,10 @@ class PelabuhanPbmController extends Controller
 
         return view('Pelabuhan.pbm.index')
         ->with('pelabuhanPbms', $pelabuhanPbms->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'pelabuhan_pbm'
-            ]));
+            ]) : false);
     }
 
     /**

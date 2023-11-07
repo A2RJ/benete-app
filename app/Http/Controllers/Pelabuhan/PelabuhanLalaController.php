@@ -25,10 +25,10 @@ class PelabuhanLalaController extends Controller
 
         return view('Pelabuhan.lala.index')
         ->with('pelabuhanLalas', $pelabuhanLalas->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'pelabuhan_lala'
-            ]));
+            ]) : false);
     }
 
     /**

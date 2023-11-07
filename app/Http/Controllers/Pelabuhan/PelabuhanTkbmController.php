@@ -25,10 +25,10 @@ class PelabuhanTkbmController extends Controller
 
         return view('Pelabuhan.tkbm.index')
         ->with('pelabuhanTkbms', $pelabuhanTkbms->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'pelabuhan_tkbm'
-            ]));
+            ]) : false);
     }
 
     /**

@@ -25,10 +25,10 @@ class KeuBendaharaPengeluaranController extends Controller
 
         return view('Keuangan.bendahara-pengeluaran.index')
         ->with('keuBendaharaPengeluarans', $keuBendaharaPengeluarans->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'keu_bendahara_pengeluaran'
-            ]));
+            ]) : false);
     }
 
     /**

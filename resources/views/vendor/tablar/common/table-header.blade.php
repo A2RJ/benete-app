@@ -20,7 +20,7 @@
                             <div class="col-lg-2 col-md-12 mb-2">
                                 <button type="submit" class="btn btn-primary btn-sm w-100">Search</button>
                             </div>
-                            @if (isset($export))
+                            @if (isset($export) && $export)
                             <div class="col-lg-2 col-md-12 mb-2">
                                 <a href="{{ $export }}" target="_blank" class="btn btn-primary btn-sm w-100">Export</a>
                             </div>

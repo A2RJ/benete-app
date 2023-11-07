@@ -24,11 +24,11 @@ class TuKontrakKerjaSamaController extends Controller
         $ids = $tuKontrakKerjaSamas->pluck('id')->toArray();
 
         return view('TU.kontrak-kerja-sama.index')
-        ->with('tuKontrakKerjaSamas', $tuKontrakKerjaSamas->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('tuKontrakKerjaSamas', $tuKontrakKerjaSamas->paginate(10))
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'tu_kontrak_kerja_sama'
-            ]));
+            ]) : false);
     }
 
     /**
@@ -64,7 +64,7 @@ class TuKontrakKerjaSamaController extends Controller
      * @return \Illuminate\Contracts\View\View
      */
     public function show(TuKontrakKerjaSama $tuKontrakKerjaSama)
-    { 
+    {
         return view('TU.kontrak-kerja-sama.show', compact('tuKontrakKerjaSama'));
     }
 
@@ -75,7 +75,7 @@ class TuKontrakKerjaSamaController extends Controller
      * @return \Illuminate\Contracts\View\View
      */
     public function edit(TuKontrakKerjaSama $tuKontrakKerjaSama)
-    { 
+    {
         return view('TU.kontrak-kerja-sama.edit', compact('tuKontrakKerjaSama'));
     }
 

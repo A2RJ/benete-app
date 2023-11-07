@@ -25,10 +25,10 @@ class KesyaPatroliController extends Controller
 
         return view('Kesya.patroli.index')
         ->with('kesyaPatrolis', $kesyaPatrolis->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'kesya_patroli'
-            ]));
+            ]) : false);
     }
 
     /**

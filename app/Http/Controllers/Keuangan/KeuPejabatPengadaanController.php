@@ -25,10 +25,10 @@ class KeuPejabatPengadaanController extends Controller
 
         return view('Keuangan.pejabat-pengadaan.index')
         ->with('keuPejabatPengadaans', $keuPejabatPengadaans->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'keu_pejabat_pengadaan'
-            ]));
+            ]) : false);
     }
 
     /**

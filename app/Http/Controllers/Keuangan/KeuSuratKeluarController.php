@@ -25,10 +25,10 @@ class KeuSuratKeluarController extends Controller
 
         return view('Keuangan.surat-keluar.index')
         ->with('keuSuratKeluars', $keuSuratKeluars->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'keu_surat_keluar'
-            ]));
+            ]) : false);
     }
 
     /**

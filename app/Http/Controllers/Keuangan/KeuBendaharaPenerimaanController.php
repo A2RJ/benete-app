@@ -25,10 +25,10 @@ class KeuBendaharaPenerimaanController extends Controller
 
         return view('Keuangan.bendahara-penerimaan.index')
         ->with('keuBendaharaPenerimaans', $keuBendaharaPenerimaans->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'keu_bendahara_penerimaan'
-            ]));
+            ]) : false);
     }
 
     /**

@@ -25,10 +25,10 @@ class TuSuratMasukController extends Controller
 
         return view('TU.surat-masuk.index')
         ->with('tuSuratMasuks', $tuSuratMasuks->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'tu_surat_masuk'
-            ]));
+            ]) : false);
     }
 
     /**

@@ -25,10 +25,10 @@ class PelabuhanKeagenanController extends Controller
 
         return view('Pelabuhan.keagenan.index')
         ->with('pelabuhanKeagenans', $pelabuhanKeagenans->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'pelabuhan_keagenan'
-            ]));
+            ]) : false);
     }
 
     /**

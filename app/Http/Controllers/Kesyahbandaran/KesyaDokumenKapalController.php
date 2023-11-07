@@ -25,10 +25,10 @@ class KesyaDokumenKapalController extends Controller
 
         return view('Kesya.dokumen-kapal.index')
         ->with('kesyaDokumenKapals', $kesyaDokumenKapals->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'kesya_dokumen_kapal'
-            ]));
+            ]) : false);
     }
 
     /**

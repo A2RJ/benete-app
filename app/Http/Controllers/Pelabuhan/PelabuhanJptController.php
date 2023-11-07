@@ -25,10 +25,10 @@ class PelabuhanJptController extends Controller
 
         return view('Pelabuhan.jpt.index')
         ->with('pelabuhanJpts', $pelabuhanJpts->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'pelabuhan_jpt'
-            ]));
+            ]) : false);
     }
 
     /**

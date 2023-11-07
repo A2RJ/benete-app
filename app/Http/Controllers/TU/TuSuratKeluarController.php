@@ -25,10 +25,10 @@ class TuSuratKeluarController extends Controller
 
         return view('TU.surat-keluar.index')
         ->with('tuSuratKeluars', $tuSuratKeluars->paginate(10))
-            ->with('export', route('export-data', [
+            ->with('export', count($ids) ? route('export-data', [
                 'ids' => implode(',', $ids),
                 'model' => 'tu_surat_keluar'
-            ]));
+            ]) : false);
     }
 
     /**
