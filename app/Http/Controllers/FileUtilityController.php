@@ -26,12 +26,13 @@ class FileUtilityController extends Controller
             $data = DB::table($model)->whereIn($model . '.id', explode(',', $ids));
             $lampiran = $data->pluck('lampiran')->toArray();
             $data = $data->join('users', $model . ".user_id", 'users.id')->get();
+            $fileName = $model;
 
             if (count($lampiran) != 0) {
-                if (File::exists(public_path("$model.xlsx"))) {
-                    File::delete(public_path("$model.xlsx"));
+                if (File::exists(FileHelper::isDevelopment("$fileName.xlsx"))) {
+                    File::delete(FileHelper::isDevelopment("$fileName.xlsx"));
                 }
-                (new FastExcel($data))->export("$model.xlsx", function ($data) {
+                (new FastExcel($data))->export("$fileName.xlsx", function ($data) {
                     return [
                         'User' => $data->name,
                         'Nama Surat' => $data->nama,
@@ -41,7 +42,7 @@ class FileUtilityController extends Controller
                         'lampiran' => FileHelper::getFileName($data->lampiran),
                     ];
                 });
-                return FileHelper::zip($model, $lampiran);
+                return FileHelper::zip($fileName, $lampiran);
             } else {
                 abort(422, 'No data to export');
             }
@@ -73,8 +74,8 @@ class FileUtilityController extends Controller
 
                 $fileName = "$role - dokumentasi";
                 if (count($dokumentasi) != 0) {
-                    if (File::exists(public_path("$fileName.xlsx"))) {
-                        File::delete(public_path("$fileName.xlsx"));
+                    if (File::exists(FileHelper::isDevelopment("$fileName.xlsx"))) {
+                        File::delete(FileHelper::isDevelopment("$fileName.xlsx"));
                     }
                     (new FastExcel($dokumentasi))->export("$fileName.xlsx", function ($data) {
                         $title = $data['title'];

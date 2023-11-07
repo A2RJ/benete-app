@@ -56,19 +56,23 @@ class FileHelper
         }
     }
 
+    public static function isDevelopment($fileName)
+    {
+        return env('APP_ENV') == 'local' ? public_path($fileName) : public_path("../$fileName");
+    }
+
     public static function zip(string $fileName, array $arrayFile)
     {
-        // [ ] In server set /public folder
         $zipName = Carbon::now()->format('Y-M-d') . " " . $fileName . ".zip";
-        if (File::exists(public_path($zipName))) {
-            File::delete(public_path($zipName));
+        $withFolder = self::isDevelopment($zipName);
+
+        if (File::exists($withFolder)) {
+            File::delete($withFolder);
         }
 
         $zip = new Zip();
         $zip->create($zipName);
-
-        // [ ] Masalah ditemukan
-        $zip->add(env('APP_ENV') == 'local' ? public_path("$fileName.xlsx") : public_path("../$fileName.xlsx"));
+        $zip->add(self::isDevelopment("$fileName.xlsx"));
         foreach ($arrayFile as $file) {
             if (Storage::disk('local')->exists($file)) {
                 $zip->addFromString(self::getFileName($file), Storage::get($file));
@@ -76,28 +80,25 @@ class FileHelper
         }
         $zip->close();
 
-        if (env('APP_ENV') == 'local') {
-            if (File::exists(public_path($zipName))) {
-                return response()->download(public_path($zipName));
-            } else {
-                return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
-            }
+        if (File::exists($withFolder)) {
+            return response()->download($withFolder);
         } else {
-            return redirect()->to("https://benete-app.com/$zipName");
+            return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
         }
     }
 
     public static function zipDokumentasi(string $fileName, $arrayFile)
     {
         $zipName = Carbon::now()->format('Y-M-d') . " " . $fileName . ".zip";
-        if (File::exists(public_path($zipName))) {
-            File::delete(public_path($zipName));
+        $withFolder = self::isDevelopment($zipName);
+
+        if (File::exists($withFolder)) {
+            File::delete($withFolder);
         }
 
         $zip = new Zip();
         $zip->create($zipName);
-
-        $zip->add(public_path("$fileName.xlsx"));
+        $zip->add(self::isDevelopment("$fileName.xlsx"));
         foreach ($arrayFile as $file) {
             if (Storage::disk('local')->exists($file['name'])) {
                 $folder = $file['dokumentasi']['id'];
@@ -105,14 +106,11 @@ class FileHelper
             }
         }
         $zip->close();
-        if (env('APP_ENV') == 'local') {
-            if (File::exists(public_path($zipName))) {
-                return response()->download(public_path($zipName));
-            } else {
-                return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
-            }
+
+        if (File::exists($withFolder)) {
+            return response()->download($withFolder);
         } else {
-            return redirect()->to("https://benete-app.com/$zipName");
+            return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
         }
     }
 
