@@ -81,6 +81,35 @@ class FileHelper
         }
     }
 
+    public static function zipDokumentasi(string $fileName, $arrayFile)
+    {
+        $zipName = Carbon::now()->format('Y-M-d') . " " . $fileName . ".zip";
+        if (File::exists(public_path($zipName))) {
+            File::delete(public_path($zipName));
+        }
+
+        $zip = new Zip();
+        $zip->create($zipName);
+
+        $zip->add(public_path("$fileName.xlsx"));
+
+
+        foreach ($arrayFile as $file) {
+            if (Storage::disk('local')->exists($file['name'])) {
+                $folder = $file['dokumentasi']['id'];
+                $zip->addFromString("$folder/" . self::getFileName($file['name']), Storage::get($file['name']));
+            }
+        }
+        $zip->close();
+
+        if (File::exists(public_path($zipName))) {
+            return response()->download(public_path($zipName));
+        } else {
+            return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
+        }
+    }
+
+
     public static function getFileName($filePath)
     {
         $parts = explode('/', $filePath);

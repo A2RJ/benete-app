@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DokumentasiRequest;
 use App\Models\Dokumentasi;
 use App\Models\File;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class KeuDokumentasiController
@@ -25,11 +23,11 @@ class DokumentasiController extends Controller
         $ids = $keuDokumentasis->pluck('id')->toArray();
 
         return view('dokumentasi.index')
-        ->with('keuDokumentasis', $keuDokumentasis->paginate(10));
-            // ->with('export', route('export-data', [
-            //     'ids' => implode(',', $ids),
-            // 'model' => 'dokumentasi'
-            // ]));
+        ->with('keuDokumentasis', $keuDokumentasis->paginate(10))
+            ->with('export', route('export-data.dokumentasi', [
+                'ids' => implode(',', $ids),
+                'model' => 'dokumentasi'
+            ]));
     }
 
     /**

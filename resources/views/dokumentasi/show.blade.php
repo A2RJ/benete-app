@@ -19,7 +19,7 @@
             <!-- Page title actions -->
             <div class="col-12 col-md-auto ms-auto d-print-none">
                 <div class="btn-list">
-                    <a href="{{ route('dokumentasi.index') }}" class="btn btn-primary d-none d-sm-inline-block">
+                    <a href="{{ route('dokumentasi.index') }}" class="btn btn-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M9 14l-4 -4l4 -4"></path>
@@ -50,6 +50,10 @@
                         <div class="form-group">
                             <strong>Type:</strong>
                             {{ $dokumentasi->type }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Title:</strong>
+                            {{ $dokumentasi->title }}
                         </div>
                         @if ($dokumentasi->type == 'link')
                         <div class="form-group">
@@ -128,7 +132,9 @@
                                             justify-content: center;
                                             ">
                                     <img width="200" height="200" src="data:image/jpeg;base64,{{ $file->file() }}" alt="Your Image">
-
+                                    <div class="my-2">
+                                        {!! $file->download() !!}
+                                    </div>
                                     <form action="{{ route('dokumentasi.file.destroy', ['dokumentasi' => $dokumentasi->id, 'file' => $file->id ]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

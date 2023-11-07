@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Auth;
 /**
  * App\Models\Dokumentasi
  *
+ * @property string $id
+ * @property int $user_id
+ * @property string $title
+ * @property string $role
+ * @property string $type
+ * @property string|null $link
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\File> $files
  * @property-read int|null $files_count
  * @property-read User|null $user
@@ -20,14 +28,6 @@ use Illuminate\Support\Facades\Auth;
  * @method static \Illuminate\Database\Eloquent\Builder|Dokumentasi role()
  * @method static \Illuminate\Database\Eloquent\Builder|Dokumentasi searchFile()
  * @method static \Illuminate\Database\Eloquent\Builder|Dokumentasi statistics()
- * @property string $id
- * @property int $user_id
- * @property string $title
- * @property string $role
- * @property string $type
- * @property string $link
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Dokumentasi whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Dokumentasi whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Dokumentasi whereLink($value)

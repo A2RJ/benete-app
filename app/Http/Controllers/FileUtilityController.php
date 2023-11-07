@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FileHelper;
-use Illuminate\Http\Response;
+use App\Models\Dokumentasi;
+use App\Models\File as ModelsFile;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Rap2hpoutre\FastExcel\FastExcel;
 
 class FileUtilityController extends Controller
@@ -43,6 +45,65 @@ class FileUtilityController extends Controller
             }
         } else {
             abort(500, 'No data to export');
+        }
+    }
+
+    // Route::get('zip/{ids?}', function ($ids) {
+    // if ($ids) {
+    // langsung pakai model dokuemntasi
+    // $model = new $model;
+    // $model->whereHas('')
+    // $data = DB::table($model)->whereIn('id', explode(',', $ids))
+    //     ->join($file, "$file.$model" . "_id", '=', "$model.id")
+    //     ->pluck('name')->toArray();
+    // if (count($data) != 0) {
+    //     $fileName = Carbon::now()->format('Y-M-d') . " $model.zip";
+    //     return FileHelper::zip($fileName, $data);
+    // }
+    // }
+    // })->name('export-data');
+    public function zipDokumentasi(string $ids)
+    {
+        try {
+            $id = Auth::id();
+            $user = User::whereId($id)->firstOrFail();
+            $role = $user->roles[0]->name;
+
+            $dokumentasi = Dokumentasi::query()
+                ->whereRole($role)
+                ->whereIn('id', explode(',', $ids))
+                ->with(['user', 'files'])
+                ->get()
+                ->toArray();
+
+            $files = ModelsFile::query()
+                ->whereIn('dokumentasi_id', explode(',', $ids))
+                ->with('dokumentasi')
+                ->get()
+                ->toArray();
+
+            $fileName = "$role - dokumentasi";
+            if (count($dokumentasi) != 0) {
+                if (File::exists(public_path("$fileName.xlsx"))) {
+                    File::delete(public_path("$fileName.xlsx"));
+                }
+                (new FastExcel($dokumentasi))->export("$fileName.xlsx", function ($data) {
+                    $title = $data['title'];
+                    $folder = $data['id'];
+                    $count = count($data['files']);
+                    return [
+                        'User' => $data['user']['name'],
+                        'Title' => $title,
+                        'Type' => $data['type'],
+                        'Detail' => $data['type'] == 'link' ? $data['link'] : "Di dalam folder $folder terdapat $count file",
+                    ];
+                });
+                return FileHelper::zipDokumentasi($fileName, $files);
+            } else {
+                abort(500, 'No data to export');
+            }
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 }

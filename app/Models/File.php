@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 /**
  * Class File
@@ -50,6 +51,12 @@ class File extends Model
   public function dokumentasi()
   {
     return $this->hasOne(Dokumentasi::class, 'id', 'dokumentasi_id');
+  }
+
+  public function download()
+  {
+    $url = URL::signedRoute('download', ['pathToImage' => $this->name]);
+    return "<a href='{$url}'>Download</a>";
   }
 
   public function file()

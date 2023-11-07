@@ -82,27 +82,8 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('download/{pathToImage}', [FileUtilityController::class, 'download'])->where('pathToImage', '.*')->name('download');
-    Route::get('stream/{pathToImage}', [FileUtilityController::class, 'stream'])->where('pathToImage', '.*')->name('stream');
     Route::get('zip/{ids?}/{model}', [FileUtilityController::class, 'zip'])->name('export-data');
-
-    // Route::get('download/{pathToImage}', function (string $pathToImage) {
-    //     return FileHelper::download($pathToImage);
-    // })->where('pathToImage', '.*')->name('download.dokumentasi');
-
-    // Route::get('zip/{ids?}', function ($ids) {
-    // if ($ids) {
-    // langsung pakai model dokuemntasi
-    // $model = new $model;
-    // $model->whereHas('')
-    // $data = DB::table($model)->whereIn('id', explode(',', $ids))
-    //     ->join($file, "$file.$model" . "_id", '=', "$model.id")
-    //     ->pluck('name')->toArray();
-    // if (count($data) != 0) {
-    //     $fileName = Carbon::now()->format('Y-M-d') . " $model.zip";
-    //     return FileHelper::zip($fileName, $data);
-    // }
-    // }
-    // })->name('export-data');
+    Route::get('zip-dokumentasi/{ids?}', [FileUtilityController::class, 'zipDokumentasi'])->name('export-data.dokumentasi');
 
     Route::middleware(['role:admin'])->group(function () {
         Route::get('user-dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
