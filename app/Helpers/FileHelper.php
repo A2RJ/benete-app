@@ -58,6 +58,7 @@ class FileHelper
 
     public static function zip(string $fileName, array $arrayFile)
     {
+        // [ ] In server set /public folder
         $zipName = Carbon::now()->format('Y-M-d') . " " . $fileName . ".zip";
         if (File::exists(public_path($zipName))) {
             File::delete(public_path($zipName));
@@ -66,7 +67,8 @@ class FileHelper
         $zip = new Zip();
         $zip->create($zipName);
 
-        $zip->add(public_path("$fileName.xlsx"));
+        // [ ] Masalah ditemukan
+        $zip->add(env('APP_ENV') == 'local' ? public_path("$fileName.xlsx") : public_path("../$fileName.xlsx"));
         foreach ($arrayFile as $file) {
             if (Storage::disk('local')->exists($file)) {
                 $zip->addFromString(self::getFileName($file), Storage::get($file));
@@ -74,10 +76,14 @@ class FileHelper
         }
         $zip->close();
 
-        if (File::exists(public_path($zipName))) {
-            return response()->download(public_path($zipName));
+        if (env('APP_ENV') == 'local') {
+            if (File::exists(public_path($zipName))) {
+                return response()->download(public_path($zipName));
+            } else {
+                return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
+            }
         } else {
-            return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
+            return redirect()->to("https://benete-app.com/$zipName");
         }
     }
 
@@ -92,8 +98,6 @@ class FileHelper
         $zip->create($zipName);
 
         $zip->add(public_path("$fileName.xlsx"));
-
-
         foreach ($arrayFile as $file) {
             if (Storage::disk('local')->exists($file['name'])) {
                 $folder = $file['dokumentasi']['id'];
@@ -101,11 +105,14 @@ class FileHelper
             }
         }
         $zip->close();
-
-        if (File::exists(public_path($zipName))) {
-            return response()->download(public_path($zipName));
+        if (env('APP_ENV') == 'local') {
+            if (File::exists(public_path($zipName))) {
+                return response()->download(public_path($zipName));
+            } else {
+                return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
+            }
         } else {
-            return response()->json(['message' => "If file doesn't downloaded please reload this page"]);
+            return redirect()->to("https://benete-app.com/$zipName");
         }
     }
 
