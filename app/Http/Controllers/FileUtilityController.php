@@ -15,9 +15,9 @@ class FileUtilityController extends Controller
 {
     public function download($pathToImage = false)
     {
-        if (!$pathToImage) {
+        // if (!$pathToImage) {
             return FileHelper::download($pathToImage);
-        }
+        // }
     }
 
     public function zip($ids = false, $model = false)

@@ -62,7 +62,7 @@ class TuKontrakKerjaSama extends Model
       get: function (string|null $value) {
         if ($value) {
           $url = URL::signedRoute('download', ['pathToImage' => $value]);
-          return "<a href='{$url}'>File</a>";
+          return "<a href='{$url}' target='_blank'>File</a>";
         }
       },
     );
